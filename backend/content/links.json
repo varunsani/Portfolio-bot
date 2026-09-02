@@ -1,38 +1,212 @@
 [
-  {"url": "https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing", "label": "Resume", "section": "Post-Race Debrief (Contact)", "anchor": "#contact"},
-  {"url": "https://drive.google.com/file/d/189W7YA8ieMVIF-pLQ5YEOP7R1dHGe52Q/view?usp=sharing", "label": "Technocolabs internship certificate", "section": "Race Stints (Experience)", "anchor": "#experience"},
-  {"url": "https://github.com/varunsani/weather-alert-platform", "label": "Real-Time Severe Weather Alerting System (GitHub)", "section": "The Garage (Projects)", "anchor": "#projects"},
-  {"url": "https://github.com/varunsani/UrlShortener", "label": "URL Shortener (GitHub)", "section": "The Garage (Projects)", "anchor": "#projects"},
-  {"url": "https://ceur-ws.org/Vol-4039/paper19.pdf", "label": "Multipacking in Hypercubes (ICTCS 2025 paper)", "section": "The Wind Tunnel (Research)", "anchor": "#research"},
-  {"url": "https://orcid.org/0009-0001-4816-2119", "label": "ORCID profile", "section": "The Wind Tunnel (Research)", "anchor": "#research"},
-  {"url": "https://arxiv.org/abs/1706.03762", "label": "Attention Is All You Need", "section": "Off Track (Interests) — Engineering", "anchor": "#beyond"},
-  {"url": "https://arxiv.org/abs/2106.09685", "label": "LoRA: Low-Rank Adaptation of Large Language Models", "section": "Off Track (Interests) — Engineering", "anchor": "#beyond"},
-  {"url": "https://en.wikipedia.org/wiki/Honeycomb_conjecture", "label": "Honeycomb conjecture", "section": "Off Track (Interests) — Mathematics", "anchor": "#beyond"},
-  {"url": "https://plus.maths.org/shoelace-book", "label": "The mathematics of tying shoelaces", "section": "Off Track (Interests) — Mathematics", "anchor": "#beyond"},
-  {"url": "https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem", "label": "Fermat's Last Theorem", "section": "Off Track (Interests) — Mathematics", "anchor": "#beyond"},
-  {"url": "https://www.instagram.com/olivia.poetess/", "label": "Olivia Dodd, typewriter poet", "section": "Off Track (Interests) — Writing", "anchor": "#beyond"},
-  {"url": "https://www.poetryfoundation.org/poems/42891/stopping-by-woods-on-a-snowy-evening", "label": "Stopping by Woods on a Snowy Evening — Robert Frost", "section": "Off Track (Interests) — Writing", "anchor": "#beyond"},
-  {"url": "https://www.uffizi.it/en", "label": "Uffizi Gallery, Florence", "section": "Off Track (Interests) — Art", "anchor": "#beyond"},
-  {"url": "https://www.louvre.fr/en", "label": "The Louvre", "section": "Off Track (Interests) — Art", "anchor": "#beyond"},
-  {"url": "https://www.rijksmuseum.nl/en", "label": "Rijksmuseum, Amsterdam", "section": "Off Track (Interests) — Art", "anchor": "#beyond"},
-  {"url": "https://www.goodreads.com/book/show/6867.Atonement", "label": "Atonement — Ian McEwan", "section": "Off Track (Interests) — Books & Films", "anchor": "#beyond"},
-  {"url": "https://www.imdb.com/title/tt0482571/", "label": "The Prestige", "section": "Off Track (Interests) — Books & Films", "anchor": "#beyond"},
-  {"url": "https://www.imdb.com/title/tt0338013/", "label": "Eternal Sunshine of the Spotless Mind", "section": "Off Track (Interests) — Books & Films", "anchor": "#beyond"},
-  {"url": "https://www.imdb.com/title/tt0068646/", "label": "The Godfather", "section": "Off Track (Interests) — Books & Films", "anchor": "#beyond"},
-  {"url": "https://www.imdb.com/title/tt0050083/", "label": "12 Angry Men", "section": "Off Track (Interests) — Books & Films", "anchor": "#beyond"},
-  {"url": "https://www.michaeljackson.com/", "label": "Michael Jackson", "section": "Off Track (Interests) — Music", "anchor": "#beyond"},
-  {"url": "https://en.wikipedia.org/wiki/La_La_Land_(soundtrack)", "label": "La La Land soundtrack", "section": "Off Track (Interests) — Music", "anchor": "#beyond"},
-  {"url": "https://en.wikipedia.org/wiki/Sicilian_Defence", "label": "Sicilian Defence", "section": "Off Track (Interests) — Chess", "anchor": "#beyond"},
-  {"url": "https://en.wikipedia.org/wiki/Ruy_Lopez", "label": "Ruy Lopez", "section": "Off Track (Interests) — Chess", "anchor": "#beyond"},
-  {"url": "https://www.chessgames.com/perl/chessgame?gid=1067179", "label": "Kasparov vs. Karpov, 1985 World Championship", "section": "Off Track (Interests) — Chess", "anchor": "#beyond"},
-  {"url": "https://www.chessgames.com/perl/chessgame?gid=1044366", "label": "Fischer vs. Spassky, 1972 Game 6", "section": "Off Track (Interests) — Chess", "anchor": "#beyond"},
-  {"url": "https://www.chessgames.com/perl/chessgame?gid=1848607", "label": "Carlsen vs. Karjakin, 2016 tiebreak", "section": "Off Track (Interests) — Chess", "anchor": "#beyond"},
-  {"url": "https://www.chess.com/member/varunsani", "label": "Chess.com profile", "section": "Off Track (Interests) — Chess", "anchor": "#beyond"},
-  {"url": "https://www.youtube.com/watch?v=QGTErgNcpDM", "label": "Verstappen P17-to-P1, São Paulo 2024", "section": "Off Track (Interests) — Racing", "anchor": "#beyond"},
-  {"url": "https://www.mclaren.com/racing/heritage/formula-1/drivers/ayrton-senna/f1s-greatest-ever-qualifying-lap-ayrton-senna-in-monaco-1988/", "label": "Senna's 1988 Monaco qualifying lap", "section": "Off Track (Interests) — Racing", "anchor": "#beyond"},
-  {"url": "https://www.youtube.com/watch?v=X8x4RTdo5_8", "label": "Schumacher's 1995 win at Spa", "section": "Off Track (Interests) — Racing", "anchor": "#beyond"},
-  {"url": "mailto:varunsani625@gmail.com", "label": "Email", "section": "Post-Race Debrief (Contact)", "anchor": "#contact"},
-  {"url": "https://www.linkedin.com/in/varun-sani-b2056a371/", "label": "LinkedIn", "section": "Post-Race Debrief (Contact)", "anchor": "#contact"},
-  {"url": "https://github.com/varunsani", "label": "GitHub profile", "section": "Post-Race Debrief (Contact)", "anchor": "#contact"},
-  {"url": "https://leetcode.com/u/varun_sani/", "label": "LeetCode profile", "section": "Post-Race Debrief (Contact)", "anchor": "#contact"}
+  {
+    "url": "https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing",
+    "label": "Resume \u00b7 pit lane \u2197",
+    "section": "Contact",
+    "anchor": "#contact"
+  },
+  {
+    "url": "https://drive.google.com/file/d/189W7YA8ieMVIF-pLQ5YEOP7R1dHGe52Q/view?usp=sharing",
+    "label": "View certificate \u00b7 purple sector \u2192",
+    "section": "Experience",
+    "anchor": "#experience"
+  },
+  {
+    "url": "https://github.com/varunsani/weather-alert-platform",
+    "label": "View on GitHub \u00b7 overtake \u2192",
+    "section": "Projects",
+    "anchor": "#projects"
+  },
+  {
+    "url": "https://github.com/varunsani/UrlShortener",
+    "label": "View on GitHub \u00b7 overtake \u2192",
+    "section": "Projects",
+    "anchor": "#projects"
+  },
+  {
+    "url": "https://ceur-ws.org/Vol-4039/paper19.pdf",
+    "label": "ICTCS 2025 Paper \u00b7 chequered flag \u2197",
+    "section": "Contact",
+    "anchor": "#contact"
+  },
+  {
+    "url": "https://orcid.org/0009-0001-4816-2119",
+    "label": "ORCID \u00b7 parc ferm\u00e9 \u2197",
+    "section": "Contact",
+    "anchor": "#contact"
+  },
+  {
+    "url": "https://arxiv.org/abs/1706.03762",
+    "label": "Attention Is All You Need",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://arxiv.org/abs/2106.09685",
+    "label": "LoRA: Low-Rank Adaptation of Large Language Models",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Honeycomb_conjecture",
+    "label": "honeycomb conjecture",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://plus.maths.org/shoelace-book",
+    "label": "actual published mathematics",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem",
+    "label": "Fermat's Last Theorem",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.instagram.com/olivia.poetess/",
+    "label": "Olivia Dodd",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.poetryfoundation.org/poems/42891/stopping-by-woods-on-a-snowy-evening",
+    "label": "Stopping by Woods on a Snowy Evening",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.uffizi.it/en",
+    "label": "Uffizi",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.louvre.fr/en",
+    "label": "Louvre",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.rijksmuseum.nl/en",
+    "label": "Rijksmuseum",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.goodreads.com/book/show/6867.Atonement",
+    "label": "Atonement",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.imdb.com/title/tt0482571/",
+    "label": "The Prestige",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.imdb.com/title/tt0338013/",
+    "label": "Eternal Sunshine of the Spotless Mind",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.imdb.com/title/tt0068646/",
+    "label": "The Godfather",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.imdb.com/title/tt0050083/",
+    "label": "12 Angry Men",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.michaeljackson.com/",
+    "label": "Michael Jackson",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/La_La_Land_(soundtrack)",
+    "label": "La La Land's",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Sicilian_Defence",
+    "label": "Sicilian",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://en.wikipedia.org/wiki/Ruy_Lopez",
+    "label": "Ruy Lopez",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.chessgames.com/perl/chessgame?gid=1067179",
+    "label": "Kasparov vs. Karpov",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.chessgames.com/perl/chessgame?gid=1044366",
+    "label": "Fischer vs. Spassky",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.chessgames.com/perl/chessgame?gid=1848607",
+    "label": "Carlsen vs. Karjakin",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.chess.com/member/varunsani",
+    "label": "Chess.com",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=QGTErgNcpDM",
+    "label": "S\u00e3o Paulo 2024",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.mclaren.com/racing/heritage/formula-1/drivers/ayrton-senna/f1s-greatest-ever-qualifying-lap-ayrton-senna-in-monaco-1988/",
+    "label": "1988 Monaco qualifying lap",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.youtube.com/watch?v=X8x4RTdo5_8",
+    "label": "1995 win at Spa",
+    "section": "Interests",
+    "anchor": "#beyond"
+  },
+  {
+    "url": "https://www.linkedin.com/in/varun-sani-b2056a371/",
+    "label": "LinkedIn \u00b7 full throttle \u2197",
+    "section": "Contact",
+    "anchor": "#contact"
+  },
+  {
+    "url": "https://github.com/varunsani",
+    "label": "GitHub \u00b7 push to pass \u2197",
+    "section": "Contact",
+    "anchor": "#contact"
+  },
+  {
+    "url": "https://leetcode.com/u/varun_sani/",
+    "label": "LeetCode \u00b7 practice sessions \u2197",
+    "section": "Contact",
+    "anchor": "#contact"
+  }
 ]
