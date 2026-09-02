@@ -25,6 +25,7 @@ from typing import List
 
 from rank_bm25 import BM25Okapi
 import numpy as np
+import ast
 
 from app.config import settings
 from app.db.connection import get_pool
@@ -94,8 +95,15 @@ def _mmr(query_embedding: List[float], chunks: List[RetrievedChunk], k: int, lam
     doc_vecs = [np.array(c.embedding) for c in chunks]
 
     def cos(a, b):
-        denom = (np.linalg.norm(a) * np.linalg.norm(b)) or 1e-9
-        return float(np.dot(a, b) / denom)
+    # If b is a string (from the DB), convert it to a list of floats
+    if isinstance(b, str):
+        b = ast.literal_eval(b)
+    # If a is a string, convert it too
+    if isinstance(a, str):
+        a = ast.literal_eval(a)
+        
+    denom = (np.linalg.norm(a) * np.linalg.norm(b)) or 1e-9
+    return np.dot(a, b) / denom
 
     selected: List[int] = []
     candidates = list(range(len(chunks)))
