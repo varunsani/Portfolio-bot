@@ -22,10 +22,10 @@ final prompt tight and cheap.
 import re
 from dataclasses import dataclass
 from typing import List
+import ast
 
 from rank_bm25 import BM25Okapi
 import numpy as np
-import ast
 
 from app.config import settings
 from app.db.connection import get_pool
@@ -63,19 +63,27 @@ async def _fetch_candidates(query_embedding: List[float], limit: int = 20) -> Li
         vec_literal,
         limit,
     )
-    return [
-        RetrievedChunk(
-            content=r["content"],
-            embedding=list(r["embedding"]),
-            source=r["source"],
-            section=r["section"],
-            anchor=r["anchor"],
-            url=r["url"],
-            title=r["title"],
-            score=float(r["cosine_sim"]),
+    
+    # --- Parse string embeddings into lists ---
+    parsed_chunks = []
+    for r in rows:
+        raw_embedding = r["embedding"]
+        if isinstance(raw_embedding, str):
+            raw_embedding = ast.literal_eval(raw_embedding)
+            
+        parsed_chunks.append(
+            RetrievedChunk(
+                content=r["content"],
+                embedding=list(raw_embedding),
+                source=r["source"],
+                section=r["section"],
+                anchor=r["anchor"],
+                url=r["url"],
+                title=r["title"],
+                score=float(r["cosine_sim"]),
+            )
         )
-        for r in rows
-    ]
+    return parsed_chunks
 
 
 def _bm25_scores(query: str, chunks: List[RetrievedChunk]) -> List[float]:
@@ -95,15 +103,8 @@ def _mmr(query_embedding: List[float], chunks: List[RetrievedChunk], k: int, lam
     doc_vecs = [np.array(c.embedding) for c in chunks]
 
     def cos(a, b):
-    # If b is a string (from the DB), convert it to a list of floats
-    if isinstance(b, str):
-        b = ast.literal_eval(b)
-    # If a is a string, convert it too
-    if isinstance(a, str):
-        a = ast.literal_eval(a)
-        
-    denom = (np.linalg.norm(a) * np.linalg.norm(b)) or 1e-9
-    return np.dot(a, b) / denom
+        denom = (np.linalg.norm(a) * np.linalg.norm(b)) or 1e-9
+        return np.dot(a, b) / denom
 
     selected: List[int] = []
     candidates = list(range(len(chunks)))
