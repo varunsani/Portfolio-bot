@@ -6,7 +6,7 @@ class Settings(BaseSettings):
     redis_url: str
 
     groq_api_key: str
-    groq_model: str = "llama3-8b-8192"
+    groq_model: str = "openai/gpt-oss-120b"
 
     portfolio_url: str = "https://varunsani.vercel.app"
     frontend_origin_prod: str = "https://varunsani.vercel.app"
