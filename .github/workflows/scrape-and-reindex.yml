@@ -1,0 +1,50 @@
+# Watches the LIVE portfolio (not just the git repo) for changes.
+# Runs on a schedule + manual trigger, scrapes https://varunsani.vercel.app,
+# and if the content actually changed, commits the new content/portfolio.md
+# and content/links.json — which in turn triggers reindex.yml (path filter
+# on content/**) to rebuild the knowledge base automatically.
+#
+# This is what makes "I changed my portfolio" -> "chatbot updates itself"
+# happen with zero manual steps.
+
+name: Scrape Portfolio & Trigger Reindex
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours — adjust to taste
+  workflow_dispatch: {}      # manual "Run workflow" button
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install scrape dependencies
+        run: pip install requests beautifulsoup4
+
+      - name: Scrape live portfolio
+        id: scrape
+        run: |
+          python backend/scripts/scrape_portfolio.py | tee scrape_result.txt
+          echo "result=$(cat scrape_result.txt)" >> "$GITHUB_OUTPUT"
+
+      - name: Commit changes if content differs
+        run: |
+          git config user.name "race-engineer-bot"
+          git config user.email "actions@github.com"
+          git add backend/content/portfolio.md backend/content/links.json
+          if git diff --cached --quiet; then
+            echo "No content changes detected — skipping commit."
+          else
+            git commit -m "chore: auto-sync portfolio content [skip ci-deploy]"
+            git push
+          fi

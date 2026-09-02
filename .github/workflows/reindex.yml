@@ -1,0 +1,58 @@
+# Rebuilds the vector knowledge base whenever content/ changes — either
+# because scrape-and-reindex.yml auto-committed a live-site change, or
+# because you manually replaced content/resume.pdf or edited content/*.
+#
+# Also runs on its own daily schedule: portfolio changes reach this via a
+# git push (see paths below), but a resume update on Google Drive never
+# touches git, so nothing else would trigger a reindex for it. The daily
+# run is the safety net that picks that up — worst case, a Drive-only
+# resume edit takes up to ~24h to show up in the bot instead of instantly.
+# (Every run always re-embeds everything regardless of what changed — there's
+# no per-source change diffing — so tighten this cron if that compute cost
+# matters more than same-day resume freshness, or loosen it if 24h is too
+# slow. `workflow_dispatch` still gives you an instant manual option either way.)
+
+name: Reindex Knowledge Base
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "backend/content/**"
+  schedule:
+    - cron: "0 4 * * *"   # once a day — safety net for Drive-only resume updates
+  workflow_dispatch: {}
+
+jobs:
+  reindex:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Cache pip packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt
+
+      - name: Run indexing script
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+        run: python backend/scripts/index_knowledge.py
+
+      - name: Verify indexing
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+        run: python backend/scripts/verify_index.py

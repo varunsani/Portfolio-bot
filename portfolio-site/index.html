@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Varun Sani | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@1,700;1,900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #07080b;
+    --bg-2: #0d0f14;
+    --panel: #111319;
+    --panel-2: #171a22;
+    --navy: #1b2a6b;
+    --navy-bright: #3450e0;
+    --red: #e10600;
+    --red-dim: #7d0500;
+    --red-bright: #ff2a1f;
+    --text: #f7f8fa;
+    --text-dim: #c3c8d3;
+    --text-faint: #868c9c;
+    --rule: rgba(255,255,255,0.14);
+    --rule-strong: rgba(255,255,255,0.26);
+    --max: 1100px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif; font-weight:400; line-height:1.65;
+    overflow-x:hidden; -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--red); color:#fff; }
+  a{ color:inherit; text-decoration:none; cursor:pointer; }
+  img{max-width:100%; display:block;}
+  .wrap{ max-width:var(--max); margin:0 auto; padding:0 28px; }
+  h1,h2,h3,h4{ font-family:'Space Grotesk', sans-serif; font-weight:600; letter-spacing:-0.01em; line-height:1.08; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  .checker{
+    height:9px; width:100%;
+    background-image: repeating-conic-gradient(#f7f8fa 0% 25%, transparent 0% 50%);
+    background-size: 16px 16px;
+    opacity:0.3;
+  }
+  .rule-line{ height:1px; background:var(--rule); border:none; }
+
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase;
+    color:var(--red); display:flex; align-items:center; gap:10px; margin-bottom:18px; }
+  .eyebrow .flag{ width:12px; height:12px; background-image: repeating-conic-gradient(#fff 0% 25%, #000 0% 50%); background-size:6px 6px; border-radius:2px; opacity:0.9; }
+  .eyebrow .tag{ color:var(--text-faint); }
+
+  #stars{ position:fixed; inset:0; z-index:0; pointer-events:none;
+    background:
+      radial-gradient(ellipse 80% 55% at 15% -10%, rgba(52,80,224,0.16), transparent 60%),
+      radial-gradient(ellipse 60% 45% at 90% 10%, rgba(225,6,0,0.10), transparent 60%);
+  }
+
+  .checkered-banner{
+    width: 100%;
+    height: 24px;
+    margin: 0 auto 32px auto;
+    background-image: repeating-conic-gradient(#f7f8fa 0% 25%, #000 0% 50%);
+    background-size: 24px 24px;
+    opacity: 0.85;
+    border-radius: 2px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
+
+  .footer-bottom{ 
+    display:flex; 
+    justify-content:center; 
+    align-items:center; 
+    padding: 10px 0 0px; 
+    border-top: none; /* Removed the border since we have the flag now */
+    font-family:'IBM Plex Mono',monospace; 
+    font-size:16px; 
+    color:var(--text-faint); 
+    flex-wrap:wrap; 
+    gap:12px; 
+  }
+    /* Force about box to align on grid */
+  #about .proj {
+    margin-bottom: 0;
+  }
+  
+  /* Force footer box to be horizontal */
+  #contact .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+  }
+  
+  #contact .footer-links a {
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    transition: .2s;
+    color: var(--text-dim);
+    white-space: nowrap;
+  }
+  
+  #contact .footer-links a:hover {
+    color: var(--red);
+    border-color: var(--red);
+  }
+
+  header{ position:fixed; top:0; left:0; right:0; z-index:50; backdrop-filter:blur(10px);
+    background:linear-gradient(to bottom, rgba(7,8,11,0.94), rgba(7,8,11,0.6)); border-bottom:1px solid var(--rule); }
+  nav.wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .brand{ font-family:'Space Grotesk', sans-serif; font-size:18px; font-weight:700; color:var(--text); display:flex; align-items:center; gap:8px; }
+  .brand .num{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--red); border:1px solid var(--red-dim); padding:2px 6px; border-radius:4px; }
+  .navlinks{ display:flex; gap:26px; font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:0.05em; align-items:center; }
+  .navlinks a{ color:var(--text-dim); transition:color .2s ease; }
+  .navlinks a:hover{ color:var(--red); }
+  a:focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:2px; }
+  @media (max-width: 800px){ .navlinks{ display:none; } }
+
+  /* ---------- hero ---------- */
+  .hero{ position:relative; min-height:100svh; display:flex; align-items:center; padding-top:96px; padding-bottom:50px; overflow:hidden; }
+  .hero-grid{ position:relative; z-index:2; display:grid; grid-template-columns: 1.05fr 0.95fr; gap:24px; align-items:center; width:100%; }
+  @media (max-width: 900px){ .hero-grid{ grid-template-columns:1fr; } .orbit-stage{ margin-top:36px; } }
+
+  .kicker{ font-family:'IBM Plex Mono', monospace; font-size:13px; letter-spacing:0.16em; text-transform:uppercase; color:var(--navy-bright);
+    margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .kicker .dot{ width:7px; height:7px; border-radius:50%; background:var(--red); box-shadow:0 0 10px var(--red); animation:pulse 1.6s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.35;} }
+
+  .hero h1{ font-family:'Titillium Web', sans-serif; font-style:italic; font-weight:900; font-size:clamp(48px, 8vw, 92px); color:var(--text); margin-bottom:6px; letter-spacing:-0.01em; }
+  .hero h1 .last{ background:linear-gradient(92deg, var(--red), #ff5c47 55%, var(--navy-bright)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+
+  .driver-board{ display:inline-flex; align-items:stretch; gap:0; margin:18px 0 26px; border-radius:6px; overflow:hidden; border:1px solid var(--rule-strong); }
+  .driver-board .num-plate{ background:var(--red); color:#fff; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:34px; padding:10px 20px; display:flex; align-items:center; }
+  .driver-board .db-info{ background:var(--panel); padding:8px 18px; display:flex; flex-direction:column; justify-content:center; gap:2px; }
+  .driver-board .db-code{ font-family:'IBM Plex Mono',monospace; font-size:13px; letter-spacing:.1em; color:var(--text); }
+  .driver-board .db-role{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; letter-spacing:.06em; color:var(--text-faint); text-transform:uppercase; }
+
+  .hero-sub{ font-size:17px; color:var(--text-dim); max-width:480px; margin-bottom:32px; }
+  .hero-sub .accent{ color:var(--text); font-weight:500; }
+
+  .hero-cta{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:32px; }
+  .btn{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.04em; padding:13px 22px; border-radius:3px;
+    border:1px solid var(--rule-strong); transition:all .2s ease; display:inline-flex; align-items:center; gap:8px; }
+  .btn.primary{ background:var(--red); color:#fff; border-color:var(--red); font-weight:500; }
+  .btn.primary:hover{ background:var(--red-bright); transform:translateY(-3px); box-shadow:0 10px 26px rgba(225,6,0,0.4); }
+  .btn.ghost{ color:var(--text); }
+  .btn.ghost:hover{ border-color:var(--navy-bright); color:var(--navy-bright); transform:translateY(-3px); }
+
+  .hero-links{ display:flex; gap:20px; font-family:'IBM Plex Mono', monospace; font-size:12px; flex-wrap:wrap; }
+  .hero-links a{ color:var(--text-faint); border-bottom:1px solid transparent; padding-bottom:2px; transition:.2s; }
+  .hero-links a:hover{ color:var(--red); border-color:var(--red); }
+
+  /* circuit + orbit visual */
+  .orbit-stage{ position:relative; width:100%; aspect-ratio:1/1; max-width:520px; justify-self:center; }
+  .orbit-stage svg{ position:absolute; inset:0; width:100%; height:100%; overflow:visible; }
+  .track{ fill:none; stroke:#4a5064; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; opacity:0.9; }
+  .track-center{ fill:none; stroke:#9aa0b0; stroke-width:1; stroke-dasharray:6 8; opacity:0.5; }
+  .corner-label{ font-family:'IBM Plex Mono',monospace; font-size:7.5px; fill:var(--text-faint); letter-spacing:.04em; }
+  .startfinish{ fill:none; stroke:#f7f8fa; stroke-width:4; opacity:0.85; }
+
+  .ring{ position:absolute; top:50%; left:50%; border:1px dashed var(--rule); border-radius:50%; transform:translate(-50%,-50%); }
+
+  @media (prefers-reduced-motion: reduce){
+    .kicker .dot{ animation:none; } html{ scroll-behavior:auto; }
+  }
+
+    .reveal{ 
+    opacity:0; 
+    transform:translateY(32px); 
+    transition: opacity 1.5s cubic-bezier(.16,.8,.2,1), transform 1.5s cubic-bezier(.16,.8,.2,1); 
+  }
+  .reveal.in{ 
+    opacity:1; 
+    transform:translateY(0); 
+  }
+
+  section{ position:relative; z-index:2; padding:100px 0; }
+  section.tight{ padding:74px 0; }
+
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; gap:24px; flex-wrap:wrap; }
+  .section-head h2{ font-size:clamp(27px,3.4vw,38px); color:var(--text); }
+  .section-head p{ color:var(--text-dim); max-width:360px; font-size:14.5px; }
+
+  /* about */
+  .about-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:56px; }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; gap:34px; } }
+  .about-grid p{ color:var(--text-dim); font-size:16px; margin-bottom:17px; max-width:560px; }
+  .about-grid p strong{ color:var(--text); font-weight:500; }
+  .lede{ font-family:'Space Grotesk', sans-serif; font-weight:500; font-size:22px; color:var(--text) !important; line-height:1.45; margin-bottom:22px !important; }
+
+  .note-card{ background:var(--panel); border:1px solid var(--rule); border-radius:6px; padding:24px 24px; position:relative; }
+  .note-card::before{ content:""; position:absolute; left:0; top:14px; bottom:14px; width:2px; background:linear-gradient(180deg, var(--red), transparent); }
+  .note-card .tag{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--navy-bright); margin-bottom:10px; display:block; }
+  .note-card p{ font-size:14.5px; color:var(--text-dim); margin:0; }
+  .note-card + .note-card{ margin-top:16px; }
+
+  /* team radio */
+  .radio-box{ background:var(--panel); border:1px solid var(--rule-strong); border-radius:10px; padding:8px; max-width:720px; }
+  .radio-box .rb-head{ display:flex; align-items:center; gap:8px; padding:12px 16px; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--text-faint); }
+  .radio-box .rb-head .live{ width:7px; height:7px; border-radius:50%; background:var(--red); animation:pulse 1.6s ease-in-out infinite; }
+  .rb-msgs{ display:flex; flex-direction:column; gap:12px; padding:6px 16px 18px; }
+  .rb-msg{ max-width:82%; padding:12px 16px; border-radius:10px; font-size:14px; line-height:1.5; }
+  .rb-msg .who{ font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; margin-bottom:5px; opacity:0.85; }
+  .rb-msg.eng{ align-self:flex-start; background:rgba(52,80,224,0.14); border:1px solid rgba(52,80,224,0.35); color:var(--text); }
+  .rb-msg.eng .who{ color:var(--navy-bright); }
+  .rb-msg.driver{ align-self:flex-end; background:rgba(225,6,0,0.12); border:1px solid rgba(225,6,0,0.32); color:var(--text); }
+  .rb-msg.driver .who{ color:#ff5c47; text-align:right; }
+  .rb-msg.driver{ text-align:right; }
+
+  /* research */
+  .paper{ background:linear-gradient(155deg, var(--panel-2), var(--panel)); border:1px solid var(--rule-strong); border-radius:10px; padding:46px;
+    display:grid; grid-template-columns:auto 1fr; gap:38px; position:relative; overflow:hidden; }
+  @media (max-width:760px){ .paper{ grid-template-columns:1fr; padding:30px 24px;} }
+  .paper::after{ content:"∞"; position:absolute; right:-6px; bottom:-46px; font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:220px; color:rgba(225,6,0,0.05); line-height:1; pointer-events:none; }
+  .paper-badge{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--red); border:1px solid var(--red-dim); padding:8px 12px; border-radius:20px; height:fit-content; white-space:nowrap; }
+  .paper h3{ font-size:24px; color:var(--text); margin-bottom:14px; }
+  .paper p{ color:var(--text-dim); font-size:14.5px; max-width:620px; margin-bottom:12px; }
+  .paper ul{ list-style:none; margin:0 0 12px; }
+  .paper li{ position:relative; padding-left:20px; color:var(--text-dim); font-size:14.5px; margin-bottom:10px; max-width:620px; }
+  .paper li::before{ content:"→"; position:absolute; left:0; color:var(--red); }
+  .paper .venue{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--red); margin-top:14px; display:block; }
+  .paper .plinks{ display:flex; gap:22px; flex-wrap:wrap; margin-top:18px; }
+  .paper a.pl{ display:inline-flex; align-items:center; gap:6px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--red); border-bottom:1px solid var(--red-dim); padding-bottom:2px; transition:.2s; }
+  .paper a.pl:hover{ color:#ff5c47; border-color:#ff5c47; }
+
+  /* timeline */
+  .tl-item{ 
+    background: var(--panel); 
+    border: 1px solid var(--rule); 
+    border-radius: 8px; 
+    padding: 32px; 
+    display: grid; 
+    grid-template-columns: 170px 1fr; 
+    gap: 30px; 
+    transition: border-color .25s ease, transform .25s ease; 
+    margin-bottom: 16px; 
+  }
+  .tl-item:last-child{ margin-bottom: 0; }
+  .tl-item:hover{ border-color: var(--red-dim); transform: translateY(-2px); }
+  @media (max-width:640px){ .tl-item{ grid-template-columns:1fr; gap:10px; } }
+  .tl-date{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--red); padding-top:4px; }
+  .tl-role h4{ font-size:18px; color:var(--text); margin-bottom:2px; }
+  .tl-org{ font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--navy-bright); margin-bottom:15px; display:block; }
+  .tl-role p.lead{ color:var(--text-dim); font-size:14.5px; margin-bottom:14px; }
+  .tl-role ul{ list-style:none; }
+  .tl-role li{ position:relative; padding-left:20px; color:var(--text-dim); font-size:14px; margin-bottom:10px; }
+  .tl-role li::before{ content:"→"; position:absolute; left:0; color:var(--red); }
+
+  /* projects */
+  .proj-grid{ display:flex; flex-direction:column; gap:20px; }
+  .proj{ background:var(--panel); border:1px solid var(--rule); border-radius:8px; padding:34px; transition:border-color .25s ease, transform .25s ease; display:block; }
+  .proj:hover{ border-color:var(--red-dim); transform:translateY(-2px); }
+  .proj-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:20px; margin-bottom:14px; flex-wrap:wrap; }
+  .proj h3{ font-size:21px; color:var(--text); }
+  .stack{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ font-family:'IBM Plex Mono',monospace; font-size:10.5px; color:var(--text-dim); border:1px solid var(--rule-strong); padding:5px 10px; border-radius:20px; }
+  .proj p.lead{ color:var(--text-dim); font-size:14.5px; margin:8px 0 16px; max-width:760px; }
+  .proj ul{ list-style:none; margin:0 0 20px; }
+  .proj li{ position:relative; padding-left:20px; color:var(--text-dim); font-size:14px; margin-bottom:10px; max-width:760px; }
+  .proj li::before{ content:"→"; position:absolute; left:0; color:var(--red); }
+  .proj-cta{ display:inline-flex; align-items:center; gap:8px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--navy-bright);
+    border:1px solid rgba(52,80,224,0.4); padding:10px 16px; border-radius:3px; transition:.2s; }
+  .proj-cta:hover{ background:var(--navy-bright); color:#fff; border-color:var(--navy-bright); }
+
+  /* skills */
+  .skill-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); border-radius:8px; overflow:hidden; }
+  @media (max-width:760px){ .skill-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:480px){ .skill-grid{ grid-template-columns:1fr; } }
+  .skill-cell{ background:var(--bg-2); padding:24px; }
+  .skill-cell .st{ font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--red); margin-bottom:14px; display:block; }
+  .skill-cell .tags{ display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-cell .tags span{ font-size:15px; color:var(--text-dim); }
+  .skill-cell .tags span:not(:last-child)::after{ content:"·"; margin-left:8px; color:var(--text-faint); }
+
+  /* off track list */
+
+  .off-item{ 
+    background: var(--panel); 
+    border: 1px solid var(--rule); 
+    border-radius: 8px; 
+    padding: 32px; 
+    display: grid; 
+    grid-template-columns: 170px 1fr; 
+    gap: 30px; 
+    transition: border-color .25s ease, transform .25s ease; 
+    margin-bottom: 16px;
+  }
+  .off-item:last-child{ margin-bottom: 0; }
+  .off-item:hover{ border-color: var(--red-dim); transform: translateY(-2px); }
+  @media (max-width:700px){ .off-item{ grid-template-columns:1fr; gap:10px; } }
+  .off-item .ttl{ display:flex; align-items:center; gap:10px; }
+  .off-item .glyph{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--red); }
+  .off-item h4{ font-size:16.5px; color:var(--text); font-family:'IBM Plex Sans',sans-serif; font-weight:600; }
+  .off-item p{ color:var(--text-dim); font-size:14.5px; margin-bottom:6px; }
+  .off-item a.il{ color:var(--navy-bright); border-bottom:1px solid rgba(52,80,224,0.4); padding-bottom:1px; white-space:nowrap; }
+  .off-item a.il:hover{ color:#7c8cff; }
+
+  /* footer */
+  footer{ padding:96px 0 60px; position:relative; z-index:2; }
+  .footer-cta h2{ font-size:clamp(30px,5vw,50px); max-width:660px; margin-bottom:22px; }
+  .footer-cta h2 em{ font-style:normal; background:linear-gradient(92deg, var(--red), var(--navy-bright)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .footer-links{ display:flex; gap:32px; flex-wrap:wrap; margin:34px 0 56px; font-family:'IBM Plex Mono',monospace; font-size:13px; }
+  .footer-links a{ color:var(--text-dim); border-bottom:1px solid transparent; padding-bottom:3px; transition:.2s; }
+  .footer-links a:hover{ color:var(--red); border-color:var(--red); }
+  .footer-bottom{ display:flex; justify-content:space-between; align-items:center; padding-top:28px; border-top:1px solid var(--rule);
+    font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--text-faint); flex-wrap:wrap; gap:12px; }
+
+  /* race transition: car + chequered flag divider */
+  .flag-track{ position:relative; width:100%; max-width:var(--max); margin:0 auto 6px; padding:0 28px; overflow:hidden; }
+  .flag-strip{ height:12px; width:100%; background-image: repeating-conic-gradient(#f7f8fa 0% 25%, #0a0a0a 0% 50%);
+    background-size:16px 16px; border-radius:2px; opacity:0.5; }
+  
+  /* Base car for all sections */
+  .f1-car{ position:absolute; top:50%; right:100%; width:70px; height:auto;
+    transform:translate(0,-50%); opacity:0; pointer-events:none;
+    filter:drop-shadow(0 3px 10px rgba(225,6,0,0.5)); will-change:right, opacity; }
+  
+  /* Animation trigger for all cars */
+  .flag-track.go .f1-car{ animation:race-across 3.0s cubic-bezier(.4,0,.2,1) forwards; }
+  
+  /* Footer car: pinned to the banner's true vertical center, not the container's 50% */
+.flag-track .footer-car {
+  top: 12px;
+  transform: translateY(-50%) !important;
+}
+
+@keyframes race-across{
+    0%{ right:100%; opacity:0; }
+    6%{ opacity:1; }
+    90%{ opacity:1; }
+    100%{ right:-10%; opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){ .flag-track.go .f1-car{ animation:none; } }
+
+  /* hover states */
+  .skill-cell{ transition: background-color .35s ease, transform .35s ease; cursor:default; }
+  .skill-cell:hover{ background-color:#1b1e28; transform:translateY(-5px); }
+
+  .tl-item{ transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+  .tl-item:hover{ background-color: rgba(255,255,255,0.035); box-shadow:0 10px 26px rgba(0,0,0,0.35); }
+
+  .off-item{ transition: background-color .3s ease, transform .3s ease, box-shadow .3s ease; }
+  .off-item:hover{ background-color: rgba(255,255,255,0.035); box-shadow:0 10px 26px rgba(0,0,0,0.35); }
+
+  .note-card{ transition: transform .35s ease, border-color .35s ease; }
+  .note-card:hover{ transform:translateY(-5px); border-color:var(--rule-strong); }
+
+  .paper{ transition: transform .35s ease, border-color .35s ease; }
+  .paper:hover{ transform:translateY(-5px); border-color:var(--red-dim); }
+
+  .radio-box{ transition: border-color .3s ease, transform .3s ease; }
+  .radio-box:hover{ border-color:var(--red-dim); transform:translateY(-3px); }
+
+  .rb-msg{ transition: transform .25s ease; }
+  .rb-msg:hover{ transform:translateY(-3px); }
+
+  .driver-board{ transition: transform .3s ease, box-shadow .3s ease; }
+  .driver-board:hover{ transform:translateY(-3px); box-shadow:0 10px 26px rgba(0,0,0,0.4); }
+
+  .chip{ transition: color .25s ease, border-color .25s ease, transform .25s ease; }
+  .chip:hover{ color:var(--text); border-color:var(--red); transform:translateY(-2px); }
+
+  .skill-cell .tags span{ transition: color .2s ease; }
+  .skill-cell .tags span:hover{ color:var(--text); }
+
+  .brand{ transition: transform .25s ease; }
+  .brand:hover{ transform:translateY(-1px); }
+  .brand .num{ transition: background-color .25s ease, color .25s ease; }
+  .brand:hover .num{ background:var(--red); color:#fff; }
+
+  .navlinks a{ position:relative; padding-bottom:2px; }
+  .navlinks a::after{ content:""; position:absolute; left:0; bottom:-2px; width:0; height:1px; background:var(--red); transition:width .25s ease; }
+  .navlinks a:hover::after{ width:100%; }
+
+  .proj-cta{ transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+  .proj-cta:hover{ transform:translateY(-2px); }
+
+  /* Aligns the About boxes row to start at the same height */
+  #about .about-grid {
+    align-items: start !important; /* Ensures columns start at the very top */
+  }
+  #about .about-grid > div:last-child {
+    margin-top: 62px; /* Perfect offset so cards align with the top of the .proj box */
+  }
+</style>
+
+<!-- Race Engineer chat widget styles (inlined) -->
+<style id="race-engineer-widget-styles">
+/* Race Engineer chat widget — matches Varun's portfolio design tokens */
+:root {
+  --re-background: #0a0a0a;
+  --re-surface: #111111;
+  --re-accent: #e8002d;
+  --re-accent-secondary: #ff6b35;
+  --re-text-primary: #ffffff;
+  --re-text-secondary: #888888;
+  --re-border: #222222;
+  --re-font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+#re-widget-root {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  font-family: var(--re-font);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.re-launcher {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--re-surface);
+  border: 2px solid var(--re-accent);
+  color: var(--re-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(232, 0, 45, 0.25);
+  animation: re-pulse 2.4s ease-in-out infinite;
+  transition: transform 0.15s ease;
+}
+.re-launcher:hover { transform: scale(1.06); }
+.re-launcher svg { width: 26px; height: 26px; }
+
+@keyframes re-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 0, 45, 0.35); }
+  50% { box-shadow: 0 0 0 10px rgba(232, 0, 45, 0); }
+}
+
+.re-tooltip {
+  position: absolute;
+  bottom: 66px;
+  right: 0;
+  background: var(--re-surface);
+  color: var(--re-text-primary);
+  border: 1px solid var(--re-border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+.re-launcher:hover + .re-tooltip { opacity: 1; }
+
+/* NEW: Always visible label above the widget */
+.re-launcher-label {
+  background: var(--re-surface);
+  color: var(--re-text-primary);
+  border: 1px solid var(--re-accent);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: 'IBM Plex Mono', monospace;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  pointer-events: none; /* Keep label from blocking clicks */
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.re-launcher-label .flag-mini {
+  font-size: 10px;
+  color: var(--re-accent);
+}
+
+.re-panel {
+  width: 380px;
+  height: 520px;
+  max-height: 80vh;
+  background: var(--re-background);
+  border: 1px solid var(--re-border);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 420px) {
+  .re-panel { width: 92vw; height: 78vh; }
+  #re-widget-root { right: 12px; bottom: 12px; }
+}
+
+.re-header {
+  background: var(--re-surface);
+  border-bottom: 1px solid var(--re-border);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.re-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--re-text-primary);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.re-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--re-accent);
+  animation: re-blink 1.6s ease-in-out infinite;
+}
+@keyframes re-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+.re-header-sub {
+  color: var(--re-text-secondary);
+  font-size: 11px;
+  margin-top: 2px;
+}
+.re-close {
+  background: none;
+  border: none;
+  color: var(--re-text-secondary);
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+.re-close:hover { color: var(--re-text-primary); }
+
+.re-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.re-msg { max-width: 85%; display: flex; flex-direction: column; gap: 4px; }
+.re-msg.re-bot { align-self: flex-start; }
+.re-msg.re-user { align-self: flex-end; }
+
+.re-msg-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--re-text-secondary);
+}
+.re-msg.re-user .re-msg-label { text-align: right; }
+
+.re-bubble {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+.re-bot .re-bubble {
+  background: var(--re-surface);
+  color: var(--re-text-primary);
+  border: 1px solid var(--re-border);
+  border-top-left-radius: 2px;
+}
+.re-user .re-bubble {
+  background: var(--re-accent);
+  color: #fff;
+  border-top-right-radius: 2px;
+}
+
+.re-citations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.re-citation-chip {
+  background: transparent;
+  border: 1px solid var(--re-accent);
+  color: var(--re-accent);
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.re-citation-chip:hover { background: rgba(232, 0, 45, 0.12); }
+
+.re-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 14px 10px;
+}
+.re-suggestion-btn {
+  text-align: left;
+  background: var(--re-surface);
+  border: 1px solid var(--re-border);
+  color: var(--re-text-primary);
+  font-size: 12.5px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.re-suggestion-btn:hover { border-color: var(--re-accent); }
+
+.re-loading {
+  font-size: 12px;
+  color: var(--re-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.re-dot-flash::after {
+  content: '...';
+  animation: re-dots 1.2s steps(4, end) infinite;
+}
+@keyframes re-dots {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
+
+.re-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid var(--re-border);
+  background: var(--re-surface);
+}
+.re-input-row input {
+  flex: 1;
+  background: var(--re-background);
+  border: 1px solid var(--re-border);
+  color: var(--re-text-primary);
+  padding: 9px 11px;
+  border-radius: 8px;
+  font-size: 13px;
+  outline: none;
+}
+.re-input-row input:focus { border-color: var(--re-accent); }
+.re-send-btn {
+  background: var(--re-accent);
+  border: none;
+  color: #fff;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.re-send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">Varun<span class="num">VS1</span></div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#beyond">Interests</a>
+      <a href="#contact">Contact</a>
+      <a href="https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="kicker"><span class="dot"></span> Lights out and away we go</div>
+        <h1>Varun<br><span class="last">Sani</span></h1>
+
+<p style="font-family:'IBM Plex Mono', monospace; font-size:14px; letter-spacing:0.02em; color:var(--red); margin-top:-2px; margin-bottom:20px; margin-left: 195px;">GAP BEHIND 0.3 · STRAT 6 · MODE: RACING</p>        
+        <div class="driver-board">
+          <div class="num-plate">1</div>
+          <div class="db-info">
+            <span class="db-code">Max G-Force: 5.2G · Debugging Mode</span>
+            <span class="db-role">Tire Strat: Soft Compound · Release & Deploy Fast</span>
+          </div>
+        </div>
+
+        <p class="hero-sub">Hey, I'm a Computer Science engineer who somehow ended up loving both queueing theory and qualifying laps. I've been building things since I first got my hands on a keyboard and these days that means <span class="accent">API backends, async architectures and machine learning pipelines</span> that actually survive contact with real, messy data. Off the clock, I'm probably reading a paper, chasing a proof, or watching a race, sometimes all three, badly, at once.</p>
+
+        <div class="hero-cta">
+          <a class="btn primary" href="#projects">Buckle up · see the work →</a>
+          <a class="btn ghost" href="#contact">Box box box · say hi →</a>
+        </div>
+      </div>
+
+      <div class="orbit-stage" aria-hidden="true">
+        <svg viewBox="0 0 500 500">
+          <path id="trackPath" class="track"
+            d="M120,430 C60,430 38,378 58,338 C86,286 148,262 188,232 C208,217 232,207 262,200
+               L378,142 C408,127 430,110 420,90 C405,73 378,80 364,96
+               C330,132 300,150 260,150 C198,150 158,180 138,220
+               C118,252 128,292 150,322 C170,350 190,360 200,380
+               C210,400 190,420 158,430 C148,432 132,432 120,430 Z"/>
+          <path class="track-center"
+            d="M120,430 C60,430 38,378 58,338 C86,286 148,262 188,232 C208,217 232,207 262,200
+               L378,142 C408,127 430,110 420,90 C405,73 378,80 364,96
+               C330,132 300,150 260,150 C198,150 158,180 138,220
+               C118,252 128,292 150,322 C170,350 190,360 200,380
+               C210,400 190,420 158,430 C148,432 132,432 120,430 Z"/>
+          <line class="startfinish" x1="120" y1="410" x2="120" y2="452"/>
+          <text class="corner-label" x="60" y="452">LA SOURCE</text>
+          <text class="corner-label" x="96" y="258">EAU ROUGE</text>
+          <text class="corner-label" x="290" y="130">KEMMEL STRAIGHT</text>
+          <text class="corner-label" x="392" y="68">LES COMBES</text>
+          <text class="corner-label" x="60" y="200">POUHON</text>
+          <text class="corner-label" x="176" y="452">BLANCHIMONT</text>
+
+          <defs>
+            <g id="miniCar">
+              <rect x="-9" y="-2.6" width="15" height="5.2" rx="2.4" fill="currentColor"/>
+              <path d="M6,-1.8 L10,-1 Q11.5,0 10,1 L6,1.8 Z" fill="currentColor" opacity="0.95"/>
+              <rect x="-10.5" y="-4.4" width="2.2" height="8.8" rx="1" fill="currentColor" opacity="0.85"/>
+              <circle cx="-4.5" cy="0" r="1.6" fill="#111318"/>
+              <circle cx="4.5" cy="0" r="1.6" fill="#111318"/>
+            </g>
+          </defs>
+
+          <use href="#miniCar" style="color:#e10600">
+            <title>Ferrari</title>
+            <animateMotion dur="13.3s" begin="0.1s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#trackPath"/>
+            </animateMotion>
+          </use>
+          <use href="#miniCar" style="color:#3450e0">
+            <title>Red Bull Racing</title>
+            <animateMotion dur="12.6s" begin="0.2s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#trackPath"/>
+            </animateMotion>
+          </use>
+          <use href="#miniCar" style="color:#ff8000">
+            <title>McLaren</title>
+            <animateMotion dur="13.0s" begin="0s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#trackPath"/>
+            </animateMotion>
+          </use>
+          <use href="#miniCar" style="color:#c9cdd3">
+            <title>Mercedes</title>
+            <animateMotion dur="13.8s" begin="0.2s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#trackPath"/>
+            </animateMotion>
+          </use>
+          <use href="#miniCar" style="color:#00d26a">
+            <title>Sauber</title>
+            <animateMotion dur="14.2s" begin="0.3s" repeatCount="indefinite" rotate="auto">
+              <mpath href="#trackPath"/>
+            </animateMotion>
+          </use>
+        </svg>
+
+        <div class="ring" style="width:56%; height:56%;"></div>
+        <div class="ring" style="width:100%; height:100%;"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+<!-- ================= TEAM RADIO ================= -->
+  <section class="tight">
+    <div class="wrap reveal">
+      
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="flag"></span> Team Radio</div>
+          <h2><span style="color:var(--navy-bright);">Radio check.</span> <span style="color:var(--red)"> Loud and clear.</span></h2>
+        </div>
+        <p>A live feed from the cockpit. Straight from the driver to the pit wall.</p>
+      </div>
+
+      <div class="radio-box">
+        <div class="rb-head"><span class="live"></span> LIVE · VS1</div>
+        <div class="rb-msgs">
+          <div class="rb-msg eng"><div class="who">Race Engineer</div>Box this lap, box box. Recruiter's on the radio, what have we got?</div>
+          <div class="rb-msg driver"><div class="who">VS1</div>Copy. Background check's clean, pace looks strong, we're cleared for the grid.</div>
+          <div class="rb-msg eng"><div class="who">Race Engineer</div>Copy. Any setup changes before we go back out?</div>
+          <div class="rb-msg driver"><div class="who">VS1</div>Negative. Just top up the coffee, rest of the car's happy.</div>
+          <div class="rb-msg eng"><div class="who">Race Engineer</div>Understood. Gap ahead is closing, don't lift now.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-line wrap">
+
+  <div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="wrap reveal">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="flag"></span> Formation lap</div>
+        <h2>Building race pace</h2>
+      </div>
+      <p>Systems design, machine learning and a Computer Science degree that pointed me at both.</p>
+    </div>
+
+    <div class="about-grid">
+
+      <div class="proj" style="padding: 32px;">
+        <p class="lede" style="margin-bottom: 16px; font-size: 20px; color: var(--text);">I'm a Computer Science engineer interested in building intelligent software systems, from backend infrastructure and distributed applications to machine learning and AI.</p>
+
+        <p>I graduated with a B.Tech in Computer Science &amp; Engineering from IIT Palakkad and somewhere in the middle of coursework I realised the parts I actually looked forward to were the ones that felt like puzzles: proving a bound, tracing a race condition, figuring out why a model was confidently wrong. That has become the throughline of everything since. I work across <strong>software development and machine learning</strong>, building async APIs, real-time pub/sub architectures and ML pipelines designed to hold up once they meet data that hasn't been cleaned up for them.</p>
+
+        <p>My interests span <strong>machine learning, AI and software engineering</strong>, with a particular fascination for <strong>systems design and the architectural decisions</strong> that make software reliable, scalable and useful in the real world. Alongside coursework, I spent a year chasing an open question in combinatorics, which eventually turned into a research paper and taught me more about patience than anything in a classroom did.</p>
+
+        <p style="margin-bottom: 0;"><strong>Off the clock, I race through problems the way I'd race through Eau Rouge, flat out, but never blind.</strong> If something looks like it should have a clean, elegant answer, I will not let it go until I've found one.</p>
+      </div>
+
+      <div>
+        <div class="note-card">
+          <span class="tag">Based in</span>
+          <p>Hyderabad, India · reachable anywhere, working async.</p>
+        </div>
+        <div class="note-card" style="margin-top: 16px;">
+          <span class="tag">Grid Box Analogy</span>
+          <p><strong>Teamwork:</strong> I believe the best results happens when the <strong>"pit wall"</strong> (whole team) and the <strong>"driver"</strong> (team individual's) are in perfect sync, communicating openly, trusting each other's instincts and knowing that every great result comes from a united effort.</p>
+          <p><strong>Strategy:</strong> I plan like a <strong>race strategist</strong>. I map out the long game, anticipate disruptions and know exactly when to commit to the undercut or wait for the overcut.</p>
+          <p><strong>Determination:</strong> I approach every challenge like a <strong>wet qualifying session</strong>. Adaptable, relentless and always pushing for the gap, even when the conditions are unpredictable.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <hr class="rule-line wrap">
+
+  <div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+      <!-- ================= SKILLS ================= -->
+  <section class="tight" id="skills">
+    <div class="wrap reveal">
+      
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="flag"></span> The Pit Crew</div>
+          <h2>Everything under the hood</h2>
+        </div>
+        <p>Languages, frameworks, databases and the toolkit that makes the engineering possible.</p>
+      </div>
+
+      <div class="skill-grid">
+        <div class="skill-cell"><span class="st">Languages</span><div class="tags"><span>Python</span><span>C++</span><span>C</span></div></div>
+        <div class="skill-cell"><span class="st">Backend &amp; APIs</span><div class="tags"><span>FastAPI</span><span>REST</span><span>JWT Auth</span><span>WebSockets</span></div></div>
+        <div class="skill-cell"><span class="st">Databases &amp; ORMs</span><div class="tags"><span>PostgreSQL</span><span>Redis</span><span>MongoDB</span><span>SQLModel</span><span>Alembic</span></div></div>
+        <div class="skill-cell"><span class="st">ML &amp; Data</span><div class="tags"><span>scikit-learn</span><span>PyTorch</span><span>NumPy</span><span>Pandas</span><span>Matplotlib</span></div></div>
+        <div class="skill-cell"><span class="st">Tools &amp; Platforms</span><div class="tags"><span>Docker</span><span>Git</span><span>GitHub</span><span>Postman</span><span>Ubuntu</span><span>Jupyter</span></div></div>
+        <div class="skill-cell"><span class="st">Certifications</span><div class="tags"><span>Introduction to Machine Learning (NPTEL)</span><span>Machine Learning A-Z: AI, Python (Udemy)</span></div></div>
+      </div>
+    </div>
+  </section>
+
+<div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+<!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="flag"></span> Race Stints</div>
+          <h2>Time on track so far</h2>
+        </div>
+        <p>One internship, two very different problems and a healthy respect for messy data.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="paper-badge mono">Jun to Jul 2024 · Remote</div>
+        <div class="tl-role">
+          <h4>Machine Learning Engineer Intern</h4>
+          <span class="tl-org">Technocolabs Softwares Inc.</span>
+          <p class="lead">Two parallel briefs, same toolkit: work out who's about to leave, and price the risk of who might default. I ran both end to end, from a spreadsheet of raw numbers to a model I'd actually trust.</p>
+
+          <p style="color:var(--text-dim); font-size:14.5px; margin:0 0 16px; max-width:760px;">The first brief was employee attrition. HR loses real money every time someone leaves unexpectedly, in recruiting costs, lost productivity, and institutional knowledge walking out the door, so the question was whether the signals already sitting in HR data, tenure, satisfaction scores, overtime, promotions, could actually flag who's at risk before they hand in notice. The second was loan default risk in peer-to-peer lending, where individual lenders fund individual borrowers directly with no bank absorbing the risk in between, so the platform needed to price that risk accurately from a borrower's profile alone, not guess at it after the fact.</p>          <ul>
+            <li>Built classification pipelines across Logistic Regression, Decision Tree, Random Forest, XGBoost and a 3-layer Neural Network to predict employee attrition on a 15,000-row, 40-feature HR dataset. None of the five were the obvious winner going in, so I benchmarked all of them, then pushed the best performer from ~72% to ~85% accuracy and 0.68 to ~0.82 F1 through hyperparameter tuning and threshold optimization.</li>
+            <li>Developed regression ensembles for loan default risk in the online P2P lending market on a 10,000-row, 60-feature dataset, cutting RMSE by ~18% via feature selection, stacking and weighted averaging, validated through 5-fold cross-validation across RMSE, MAE and R², so the number wasn't just a lucky split.</li>
+            <li>Ran end-to-end preprocessing: median/mode imputation for 12% missing values, SMOTE for a 15% minority class and StandardScaler normalization, then engineered 8 interaction features for the attrition model that alone contributed a 5% lift in F1 score, the kind of gain that only shows up once you stop trusting the raw columns.</li>
+          </ul>
+          <a class="proj-cta" href="https://drive.google.com/file/d/189W7YA8ieMVIF-pLQ5YEOP7R1dHGe52Q/view?usp=sharing" target="_blank" rel="noopener">View certificate &middot; purple sector &rarr;</a>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+<!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="flag"></span> The Garage</div>
+          <h2>Fresh off the lift</h2>
+        </div>
+        <p>Two backend-heavy builds, both async-first, both stress-tested against their own edge cases. GitHub links are at the bottom of each write-up.</p>
+      </div>
+
+      <div class="proj-grid">
+        <div class="proj">
+          <div class="proj-top">
+            <h3>Real-Time Severe Weather Alerting System</h3>
+            <div class="stack">
+              <span class="chip">FastAPI</span><span class="chip">Redis Pub/Sub</span><span class="chip">WebSockets</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+            </div>
+          </div>
+          <p class="lead">I built this to get rid of client-side polling entirely. The server should tell you when the weather turns, not the other way around. It's also where most of the async concepts I'd learned in isolation finally had to work together at once.</p>
+          <p style="color:var(--text-dim); font-size:14.5px; margin:0 0 16px; max-width:760px;">Most weather apps make the client do all the work. The phone keeps asking the server "anything new?" every few minutes, which is slow, wasteful and doesn't scale once thousands of clients are polling independently. The brief I set myself was to invert that so the server knows the moment conditions turn severe and pushes that update to every subscribed client instantly, with nobody having to ask.</p>
+          <ul>
+            <li>Replaced client-side polling with server-pushed alerts: a dedicated poller container queries the free Open-Meteo API for each subscribed location once per 5-minute cycle and publishes classified conditions over Redis Pub/Sub.</li>
+            <li>Scaled live delivery horizontally by giving each API replica its own WebSocket forwarder that subscribes to the shared alert stream and pushes only to its locally connected clients, built to run behind a load balancer across N replicas.</li>
+            <li>Designed a configurable severity engine with hand-tunable thresholds across four condition categories at three escalating tiers and rounded coordinates to ~1.1 km so nearby subscriptions share a single polled point.</li>
+            <li>Verified the system end to end in Postman before trusting it. Exercised the REST subscription endpoints for correct status codes and validation errors and used Postman's WebSocket support to open a live connection, subscribe to a location and confirm pushed alert payloads arrived in the right shape within the expected 5-minute cycle.</li>
+          </ul>
+          <a class="proj-cta" href="https://github.com/varunsani/weather-alert-platform" target="_blank" rel="noopener">View on GitHub · overtake →</a>
+        </div>
+
+        <div class="proj">
+          <div class="proj-top">
+            <h3>URL Shortener</h3>
+            <div class="stack">
+              <span class="chip">FastAPI</span><span class="chip">REST APIs</span><span class="chip">PostgreSQL</span><span class="chip">Redis</span><span class="chip">JWT</span><span class="chip">SQLModel</span><span class="chip">Alembic</span>
+            </div>
+          </div>
+          <p class="lead">A deliberately over-engineered URL shortener, because the interesting part was never the redirect, it was everything protecting it. Rate limiting, caching and revocable auth all had to earn their place, not just exist for the resume line.</p>
+          <p style="color:var(--text-dim); font-size:14.5px; margin:0 0 16px; max-width:760px;">On the surface, shortening a URL is a solved problem, just a lookup table from a short code to a long one. The brief I actually set for myself was what a URL shortener looks like once you take it seriously in production: who's allowed to create links, how you stop abuse, how you revoke access instantly and how you keep redirects fast under load, rather than a toy version that only ever does the insert and the redirect.</p>
+          <ul>
+            <li>Structured a fully asynchronous URL shortener into router, middleware, service and repository layers, generating unique 6-character base62 short codes with bcrypt-hashed credentials in an ACID-compliant PostgreSQL schema.</li>
+            <li>Authenticated requests with 15-minute JWT access tokens and 7-day refresh tokens, blacklisting revoked tokens in Redis with matched TTLs and capping abuse at 10 creations and 60 redirects per minute per IP.</li>
+            <li>Lowered database load by caching redirect lookups in Redis for 1 hour and tracked click analytics across daily, weekly and monthly windows via non-blocking asynchronous counters.</li>
+            <li>Validated the whole flow manually in Postman before automating it, the full JWT lifecycle from login through access token, refresh and revocation, the rate limiter correctly returning a 429 on the 11th creation request within a minute and cache behavior staying consistent across repeated redirect calls to the same short code.</li>
+          </ul>
+          <a class="proj-cta" href="https://github.com/varunsani/UrlShortener" target="_blank" rel="noopener">View on GitHub · overtake →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-line wrap">
+
+  <div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+<!-- ================= RESEARCH ================= -->
+  <section id="research">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="flag"></span> The Wind Tunnel</div>
+          <h2>First podium</h2>
+        </div>
+        <p>A paper accepted at ICTCS 2025, Pescara . First submission, first result.</p>
+      </div>
+      <div class="paper">
+        <div class="paper-badge mono">ICTCS 2025 · Pescara, Italy</div>
+        <div>
+          <h3>Multipacking in Hypercubes</h3>
+          <p class="lead">Undergraduate research into a six year old open question in combinatorics. I co-authored this alongside faculty at IIT Palakkad.</p>
+          <p style="color:var(--text-dim); font-size:14.5px; margin:0 0 16px; max-width:760px;">The field had a conjecture that broadcast domination, the cheapest way to cover every node in a network from a few broadcasting stations, never costs more than twice a related lower-bound measure called the multipacking number. Nobody had proven it in general and nobody had even found a single example of a growing network where that ratio actually got close to 2, the thing that would show the conjectured bound couldn't be improved. The brief we set ourselves was to find one.</p>
+
+          <ul>
+            <li>Pinned down the multipacking number of the <em>n</em>-dimensional hypercube <em>Q<sub>n</sub></em> to within a lower-order term, between &lfloor;<em>n</em>/2&rfloor; and <em>n</em>/2&nbsp;+&nbsp;<em>O</em>(&radic;<em>n</em>), via a recursive construction that builds multipackings of larger hypercubes out of smaller ones.</li>
+            <li>Bounded the construction from above using Spencer's discrepancy theorem, a classic result usually applied to combinatorial set systems, repurposed here to cap how many points a hypercube multipacking can hold.</li>
+            <li>Showed hypercubes are exactly the family the conjecture needed: <em>&gamma;<sub>b</sub></em>(<em>Q<sub>n</sub></em>)&nbsp;/&nbsp;<em>mp</em>(<em>Q<sub>n</sub></em>) &rarr; 2 as <em>n</em> grows, the first known infinite family of connected graphs to reach that ratio.</li>
+          </ul>
+          <p>Getting there meant a year of constructions that looked promising, only to break when we tried to extend them to the next dimension. Proof, like a good qualifying lap, mostly happens in the small corrections you make after you've already committed to the line.</p>
+          <span class="venue">Aug 2024 to Jul 2025</span>
+          <div class="plinks">
+            <a class="proj-cta" href="https://ceur-ws.org/Vol-4039/paper19.pdf" target="_blank" rel="noopener">Read the paper · DRS wide open →</a>
+            <a class="proj-cta" href="https://orcid.org/0009-0001-4816-2119" target="_blank" rel="noopener">ORCID · fast lap ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule-line wrap">
+
+  <div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+<!-- ================= BEYOND CODE / OFF TRACK ================= -->
+  <section id="beyond">
+    <div class="wrap reveal">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow"><span class="flag"></span> Off Track</div>
+          <h2>Cool-down lap thoughts</h2>
+        </div>
+        <p>The interests that keep the engineering honest and occasionally sneak into it.</p>
+      </div>
+
+<div class="off-item">
+        <div class="ttl"><span class="glyph">⚙</span><h4>Engineering</h4></div>
+        <div>
+          <p>I read papers the way some people read the news, a running habit, not an assignment. <a class="il" href="https://arxiv.org/abs/1706.03762" target="_blank" rel="noopener">Attention Is All You Need</a> is the one I go back to most, mostly because it's rare to watch a single idea unseat an entire field's default architecture this cleanly. More recently, <a class="il" href="https://arxiv.org/abs/2106.09685" target="_blank" rel="noopener">LoRA: Low-Rank Adaptation of Large Language Models</a> stuck with me for the opposite reason. Not a new architecture, just a sharp observation about how little actually needs to change during fine-tuning and a genuinely elegant way to exploit it.</p>
+        </div>
+      </div>
+
+      <div class="off-item">
+        <div class="ttl"><span class="glyph">∑</span><h4>Mathematics</h4></div>
+        <div>
+          <p>Ramanujan, Newton and Euler are the three I keep coming back to, not for any one result, but for how differently each of them arrived at the same kind of certainty. Three problems in particular I can't leave alone. The <a class="il" href="https://en.wikipedia.org/wiki/Honeycomb_conjecture" target="_blank" rel="noopener">honeycomb conjecture</a>: the proof that a hexagonal grid is the most efficient way to divide a flat surface into equal-area cells using the least total perimeter, which is exactly why bees build their combs that way and it took until 1999 for Thomas Hales to actually prove what bees seem to have known instinctively all along. Then, on the more absurd end of the same instinct, there's the <a class="il" href="https://plus.maths.org/shoelace-book" target="_blank" rel="noopener">actual published mathematics</a> behind tying shoelaces, working out through combinatorics and calculus exactly which lacing patterns are provably the strongest and which are the shortest, because apparently no everyday habit is too small to deserve a proof. And the one that still genuinely blows my mind, <a class="il" href="https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem" target="_blank" rel="noopener">Fermat's Last Theorem</a>, the claim that a^n + b^n = c^n has no whole-number solutions for n greater than 2, scribbled by Fermat in a margin in 1637 with a proof he said was too long to fit. It took over 350 years and the eventual proof pulled in elliptic curves, modular forms and ideas that echo through modern physics to finally settle it. I'm nowhere near being able to follow the proof itself, but the fact that a seventeenth-century margin note ends up wired into some of the deepest structures in physics is the kind of interconnectedness I can't stop thinking about.</p>
+        </div>
+      </div>
+
+<div class="off-item">
+        <div class="ttl"><span class="glyph">✎</span><h4>Writing</h4></div>
+        <div>
+          <p>Mine tends to be spontaneous, a line shows up uninvited, usually nothing to do with whatever I was actually doing and I write it down before it leaves. Poems mostly, the occasional stretch toward something longer. That same instinct is exactly why I'm drawn to people who write on the spot, no drafts, no second attempt, just a person, a blank page and whatever a stranger just told them. <a class="il" href="https://www.instagram.com/olivia.poetess/" target="_blank" rel="noopener">Olivia Dodd</a>, who sits with a typewriter in public and turns a total stranger's story into a finished poem in minutes, is the one I keep coming back to for that. Robert Frost's <a class="il" href="https://www.poetryfoundation.org/poems/42891/stopping-by-woods-on-a-snowy-evening" target="_blank" rel="noopener">Stopping by Woods on a Snowy Evening</a> is the poem I return to most. That last quiet turn, "but I have promises to keep," is the entire tension between wanting to stay in the interesting problem and knowing there's a deadline attached to it. I've felt that exact pull more times than I can count.</p>
+        </div>
+      </div>
+
+      <div class="off-item">
+        <div class="ttl"><span class="glyph">✦</span><h4>Art</h4></div>
+        <div>
+          <p>Rooms I could get lost in for a full day, the <a class="il" href="https://www.uffizi.it/en" target="_blank" rel="noopener">Uffizi</a> in Florence, the <a class="il" href="https://www.louvre.fr/en" target="_blank" rel="noopener">Louvre</a> and Amsterdam's <a class="il" href="https://www.rijksmuseum.nl/en" target="_blank" rel="noopener">Rijksmuseum</a>. I haven't stood in any of them yet. Visiting even one is the actual dream, not just a line on a list.</p>
+        </div>
+      </div>
+
+<div class="off-item">
+        <div class="ttl"><span class="glyph">&#9776;</span><h4>Books &amp; Films</h4></div>
+        <div>
+          <p>I'll start with the book. Ian McEwan's <a class="il" href="https://www.goodreads.com/book/show/6867.Atonement" target="_blank" rel="noopener">Atonement</a>, worth it alone for the final-act rewrite, where you have to decide how much of what you just read was ever true. (Its film adaptation goes out in France under the far more dramatic title <em>Reviens-moi</em>, "come back to me," which honestly might be the better title.) My favourite film, full stop, is Christopher Nolan's <a class="il" href="https://www.imdb.com/title/tt0482571/" target="_blank" rel="noopener"><em>The Prestige</em></a>: "Are you watching closely?" is doing all the work in that opening line and the rest of the film is just the trick. Right behind it, <a class="il" href="https://www.imdb.com/title/tt0338013/" target="_blank" rel="noopener"><em>Eternal Sunshine of the Spotless Mind</em></a>: memory, love and the beautiful futility of trying to erase either. For evergreens I'll rewatch on any given evening, <a class="il" href="https://www.imdb.com/title/tt0068646/" target="_blank" rel="noopener"><em>The Godfather</em></a> and <a class="il" href="https://www.imdb.com/title/tt0050083/" target="_blank" rel="noopener"><em>12 Angry Men</em></a> never miss.</p>
+        </div>
+      </div>
+
+      <div class="off-item">
+        <div class="ttl"><span class="glyph">♪</span><h4>Music</h4></div>
+        <div>
+          <p><a class="il" href="https://www.michaeljackson.com/" target="_blank" rel="noopener">Michael Jackson</a> on one end, <a class="il" href="https://en.wikipedia.org/wiki/La_La_Land_(soundtrack)" target="_blank" rel="noopener">La La Land's</a> jazz score on the other and Carnatic classical filling the quiet in between.</p>
+        </div>
+      </div>
+
+      <div class="off-item">
+        <div class="ttl"><span class="glyph">♞</span><h4>Chess</h4></div>
+        <div>
+          <p>Two gold medals at my college championships and a repertoire split cleanly down the middle: the <a class="il" href="https://en.wikipedia.org/wiki/Sicilian_Defence" target="_blank" rel="noopener">Sicilian</a> with Black, the <a class="il" href="https://en.wikipedia.org/wiki/Ruy_Lopez" target="_blank" rel="noopener">Ruy Lopez</a> with White. Three games I'll replay any time someone asks why I love this. <a class="il" href="https://www.chessgames.com/perl/chessgame?gid=1067179" target="_blank" rel="noopener">Kasparov vs. Karpov</a>, 1985 World Championship, Kasparov's octopus knight sits on d3 for eighteen moves before forcing a queen sacrifice out of pure positional pressure, as close to poetry as chess gets. <a class="il" href="https://www.chessgames.com/perl/chessgame?gid=1044366" target="_blank" rel="noopener">Fischer vs. Spassky</a>, 1972 Game 6, the game <em>Pawn Sacrifice</em> builds its whole third act toward, Fischer playing the Queen's Gambit for the first time in a serious game and dismantling Spassky with an opening he'd never touched before. And for technique alone, <a class="il" href="https://www.chessgames.com/perl/chessgame?gid=1848607" target="_blank" rel="noopener">Carlsen vs. Karjakin</a>, 2016 World Championship tiebreak, a queen sacrifice on move 50 that forces mate, still one of the cleanest finishes any World Championship has ever produced.</p>
+          <p style="margin-top:10px;">If you'd like to play a game, find me on <a class="il" href="https://www.chess.com/member/varunsani" target="_blank" rel="noopener">Chess.com</a>. Always up for a match, connect there as well.</p>
+        </div>
+      </div>
+
+<div class="off-item">
+         <div class="ttl"><span class="glyph">&#9873;</span><h4>Racing</h4></div>
+        <div>
+<p> What draws me to F1 isn't the speed, it's the systems thinking. An undercut is a strategic bet made long before you have proof it'll pay off. The pit wall lives or dies by that call. Recognizing that rhythm, the interplay of pressure, timing and precision, is exactly what makes me a better engineer. Three drives I'll rewatch anytime. Max Verstappen's P17-to-P1 at <a class="il" href="https://www.youtube.com/watch?v=QGTErgNcpDM" target="_blank" rel="noopener">São Paulo 2024</a>, Ayrton Senna's <a class="il" href="https://www.mclaren.com/racing/heritage/formula-1/drivers/ayrton-senna/f1s-greatest-ever-qualifying-lap-ayrton-senna-in-monaco-1988/" target="_blank" rel="noopener">1988 Monaco qualifying lap</a>, a lap so far ahead of the field it was never even fully captured on camera and Michael Schumacher's <a class="il" href="https://www.youtube.com/watch?v=X8x4RTdo5_8" target="_blank" rel="noopener">1995 win at Spa</a> from 16th on the grid in mixed wet-dry conditions, on the same circuit this whole page is modelled after.</p>        </div>
+      </div>
+    </div>
+  </section>
+
+<div class="flag-track" aria-hidden="true">
+    <div class="flag-strip"></div>
+    <div class="f1-car">
+      <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+              <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+              <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+              <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+              <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+              <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+              <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+              <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+              <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+              <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+            </svg>
+    </div>
+  </div>
+
+</main>
+
+<!-- ================= FOOTER / RADIO CHECK ================= -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow"><span class="flag"></span> Post-Race Debrief</div>
+    <div class="footer-cta">
+      <h2>Got something worth <em>racing</em> toward? Box box box — let's talk.</h2>
+    </div>
+
+    <div class="proj" style="padding: 32px; margin-bottom: 32px; text-align: center; display: block;">
+      <div class="footer-links" style="display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin: 0; padding: 0;">
+        <a href="mailto:varunsani625@gmail.com">varunsani625@gmail.com · open channel ↗</a>
+        <a href="tel:+919989044369">+91 99890 44369 · copy that ↗</a>
+        <a href="https://www.linkedin.com/in/varun-sani-b2056a371/" target="_blank" rel="noopener">LinkedIn · full throttle ↗</a>
+        <a href="https://github.com/varunsani" target="_blank" rel="noopener">GitHub · push to pass ↗</a>
+        <a href="https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing" target="_blank" rel="noopener">Resume · pit lane ↗</a>
+        <a href="https://ceur-ws.org/Vol-4039/paper19.pdf" target="_blank" rel="noopener">ICTCS 2025 Paper · chequered flag ↗</a>
+        <a href="https://orcid.org/0009-0001-4816-2119" target="_blank" rel="noopener">ORCID · parc fermé ↗</a>
+        <a href="https://leetcode.com/u/varun_sani/" target="_blank" rel="noopener">LeetCode · practice sessions ↗</a>
+      </div>
+    </div>
+
+    <div class="flag-track" aria-hidden="true">
+      <div class="checkered-banner"></div>
+      <div class="f1-car footer-car">
+        <svg viewBox="0 0 220 64" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="18" width="6" height="24" rx="1.5" fill="#e10600"/>
+          <rect x="0" y="16" width="16" height="4" rx="1" fill="#e10600"/>
+          <rect x="0" y="40" width="16" height="4" rx="1" fill="#e10600"/>
+          <path d="M14,44 L36,44 Q40,30 58,27 L128,25 Q150,25 160,34 L182,37 Q196,37 202,44 L202,48 L14,48 Z" fill="#e10600"/>
+          <path d="M202,44 L216,42 L216,46 L202,48 Z" fill="#e10600"/>
+          <path d="M76,27 Q86,12 104,12 Q118,12 123,25 L76,27 Z" fill="#c40500"/>
+          <rect x="196" y="46" width="18" height="4" rx="1" fill="#e10600"/>
+          <circle cx="50" cy="50" r="11" fill="#0a0a0a"/>
+          <circle cx="50" cy="50" r="4.5" fill="#2b2b2b"/>
+          <circle cx="160" cy="50" r="11" fill="#0a0a0a"/>
+          <circle cx="160" cy="50" r="4.5" fill="#2b2b2b"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Varun Sani. Built from the pit lane.</span>
+    </div>
+
+  </div>
+</footer>
+
+
+<script>
+  (function(){
+    const items = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){ items.forEach(el => el.classList.add('in')); return; }
+    
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Cancel any pending fade-out, prevents flicker when the ratio
+        // jitters back and forth across the threshold during a slow scroll
+        clearTimeout(entry.target._fadeTimer);
+
+        if(entry.isIntersecting) {
+          // When it appears: ADD the class (triggers 1.5s fade-in)
+          entry.target.classList.add('in');
+        } else {
+          // When it leaves: wait a beat before removing, so a brief
+          // re-crossing of the threshold doesn't restart the animation
+          entry.target._fadeTimer = setTimeout(() => {
+            entry.target.classList.remove('in');
+          }, 250);
+        }
+      });
+    }, { threshold: 0.27 });
+    
+    items.forEach(el => io.observe(el));
+  })();
+</script>
+
+<!-- <Races the car across each chequered flag divider when it scrolls into view --> 
+<script>
+  (function(){
+    const tracks = document.querySelectorAll('.flag-track');
+
+    // If the browser doesn't support IntersectionObserver, just show all cars
+    if(!('IntersectionObserver' in window)){
+      tracks.forEach(el => el.classList.add('go'));
+      return;
+    }
+
+    const carIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const track = entry.target;
+        
+        if(entry.isIntersecting) {
+          // ---- CAR RACES! ----
+          // Remove the class first to force a full reset, even if it was already there
+          track.classList.remove('go');
+          
+          // Force a browser reflow (this is the magic line that resets the animation)
+          void track.offsetWidth; 
+          
+          // Add the class back to trigger the 3.0s animation
+          track.classList.add('go');
+        } else {
+          // ---- CAR LEAVES SCREEN ----
+          // Remove the class so it's ready to race again when you scroll back
+          track.classList.remove('go');
+        }
+      });
+    }, { threshold: 0.4 }); // Triggers when 40% of the flag is visible
+
+    // Start watching every flag on the page
+    tracks.forEach(el => carIO.observe(el));
+  })();
+</script>
+
+
+<!-- Race Engineer chat widget (inlined, lazy-initialized after page load) -->
+<script>
+window.RACE_ENGINEER_API_URL = "https://your-app.railway.app"; // TODO: set to your deployed backend URL
+/**
+ * Race Engineer chat widget for varunsani.vercel.app
+ * Vanilla JS, no framework, no build step. Injected via a single <script> tag
+ * loaded lazily after the page is interactive (see snippet at bottom of file).
+ */
+(function () {
+  const API_URL = window.RACE_ENGINEER_API_URL ||
+    (location.hostname === "localhost" ? "http://localhost:8000" : "https://your-app.railway.app");
+
+  const SUGGESTED_QUESTIONS = [
+    "What projects has he built?",
+    "Tell me about his research paper",
+    "What's his tech stack?",
+    "What does he do outside engineering?",
+  ];
+
+  const GREETING = "Ask anything here about Varun — projects, research, experience, whatever you need, and I'll pull it up fast.";
+
+  function getSessionId() {
+    let id = sessionStorage.getItem("re_session_id");
+    if (!id) {
+      id = "sess_" + Math.random().toString(36).slice(2) + Date.now().toString(36);
+      sessionStorage.setItem("re_session_id", id);
+    }
+    return id;
+  }
+
+  function el(tag, attrs, ...children) {
+    const node = document.createElement(tag);
+    Object.entries(attrs || {}).forEach(([k, v]) => {
+      if (k === "class") node.className = v;
+      else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
+      else node.setAttribute(k, v);
+    });
+    children.forEach((c) => {
+      if (typeof c === "string") node.appendChild(document.createTextNode(c));
+      else if (c) node.appendChild(c);
+    });
+    return node;
+  }
+
+  const HEADPHONE_SVG = `
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 13v-1a8 8 0 0 1 16 0v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      <rect x="2.5" y="12" width="4" height="7" rx="1.6" stroke="currentColor" stroke-width="1.8"/>
+      <rect x="17.5" y="12" width="4" height="7" rx="1.6" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M6 18.5c0 1.8 1.6 3.3 4 3.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </svg>`;
+
+  class RaceEngineerWidget {
+    constructor() {
+      this.sessionId = getSessionId();
+      this.isOpen = false;
+      this.root = el("div", { id: "re-widget-root" });
+      document.body.appendChild(this.root);
+      this.renderLauncher();
+    }
+
+    renderLauncher() {
+      this.root.innerHTML = "";
+      
+      // Create the label (this sits above the circle)
+      const label = el("div", { class: "re-launcher-label" }, 
+        el("span", { class: "flag-mini" }, "⚑"), 
+        "Ask VS1"
+      );
+
+      const launcher = el("button", { class: "re-launcher", "aria-label": "Ask Race Engineer", onclick: () => this.open() });
+      launcher.innerHTML = HEADPHONE_SVG;
+      
+      this.labelEl = label;
+      this.root.appendChild(label);
+      this.root.appendChild(launcher);
+    }
+
+    open() {
+      this.isOpen = true;
+      // Hide the label when the panel opens
+      if (this.labelEl) this.labelEl.style.opacity = "0";
+      this.renderPanel();
+    }
+
+    close() {
+      this.isOpen = false;
+      this.renderLauncher();
+    }
+
+    renderPanel() {
+      this.root.innerHTML = "";
+      const panel = el("div", { class: "re-panel" });
+
+      const header = el(
+        "div",
+        { class: "re-header" },
+        el(
+          "div",
+          {},
+          el("div", { class: "re-header-title" }, el("span", { class: "re-live-dot" }), "RACE ENGINEER · LIVE"),
+          el("div", { class: "re-header-sub" }, "VS1 · Varun Sani Telemetry")
+        ),
+        el("button", { class: "re-close", onclick: () => this.close(), "aria-label": "Close" }, "×")
+      );
+
+      this.messagesEl = el("div", { class: "re-messages" });
+      const widgetLabel = el(
+      "div", 
+      { 
+        style: "text-align: center; font-size: 11px; color: #888; padding: 8px 0 4px; border-bottom: 1px solid #222; margin: 0 14px 6px; letter-spacing: 0.06em; font-family: 'IBM Plex Mono', monospace;" 
+      }, 
+      "⚡ Varun's AI Assistant · trained on his work"
+      );
+      this.messagesEl.appendChild(widgetLabel);
+      this.appendBotMessage(GREETING, []);
+
+      this.suggestionsEl = el("div", { class: "re-suggestions" });
+      SUGGESTED_QUESTIONS.forEach((q) => {
+        this.suggestionsEl.appendChild(
+          el("button", { class: "re-suggestion-btn", onclick: () => this.sendMessage(q) }, q)
+        );
+      });
+
+      const input = el("input", {
+        type: "text",
+        placeholder: "Ask the pit wall...",
+        onkeydown: (e) => {
+          if (e.key === "Enter" && input.value.trim()) {
+            this.sendMessage(input.value.trim());
+            input.value = "";
+          }
+        },
+      });
+      this.inputEl = input;
+
+      const sendBtn = el(
+        "button",
+        {
+          class: "re-send-btn",
+          onclick: () => {
+            if (input.value.trim()) {
+              this.sendMessage(input.value.trim());
+              input.value = "";
+            }
+          },
+        },
+        "→"
+      );
+      this.sendBtnEl = sendBtn;
+
+      const inputRow = el("div", { class: "re-input-row" }, input, sendBtn);
+
+      panel.appendChild(header);
+      panel.appendChild(this.messagesEl);
+      panel.appendChild(this.suggestionsEl);
+      panel.appendChild(inputRow);
+      this.root.appendChild(panel);
+      input.focus();
+    }
+
+    appendUserMessage(text) {
+      const msg = el(
+        "div",
+        { class: "re-msg re-user" },
+        el("div", { class: "re-msg-label" }, "You"),
+        el("div", { class: "re-bubble" }, text)
+      );
+      this.messagesEl.appendChild(msg);
+      this.scrollToBottom();
+    }
+
+    appendBotMessage(text, citations) {
+      const bubble = el("div", { class: "re-bubble" }, text);
+      const wrap = el("div", { class: "re-msg re-bot" }, el("div", { class: "re-msg-label" }, "Race Engineer"), bubble);
+
+      if (citations && citations.length) {
+        const chipRow = el("div", { class: "re-citations" });
+        citations.forEach((c) => {
+          const chip = el(
+            "button",
+            {
+              class: "re-citation-chip",
+              onclick: () => this.scrollToAnchor(c.anchor),
+            },
+            "📍 " + c.text
+          );
+          chipRow.appendChild(chip);
+        });
+        wrap.appendChild(chipRow);
+      }
+      this.messagesEl.appendChild(wrap);
+      this.scrollToBottom();
+    }
+
+    appendLoading() {
+      this.loadingEl = el("div", { class: "re-msg re-bot" }, el("div", { class: "re-loading" }, "Race Engineer is on the radio", el("span", { class: "re-dot-flash" })));
+      this.messagesEl.appendChild(this.loadingEl);
+      this.scrollToBottom();
+    }
+
+    removeLoading() {
+      if (this.loadingEl) {
+        this.loadingEl.remove();
+        this.loadingEl = null;
+      }
+    }
+
+    scrollToBottom() {
+      this.messagesEl.scrollTop = this.messagesEl.scrollHeight;
+    }
+
+    scrollToAnchor(anchor) {
+      if (!anchor) return;
+      const target = document.querySelector(anchor);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    async sendMessage(text) {
+      if (this.suggestionsEl) this.suggestionsEl.remove();
+      this.appendUserMessage(text);
+      this.appendLoading();
+      this.inputEl.disabled = true;
+      this.sendBtnEl.disabled = true;
+
+      try {
+        const resp = await fetch(`${API_URL}/chat`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: text, session_id: this.sessionId }),
+        });
+
+        if (resp.status === 429) {
+          const data = await resp.json();
+          this.removeLoading();
+          this.appendBotMessage(data.answer || "Box box box. Too many requests. Slow down.", []);
+          return;
+        }
+
+        if (!resp.ok) throw new Error("bad response");
+
+        const data = await resp.json();
+        this.removeLoading();
+        this.appendBotMessage(data.answer, data.citations || []);
+      } catch (err) {
+        this.removeLoading();
+        this.appendBotMessage("Lost comms with the pit wall. Try again.", []);
+      } finally {
+        this.inputEl.disabled = false;
+        this.sendBtnEl.disabled = false;
+        this.inputEl.focus();
+      }
+    }
+  }
+
+  function init() {
+    new RaceEngineerWidget();
+  }
+
+  // Deferred init: wait for full page load, then a short delay past first
+  // interaction, so the widget never competes with the portfolio's own
+  // load/Lighthouse timing.
+  function deferredInit() {
+    setTimeout(init, 1200);
+  }
+
+  if (document.readyState === "complete") deferredInit();
+  else window.addEventListener("load", deferredInit);
+})();
+</script>
+</body>
+</html>
