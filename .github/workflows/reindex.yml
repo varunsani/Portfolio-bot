@@ -20,7 +20,7 @@ on:
     paths:
       - "backend/content/**"
   schedule:
-    - cron: "0 4 * * *"   # once a day — safety net for Drive-only resume updates
+    - cron: "0 * * * *"   # once a every hour — safety net for Drive-only resume updates
   workflow_dispatch: {}
 
 jobs:
