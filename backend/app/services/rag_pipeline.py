@@ -2,7 +2,7 @@ import time
 from typing import List
 
 from app.models.schemas import ChatResponse, Citation
-from app.services import memory, retriever, generator
+from app.services import memory, retriever, generator, small_talk
 
 
 def _dedupe_citations(chunks) -> List[Citation]:
@@ -21,6 +21,16 @@ async def answer_question(message: str, session_id: str) -> ChatResponse:
     start = time.perf_counter()
 
     history = await memory.get_history(session_id)
+
+    # Small talk (greetings, farewells, thanks, date/time) bypasses
+    # retrieval entirely — there's no portfolio chunk about "hello", so
+    # without this check it would incorrectly hit the "no data" decline.
+    if small_talk.is_small_talk(message):
+        reply = generator.generate_small_talk_reply(message, history)
+        await memory.append_turn(session_id, message, reply)
+        latency_ms = int((time.perf_counter() - start) * 1000)
+        return ChatResponse(answer=reply, citations=[], latency_ms=latency_ms)
+
     chunks = await retriever.retrieve(message)
 
     if not chunks:
