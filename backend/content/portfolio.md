@@ -41,7 +41,7 @@ Source: https://varunsani.vercel.app
 
 ## [Projects] Fresh off the lift
 
-[Projects](#projects) Two backend-heavy builds, both async-first, both stress-tested against their own edge cases. GitHub links are at the bottom of each write-up.
+[Projects](#projects) From a self-updating RAG pipeline to highly scalable async backends, every system is stress-tested against real edge cases. GitHub links are at the bottom of each write-up.
 
 ## [Projects] Self-Updating RAG Portfolio Assistant
 
