@@ -43,6 +43,15 @@ Source: https://varunsani.vercel.app
 
 [Projects](#projects) Two backend-heavy builds, both async-first, both stress-tested against their own edge cases. GitHub links are at the bottom of each write-up.
 
+## [Projects] Self-Updating RAG Portfolio Assistant
+
+[Projects](#projects) A portfolio chatbot that never goes stale. It scrapes my live site, pulls my resume from Google Drive, and updates its own knowledge base automatically — so it always knows exactly what I'm working on.
+[Projects](#projects) Most portfolio bots are hardcoded or require manual database updates. I built this one to be completely self-sufficient: a GitHub Actions workflow re-scrapes the live site and fetches the resume from Drive on a schedule, re-embeds the content, and swaps the knowledge base atomically in Postgres. The result is a production-grade RAG system that stays current without me touching a line of code.
+[Projects](#projects) Combined dense vector search (70%) with BM25 keyword scoring (30%) and Maximum Marginal Relevance (MMR) re-ranking to handle both semantic questions and exact-match details like numbers and names, with a 0.3 similarity cutoff to block hallucinated answers on out-of-scope questions.
+[Projects](#projects) Designed a zero-downtime reindexing pipeline: GitHub Actions fetch fresh resume and portfolio content, generate embeddings via Groq, and atomically swap the active vectors in Postgres only after verification, so the chatbot never sees a partial or empty database.
+[Projects](#projects) Shipped anchor-linked citations so users can jump directly to the source on the site, backed by 10-turn Redis session memory (6h TTL) and 30 req/min/IP rate limiting to prevent quota abuse.
+[Projects](#projects) Deployed as a fully Dockerized FastAPI service on Railway with automatic resume ingestion from Google Drive, handling the large-file "virus scan" interstitial that normally breaks automated Drive downloads.
+
 ## [Projects] Real-Time Severe Weather Alerting System
 
 [Projects](#projects) I built this to get rid of client-side polling entirely. The server should tell you when the weather turns, not the other way around. It's also where most of the async concepts I'd learned in isolation finally had to work together at once.
