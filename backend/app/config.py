@@ -6,13 +6,15 @@ class Settings(BaseSettings):
     redis_url: str
 
     groq_api_key: str
-    groq_model: str = "openai/gpt-oss-120b"
+    groq_model: str = "openai/gpt-oss-120b"   # <--- KEEP THIS
 
     portfolio_url: str = "https://varunsani.vercel.app"
     frontend_origin_prod: str = "https://varunsani.vercel.app"
 
-    top_k: int = 5
-    similarity_threshold: float = 0.3
+    top_k: int = 10
+    candidate_pool_multiplier: int = 10
+    vector_min_threshold: float = 0.28       # <--- NEW REQUIRED SETTING
+    bm25_min_threshold: float = 0.35         # <--- NEW REQUIRED SETTING
     vector_weight: float = 0.7
     bm25_weight: float = 0.3
     mmr_lambda: float = 0.7
