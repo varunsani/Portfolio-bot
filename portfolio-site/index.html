@@ -1012,6 +1012,23 @@
 
       <div class="proj-grid">
         <div class="proj">
+        <div class="proj-top">
+          <h3>Self-Updating RAG Portfolio Assistant</h3>
+          <div class="stack">
+            <span class="chip">Groq LLM</span><span class="chip">FastAPI</span><span class="chip">pgvector</span><span class="chip">Redis</span><span class="chip">Docker</span><span class="chip">GitHub Actions</span>
+          </div>
+        </div>
+        <p class="lead">A portfolio chatbot that never goes stale. It scrapes my live site, pulls my resume from Google Drive, and updates its own knowledge base automatically — so it always knows exactly what I'm working on.</p>
+        <p style="color:var(--text-dim); font-size:14.5px; margin:0 0 16px; max-width:760px;">Most portfolio bots are hardcoded or require manual database updates. I built this one to be completely self-sufficient: a GitHub Actions workflow re-scrapes the live site and fetches the resume from Drive on a schedule, re-embeds the content, and swaps the knowledge base atomically in Postgres. The result is a production-grade RAG system that stays current without me touching a line of code.</p>
+        <ul>
+          <li>Combined dense vector search (70%) with BM25 keyword scoring (30%) and Maximum Marginal Relevance (MMR) re-ranking to handle both semantic questions and exact-match details like numbers and names, with a 0.3 similarity cutoff to block hallucinated answers on out-of-scope questions.</li>
+          <li>Designed a zero-downtime reindexing pipeline: GitHub Actions fetch fresh resume and portfolio content, generate embeddings via Groq, and atomically swap the active vectors in Postgres only after verification, so the chatbot never sees a partial or empty database.</li>
+          <li>Shipped anchor-linked citations so users can jump directly to the source on the site, backed by 10-turn Redis session memory (6h TTL) and 30 req/min/IP rate limiting to prevent quota abuse.</li>
+          <li>Deployed as a fully Dockerized FastAPI service on Railway with automatic resume ingestion from Google Drive, handling the large-file "virus scan" interstitial that normally breaks automated Drive downloads.</li>
+        </ul>
+        <a class="proj-cta" href="https://github.com/varunsani/Portfolio-bot" target="_blank" rel="noopener">View on GitHub · overtake →</a>
+      </div>
+        <div class="proj">
           <div class="proj-top">
             <h3>Real-Time Severe Weather Alerting System</h3>
             <div class="stack">
