@@ -13,8 +13,8 @@ import time
 import requests
 
 TEST_QUESTIONS = [
-    ("What is Varun's CGPA?", "should mention 8.32, IIT Palakkad"),
-    ("What projects has Varun built?", "should name the weather alerting platform and the URL shortener"),
+    ("What is Varun's CGPA?", "8.32 from IIT Palakkad"),
+    ("What projects has Varun built?", "should name the self-updating rag portfolio assist, weather alerting platform and the URL shortener"),
     ("What is the multipacking paper about?", "should summarize the hypercube / broadcast domination research"),
     ("What chess openings does Varun play?", "Sicilian Defence with Black, Ruy Lopez with White"),
     ("What was the accuracy improvement in the internship?", "~72% to ~85% accuracy on the attrition model"),
