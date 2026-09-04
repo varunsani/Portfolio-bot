@@ -2,14 +2,17 @@
 Indexing pipeline. Run manually or via .github/workflows/reindex.yml.
 
 Sources indexed:
-  - content/portfolio.md   (scraped live site, chunked per-section)
-  - resume PDF             (fetched fresh from Google Drive every run — see
-                             RESUME_URL — semantic chunking at font-detected
-                             section boundaries; content/resume.pdf is only a
-                             last-known-good cache, not the source of truth)
-  - research paper PDF     (chunked by paragraph, notation preserved)
-  - GitHub READMEs         (chunked by heading)
-  - external_links.json    (best-effort text extraction, chunked by paragraph)
+  - content/portfolio.md     (scraped live site, chunked per-section)
+  - Varun's resume            (fetched live from Google Drive, semantic
+                                chunking at section boundaries)
+  - research paper PDF        (chunked by paragraph, notation preserved)
+  - ALL of Varun's public GitHub repos (auto-discovered via the GitHub API,
+                                not a hardcoded list — new repos are picked
+                                up on the next scheduled run), READMEs
+                                chunked by heading
+  - content/links.json        (every external link found on the portfolio,
+                                dispatched to a source-appropriate fetcher —
+                                see chunk_external_links)
 
 Zero-downtime strategy:
   1. Insert everything for this run under a fresh batch_id with status='pending'.
@@ -23,35 +26,29 @@ import json
 import re
 import sys
 import uuid
-from collections import Counter
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
-
-try:
-    import pdfplumber
-    HAVE_PDFPLUMBER = True
-except ImportError:
-    HAVE_PDFPLUMBER = False
+from io import BytesIO
 
 sys.path.append(str(Path(__file__).parent.parent))
 
+from app.constants import normalize_free_text_label  # noqa: E402
 from app.db.connection import get_pool, init_db  # noqa: E402
 from app.services.embedder import embed_texts  # noqa: E402
 
 CONTENT_DIR = Path(__file__).parent.parent / "content"
-RESUME_URL = "https://drive.google.com/uc?export=download&id=1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn"
+
+RESUME_DRIVE_VIEW_URL = "https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing"
 RESEARCH_PAPER_URL = "https://ceur-ws.org/Vol-4039/paper19.pdf"
+GITHUB_USERNAME = "varunsani"
 
-GITHUB_REPOS = [
-    "https://github.com/varunsani/weather-alert-platform",
-    "https://github.com/varunsani/UrlShortener",
-]
+REQUEST_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; RaceEngineerBot/1.0)"}
 
 
-# ---------- generic helpers ----------
+# ---------- generic text-splitting helpers ----------
 
 def recursive_char_split(text: str, chunk_size: int = 400, overlap: int = 80) -> list[str]:
     """RecursiveCharacterTextSplitter-style splitting: try paragraph, then
@@ -75,7 +72,6 @@ def recursive_char_split(text: str, chunk_size: int = 400, overlap: int = 80) ->
             if current:
                 chunks.append(current.strip())
 
-            # apply overlap
             overlapped = []
             for i, c in enumerate(chunks):
                 if i > 0 and overlap > 0:
@@ -84,13 +80,12 @@ def recursive_char_split(text: str, chunk_size: int = 400, overlap: int = 80) ->
                 overlapped.append(c)
             return [c for c in overlapped if c.strip()]
 
-    # fallback: hard cut
     return [text[i:i + chunk_size] for i in range(0, len(text), chunk_size - overlap)]
 
 
 def paragraph_split(text: str) -> list[str]:
-    """Used for the research paper: preserve paragraph boundaries and
-    mathematical notation instead of splitting mid-formula."""
+    """Used for the research paper and generic web text: preserve paragraph
+    boundaries instead of splitting mid-formula or mid-thought."""
     paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
     return paragraphs
 
@@ -113,35 +108,42 @@ def heading_split(text: str) -> list[tuple[str, str]]:
     return [(h, b) for h, b in sections if b]
 
 
-def _looks_like_heading_text(line: str) -> bool:
-    """Generic fallback heuristic — no keyword whitelist. A line reads as a
-    resume section header if it's short, has no trailing sentence punctuation,
-    isn't a bullet, and is Title Case or ALL CAPS (how resume headers are
-    conventionally styled, regardless of what word they actually use)."""
-    stripped = line.strip()
-    if not stripped or len(stripped) > 40:
+def is_likely_section_header(line: str) -> bool:
+    """Heuristic header detection for resumes — no fixed vocabulary to
+    maintain. Section headers are reliably short, standalone lines that are
+    either ALL CAPS ('EDUCATION', 'TECHNICAL SKILLS') or every word
+    capitalized ('Research & Publications'), contain no ':' or ',' (which
+    show up in data lines like 'Languages: Python, C++, C' or 'B.Tech,
+    Computer Science'), and carry no trailing sentence punctuation."""
+    s = line.strip()
+    if not s or len(s) > 40 or len(s) < 3:
         return False
-    if stripped[-1] in ".,;:":
+    if s.endswith((".", ",", ";")):
         return False
-    if stripped.startswith(("-", "*", "•", "◦")):
+    if ":" in s or "," in s:
         return False
-    words = stripped.split()
-    if not (1 <= len(words) <= 5):
+
+    words = s.split()
+    alpha_words = [w for w in words if any(c.isalpha() for c in w)]
+    if not alpha_words:
         return False
-    letters_only = re.sub(r"[^A-Za-z]", "", stripped)
-    if not letters_only:
-        return False
-    is_upper = letters_only.isupper()
-    is_title = all(w[:1].isupper() for w in words if w[:1].isalpha())
-    return is_upper or is_title
+
+    if s.upper() == s:
+        return True
+    if len(alpha_words) <= 4 and all(w[0].isupper() for w in alpha_words):
+        return True
+    return False
 
 
-def _split_on_heading_lines(text: str, is_heading) -> list[tuple[str, str]]:
+def semantic_resume_split(text: str) -> list[tuple[str, str]]:
+    """Split resume text at section-header boundaries rather than arbitrary
+    character counts. Headers are detected heuristically, so a resume can
+    be edited freely without this needing an update."""
     lines = text.splitlines()
     sections: list[tuple[str, str]] = []
     current_heading, current_body = "Summary", []
     for line in lines:
-        if is_heading(line):
+        if is_likely_section_header(line):
             if current_body:
                 sections.append((current_heading, "\n".join(current_body).strip()))
             current_heading = line.strip()
@@ -153,117 +155,65 @@ def _split_on_heading_lines(text: str, is_heading) -> list[tuple[str, str]]:
     return [(h, b) for h, b in sections if b]
 
 
-def _cluster_words_into_lines(words: list[dict], tolerance: float = 3.0) -> list[tuple[str, float, bool]]:
-    """Group extracted words into visual lines by y-position (a resume line is
-    often typeset with two runs at slightly different baselines — e.g. a bold
-    institution name on the left and a plain date on the right — so a naive
-    round(top, 1) bucket splits one line into two). Returns (text, max_size,
-    is_bold) per line, left-to-right."""
-    if not words:
-        return []
-    ordered = sorted(words, key=lambda w: w["top"])
-    raw_lines: list[list[dict]] = []
-    current: list[dict] = []
-    ref_top = None
-    for w in ordered:
-        if ref_top is None or abs(w["top"] - ref_top) <= tolerance:
-            current.append(w)
-            ref_top = sum(x["top"] for x in current) / len(current)
-        else:
-            raw_lines.append(current)
-            current = [w]
-            ref_top = w["top"]
-    if current:
-        raw_lines.append(current)
+# ---------- Google Drive fetch (resume + any other drive link) ----------
 
-    lines = []
-    for line_words in raw_lines:
-        line_words.sort(key=lambda w: w["x0"])
-        text = " ".join(w["text"] for w in line_words)
-        max_size = max(w["size"] for w in line_words)
-        is_bold = any("bold" in w["fontname"].lower() for w in line_words)
-        lines.append((text, max_size, is_bold))
-    return lines
+def _extract_drive_file_id(url: str) -> str | None:
+    m = re.search(r"/d/([a-zA-Z0-9_-]+)", url)
+    if m:
+        return m.group(1)
+    m = re.search(r"[?&]id=([a-zA-Z0-9_-]+)", url)
+    return m.group(1) if m else None
 
 
-def detect_resume_sections_by_font(pdf_path: Path) -> list[tuple[str, str]] | None:
-    """Detect section headers by font size/weight instead of wording, so any
-    header the resume actually uses (Leadership, Volunteering, whatever) is
-    picked up automatically. Returns None if pdfplumber isn't available or no
-    reliable size signal is found, so the caller can fall back gracefully."""
-    if not HAVE_PDFPLUMBER:
+def fetch_drive_pdf_bytes(view_url: str, timeout: int = 30) -> bytes | None:
+    """Fetches a Google Drive file's raw bytes, handling the small-file
+    direct-download case and the "can't scan this file for viruses" confirm
+    page that appears for larger files. Returns None if it can't get a PDF
+    (e.g. permissions, or the file genuinely isn't a PDF)."""
+    file_id = _extract_drive_file_id(view_url)
+    if not file_id:
+        print(f"WARNING: could not extract a Drive file id from {view_url}")
         return None
+
+    session = requests.Session()
+    base = "https://drive.google.com/uc"
 
     try:
-        with pdfplumber.open(str(pdf_path)) as pdf:
-            all_lines: list[tuple[str, float, bool]] = []
-            sizes = Counter()
-            for page in pdf.pages:
-                words = page.extract_words(extra_attrs=["size", "fontname"])
-                page_lines = _cluster_words_into_lines(words)
-                for text, size, _ in page_lines:
-                    sizes[round(size)] += len(text)
-                all_lines.extend(page_lines)
-
-            if not sizes:
-                return None
-            body_size = sizes.most_common(1)[0][0]
-
-            def is_heading(entry) -> bool:
-                text, size, is_bold = entry
-                stripped = text.strip()
-                if not stripped or len(stripped) > 45 or len(stripped.split()) > 6:
-                    return False
-                bigger = size >= body_size + 1.5
-                if bigger:
-                    return True
-                # Same-size bold is only trustworthy as a header signal when it's
-                # ALSO all-caps — plenty of resumes bold sub-entries (job titles,
-                # institution names, "Languages:") at body size too, and those
-                # aren't section boundaries. ALL CAPS is the actual distinguishing
-                # convention for top-level headers in that case. Compare rounded
-                # sizes here (PDF font metrics rarely land on a clean integer —
-                # "10pt" often extracts as 9.96 — so a strict >= against the
-                # rounded body_size would spuriously reject same-size headers).
-                letters_only = re.sub(r"[^A-Za-z]", "", stripped)
-                return bool(is_bold and round(size) >= body_size and letters_only.isupper()
-                            and len(letters_only) >= 3)
-
-            heading_flags = [is_heading(l) for l in all_lines]
-            if sum(heading_flags) < 2:
-                return None  # not enough signal to trust font-based detection
-
-            sections: list[tuple[str, str]] = []
-            current_heading, current_body = "Summary", []
-            for (text, *_), heading in zip(all_lines, heading_flags):
-                if heading:
-                    if current_body:
-                        sections.append((current_heading, "\n".join(current_body).strip()))
-                    current_heading = text.strip()
-                    current_body = []
-                else:
-                    current_body.append(text)
-            if current_body:
-                sections.append((current_heading, "\n".join(current_body).strip()))
-            return [(h, b) for h, b in sections if b]
+        resp = session.get(base, params={"id": file_id, "export": "download"},
+                            headers=REQUEST_HEADERS, timeout=timeout)
     except Exception as e:
-        print(f"WARNING: font-based resume section detection failed ({e}), falling back.")
+        print(f"WARNING: Drive fetch failed for {view_url} ({e})")
         return None
 
+    if resp.content[:4] == b"%PDF":
+        return resp.content
 
-def semantic_resume_split(text: str, pdf_path: Path | None = None) -> list[tuple[str, str]]:
-    """Split resume text at section-header boundaries (Education, Experience,
-    Projects, etc.) automatically — no hardcoded list of expected header words.
+    # Large-file interstitial: look for a confirm token in cookies or the HTML body
+    token = None
+    for k, v in resp.cookies.items():
+        if k.startswith("download_warning"):
+            token = v
+    if not token:
+        m = re.search(r'confirm=([0-9A-Za-z_-]+)', resp.text)
+        if m:
+            token = m.group(1)
 
-    Preferred: font-size/weight based detection (resume headers are visually
-    distinct from body text). Falls back to a text-shape heuristic (short,
-    Title Case / ALL CAPS line) if font metadata isn't available or isn't
-    a reliable signal for this particular PDF."""
-    if pdf_path is not None:
-        by_font = detect_resume_sections_by_font(pdf_path)
-        if by_font:
-            return by_font
-    return _split_on_heading_lines(text, _looks_like_heading_text)
+    if token:
+        try:
+            resp2 = session.get(base, params={"id": file_id, "export": "download", "confirm": token},
+                                 headers=REQUEST_HEADERS, timeout=timeout)
+            if resp2.content[:4] == b"%PDF":
+                return resp2.content
+        except Exception as e:
+            print(f"WARNING: Drive confirm-token fetch failed for {view_url} ({e})")
+
+    print(f"WARNING: could not retrieve a PDF from {view_url} — got non-PDF content.")
+    return None
+
+
+def extract_pdf_text(pdf_bytes: bytes) -> str:
+    reader = PdfReader(BytesIO(pdf_bytes))
+    return "\n".join(page.extract_text() or "" for page in reader.pages)
 
 
 # ---------- per-source chunk builders ----------
@@ -276,7 +226,6 @@ def chunk_portfolio() -> list[dict]:
 
     text = path.read_text()
     chunks = []
-    # portfolio.md lines are pre-tagged like: [Section Name](#anchor) content...
     tag_re = re.compile(r"^\[(.+?)\]\((#.*?)\)\s?(.*)$")
     buffer_by_section: dict[tuple[str, str], list[str]] = {}
 
@@ -301,91 +250,43 @@ def chunk_portfolio() -> list[dict]:
     return chunks
 
 
-def _download_gdrive_file(url: str, dest: Path) -> bool:
-    """Download a Google Drive share link. Handles Drive's "can't scan this
-    file for viruses" interstitial that kicks in for larger files (it serves
-    an HTML confirmation page instead of the PDF unless you follow its
-    confirm token)."""
-    session = requests.Session()
-    resp = session.get(url, timeout=30, stream=True)
-    resp.raise_for_status()
-
-    content_type = resp.headers.get("Content-Type", "")
-    if "text/html" in content_type:
-        # Large-file interstitial — pull the confirm token out of the page
-        # (either a cookie or an embedded confirm= param) and retry.
-        token = None
-        for key, value in resp.cookies.items():
-            if key.startswith("download_warning"):
-                token = value
-        if not token:
-            m = re.search(r"confirm=([0-9A-Za-z_-]+)", resp.text)
-            if m:
-                token = m.group(1)
-        if not token:
-            return False
-        resp = session.get(url, params={"confirm": token}, timeout=30, stream=True)
-        resp.raise_for_status()
-        if "text/html" in resp.headers.get("Content-Type", ""):
-            return False  # still didn't get a real file — give up cleanly
-
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    with open(dest, "wb") as f:
-        for chunk in resp.iter_content(chunk_size=1 << 16):
-            f.write(chunk)
-    return dest.stat().st_size > 0
-
-
 def chunk_resume() -> list[dict]:
-    """Resume is fetched fresh from Google Drive (RESUME_URL) on every
-    reindex run rather than relying on a manually-updated local file — update
-    the resume on Drive and the next reindex just picks it up. content/resume.pdf
-    is kept only as a last-known-good cache: if the Drive download fails
-    (network blip, sharing settings changed, etc.) we fall back to whatever
-    was cached from the last successful run instead of hard-failing the whole
-    reindex, and log loudly either way so a broken share link doesn't fail
-    silently."""
-    resume_path = CONTENT_DIR / "resume.pdf"
-    try:
-        ok = _download_gdrive_file(RESUME_URL, resume_path)
-        if not ok:
-            raise RuntimeError("Drive returned an interstitial page instead of the PDF")
-        print("Resume fetched from Google Drive.")
-    except Exception as e:
-        if resume_path.exists():
-            print(f"WARNING: could not fetch resume from Google Drive ({e}); "
-                  f"using last cached content/resume.pdf instead.")
-        else:
-            print(f"WARNING: could not fetch resume from Google Drive ({e}), "
-                  f"and no cached copy exists — skipping resume indexing.")
-            return []
+    """Prefers a resume.pdf committed directly in content/ if present (most
+    reliable — no dependency on Drive's availability or link permissions);
+    falls back to fetching live from the Google Drive share link otherwise."""
+    local_path = CONTENT_DIR / "resume.pdf"
+    if local_path.exists():
+        print("Using local content/resume.pdf")
+        pdf_bytes = local_path.read_bytes()
+    else:
+        print("No local resume.pdf found — fetching live from Google Drive...")
+        pdf_bytes = fetch_drive_pdf_bytes(RESUME_DRIVE_VIEW_URL)
 
-    reader = PdfReader(str(resume_path))
-    full_text = "\n".join(page.extract_text() or "" for page in reader.pages)
+    if pdf_bytes is None:
+        print("WARNING: resume could not be obtained — skipping resume indexing this run.")
+        return []
 
+    full_text = extract_pdf_text(pdf_bytes)
     chunks = []
-    for heading, body in semantic_resume_split(full_text, pdf_path=resume_path):
+    for heading, body in semantic_resume_split(full_text):
+        label = normalize_free_text_label(heading)
         for piece in recursive_char_split(body, chunk_size=500, overlap=60):
             chunks.append({
                 "content": f"{heading}: {piece}",
                 "source": "resume",
                 "section": f"Resume — {heading}",
                 "anchor": None,
-                "url": "https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view",
-                "title": f"Resume — {heading}",
+                "url": RESUME_DRIVE_VIEW_URL,
+                "title": f"Resume — {label}",
             })
     return chunks
 
 
 def chunk_research_paper() -> list[dict]:
     try:
-        resp = requests.get(RESEARCH_PAPER_URL, timeout=30)
+        resp = requests.get(RESEARCH_PAPER_URL, headers=REQUEST_HEADERS, timeout=30)
         resp.raise_for_status()
-        tmp_path = CONTENT_DIR / "_paper.pdf"
-        tmp_path.write_bytes(resp.content)
-        reader = PdfReader(str(tmp_path))
-        full_text = "\n\n".join(page.extract_text() or "" for page in reader.pages)
-        tmp_path.unlink(missing_ok=True)
+        full_text = extract_pdf_text(resp.content)
     except Exception as e:
         print(f"WARNING: could not fetch research paper ({e}), skipping.")
         return []
@@ -403,63 +304,219 @@ def chunk_research_paper() -> list[dict]:
     return chunks
 
 
+def discover_github_repos(username: str) -> list[dict]:
+    """Auto-discovers every public, non-fork repo for the user via the
+    GitHub API instead of a hardcoded list, so new repos are picked up
+    automatically on the next scheduled reindex."""
+    try:
+        resp = requests.get(
+            f"https://api.github.com/users/{username}/repos",
+            params={"per_page": 100, "type": "owner", "sort": "updated"},
+            headers=REQUEST_HEADERS, timeout=20,
+        )
+        resp.raise_for_status()
+        repos = resp.json()
+    except Exception as e:
+        print(f"WARNING: GitHub repo discovery failed for {username} ({e})")
+        return []
+
+    return [r for r in repos if not r.get("fork")]
+
+
 def chunk_github_repos() -> list[dict]:
+    repos = discover_github_repos(GITHUB_USERNAME)
+    if not repos:
+        print("WARNING: no GitHub repos discovered — skipping GitHub indexing this run.")
+        return []
+
     chunks = []
-    for repo_url in GITHUB_REPOS:
-        repo_name = repo_url.rstrip("/").split("/")[-1]
-        for branch in ("main", "master"):
-            raw_url = repo_url.replace("github.com", "raw.githubusercontent.com") + f"/{branch}/README.md"
-            try:
-                resp = requests.get(raw_url, timeout=15)
-                if resp.status_code == 200 and resp.text.strip():
-                    for heading, body in heading_split(resp.text):
-                        for piece in recursive_char_split(body, chunk_size=400, overlap=80):
-                            chunks.append({
-                                "content": f"{repo_name} — {heading}: {piece}",
-                                "source": "github_readme",
-                                "section": f"The Garage (Projects) — {repo_name}",
-                                "anchor": "#projects",
-                                "url": repo_url,
-                                "title": repo_name,
-                            })
-                    break
-            except Exception as e:
-                print(f"WARNING: could not fetch {raw_url} ({e})")
+    for repo in repos:
+        repo_name = repo["name"]
+        repo_url = repo["html_url"]
+        default_branch = repo.get("default_branch", "main")
+        description = repo.get("description") or ""
+
+        if description:
+            chunks.append({
+                "content": f"{repo_name}: {description}",
+                "source": "github_repo",
+                "section": f"The Garage (Projects) — {repo_name}",
+                "anchor": "#projects",
+                "url": repo_url,
+                "title": repo_name,
+            })
+
+        raw_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{repo_name}/{default_branch}/README.md"
+        try:
+            resp = requests.get(raw_url, headers=REQUEST_HEADERS, timeout=15)
+            if resp.status_code == 200 and resp.text.strip():
+                for heading, body in heading_split(resp.text):
+                    for piece in recursive_char_split(body, chunk_size=400, overlap=80):
+                        chunks.append({
+                            "content": f"{repo_name} — {heading}: {piece}",
+                            "source": "github_readme",
+                            "section": f"The Garage (Projects) — {repo_name}",
+                            "anchor": "#projects",
+                            "url": repo_url,
+                            "title": repo_name,
+                        })
+        except Exception as e:
+            print(f"WARNING: could not fetch README for {repo_name} ({e})")
+
+    return chunks
+
+
+# ---------- external link dispatch ----------
+
+def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
+    """chess.com's profile page is JS-rendered — ratings never show up in a
+    plain HTML fetch. Their public stats API returns them directly."""
+    try:
+        resp = requests.get(f"https://api.chess.com/pub/player/{username}/stats",
+                             headers=REQUEST_HEADERS, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"WARNING: chess.com stats fetch failed for {username} ({e})")
+        return []
+
+    lines = []
+    label_map = {
+        "chess_rapid": "Rapid", "chess_blitz": "Blitz", "chess_bullet": "Bullet",
+        "chess_daily": "Daily",
+    }
+    for key, label in label_map.items():
+        block = data.get(key)
+        if block and "last" in block:
+            rating = block["last"].get("rating")
+            best = block.get("best", {}).get("rating")
+            if rating:
+                text = f"{label} rating: {rating}"
+                if best and best != rating:
+                    text += f" (best: {best})"
+                lines.append(text)
+
+    if not lines:
+        return []
+
+    content = f"Varun's Chess.com ratings — {'; '.join(lines)}."
+    return [{
+        "content": content,
+        "source": "external_link",
+        "section": link["section"],
+        "anchor": link.get("anchor"),
+        "url": link["url"],
+        "title": "Chess.com ratings",
+    }]
+
+
+def _fetch_youtube_oembed(url: str, link: dict) -> list[dict]:
+    """No transcript access without extra API setup — oEmbed at least gets
+    a real title/author instead of leaving the link completely unindexed."""
+    try:
+        resp = requests.get("https://www.youtube.com/oembed",
+                             params={"url": url, "format": "json"},
+                             headers=REQUEST_HEADERS, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"WARNING: YouTube oEmbed fetch failed for {url} ({e})")
+        return []
+
+    title = data.get("title", "")
+    author = data.get("author_name", "")
+    if not title:
+        return []
+
+    content = f"(Referenced by Varun in '{link['section']}') YouTube video: \"{title}\""
+    if author:
+        content += f" by {author}"
+    return [{
+        "content": content,
+        "source": "external_link",
+        "section": link["section"],
+        "anchor": link.get("anchor"),
+        "url": url,
+        "title": title,
+    }]
+
+
+def _fetch_drive_link(url: str, link: dict) -> list[dict]:
+    pdf_bytes = fetch_drive_pdf_bytes(url)
+    if pdf_bytes is None:
+        return []
+    text = extract_pdf_text(pdf_bytes)
+    chunks = []
+    for para in paragraph_split(text)[:10]:
+        for piece in recursive_char_split(para, chunk_size=400, overlap=80):
+            chunks.append({
+                "content": f"(Referenced by Varun in '{link['section']}') {link['label']}: {piece}",
+                "source": "external_link",
+                "section": link["section"],
+                "anchor": link.get("anchor"),
+                "url": url,
+                "title": link["label"],
+            })
+    return chunks
+
+
+def _fetch_generic_page(url: str, link: dict) -> list[dict]:
+    try:
+        resp = requests.get(url, headers=REQUEST_HEADERS, timeout=15)
+        if resp.status_code != 200:
+            return []
+        soup = BeautifulSoup(resp.text, "html.parser")
+        for tag in soup(["script", "style", "nav"]):
+            tag.decompose()
+        text = soup.get_text(" ", strip=True)
+        text = text[:3000]
+    except Exception as e:
+        print(f"WARNING: could not fetch external link {url} ({e})")
+        return []
+
+    chunks = []
+    for para in paragraph_split(text)[:5]:
+        for piece in recursive_char_split(para, chunk_size=400, overlap=80):
+            chunks.append({
+                "content": f"(Referenced by Varun in '{link['section']}') {link['label']}: {piece}",
+                "source": "external_link",
+                "section": link["section"],
+                "anchor": link.get("anchor"),
+                "url": url,
+                "title": link["label"],
+            })
     return chunks
 
 
 def chunk_external_links() -> list[dict]:
+    """Every external link gets rendered — dispatched to a source-specific
+    fetcher where a plain HTML scrape would fail (chess.com, YouTube,
+    Drive), and the generic scraper otherwise. Links whose scheme isn't
+    http(s) (mailto:, etc.) are skipped — nothing to fetch."""
     links_path = CONTENT_DIR / "links.json"
     if not links_path.exists():
         return []
 
     links = json.loads(links_path.read_text())
     chunks = []
+
     for link in links:
         url = link["url"]
-        try:
-            resp = requests.get(url, timeout=15, headers={"User-Agent": "Mozilla/5.0"})
-            if resp.status_code != 200:
-                continue
-            soup = BeautifulSoup(resp.text, "html.parser")
-            for tag in soup(["script", "style", "nav"]):
-                tag.decompose()
-            text = soup.get_text(" ", strip=True)
-            text = text[:3000]  # cap — this is supplementary context, not the primary source
-        except Exception as e:
-            print(f"WARNING: could not fetch external link {url} ({e})")
+        if not url.startswith("http"):
             continue
 
-        for para in paragraph_split(text)[:5]:  # keep only the first few paragraphs
-            for piece in recursive_char_split(para, chunk_size=400, overlap=80):
-                chunks.append({
-                    "content": f"(Referenced by Varun in '{link['section']}') {link['label']}: {piece}",
-                    "source": "external_link",
-                    "section": link["section"],
-                    "anchor": link.get("anchor"),
-                    "url": url,
-                    "title": link["label"],
-                })
+        if "chess.com/member/" in url:
+            username = url.rstrip("/").split("/")[-1]
+            chunks += _fetch_chess_com_stats(username, link)
+        elif "youtube.com/watch" in url or "youtu.be/" in url:
+            chunks += _fetch_youtube_oembed(url, link)
+        elif "drive.google.com" in url:
+            chunks += _fetch_drive_link(url, link)
+        elif re.match(r"https?://github\.com/[^/]+/?$", url):
+            continue  # profile link itself — repos are discovered separately
+        else:
+            chunks += _fetch_generic_page(url, link)
+
     return chunks
 
 
@@ -505,7 +562,6 @@ async def index_all():
             if pending_count != len(all_chunks):
                 raise RuntimeError("Pending batch verification failed — rolling back reindex.")
 
-            # atomic swap
             await conn.execute(
                 "UPDATE knowledge_base SET status = 'active' WHERE batch_id = $1",
                 batch_id,
