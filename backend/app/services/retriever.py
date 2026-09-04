@@ -1,35 +1,44 @@
 """
 Retrieval strategy
 ------------------
-1. Vector search (pgvector, cosine) over the 'active' partition — top ~20 candidates.
-2. BM25 keyword scoring over those same candidates (catches exact numbers/names
-   that embeddings sometimes blur, e.g. "8.32", "RMSE", "CGPA").
-3. Hybrid score = vector_weight * vector_score + bm25_weight * bm25_score.
-4. Maximum Marginal Relevance (MMR) re-ranking on the hybrid-scored shortlist,
-   so near-duplicate chunks (e.g. the same project described in the portfolio
-   AND the resume) don't crowd out distinct information.
-5. Contextual compression: each surviving chunk is trimmed down to the
-   sentences most relevant to the query, so the LLM's context window carries
-   signal, not padding.
-6. Similarity threshold: if nothing clears SIMILARITY_THRESHOLD, we return an
-   empty list and the pipeline falls back to "no data on that".
-
-This combination (hybrid search + MMR + compression) covers the gap a
-similarity-only or keyword-only retriever leaves: hybrid gets both semantic
-and exact-match recall, MMR removes redundancy, and compression keeps the
-final prompt tight and cheap.
+1. Vector search (pgvector, cosine) over the 'active' partition — top ~25 candidates.
+2. BM25 keyword scoring over those same candidates. Each chunk's BM25
+   document is its own text PLUS its anchor's plain-English aliases (see
+   app.constants) — so a literal query like "what's his tech stack" gets a
+   keyword hit against a #skills chunk even if the word "skills" never
+   appears in the chunk's own wording. The aliases are never embedded into
+   the vector and never shown to the user — purely a BM25-side boost.
+3. Acceptance: a candidate clears the bar if its RAW vector cosine clears
+   VECTOR_MIN_THRESHOLD, OR its normalized BM25 score clears
+   BM25_MIN_THRESHOLD. Using an "either" gate (rather than one blended
+   score with a single cutoff) matters specifically for queries that share
+   no vocabulary with the source text — e.g. "university" when the
+   portfolio only ever says "Institute of Technology". A blended score
+   drags a genuinely strong semantic match down by an empty BM25 term,
+   pushing it under a single threshold. Splitting the gate lets either
+   signal carry a candidate through on its own strength.
+4. A weighted hybrid score (vector_weight/bm25_weight) is still computed
+   for ranking/MMR purposes among accepted candidates.
+5. Maximum Marginal Relevance (MMR) re-ranking on the accepted, hybrid-
+   scored shortlist, so near-duplicate chunks (e.g. the same project
+   described in the portfolio AND the resume) don't crowd out distinct
+   information.
+6. Contextual compression: each surviving chunk is trimmed down to the
+   sentences most relevant to the query, so the LLM's context window
+   carries signal, not padding.
 """
 import re
 from dataclasses import dataclass
 from typing import List
-import ast
 
 from rank_bm25 import BM25Okapi
 import numpy as np
 
 from app.config import settings
+from app.constants import bm25_alias_tokens
 from app.db.connection import get_pool
 from app.services.embedder import embed_query
+
 
 
 @dataclass
@@ -42,13 +51,15 @@ class RetrievedChunk:
     url: str
     title: str
     score: float
+    vector_score: float = 0.0
+    bm25_score: float = 0.0
 
 
 def _tokenize(text: str) -> List[str]:
     return re.findall(r"[a-z0-9]+", text.lower())
 
 
-async def _fetch_candidates(query_embedding: List[float], limit: int = 20) -> List[RetrievedChunk]:
+async def _fetch_candidates(query_embedding: List[float], limit: int = 25) -> List[RetrievedChunk]:
     pool = await get_pool()
     vec_literal = "[" + ",".join(str(x) for x in query_embedding) + "]"
     rows = await pool.fetch(
@@ -63,33 +74,26 @@ async def _fetch_candidates(query_embedding: List[float], limit: int = 20) -> Li
         vec_literal,
         limit,
     )
-    
-    # --- Parse string embeddings into lists ---
-    parsed_chunks = []
-    for r in rows:
-        raw_embedding = r["embedding"]
-        if isinstance(raw_embedding, str):
-            raw_embedding = ast.literal_eval(raw_embedding)
-            
-        parsed_chunks.append(
-            RetrievedChunk(
-                content=r["content"],
-                embedding=list(raw_embedding),
-                source=r["source"],
-                section=r["section"],
-                anchor=r["anchor"],
-                url=r["url"],
-                title=r["title"],
-                score=float(r["cosine_sim"]),
-            )
+    return [
+        RetrievedChunk(
+            content=r["content"],
+            embedding=list(r["embedding"]),
+            source=r["source"],
+            section=r["section"],
+            anchor=r["anchor"],
+            url=r["url"],
+            title=r["title"],
+            score=float(r["cosine_sim"]),
+            vector_score=float(r["cosine_sim"]),
         )
-    return parsed_chunks
+        for r in rows
+    ]
 
 
 def _bm25_scores(query: str, chunks: List[RetrievedChunk]) -> List[float]:
     if not chunks:
         return []
-    corpus = [_tokenize(c.content) for c in chunks]
+    corpus = [_tokenize(c.content) + bm25_alias_tokens(c.anchor) for c in chunks]
     bm25 = BM25Okapi(corpus)
     raw = bm25.get_scores(_tokenize(query))
     max_score = max(raw) or 1.0
@@ -104,7 +108,7 @@ def _mmr(query_embedding: List[float], chunks: List[RetrievedChunk], k: int, lam
 
     def cos(a, b):
         denom = (np.linalg.norm(a) * np.linalg.norm(b)) or 1e-9
-        return np.dot(a, b) / denom
+        return float(np.dot(a, b) / denom)
 
     selected: List[int] = []
     candidates = list(range(len(chunks)))
@@ -138,27 +142,34 @@ def _compress(query: str, content: str, max_sentences: int = 3) -> str:
         scored.append((overlap, s))
     scored.sort(key=lambda x: x[0], reverse=True)
     top = [s for _, s in scored[:max_sentences]]
-    # preserve original order for readability
     ordered = [s for s in sentences if s in top]
     return " ".join(ordered)
 
 
 async def retrieve(query: str) -> List[RetrievedChunk]:
     query_embedding = embed_query(query)
-    candidates = await _fetch_candidates(query_embedding, limit=20)
+    candidates = await _fetch_candidates(query_embedding, limit=settings.top_k*settings.candidate_pool_multiplier)
     if not candidates:
         return []
 
-    bm25 = _bm25_scores(query, candidates)
-    for c, b in zip(candidates, bm25):
-        c.score = settings.vector_weight * c.score + settings.bm25_weight * b
+    bm25_norm = _bm25_scores(query, candidates)
+    for c, b in zip(candidates, bm25_norm):
+        c.bm25_score = b
+        c.score = settings.vector_weight * c.vector_score + settings.bm25_weight * b
 
-    candidates = [c for c in candidates if c.score >= settings.similarity_threshold]
-    if not candidates:
+    # "Either" gate: a candidate survives on vector strength alone, or BM25
+    # strength alone — a weak showing on one axis never disqualifies a
+    # strong showing on the other.
+    accepted = [
+        c for c in candidates
+        if c.vector_score >= settings.vector_min_threshold
+        or c.bm25_score >= settings.bm25_min_threshold
+    ]
+    if not accepted:
         return []
 
-    candidates.sort(key=lambda c: c.score, reverse=True)
-    shortlist = candidates[: max(settings.top_k * 3, settings.top_k)]
+    accepted.sort(key=lambda c: c.score, reverse=True)
+    shortlist = accepted[: max(settings.top_k * 5, settings.top_k)]
 
     diversified = _mmr(query_embedding, shortlist, k=settings.top_k, lambda_mult=settings.mmr_lambda)
 
