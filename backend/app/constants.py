@@ -1,43 +1,46 @@
 """
-Single source of truth for mapping a portfolio anchor to plain-English
-labels. Used three ways:
+Single source of truth for resolving a chunk's plain-English display label
+- used for the LLM's grounding context AND for citation-chip text, so F1
+theming never surfaces in either place.
 
-1. generator.py resolves the LLM-facing "Section:" label from this instead
-   of the site's flavorful eyebrow copy ("The Garage"), so F1 theming never
-   leaks into the model's grounding context.
-2. retriever.py appends these words (not the raw chunk text) into the BM25
-   tokenization only, so a literal query like "what's his tech stack"
-   lexically matches #skills chunks even though the word "skills" might not
-   appear in that exact phrasing anywhere in the portfolio copy.
-3. index_knowledge.py uses the resume-heading normalizer for the same
-   plain-label purpose on resume chunks, which have no portfolio anchor.
+Fully automatic: for portfolio chunks, the label is derived directly from
+the section's real HTML id (e.g. id="projects" -> "Projects", id="work-
+history" -> "Work History") - the same id that already powers the site's
+own nav links, so it stays plain even when the visible copy above it gets
+themed. Nothing here needs updating if the portfolio is redesigned, as
+long as new sections keep a plain id. No manual per-anchor mapping to
+maintain, and no BM25 "alias" word injection either - that approach was
+tried and deliberately removed: it only covered anchors someone remembered
+to add by hand, silently leaving newer/renamed sections uncovered, and it
+worked against exactly the keyword-search mechanism it was trying to help
+by feeding it words that never actually appear in the underlying content.
 
-The thematic title ("The Garage — Fresh off the lift") is still stored as
-each chunk's `section` field for citation-chip display — this file never
-touches that, it only supplies a second, LLM/BM25-facing signal alongside it.
+For chunks with no portfolio anchor (resume, research paper, GitHub
+READMEs), normalize_free_text_label classifies by a handful of durable
+substrings instead of an exact-match list.
 """
 
-ANCHOR_LABELS: dict[str, list[str]] = {
-    "#about": ["About", "Introduction", "Background", "Formation Lap", "Building race pace"],
-    "#skills": ["Skills", "Tech Stack", "Technical Skills", "The Pit Crew", "Everything under the hood"],
-    "#experience": ["Experience", "Work Experience", "Internship", "Race Stints", "Time on track"],
-    "#projects": ["Projects", "The Garage", "Fresh off the lift"],
-    "#research": ["Research", "Publications", "Paper", "The Wind Tunnel", "First podium"],
-    "#beyond": ["Interests", "Hobbies", "Off Track", "Cool-down lap thoughts"],
-    "#contact": ["Contact", "Post-Race Debrief", "Email", "Phone", "Box box box"],
-}
+
+def plain_label_from_anchor_id(anchor: str | None) -> str | None:
+    """'#work-history' -> 'Work History'. Returns None if there's no anchor
+    to derive from (caller falls back to normalize_free_text_label)."""
+    if not anchor:
+        return None
+    raw = anchor.lstrip("#").replace("-", " ").replace("_", " ").strip()
+    return raw.title() if raw else None
 
 
 def plain_label_for_anchor(anchor: str | None, fallback_text: str = "") -> str:
     """Best plain-English label for a chunk, given its anchor (if any)."""
-    if anchor and anchor in ANCHOR_LABELS:
-        return ANCHOR_LABELS[anchor][0]
+    label = plain_label_from_anchor_id(anchor)
+    if label:
+        return label
     return normalize_free_text_label(fallback_text)
 
 
 def normalize_free_text_label(text: str) -> str:
     """For chunks with no portfolio anchor (resume, research paper, GitHub
-    READMEs) — classify by a handful of durable substrings instead of an
+    READMEs) - classify by a handful of durable substrings instead of an
     exact-match list, so this doesn't need updating when wording changes."""
     s = (text or "").lower()
     if "educat" in s:
@@ -57,12 +60,3 @@ def normalize_free_text_label(text: str) -> str:
     if "contact" in s or "debrief" in s:
         return "Contact"
     return text or "General"
-
-
-def bm25_alias_tokens(anchor: str | None) -> list[str]:
-    """Extra words to fold into a chunk's BM25 document only (not the vector
-    embedding, not the visible answer) so thematic section names don't cost
-    a chunk its keyword-search recall."""
-    if anchor and anchor in ANCHOR_LABELS:
-        return ANCHOR_LABELS[anchor]
-    return []
