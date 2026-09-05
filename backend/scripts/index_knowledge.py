@@ -701,6 +701,11 @@ async def index_all():
         chunk["project_id"] = assign_project_id(chunk["content"], known_projects)
 
     print(f"Embedding {len(all_chunks)} chunks...")
+
+    dump_path = CONTENT_DIR / "external_chunks_debug.json"
+    with open(dump_path, "w") as f:
+        json.dump(all_chunks, f, indent=2)
+    print(f"DEBUG: Dumped {len(all_chunks)} chunks to external_chunks_debug.json")
     embeddings = embed_texts([c["content"] for c in all_chunks])
 
     batch_id = str(uuid.uuid4())
