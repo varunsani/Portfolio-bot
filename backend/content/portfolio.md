@@ -1,6 +1,12 @@
 # Varun Sani Portfolio
 Source: https://varunsani.vercel.app
 
+[Skills](#skills) Languages: Python, C++, C
+[Skills](#skills) Backend & APIs: FastAPI, REST, JWT Auth, WebSockets
+[Skills](#skills) Databases & ORMs: PostgreSQL, Redis, MongoDB, SQLModel, Alembic
+[Skills](#skills) ML & Data: scikit-learn, PyTorch, NumPy, Pandas, Matplotlib
+[Skills](#skills) Tools & Platforms: Docker, Git, GitHub, Postman, Ubuntu, Jupyter
+[Skills](#skills) Certifications: Introduction to Machine Learning (NPTEL), Machine Learning A-Z: AI, Python (Udemy)
 
 ## [About] Varun Sani
 
