@@ -32,10 +32,7 @@ jobs:
         run: pip install requests beautifulsoup4
 
       - name: Scrape live portfolio
-        id: scrape
-        run: |
-          python backend/scripts/scrape_portfolio.py | tee scrape_result.txt
-          echo "result=$(cat scrape_result.txt)" >> "$GITHUB_OUTPUT"
+        run: python backend/scripts/scrape_portfolio.py
 
       # - name: Commit changes if content differs
       #   run: |
