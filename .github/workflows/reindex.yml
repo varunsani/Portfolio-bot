@@ -58,6 +58,14 @@ jobs:
       #     git commit -m "chore: update external chunks debug dump" || echo "No changes to commit"
       #     git push
 
+      - name: Commit debug dump
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add backend/content/scraped_external_links.md
+          git commit -m "chore: update scraped external links content [skip ci]" || echo "No changes to commit"
+          git push
+
       - name: Verify indexing
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}

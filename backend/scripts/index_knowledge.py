@@ -693,6 +693,18 @@ async def index_all():
     all_chunks += chunk_github_repos(repos)
     all_chunks += chunk_external_links()
 
+        # Write the actual content of external links to a readable Markdown file
+    external_md_path = CONTENT_DIR / "scraped_external_links.md"
+    with open(external_md_path, "w") as f:
+        f.write("# Scraped External Links Content\n\n")
+        for chunk in all_chunks:
+            if chunk["source"] == "external_link":
+                f.write(f"## {chunk.get('title', 'Unknown')}\n")
+                f.write(f"**URL:** {chunk.get('url', '')}\n")
+                f.write(f"**Section:** {chunk.get('section', '')}\n\n")
+                f.write(f"{chunk['content']}\n\n---\n\n")
+    print(f"DEBUG: Wrote scraped external link content to {external_md_path}")
+
     if not all_chunks:
         print("ERROR: no chunks produced, aborting reindex (leaving old index in place).")
         sys.exit(1)
