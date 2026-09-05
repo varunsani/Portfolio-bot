@@ -3,16 +3,29 @@ Indexing pipeline. Run manually or via .github/workflows/reindex.yml.
 
 Sources indexed:
   - content/portfolio.md     (scraped live site, chunked per-section)
-  - Varun's resume            (fetched live from Google Drive, semantic
-                                chunking at section boundaries)
-  - research paper PDF        (chunked by paragraph, notation preserved)
-  - ALL of Varun's public GitHub repos (auto-discovered via the GitHub API,
-                                not a hardcoded list — new repos are picked
-                                up on the next scheduled run), READMEs
-                                chunked by heading
-  - content/links.json        (every external link found on the portfolio,
-                                dispatched to a source-appropriate fetcher —
-                                see chunk_external_links)
+  - Varun's resume           (fetched live from Google Drive on every run -
+                               never committed to the repo, so editing the
+                               resume on Drive is the only step needed)
+  - research paper PDF       (chunked by paragraph; extraction is per-page,
+                               so an image/formula-heavy page that fails to
+                               extract cleanly doesn't take the rest of the
+                               document down with it)
+  - ALL of Varun's public, non-fork GitHub repos (auto-discovered via the
+                               GitHub API, not a hardcoded list - new repos
+                               are picked up on the next scheduled run).
+                               Every discovered repo gets at least one
+                               chunk (name + language + description) even
+                               if it has no README, so a repo never goes
+                               completely unrepresented.
+  - content/links.json       (every external link found on the portfolio,
+                               dispatched to a source-appropriate fetcher -
+                               see chunk_external_links)
+
+Every chunk, from every source above, is also tagged with a best-guess
+project_id (see assign_project_id) based on keyword overlap with a real
+GitHub repo's name/description - not by matching titles across sources,
+which don't share a naming convention. This powers retriever.py's
+project-diversity guarantee.
 
 Zero-downtime strategy:
   1. Insert everything for this run under a fresh batch_id with status='pending'.
@@ -26,12 +39,12 @@ import json
 import re
 import sys
 import uuid
+from io import BytesIO
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
-from io import BytesIO
 
 sys.path.append(str(Path(__file__).parent.parent))
 
@@ -46,6 +59,11 @@ RESEARCH_PAPER_URL = "https://ceur-ws.org/Vol-4039/paper19.pdf"
 GITHUB_USERNAME = "varunsani"
 
 REQUEST_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; RaceEngineerBot/1.0)"}
+
+_STOPWORDS = {
+    "the", "and", "for", "with", "using", "app", "api", "system", "project",
+    "based", "a", "an", "of", "to", "in", "on", "this", "that", "is", "are",
+}
 
 
 # ---------- generic text-splitting helpers ----------
@@ -84,8 +102,6 @@ def recursive_char_split(text: str, chunk_size: int = 400, overlap: int = 80) ->
 
 
 def paragraph_split(text: str) -> list[str]:
-    """Used for the research paper and generic web text: preserve paragraph
-    boundaries instead of splitting mid-formula or mid-thought."""
     paragraphs = [p.strip() for p in re.split(r"\n\s*\n", text) if p.strip()]
     return paragraphs
 
@@ -109,12 +125,11 @@ def heading_split(text: str) -> list[tuple[str, str]]:
 
 
 def is_likely_section_header(line: str) -> bool:
-    """Heuristic header detection for resumes — no fixed vocabulary to
+    """Heuristic header detection for resumes - no fixed vocabulary to
     maintain. Section headers are reliably short, standalone lines that are
-    either ALL CAPS ('EDUCATION', 'TECHNICAL SKILLS') or every word
-    capitalized ('Research & Publications'), contain no ':' or ',' (which
-    show up in data lines like 'Languages: Python, C++, C' or 'B.Tech,
-    Computer Science'), and carry no trailing sentence punctuation."""
+    either ALL CAPS ('EDUCATION') or every word capitalized ('Research &
+    Publications'), contain no ':' or ',' (which show up in data lines like
+    'Languages: Python, C++, C'), and carry no trailing sentence punctuation."""
     s = line.strip()
     if not s or len(s) > 40 or len(s) < 3:
         return False
@@ -136,9 +151,6 @@ def is_likely_section_header(line: str) -> bool:
 
 
 def semantic_resume_split(text: str) -> list[tuple[str, str]]:
-    """Split resume text at section-header boundaries rather than arbitrary
-    character counts. Headers are detected heuristically, so a resume can
-    be edited freely without this needing an update."""
     lines = text.splitlines()
     sections: list[tuple[str, str]] = []
     current_heading, current_body = "Summary", []
@@ -168,8 +180,7 @@ def _extract_drive_file_id(url: str) -> str | None:
 def fetch_drive_pdf_bytes(view_url: str, timeout: int = 30) -> bytes | None:
     """Fetches a Google Drive file's raw bytes, handling the small-file
     direct-download case and the "can't scan this file for viruses" confirm
-    page that appears for larger files. Returns None if it can't get a PDF
-    (e.g. permissions, or the file genuinely isn't a PDF)."""
+    page that appears for larger files. Returns None if it can't get a PDF."""
     file_id = _extract_drive_file_id(view_url)
     if not file_id:
         print(f"WARNING: could not extract a Drive file id from {view_url}")
@@ -188,7 +199,6 @@ def fetch_drive_pdf_bytes(view_url: str, timeout: int = 30) -> bytes | None:
     if resp.content[:4] == b"%PDF":
         return resp.content
 
-    # Large-file interstitial: look for a confirm token in cookies or the HTML body
     token = None
     for k, v in resp.cookies.items():
         if k.startswith("download_warning"):
@@ -212,8 +222,29 @@ def fetch_drive_pdf_bytes(view_url: str, timeout: int = 30) -> bytes | None:
 
 
 def extract_pdf_text(pdf_bytes: bytes) -> str:
-    reader = PdfReader(BytesIO(pdf_bytes))
-    return "\n".join(page.extract_text() or "" for page in reader.pages)
+    """Extracts text page by page. A single page that fails to extract
+    cleanly (a scanned image, a heavily formula/Type3-font page some PDF
+    libraries choke on) is skipped with a warning instead of aborting the
+    whole document - every other page's text still makes it through."""
+    try:
+        reader = PdfReader(BytesIO(pdf_bytes))
+    except Exception as e:
+        print(f"WARNING: could not open PDF at all ({e}) — 0 pages extracted.")
+        return ""
+
+    pages_text = []
+    for i, page in enumerate(reader.pages):
+        try:
+            text = page.extract_text() or ""
+        except Exception as e:
+            print(f"WARNING: page {i + 1} failed to extract ({e}) — skipping just this page.")
+            continue
+        if text.strip():
+            pages_text.append(text)
+        else:
+            print(f"NOTE: page {i + 1} produced no extractable text (likely an image/diagram) — skipping just this page.")
+
+    return "\n".join(pages_text)
 
 
 # ---------- per-source chunk builders ----------
@@ -251,22 +282,20 @@ def chunk_portfolio() -> list[dict]:
 
 
 def chunk_resume() -> list[dict]:
-    """Prefers a resume.pdf committed directly in content/ if present (most
-    reliable — no dependency on Drive's availability or link permissions);
-    falls back to fetching live from the Google Drive share link otherwise."""
-    local_path = CONTENT_DIR / "resume.pdf"
-    if local_path.exists():
-        print("Using local content/resume.pdf")
-        pdf_bytes = local_path.read_bytes()
-    else:
-        print("No local resume.pdf found — fetching live from Google Drive...")
-        pdf_bytes = fetch_drive_pdf_bytes(RESUME_DRIVE_VIEW_URL)
-
+    """Always fetched live from Google Drive - never a locally committed
+    file. This is intentional: the resume gets updated on Drive only, and
+    should never require a manual git commit to reach the bot."""
+    print("Fetching resume from Google Drive...")
+    pdf_bytes = fetch_drive_pdf_bytes(RESUME_DRIVE_VIEW_URL)
     if pdf_bytes is None:
-        print("WARNING: resume could not be obtained — skipping resume indexing this run.")
+        print("WARNING: resume could not be fetched from Drive — skipping resume indexing this run.")
         return []
 
     full_text = extract_pdf_text(pdf_bytes)
+    if not full_text.strip():
+        print("WARNING: resume PDF produced no extractable text at all — skipping.")
+        return []
+
     chunks = []
     for heading, body in semantic_resume_split(full_text):
         label = normalize_free_text_label(heading)
@@ -279,6 +308,19 @@ def chunk_resume() -> list[dict]:
                 "url": RESUME_DRIVE_VIEW_URL,
                 "title": f"Resume — {label}",
             })
+
+    # Explicit discoverability chunk: guarantees a query like "give me his
+    # resume link" or "where's his resume" has something to literally match
+    # on the word "resume", independent of how the surrounding prose is
+    # phrased anywhere else.
+    chunks.append({
+        "content": "Varun's resume is available here as a PDF, kept up to date on Google Drive.",
+        "source": "resume",
+        "section": "Resume",
+        "anchor": None,
+        "url": RESUME_DRIVE_VIEW_URL,
+        "title": "Resume",
+    })
     return chunks
 
 
@@ -286,9 +328,13 @@ def chunk_research_paper() -> list[dict]:
     try:
         resp = requests.get(RESEARCH_PAPER_URL, headers=REQUEST_HEADERS, timeout=30)
         resp.raise_for_status()
-        full_text = extract_pdf_text(resp.content)
     except Exception as e:
         print(f"WARNING: could not fetch research paper ({e}), skipping.")
+        return []
+
+    full_text = extract_pdf_text(resp.content)
+    if not full_text.strip():
+        print("WARNING: research paper produced no extractable text at all — skipping.")
         return []
 
     chunks = []
@@ -323,8 +369,12 @@ def discover_github_repos(username: str) -> list[dict]:
     return [r for r in repos if not r.get("fork")]
 
 
-def chunk_github_repos() -> list[dict]:
-    repos = discover_github_repos(GITHUB_USERNAME)
+def chunk_github_repos(repos: list[dict]) -> list[dict]:
+    """Every discovered repo gets at least one chunk - name, language, and
+    description if present - even if it has no README at all. Previously,
+    a repo with neither a description nor a README produced zero chunks
+    and silently never showed up in any answer; this guarantees every repo
+    is represented at minimum."""
     if not repos:
         print("WARNING: no GitHub repos discovered — skipping GitHub indexing this run.")
         return []
@@ -335,35 +385,77 @@ def chunk_github_repos() -> list[dict]:
         repo_url = repo["html_url"]
         default_branch = repo.get("default_branch", "main")
         description = repo.get("description") or ""
+        language = repo.get("language") or ""
 
+        baseline = f"{repo_name}"
+        if language:
+            baseline += f" (written in {language})"
         if description:
-            chunks.append({
-                "content": f"{repo_name}: {description}",
-                "source": "github_repo",
-                "section": f"The Garage (Projects) — {repo_name}",
-                "anchor": "#projects",
-                "url": repo_url,
-                "title": repo_name,
-            })
+            baseline += f": {description}"
+        chunks.append({
+            "content": baseline,
+            "source": "github_repo",
+            "section": f"The Garage (Projects) — {repo_name}",
+            "anchor": "#projects",
+            "url": repo_url,
+            "title": repo_name,
+        })
 
-        raw_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{repo_name}/{default_branch}/README.md"
-        try:
-            resp = requests.get(raw_url, headers=REQUEST_HEADERS, timeout=15)
-            if resp.status_code == 200 and resp.text.strip():
-                for heading, body in heading_split(resp.text):
-                    for piece in recursive_char_split(body, chunk_size=400, overlap=80):
-                        chunks.append({
-                            "content": f"{repo_name} — {heading}: {piece}",
-                            "source": "github_readme",
-                            "section": f"The Garage (Projects) — {repo_name}",
-                            "anchor": "#projects",
-                            "url": repo_url,
-                            "title": repo_name,
-                        })
-        except Exception as e:
-            print(f"WARNING: could not fetch README for {repo_name} ({e})")
+        got_readme = False
+        for branch_candidate in {default_branch, "main", "master"}:
+            raw_url = f"https://raw.githubusercontent.com/{GITHUB_USERNAME}/{repo_name}/{branch_candidate}/README.md"
+            try:
+                resp = requests.get(raw_url, headers=REQUEST_HEADERS, timeout=15)
+                if resp.status_code == 200 and resp.text.strip():
+                    got_readme = True
+                    for heading, body in heading_split(resp.text):
+                        for piece in recursive_char_split(body, chunk_size=400, overlap=80):
+                            chunks.append({
+                                "content": f"{repo_name} — {heading}: {piece}",
+                                "source": "github_readme",
+                                "section": f"The Garage (Projects) — {repo_name}",
+                                "anchor": "#projects",
+                                "url": repo_url,
+                                "title": repo_name,
+                            })
+                    break
+            except Exception as e:
+                print(f"WARNING: could not fetch README for {repo_name} on {branch_candidate} ({e})")
+
+        if not got_readme:
+            print(f"NOTE: no README found for {repo_name} — indexed with baseline info only.")
 
     return chunks
+
+
+# ---------- project_id tagging (used by every source, not just GitHub) ----------
+
+def _project_keyword_sets(repos: list[dict]) -> list[dict]:
+    """One durable keyword set per discovered repo, built from its name,
+    description, and topics — real GitHub data, not guessed from
+    inconsistently-worded titles across the portfolio/resume/README."""
+    projects = []
+    for repo in repos:
+        name_words = re.findall(r"[a-zA-Z]+", repo["name"].replace("-", " ").replace("_", " "))
+        desc_words = re.findall(r"[a-zA-Z]+", repo.get("description") or "")
+        topic_words = []
+        for t in repo.get("topics", []) or []:
+            topic_words += re.findall(r"[a-zA-Z]+", t.replace("-", " "))
+        words = {w.lower() for w in (name_words + desc_words + topic_words) if len(w) > 2}
+        words -= _STOPWORDS
+        projects.append({"id": repo["name"], "keywords": words})
+    return projects
+
+
+def assign_project_id(content: str, known_projects: list[dict]) -> str | None:
+    tokens = set(re.findall(r"[a-z0-9]+", content.lower()))
+    best_id, best_score = None, 0
+    for proj in known_projects:
+        overlap = len(tokens & proj["keywords"])
+        if overlap > best_score:
+            best_score = overlap
+            best_id = proj["id"]
+    return best_id if best_score >= 2 else None
 
 
 # ---------- external link dispatch ----------
@@ -411,8 +503,6 @@ def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
 
 
 def _fetch_youtube_oembed(url: str, link: dict) -> list[dict]:
-    """No transcript access without extra API setup — oEmbed at least gets
-    a real title/author instead of leaving the link completely unindexed."""
     try:
         resp = requests.get("https://www.youtube.com/oembed",
                              params={"url": url, "format": "json"},
@@ -446,6 +536,8 @@ def _fetch_drive_link(url: str, link: dict) -> list[dict]:
     if pdf_bytes is None:
         return []
     text = extract_pdf_text(pdf_bytes)
+    if not text.strip():
+        return []
     chunks = []
     for para in paragraph_split(text)[:10]:
         for piece in recursive_char_split(para, chunk_size=400, overlap=80):
@@ -460,18 +552,78 @@ def _fetch_drive_link(url: str, link: dict) -> list[dict]:
     return chunks
 
 
+def _extract_json_ld_text(soup) -> str:
+    """Many JS-heavy sites (IMDb included) still embed a full JSON-LD
+    <script type="application/ld+json"> block for search-engine rich
+    snippets - this is server-rendered, present regardless of what the
+    visible page needs JavaScript to display. A malformed block on one
+    site is caught per-block, so it can't block extraction on any other
+    site or block."""
+    pieces = []
+    for tag in soup.find_all("script", attrs={"type": "application/ld+json"}):
+        try:
+            data = json.loads(tag.string or "")
+        except Exception:
+            continue
+        candidates = data if isinstance(data, list) else [data]
+        for item in candidates:
+            if not isinstance(item, dict):
+                continue
+            name = item.get("name") or ""
+            description = item.get("description") or ""
+            if name or description:
+                pieces.append(f"{name}: {description}" if name else description)
+    return " ".join(pieces).strip()
+
+
+def _extract_meta_description(soup) -> str:
+    """og:description / meta description - also server-rendered for social
+    previews, so it survives even when the main body needs JS to render."""
+    for attrs in ({"property": "og:description"}, {"name": "description"}):
+        tag = soup.find("meta", attrs=attrs)
+        if tag and tag.get("content"):
+            return tag["content"].strip()
+    return ""
+
+
 def _fetch_generic_page(url: str, link: dict) -> list[dict]:
+    """Tries JSON-LD, then meta description, then visible body text, in
+    that order of reliability for JS-rendered pages - each attempt is
+    independent, so a page that fails one extraction method still gets a
+    chance at the next rather than the whole link coming back empty."""
     try:
         resp = requests.get(url, headers=REQUEST_HEADERS, timeout=15)
         if resp.status_code != 200:
             return []
         soup = BeautifulSoup(resp.text, "html.parser")
-        for tag in soup(["script", "style", "nav"]):
-            tag.decompose()
-        text = soup.get_text(" ", strip=True)
-        text = text[:3000]
     except Exception as e:
         print(f"WARNING: could not fetch external link {url} ({e})")
+        return []
+
+    text = ""
+    try:
+        text = _extract_json_ld_text(soup)
+    except Exception as e:
+        print(f"NOTE: JSON-LD extraction failed for {url} ({e}) — trying meta description next.")
+
+    if not text:
+        try:
+            text = _extract_meta_description(soup)
+        except Exception as e:
+            print(f"NOTE: meta description extraction failed for {url} ({e}) — trying body text next.")
+
+    if not text:
+        try:
+            for tag in soup(["script", "style", "nav"]):
+                tag.decompose()
+            text = soup.get_text(" ", strip=True)
+        except Exception as e:
+            print(f"WARNING: body text extraction also failed for {url} ({e}) — giving up on this link.")
+            return []
+
+    text = text[:3000]
+    if not text.strip():
+        print(f"NOTE: no extractable text found at all for {url} (likely a fully JS-rendered page).")
         return []
 
     chunks = []
@@ -491,8 +643,7 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
 def chunk_external_links() -> list[dict]:
     """Every external link gets rendered — dispatched to a source-specific
     fetcher where a plain HTML scrape would fail (chess.com, YouTube,
-    Drive), and the generic scraper otherwise. Links whose scheme isn't
-    http(s) (mailto:, etc.) are skipped — nothing to fetch."""
+    Drive), and the generic scraper otherwise."""
     links_path = CONTENT_DIR / "links.json"
     if not links_path.exists():
         return []
@@ -511,6 +662,12 @@ def chunk_external_links() -> list[dict]:
         elif "youtube.com/watch" in url or "youtu.be/" in url:
             chunks += _fetch_youtube_oembed(url, link)
         elif "drive.google.com" in url:
+            # Skip if this is the same file as the resume - chunk_resume()
+            # already indexes it properly with semantic section splitting;
+            # routing it through here too would just double the content
+            # with a lower-quality generic paragraph split.
+            if _extract_drive_file_id(url) == _extract_drive_file_id(RESUME_DRIVE_VIEW_URL):
+                continue
             chunks += _fetch_drive_link(url, link)
         elif re.match(r"https?://github\.com/[^/]+/?$", url):
             continue  # profile link itself — repos are discovered separately
@@ -526,16 +683,22 @@ async def index_all():
     await init_db()
     pool = await get_pool()
 
+    repos = discover_github_repos(GITHUB_USERNAME)
+    known_projects = _project_keyword_sets(repos)
+
     all_chunks = []
     all_chunks += chunk_portfolio()
     all_chunks += chunk_resume()
     all_chunks += chunk_research_paper()
-    all_chunks += chunk_github_repos()
+    all_chunks += chunk_github_repos(repos)
     all_chunks += chunk_external_links()
 
     if not all_chunks:
         print("ERROR: no chunks produced, aborting reindex (leaving old index in place).")
         sys.exit(1)
+
+    for chunk in all_chunks:
+        chunk["project_id"] = assign_project_id(chunk["content"], known_projects)
 
     print(f"Embedding {len(all_chunks)} chunks...")
     embeddings = embed_texts([c["content"] for c in all_chunks])
@@ -548,11 +711,11 @@ async def index_all():
                 await conn.execute(
                     """
                     INSERT INTO knowledge_base
-                        (content, embedding, source, section, anchor, url, title, status, batch_id)
-                    VALUES ($1, $2::vector, $3, $4, $5, $6, $7, 'pending', $8)
+                        (content, embedding, source, section, anchor, url, title, project_id, status, batch_id)
+                    VALUES ($1, $2::vector, $3, $4, $5, $6, $7, $8, 'pending', $9)
                     """,
                     chunk["content"], vec_literal, chunk["source"], chunk["section"],
-                    chunk.get("anchor"), chunk["url"], chunk["title"], batch_id,
+                    chunk.get("anchor"), chunk["url"], chunk["title"], chunk.get("project_id"), batch_id,
                 )
 
             pending_count = await conn.fetchval(
