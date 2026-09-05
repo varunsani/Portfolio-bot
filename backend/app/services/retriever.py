@@ -36,6 +36,7 @@ Retrieval strategy
    query-relevant sentences before it reaches the LLM.
 """
 import re
+import json
 from dataclasses import dataclass
 from typing import List
 
@@ -47,6 +48,8 @@ from app.db.connection import get_pool
 from app.services.embedder import embed_query
 
 MAX_GUARANTEED_FRACTION = 0.5
+
+
 @dataclass
 class RetrievedChunk:
     content: str
@@ -64,6 +67,30 @@ class RetrievedChunk:
 
 def _tokenize(text: str) -> List[str]:
     return re.findall(r"[a-z0-9]+", text.lower())
+
+
+def _parse_embedding(raw) -> List[float]:
+    """
+    Safely convert whatever asyncpg returns for a pgvector column into
+    a plain Python list of floats.
+
+    asyncpg can return the vector column as:
+      - a string  '[0.1,0.2,...]'   (most common without a codec registered)
+      - a list/tuple of floats      (if a codec is registered)
+      - a numpy array               (unlikely but handled)
+
+    Calling list() on a string gives a list of characters, which is the
+    root cause of the 'could not convert string to float' error in _mmr.
+    """
+    if isinstance(raw, (list, tuple)):
+        return [float(x) for x in raw]
+    if isinstance(raw, np.ndarray):
+        return raw.astype(float).tolist()
+    if isinstance(raw, str):
+        # pgvector uses '[v1,v2,...]' format — json.loads handles it directly
+        return [float(x) for x in json.loads(raw)]
+    # fallback: try iterating whatever it is
+    return [float(x) for x in raw]
 
 
 async def _fetch_candidates(query_embedding: List[float], limit: int) -> List[RetrievedChunk]:
@@ -84,7 +111,7 @@ async def _fetch_candidates(query_embedding: List[float], limit: int) -> List[Re
     return [
         RetrievedChunk(
             content=r["content"],
-            embedding=list(r["embedding"]),
+            embedding=_parse_embedding(r["embedding"]),  # fixed: was list(r["embedding"])
             source=r["source"],
             section=r["section"],
             anchor=r["anchor"],
@@ -111,8 +138,8 @@ def _bm25_scores(query: str, chunks: List[RetrievedChunk]) -> List[float]:
 def _mmr(query_embedding: List[float], chunks: List[RetrievedChunk], k: int, lambda_mult: float) -> List[RetrievedChunk]:
     if not chunks or k <= 0:
         return []
-    q = np.array(query_embedding)
-    doc_vecs = [np.array(c.embedding) for c in chunks]
+    q = np.array(query_embedding, dtype=float)
+    doc_vecs = [np.array(c.embedding, dtype=float) for c in chunks]
 
     def cos(a, b):
         denom = (np.linalg.norm(a) * np.linalg.norm(b)) or 1e-9
@@ -197,25 +224,6 @@ async def retrieve(query: str) -> List[RetrievedChunk]:
 
     accepted.sort(key=lambda c: c.score, reverse=True)
     shortlist = accepted[: max(settings.top_k * 5, settings.top_k)]
-
-    # diversified_order = _diversify_by_project(shortlist)
-
-    # # Guaranteed project representatives are kept unconditionally; MMR only
-    # # competes for whatever slots are left, so the guarantee can't be
-    # # silently overridden by MMR's own relevance-first pick.
-    # seen_projects: set[str] = set()
-    # guaranteed: List[RetrievedChunk] = []
-    # for c in diversified_order:
-    #     if c.project_id and c.project_id not in seen_projects:
-    #         seen_projects.add(c.project_id)
-    #         guaranteed.append(c)
-    # guaranteed = guaranteed[: settings.top_k]
-
-    # remaining_slots = settings.top_k - len(guaranteed)
-    # final: List[RetrievedChunk] = list(guaranteed)
-    # if remaining_slots > 0:
-    #     pool_for_mmr = [c for c in diversified_order if c not in guaranteed]
-    #     final += _mmr(query_embedding, pool_for_mmr, k=remaining_slots, lambda_mult=settings.mmr_lambda)
 
     diversified_order = _diversify_by_project(shortlist)
 
