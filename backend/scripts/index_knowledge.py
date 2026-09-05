@@ -691,7 +691,8 @@ async def index_all():
     all_chunks += chunk_resume()
     all_chunks += chunk_research_paper()
     all_chunks += chunk_github_repos(repos)
-    all_chunks += chunk_external_links()
+    external_chunks = chunk_external_links()
+    all_chunks += external_chunks
 
     
 

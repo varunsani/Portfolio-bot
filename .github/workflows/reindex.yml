@@ -21,7 +21,10 @@ on:
       - "backend/content/**"
   schedule:
     - cron: "0 * * * *"   # once a every hour — safety net for Drive-only resume updates
+
   workflow_dispatch: {}
+permissions:
+  contents: write
 
 jobs:
   reindex:
@@ -49,7 +52,18 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           REDIS_URL: ${{ secrets.REDIS_URL }}
         run: python backend/scripts/index_knowledge.py
-
+      
+      - name: Commit updated external-links content if it changed
+        run: |
+          git config user.name "race-engineer-bot"
+          git config user.email "actions@github.com"
+          git add backend/content/scraped_external_links.md
+          if git diff --cached --quiet; then
+            echo "No external-link content changes detected — skipping commit."
+          else
+            git commit -m "chore: auto-sync scraped external link content [skip ci]"
+            git push
+          fi
 
       - name: Verify indexing
         env:

@@ -86,6 +86,18 @@ def scrape() -> tuple[str, list[dict]]:
     seen_headings = set()
     seen_lines = set()
 
+    for cell in body.select(".skill-cell"):
+        category_el = cell.select_one(".st")
+        category = category_el.get_text(" ", strip=True) if category_el else ""
+        tag_texts = [t.get_text(" ", strip=True) for t in cell.select(".tags span")]
+        if not tag_texts:
+            continue
+        anchor, section = _anchor_for(cell, anchor_map, default_anchor, default_title)
+        line = f"[{section}]({anchor}) {category}: {', '.join(tag_texts)}"
+        if line not in seen_lines:
+            seen_lines.add(line)
+            markdown_lines.append(line)
+
     for el in body.find_all(["h1", "h2", "h3", "h4", "p", "li", "a"]):
         text = el.get_text(" ", strip=True)
         if not text:
@@ -140,16 +152,7 @@ def main():
     portfolio_path.write_text(markdown)
     links_path.write_text(json.dumps(links, indent=2))
 
-        # Write readable Markdown of the external link content
-    # external_md_path = CONTENT_DIR / "scraped_external_links.md"
-    # with open(external_md_path, "w") as f:
-    #     f.write("# Scraped External Links\n\n")
-    #     f.write("List of external links found on the portfolio.\n\n")
-    #     for link in links:
-    #         f.write(f"## {link.get('label', 'Unknown')}\n")
-    #         f.write(f"**URL:** {link.get('url', '')}\n")
-    #         f.write(f"**Section:** {link.get('section', '')}\n\n")
-    # print(f"DEBUG: Wrote external link metadata to {external_md_path}")
+   
 
     if changed:
         print("CHANGED")
