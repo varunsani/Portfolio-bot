@@ -1,19 +1,28 @@
 import time
 from typing import List
 
+from app.constants import plain_label_for_anchor
 from app.models.schemas import ChatResponse, Citation
 from app.services import memory, retriever, generator, small_talk
 
 
 def _dedupe_citations(chunks) -> List[Citation]:
+    """Citation text always uses the plain label (e.g. "Projects"), never
+    the portfolio's flavorful section copy ("The Garage") - matches what
+    the LLM itself reasons about, and keeps F1 theming out of the citation
+    chips too. Deduped on (label, url) rather than (section, anchor), since
+    several distinct chunks - portfolio, resume, a GitHub README - can
+    fairly share the same plain label while still pointing at genuinely
+    different, individually worth-clicking destinations."""
     seen = set()
     citations = []
     for c in chunks:
-        key = (c.section, c.anchor)
+        label = plain_label_for_anchor(c.anchor, fallback_text=c.section)
+        key = (label, c.url)
         if key in seen:
             continue
         seen.add(key)
-        citations.append(Citation(text=f"{c.title or c.section}", url=c.url, anchor=c.anchor))
+        citations.append(Citation(text=label, url=c.url, anchor=c.anchor))
     return citations
 
 
