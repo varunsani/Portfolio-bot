@@ -339,14 +339,28 @@ def chunk_research_paper() -> list[dict]:
 
     chunks = []
     for para in paragraph_split(full_text):
-        chunks.append({
-            "content": para,
-            "source": "research_paper",
-            "section": "The Wind Tunnel (Research) — Multipacking in Hypercubes",
-            "anchor": "#research",
-            "url": RESEARCH_PAPER_URL,
-            "title": "Multipacking in Hypercubes (ICTCS 2025)",
-        })
+        for piece in recursive_char_split(para, chunk_size=400, overlap=80):
+            chunks.append({
+                "content": piece,
+                "source": "research_paper",
+                "section": "The Wind Tunnel (Research) — Multipacking in Hypercubes",
+                "anchor": "#research",
+                "url": RESEARCH_PAPER_URL,
+                "title": "Multipacking in Hypercubes (ICTCS 2025)",
+            })
+
+    chunks.append({
+        "content": (
+            "Co-authors of Varun's ICTCS 2025 paper 'Multipacking in Hypercubes': "
+            "Deepak Rajendraprasad, Varun Sani, Birenjith Sasidharan, and Jishnu Sen, "
+            "all affiliated with the Indian Institute of Technology Palakkad."
+        ),
+        "source": "research_paper",
+        "section": "The Wind Tunnel (Research) — Multipacking in Hypercubes",
+        "anchor": "#research",
+        "url": RESEARCH_PAPER_URL,
+        "title": "Multipacking in Hypercubes (ICTCS 2025) — Authors",
+    })
     return chunks
 
 
@@ -639,6 +653,47 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
             })
     return chunks
 
+def write_external_links_markdown(chunks: list[dict]) -> None:
+    """Writes the actual extracted content for every external link (from
+    chunk_external_links) to a human-readable markdown file, mirroring
+    portfolio.md's format: a heading per link, tagged body lines underneath.
+
+    This is separate from links.json (which only holds link metadata) -
+    this file holds the real scraped/fetched text so it's easy to eyeball
+    what actually got indexed for each link.
+    """
+    external_links_path = CONTENT_DIR / "scraped_external_links.md"
+
+    if not chunks:
+        external_links_path.write_text(
+            "# Scraped External Link Content\n\n(no external link content extracted this run)\n"
+        )
+        print("NOTE: no external link chunks to write to scraped_external_links.md")
+        return
+
+    # Group by (url, title) preserving first-seen order, so every distinct
+    # link gets exactly one heading with all its extracted content lines
+    # underneath, in the order they were produced.
+    grouped: dict[tuple[str, str], list[dict]] = {}
+    for chunk in chunks:
+        key = (chunk["url"], chunk["title"])
+        grouped.setdefault(key, []).append(chunk)
+
+    lines = ["# Scraped External Link Content\n"]
+    lines.append("Extracted content for every external link referenced in content/links.json.\n")
+
+    for (url, title), group_chunks in grouped.items():
+        section = group_chunks[0]["section"]
+        anchor = group_chunks[0].get("anchor") or ""
+        lines.append(f"\n## [{section}] {title}\n")
+        lines.append(f"Source: {url}\n")
+        for chunk in group_chunks:
+            content = chunk["content"].strip()
+            if content:
+                lines.append(f"[{section}]({anchor}) {content}")
+
+    external_links_path.write_text("\n".join(lines))
+    print(f"Wrote {len(grouped)} external links' content to {external_links_path}")
 
 def chunk_external_links() -> list[dict]:
     """Every external link gets rendered — dispatched to a source-specific
@@ -692,6 +747,7 @@ async def index_all():
     all_chunks += chunk_research_paper()
     all_chunks += chunk_github_repos(repos)
     external_chunks = chunk_external_links()
+    write_external_links_markdown(external_chunks)
     all_chunks += external_chunks
 
     
