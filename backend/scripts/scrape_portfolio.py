@@ -140,6 +140,17 @@ def main():
     portfolio_path.write_text(markdown)
     links_path.write_text(json.dumps(links, indent=2))
 
+        # Write readable Markdown of the external link content
+    external_md_path = CONTENT_DIR / "scraped_external_links.md"
+    with open(external_md_path, "w") as f:
+        f.write("# Scraped External Links\n\n")
+        f.write("List of external links found on the portfolio.\n\n")
+        for link in links:
+            f.write(f"## {link.get('label', 'Unknown')}\n")
+            f.write(f"**URL:** {link.get('url', '')}\n")
+            f.write(f"**Section:** {link.get('section', '')}\n\n")
+    print(f"DEBUG: Wrote external link metadata to {external_md_path}")
+
     if changed:
         print("CHANGED")
         sys.exit(0)

@@ -702,16 +702,6 @@ async def index_all():
 
     print(f"Embedding {len(all_chunks)} chunks...")
 
-    external_md_path = CONTENT_DIR / "scraped_external_links.md"
-    with open(external_md_path, "w") as f:
-        f.write("# Scraped External Links Content\n\n")
-        for chunk in all_chunks:
-            if chunk["source"] == "external_link":
-                f.write(f"## {chunk.get('title', 'Unknown')}\n")
-                f.write(f"**URL:** {chunk.get('url', '')}\n")
-                f.write(f"**Section:** {chunk.get('section', '')}\n\n")
-                f.write(f"{chunk['content']}\n\n---\n\n")
-    print(f"DEBUG: Wrote scraped external link content to {external_md_path}")
     
     embeddings = embed_texts([c["content"] for c in all_chunks])
 
