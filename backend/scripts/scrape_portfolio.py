@@ -6,25 +6,37 @@ This is what makes the knowledge base self-updating: run this on a schedule
 (see .github/workflows/scrape-and-reindex.yml) and whenever the live site's
 text changes, portfolio.md changes, which triggers reindex.yml.
 
-Section/anchor detection is fully automatic — no hardcoded section-name map
+Section/anchor detection is fully automatic - no hardcoded section-name map
 to maintain. The portfolio's own HTML already tags each block with a real
 <section id="..."> / <footer id="..."> (that's what the nav's #anchor links
-point at), plus an ".eyebrow" label and an <h2> inside each one for the
-human-readable title. We read those directly, so renaming a section header
-or adding a brand-new <section id="..."> on the live site is picked up on
-the next scrape with zero changes needed here.
+point at). The section label written into portfolio.md is derived directly
+from that id via app.constants.plain_label_from_anchor_id, so renaming a
+section's visible heading or adding a brand-new <section id="..."> on the
+live site is picked up on the next scrape with zero changes needed here.
+
+Body text capture includes bare <a> tags, not just <p>/<li> - this matters
+because the contact section (and possibly others) lists email/phone/social
+links as plain anchors directly inside a container, with no surrounding
+paragraph. An earlier version of this scraper only captured <p>/<li> text,
+which silently meant contact details never made it into portfolio.md at
+all. An <a> is only captured on its own if it isn't already nested inside a
+<p>/<li> that itself gets captured - otherwise its text is already covered
+by that ancestor's full-text capture, and capturing it again would just
+duplicate the same line.
 
 Also extracts every external link referenced on the page (papers, GitHub
 repos, chess games, F1 clips, etc.) into content/links.json so those get
 indexed too.
 """
 import json
-import re
 import sys
 from pathlib import Path
 
 import requests
 from bs4 import BeautifulSoup
+
+sys.path.append(str(Path(__file__).parent.parent))
+from app.constants import plain_label_from_anchor_id  # noqa: E402
 
 PORTFOLIO_URL = "https://varunsani.vercel.app"
 CONTENT_DIR = Path(__file__).parent.parent / "content"
@@ -32,31 +44,12 @@ CONTENT_DIR = Path(__file__).parent.parent / "content"
 ID_CONTAINER_TAGS = ["section", "footer", "header", "main", "article"]
 
 
-def _container_title(container) -> str:
-    """Human-readable section name, built from whatever the page itself
-    uses to label the section (an '.eyebrow' tag and/or the first h1-h4),
-    falling back to a title-cased version of the id if neither is present."""
-    parts = []
-    eyebrow = container.find(class_="eyebrow")
-    if eyebrow:
-        text = eyebrow.get_text(" ", strip=True)
-        if text:
-            parts.append(text)
-    heading = container.find(["h1", "h2", "h3", "h4"])
-    if heading:
-        text = heading.get_text(" ", strip=True)
-        if text:
-            parts.append(text)
-    if parts:
-        return " — ".join(parts)
-    return container.get("id", "section").replace("-", " ").replace("_", " ").title()
-
-
 def _build_anchor_map(soup) -> list[tuple]:
     """Returns [(anchor, title, container), ...] in document order, for
-    every real id-bearing section/footer/etc. on the page."""
+    every real id-bearing section/footer/etc. on the page. Title is derived
+    purely from the id - see module docstring for why."""
     containers = soup.find_all(ID_CONTAINER_TAGS, id=True)
-    return [(f"#{c['id']}", _container_title(c), c) for c in containers]
+    return [(f"#{c['id']}", plain_label_from_anchor_id(f"#{c['id']}"), c) for c in containers]
 
 
 def _anchor_for(el, anchor_map, default_anchor, default_title):
@@ -86,11 +79,12 @@ def scrape() -> tuple[str, list[dict]]:
     if anchor_map:
         default_anchor, default_title = anchor_map[0][0], anchor_map[0][1]
     else:
-        default_anchor, default_title = "#about", "Introduction"
+        default_anchor, default_title = "#about", "About"
 
     markdown_lines = [f"# Varun Sani Portfolio\nSource: {PORTFOLIO_URL}\n"]
     links = {}
     seen_headings = set()
+    seen_lines = set()
 
     for el in body.find_all(["h1", "h2", "h3", "h4", "p", "li", "a"]):
         text = el.get_text(" ", strip=True)
@@ -105,7 +99,19 @@ def scrape() -> tuple[str, list[dict]]:
                 seen_headings.add(key)
                 markdown_lines.append(f"\n## [{section}] {text}\n")
         elif el.name in ("p", "li"):
-            markdown_lines.append(f"[{section}]({anchor}) {text}")
+            line = f"[{section}]({anchor}) {text}"
+            if line not in seen_lines:
+                seen_lines.add(line)
+                markdown_lines.append(line)
+        elif el.name == "a":
+            # Only capture a bare link as its own body line if it isn't
+            # already inside a <p>/<li> that's captured above - otherwise
+            # this is a duplicate of text already written.
+            if el.find_parent(["p", "li"]) is None:
+                line = f"[{section}]({anchor}) {text}"
+                if line not in seen_lines:
+                    seen_lines.add(line)
+                    markdown_lines.append(line)
 
         if el.name == "a" and el.get("href", "").startswith("http"):
             href = el["href"]
@@ -134,8 +140,6 @@ def main():
     portfolio_path.write_text(markdown)
     links_path.write_text(json.dumps(links, indent=2))
 
-    # Signal to the calling GitHub Action whether content actually changed,
-    # so we don't reindex (and burn embedding compute) on no-op runs.
     if changed:
         print("CHANGED")
         sys.exit(0)
