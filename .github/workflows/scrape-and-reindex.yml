@@ -54,7 +54,8 @@ jobs:
           git config user.name "race-engineer-bot"
           git config user.email "actions@github.com"
           # Add the new markdown dump file to the commit list
-          git add backend/content/portfolio.md backend/content/links.json backend/content/scraped_external_links.md
+          git add backend/content/portfolio.md backend/content/links.json 
+          git add backend/content/scraped_external_links.md 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No content changes detected — skipping commit."
           else
