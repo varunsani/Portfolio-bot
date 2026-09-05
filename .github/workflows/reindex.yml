@@ -50,13 +50,13 @@ jobs:
           REDIS_URL: ${{ secrets.REDIS_URL }}
         run: python backend/scripts/index_knowledge.py
 
-      - name: Commit debug dump (optional)
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add backend/content/external_chunks_debug.json
-          git commit -m "chore: update external chunks debug dump" || echo "No changes to commit"
-          git push
+      # - name: Commit debug dump (optional)
+      #   run: |
+      #     git config user.name "GitHub Actions"
+      #     git config user.email "actions@github.com"
+      #     git add backend/content/external_chunks_debug.json
+      #     git commit -m "chore: update external chunks debug dump" || echo "No changes to commit"
+      #     git push
 
       - name: Verify indexing
         env:
