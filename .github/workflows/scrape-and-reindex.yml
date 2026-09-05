@@ -37,14 +37,27 @@ jobs:
           python backend/scripts/scrape_portfolio.py | tee scrape_result.txt
           echo "result=$(cat scrape_result.txt)" >> "$GITHUB_OUTPUT"
 
+      # - name: Commit changes if content differs
+      #   run: |
+      #     git config user.name "race-engineer-bot"
+      #     git config user.email "actions@github.com"
+      #     git add backend/content/portfolio.md backend/content/links.json
+      #     if git diff --cached --quiet; then
+      #       echo "No content changes detected — skipping commit."
+      #     else
+      #       git commit -m "chore: auto-sync portfolio content [skip ci-deploy]"
+      #       git push
+      #     fi
+
       - name: Commit changes if content differs
         run: |
           git config user.name "race-engineer-bot"
           git config user.email "actions@github.com"
-          git add backend/content/portfolio.md backend/content/links.json
+          # Add the new markdown dump file to the commit list
+          git add backend/content/portfolio.md backend/content/links.json backend/content/scraped_external_links.md
           if git diff --cached --quiet; then
             echo "No content changes detected — skipping commit."
           else
-            git commit -m "chore: auto-sync portfolio content [skip ci-deploy]"
+            git commit -m "chore: auto-sync portfolio content and scraped external links [skip ci-deploy]"
             git push
           fi
