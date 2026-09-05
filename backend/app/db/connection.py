@@ -31,6 +31,13 @@ CREATE TABLE IF NOT EXISTS knowledge_base (
     created_at  TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Added after the initial release: which real-world project (if any) a
+-- chunk is about, tagged at indexing time from GitHub repo names/
+-- descriptions. ADD COLUMN IF NOT EXISTS is idempotent, so this runs
+-- safely on both a brand-new database and an existing one that predates
+-- this column.
+ALTER TABLE knowledge_base ADD COLUMN IF NOT EXISTS project_id VARCHAR(150);
+
 CREATE INDEX IF NOT EXISTS knowledge_base_embedding_hnsw
 ON knowledge_base
 USING hnsw (embedding vector_cosine_ops)
