@@ -757,7 +757,7 @@ async def index_all():
         + external_chunks
     )
 
-    write_chunks_markdown("portfolio",      portfolio_chunks)
+    write_chunks_markdown("portfolio_debug",      portfolio_chunks)
     write_chunks_markdown("resume",         resume_chunks)
     write_chunks_markdown("research_paper", research_chunks)
     write_chunks_markdown("github_repos",   github_chunks)
