@@ -18,7 +18,7 @@ on:
     paths:
       - "backend/content/**"
   schedule:
-    - cron: "5 * * * *"   # once every hour after 5 min — safety net for Drive-only resume updates
+    - cron: "8 * * * *"   # once every hour after 8 min — safety net for Drive-only resume updates
   workflow_dispatch: {}
 permissions:
   contents: write
