@@ -11,60 +11,55 @@
 # no per-source change diffing — so tighten this cron if that compute cost
 # matters more than same-day resume freshness, or loosen it if 24h is too
 # slow. `workflow_dispatch` still gives you an instant manual option either way.)
-
 name: Reindex Knowledge Base
-
 on:
   push:
     branches: [main]
     paths:
       - "backend/content/**"
   schedule:
-    - cron: "0 * * * *"   # once a every hour — safety net for Drive-only resume updates
-
+    - cron: "0 * * * *"   # once every hour — safety net for Drive-only resume updates
   workflow_dispatch: {}
 permissions:
   contents: write
-
 jobs:
   reindex:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Cache pip packages
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
           key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
-
       - name: Install dependencies
         run: pip install -r backend/requirements.txt
-
       - name: Run indexing script
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           REDIS_URL: ${{ secrets.REDIS_URL }}
         run: python backend/scripts/index_knowledge.py
-      
-      - name: Commit updated external-links content if it changed
+      - name: Commit generated markdown files if changed
         run: |
           git config user.name "race-engineer-bot"
           git config user.email "actions@github.com"
-          git add backend/content/scraped_external_links.md
+          git add backend/content/portfolio.md \
+                  backend/content/resume.md \
+                  backend/content/research_paper.md \
+                  backend/content/github_repos.md \
+                  backend/content/external_links.md \
+                  backend/content/master.md
           if git diff --cached --quiet; then
-            echo "No external-link content changes detected — skipping commit."
+            echo "No markdown content changes detected — skipping commit."
           else
-            git commit -m "chore: auto-sync scraped external link content [skip ci]"
+            git commit -m "chore: auto-sync indexed content markdowns [skip ci]"
             git push
           fi
-
       - name: Verify indexing
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
