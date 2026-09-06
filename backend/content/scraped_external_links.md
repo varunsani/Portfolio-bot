@@ -386,6 +386,12 @@ Source: https://www.uffizi.it/en
 
 [Beyond](#beyond) (Referenced by Varun in 'Beyond') Uffizi: Welcome to the official website of the Uffizi Galleries in Florence. Here you can find information about the collections of the Uffizi, Palazzo Pitti, and Boboli Gardens.
 
+## [Beyond] Louvre
+
+Source: https://www.louvre.fr/en
+
+[Beyond](#beyond) (Referenced by Varun in 'Beyond') Louvre: Welcome to the Louvre – prepare your visit, explore the palace and museum collections and check out the latest news
+
 ## [Beyond] Rijksmuseum
 
 Source: https://www.rijksmuseum.nl/en
