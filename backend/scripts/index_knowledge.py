@@ -664,11 +664,11 @@ def write_chunks_markdown(name: str, chunks: list[dict]) -> None:
     Calling with name='master' writes all_chunks combined — every source
     in index order — giving a single file to audit the full index at once.
     """
-    content_dir = CONTENT_DIR  # already points to backend/content
-    content_dir.mkdir(parents=True, exist_ok=True)
+    # content_dir = CONTENT_DIR  # already points to backend/content
+    # content_dir.mkdir(parents=True, exist_ok=True)
 
     filename = "master.md" if name == "master" else f"{name}.md"
-    path     = content_dir / filename
+    path     = CONTENT_DIR / filename
 
     if not chunks:
         path.write_text(f"# {name}\n\n(no chunks extracted this run)\n")
