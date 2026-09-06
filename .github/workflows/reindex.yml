@@ -50,6 +50,7 @@ jobs:
           git config user.email "actions@github.com"
           git add backend/content/portfolio.md \
                   backend/content/resume.md \
+                  backend/content/portfolio_debug.md \
                   backend/content/research_paper.md \
                   backend/content/github_repos.md \
                   backend/content/external_links.md \
