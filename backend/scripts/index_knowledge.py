@@ -718,6 +718,8 @@ def chunk_external_links() -> list[dict]:
             chunks += _fetch_chess_com_stats(username, link)
         elif "youtube.com/watch" in url or "youtu.be/" in url:
             chunks += _fetch_youtube_oembed(url, link)
+        elif url == RESEARCH_PAPER_URL:
+            continue  # already indexed properly by chunk_research_paper()
         elif "drive.google.com" in url:
             # Skip if this is the same file as the resume - chunk_resume()
             # already indexes it properly with semantic section splitting;
