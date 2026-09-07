@@ -351,7 +351,7 @@ def chunk_research_paper() -> list[dict]:
 
     chunks.append({
         "content": (
-            "Co-authors of Varun's ICTCS 2025 paper 'Multipacking in Hypercubes': "
+            "Authors of Varun's ICTCS 2025 paper 'Multipacking in Hypercubes': "
             "Deepak Rajendraprasad, Varun Sani, Birenjith Sasidharan, and Jishnu Sen, "
             "all affiliated with the Indian Institute of Technology Palakkad."
         ),
