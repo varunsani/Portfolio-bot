@@ -1518,7 +1518,7 @@ volume 15411, Springer, 2025, pp. 111–126.
 **Source:** research_paper  |  **Anchor:** #research
 **URL:** https://ceur-ws.org/Vol-4039/paper19.pdf  |  **Project ID:** none
 
-Co-authors of Varun's ICTCS 2025 paper 'Multipacking in Hypercubes': Deepak Rajendraprasad, Varun Sani, Birenjith Sasidharan, and Jishnu Sen, all affiliated with the Indian Institute of Technology Palakkad.
+Authors of Varun's ICTCS 2025 paper 'Multipacking in Hypercubes': Deepak Rajendraprasad, Varun Sani, Birenjith Sasidharan, and Jishnu Sen, all affiliated with the Indian Institute of Technology Palakkad.
 
 ---
 
