@@ -258,25 +258,56 @@ def chunk_portfolio() -> list[dict]:
     text = path.read_text()
     chunks = []
     tag_re = re.compile(r"^\[(.+?)\]\((#.*?)\)\s?(.*)$")
-    buffer_by_section: dict[tuple[str, str], list[str]] = {}
+    # buffer_by_section: dict[tuple[str, str], list[str]] = {}
 
-    for line in text.splitlines():
-        m = tag_re.match(line.strip())
+    # for line in text.splitlines():
+    #     m = tag_re.match(line.strip())
+    #     if not m:
+    #         continue
+    #     section, anchor, content = m.groups()
+    #     buffer_by_section.setdefault((section, anchor), []).append(content)
+
+    # for (section, anchor), lines in buffer_by_section.items():
+    #     full_text = " ".join(lines)
+    #     for piece in recursive_char_split(full_text, chunk_size=400, overlap=80):
+    #         chunks.append({
+    #             "content": piece,
+    #             "source": "portfolio",
+    #             "section": section,
+    #             "anchor": anchor,
+    #             "url": f"https://varunsani.vercel.app/{anchor}",
+    #             "title": section,
+    #         })
+    # return chunks
+
+    heading_re = re.compile(r"^##\s*\[(.+?)\]\s*(.+?)\s*$")
+    buffer_by_section: dict[tuple[str, str, str], list[str]] = {}
+    current_subheading = ""
+
+    for raw_line in text.splitlines():
+        line = raw_line.strip()
+        h = heading_re.match(line)
+        if h:
+            current_subheading = h.group(2)
+            continue
+        m = tag_re.match(line)
         if not m:
             continue
         section, anchor, content = m.groups()
-        buffer_by_section.setdefault((section, anchor), []).append(content)
+        buffer_by_section.setdefault((section, anchor, current_subheading), []).append(content)
 
-    for (section, anchor), lines in buffer_by_section.items():
+    for (section, anchor, subheading), lines in buffer_by_section.items():
         full_text = " ".join(lines)
+        display_section = f"{section} — {subheading}" if subheading and subheading != section else section
         for piece in recursive_char_split(full_text, chunk_size=400, overlap=80):
+            content_piece = f"{subheading}: {piece}" if subheading and subheading != section else piece
             chunks.append({
-                "content": piece,
+                "content": content_piece,
                 "source": "portfolio",
-                "section": section,
+                "section": display_section,
                 "anchor": anchor,
                 "url": f"https://varunsani.vercel.app/{anchor}",
-                "title": section,
+                "title": display_section,
             })
     return chunks
 
@@ -348,10 +379,23 @@ def chunk_research_paper() -> list[dict]:
                 "url": RESEARCH_PAPER_URL,
                 "title": "Multipacking in Hypercubes (ICTCS 2025)",
             })
+    chunks.append({
+        "content": (
+            "The title of Varun's research paper, published at ICTCS 2025 "
+            "(International Conference on Theoretical Computer Science) in "
+            "CEUR Workshop Proceedings Vol-4039, is 'Multipacking in "
+            "Hypercubes'. This is Varun's academic publication / research paper."
+        ),
+        "source": "research_paper",
+        "section": "The Wind Tunnel (Research) — Multipacking in Hypercubes",
+        "anchor": "#research",
+        "url": RESEARCH_PAPER_URL,
+        "title": "Multipacking in Hypercubes (ICTCS 2025) — Title",
+    })
 
     chunks.append({
         "content": (
-            "Authors of Varun's ICTCS 2025 paper 'Multipacking in Hypercubes': "
+            "Authors of Varun's ICTCS 2025 publication paper 'Multipacking in Hypercubes': "
             "Deepak Rajendraprasad, Varun Sani, Birenjith Sasidharan, and Jishnu Sen, "
             "all affiliated with the Indian Institute of Technology Palakkad."
         ),
