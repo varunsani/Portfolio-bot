@@ -11,7 +11,7 @@ class Settings(BaseSettings):
     portfolio_url: str = "https://varunsani.vercel.app"
     frontend_origin_prod: str = "https://varunsani.vercel.app"
 
-    top_k: int = 100
+    top_k: int = 20
     candidate_pool_multiplier: int = 10
     vector_min_threshold: float = 0.28       # <--- NEW REQUIRED SETTING
     bm25_min_threshold: float = 0.35         # <--- NEW REQUIRED SETTING
