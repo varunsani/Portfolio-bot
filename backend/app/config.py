@@ -13,16 +13,26 @@ class Settings(BaseSettings):
 
     # Lowered from 10 -> 5: at top_k=10 nearly every answer surfaced up to
     # 10 citation chips, several of them barely-relevant "either" gate
-    # survivors (see vector_min_threshold/bm25_min_threshold below). 5 is
-    # enough to back a 2-3 sentence answer without flooding the chip row.
+    # survivors. 5 is enough to back a 2-3 sentence answer without
+    # flooding the chip row.
     top_k: int = 5
     candidate_pool_multiplier: int = 10
-    # Raised both floors a notch: 0.28/0.35 let a lot of loosely-related
-    # chunks clear the "either" gate (see retriever.retrieve docstring),
-    # which is what produced citations that had nothing to do with the
-    # question asked.
-    vector_min_threshold: float = 0.32
-    bm25_min_threshold: float = 0.42
+
+    # Primary-source content (portfolio/resume/research paper/GitHub) keeps
+    # the original, looser floors - these chunks are already boosted toward
+    # being genuinely about Varun (see retriever._PRIMARY_SOURCES /
+    # _SOURCE_SCORE_BOOST), so a stricter gate here mostly drops legitimate
+    # sparse content (e.g. the paper title/authors chunk) rather than noise.
+    vector_min_threshold: float = 0.28
+    bm25_min_threshold: float = 0.35
+
+    # Stricter floors, scoped to external_link chunks only (see
+    # retriever._passes_threshold) - this is where the noisy/unrelated
+    # citations were actually coming from, so tightening only this pair
+    # cuts the noise without also starving primary-source retrieval.
+    vector_min_threshold_external: float = 0.32
+    bm25_min_threshold_external: float = 0.42
+
     vector_weight: float = 0.7
     bm25_weight: float = 0.3
     mmr_lambda: float = 0.7
