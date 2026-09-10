@@ -390,12 +390,13 @@ def chunk_research_paper() -> list[dict]:
         print("WARNING: research paper produced no extractable text at all — skipping.")
         return []
 
+    cleaned_text, removed = _strip_boilerplate_lines(full_text)
+    if removed:
+        print(f"NOTE: stripped {removed} boilerplate line(s) from the research paper "
+              f"(ORCID/copyright/footnote noise) — the rest of the document is indexed normally.")
+
     chunks = []
-    skipped = 0
-    for para in paragraph_split(full_text):
-        if _is_boilerplate_paragraph(para):
-            skipped += 1
-            continue
+    for para in paragraph_split(cleaned_text):
         for piece in recursive_char_split(para, chunk_size=400, overlap=80):
             chunks.append({
                 "content": piece,
