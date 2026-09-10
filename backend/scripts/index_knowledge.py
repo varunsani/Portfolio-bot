@@ -39,6 +39,7 @@ import hashlib
 import json
 import re
 import sys
+import time
 import uuid
 from io import BytesIO
 from pathlib import Path
@@ -51,6 +52,8 @@ from youtube_transcript_api._errors import (
     TranscriptsDisabled,
     NoTranscriptFound,
     VideoUnavailable,
+    RequestBlocked,
+    IpBlocked,
 )
 
 sys.path.append(str(Path(__file__).parent.parent))
@@ -76,6 +79,26 @@ REQUEST_HEADERS = {
         "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
         "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
     )
+}
+
+# Bot-detection on sites like IMDb and chessgames.com looks at more than
+# just the User-Agent - a bare UA with none of the other headers a real
+# browser always sends (Accept, Accept-Language, Sec-Fetch-*, a same-site
+# Referer) is itself a signal of a script. This is layered on top of
+# REQUEST_HEADERS only for chunk_external_links()'s generic page fetcher,
+# so the sites that already work fine with the plain UA (Wikipedia, arXiv,
+# poetryfoundation.org, museum sites, Goodreads) are left untouched.
+GENERIC_PAGE_HEADERS = {
+    **REQUEST_HEADERS,
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Connection": "keep-alive",
+    "Upgrade-Insecure-Requests": "1",
+    "Sec-Fetch-Dest": "document",
+    "Sec-Fetch-Mode": "navigate",
+    "Sec-Fetch-Site": "none",
+    "Sec-Fetch-User": "?1",
+    "Referer": "https://www.google.com/",
 }
 
 _STOPWORDS = {
@@ -564,7 +587,34 @@ def assign_project_id(content: str, known_projects: list[dict]) -> str | None:
 
 def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
     """chess.com's profile page is JS-rendered — ratings never show up in a
-    plain HTML fetch. Their public stats API returns them directly."""
+    plain HTML fetch. Their public stats API returns them directly.
+
+    Also pulls the public profile endpoint (title, league, followers,
+    join date) and each time control's win/loss/draw record, not just the
+    bare rating number - a rating alone ("Rapid rating: 1450") is a much
+    thinner chunk than one that also carries the record and any title, so
+    this gives the retriever more to actually match a query against."""
+    lines = []
+
+    try:
+        profile_resp = requests.get(f"https://api.chess.com/pub/player/{username}",
+                                     headers=REQUEST_HEADERS, timeout=15)
+        profile_resp.raise_for_status()
+        profile = profile_resp.json()
+    except Exception as e:
+        print(f"WARNING: chess.com profile fetch failed for {username} ({e})")
+        profile = {}
+
+    if profile.get("title"):
+        lines.append(f"Title: {profile['title']}")
+    if profile.get("league"):
+        lines.append(f"League: {profile['league']}")
+    if profile.get("followers") is not None:
+        lines.append(f"Followers: {profile['followers']}")
+    if profile.get("joined"):
+        joined_year = time.gmtime(profile["joined"]).tm_year
+        lines.append(f"Member since: {joined_year}")
+
     try:
         resp = requests.get(f"https://api.chess.com/pub/player/{username}/stats",
                              headers=REQUEST_HEADERS, timeout=15)
@@ -572,9 +622,8 @@ def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
         data = resp.json()
     except Exception as e:
         print(f"WARNING: chess.com stats fetch failed for {username} ({e})")
-        return []
+        data = {}
 
-    lines = []
     label_map = {
         "chess_rapid": "Rapid", "chess_blitz": "Blitz", "chess_bullet": "Bullet",
         "chess_daily": "Daily",
@@ -588,12 +637,18 @@ def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
                 text = f"{label} rating: {rating}"
                 if best and best != rating:
                     text += f" (best: {best})"
+                record = block.get("record") or {}
+                if record:
+                    w, l, d = record.get("win"), record.get("loss"), record.get("draw")
+                    if w is not None and l is not None and d is not None:
+                        text += f" — record {w}W/{l}L/{d}D"
                 lines.append(text)
 
     if not lines:
+        print(f"NOTE: chess.com returned no usable profile/stats data for {username}.")
         return []
 
-    content = f"Varun's Chess.com ratings — {'; '.join(lines)}."
+    content = f"Varun's Chess.com profile — {'; '.join(lines)}."
     return [{
         "content": content,
         "source": "external_link",
@@ -683,14 +738,36 @@ def _fetch_youtube_transcript_text(video_id: str) -> str:
     the actual spoken content is indexed, not just the title. Any of these
     failure modes (captions off, no transcript, video unavailable) just
     means we fall back to metadata-only for this video, not that the whole
-    run aborts."""
+    run aborts.
+
+    FIX: this was calling the removed `YouTubeTranscriptApi.get_transcript`
+    static method - youtube-transcript-api v1.x replaced it with an
+    instance-based `YouTubeTranscriptApi().fetch(video_id)` that returns a
+    FetchedTranscript object, not a list of dicts. Every call here was
+    raising AttributeError, silently swallowed by the bare `except
+    Exception` below, which is exactly why nothing was ever being
+    transcribed - it never got far enough to hit a real transcript error.
+    A print now always runs before the fetch so a reindex log makes it
+    obvious this step executed, and RequestBlocked/IpBlocked are now
+    caught explicitly and explained, since YouTube blocking a CI runner's
+    (e.g. GitHub Actions) IP outright is the other very common reason this
+    silently returns nothing."""
+    print(f"Fetching YouTube transcript for video {video_id}...")
     try:
-        segments = YouTubeTranscriptApi.get_transcript(video_id)
+        segments = YouTubeTranscriptApi().fetch(video_id).to_raw_data()
     except (TranscriptsDisabled, NoTranscriptFound, VideoUnavailable) as e:
         print(f"NOTE: no transcript available for YouTube video {video_id} ({e}).")
         return ""
+    except (RequestBlocked, IpBlocked) as e:
+        print(f"WARNING: YouTube blocked the transcript request for video {video_id} "
+              f"({type(e).__name__}) — this almost always means the request came from a "
+              f"datacenter/CI IP (e.g. a GitHub Actions runner), which YouTube blocks "
+              f"outright regardless of retries. Requires routing through a proxy "
+              f"(youtube_transcript_api's ProxyConfig/WebshareProxyConfig) to fix in CI.")
+        return ""
     except Exception as e:
-        print(f"WARNING: transcript fetch failed for YouTube video {video_id} ({e}).")
+        print(f"WARNING: transcript fetch failed for YouTube video {video_id} "
+              f"({type(e).__name__}: {e}).")
         return ""
     return " ".join(seg["text"] for seg in segments if seg.get("text"))
 
@@ -840,14 +917,43 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
     still needed as the fallback for genuinely JS-rendered pages where
     body text comes back empty - but "found something" and "found the
     best available something" aren't the same, so all three are now
-    attempted and scored by length instead of by whichever ran first."""
-    try:
-        resp = requests.get(url, headers=REQUEST_HEADERS, timeout=15)
-        if resp.status_code != 200:
+    attempted and scored by length instead of by whichever ran first.
+
+    FIX: a non-200 response (IMDb and chessgames.com both bot-gate with a
+    403/429 rather than serving stripped content) used to just `return []`
+    with zero logging, which is why those pages looked like they were
+    "scraping nothing" with no way to tell why. This now (a) sends a
+    fuller browser-like header set - Accept/Accept-Language/Sec-Fetch-*/
+    Referer, which a bare User-Agent doesn't cover - (b) retries once
+    after a short backoff on a 429/503 (rate-limiting, not a hard block),
+    and (c) always logs the actual status code and a body preview on
+    failure so a real block vs. a transient error is distinguishable from
+    the reindex logs."""
+    resp = None
+    for attempt in range(2):
+        try:
+            resp = requests.get(url, headers=GENERIC_PAGE_HEADERS, timeout=15)
+        except Exception as e:
+            print(f"WARNING: could not fetch external link {url} ({e})")
             return []
+
+        if resp.status_code == 200:
+            break
+        if resp.status_code in (429, 503) and attempt == 0:
+            print(f"NOTE: {url} returned HTTP {resp.status_code} (rate-limited) — retrying once after backoff.")
+            time.sleep(2)
+            continue
+        print(f"WARNING: {url} returned HTTP {resp.status_code} — likely bot-blocked "
+              f"(common for IMDb/chessgames.com); skipping. Body preview: {resp.text[:200]!r}")
+        return []
+
+    if resp is None or resp.status_code != 200:
+        return []
+
+    try:
         soup = BeautifulSoup(resp.text, "html.parser")
     except Exception as e:
-        print(f"WARNING: could not fetch external link {url} ({e})")
+        print(f"WARNING: could not parse {url} ({e})")
         return []
 
     candidates = []
