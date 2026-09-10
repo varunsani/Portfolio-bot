@@ -21,7 +21,11 @@ competes with the page's own load/Lighthouse timing. Before using it:
 replace the placeholder in the inlined script —
 `window.RACE_ENGINEER_API_URL = "https://your-app.railway.app"` — with your
 real deployed backend URL, then upload it to Vercel in place of your
-current `index.html`.
+current `index.html`. Scroll-reveal (`.reveal` sections) fires on
+`threshold: 0` + a bottom `rootMargin`, not a fixed intersection-ratio
+threshold — a section taller than the viewport (common on phones for
+Projects/Beyond) would otherwise never cross a percentage-based threshold
+and would stay invisible.
 
 ## How the self-updating part works
 
@@ -46,23 +50,41 @@ If you'd rather not wait up to 1 hours, click **Run workflow** on
 
 ## Retrieval strategy (why it's not just cosine similarity)
 
-- **Hybrid search with an "either" acceptance gate**: a chunk survives if
-  its raw vector similarity clears one bar, OR its BM25 keyword score
-  clears a separate bar — not one blended score with a single cutoff. This
-  matters for queries with zero vocabulary overlap with the source text
-  (e.g. "university" when the portfolio only ever says "Institute of
+- **Hybrid candidate generation**: candidates come from two sources merged
+  into one pool — pgvector cosine search, and a Postgres full-text-search
+  pass (`to_tsvector`/`plainto_tsquery` against the `knowledge_base_content_trgm`
+  GIN index) run in parallel. Vector-only candidate generation has a blind
+  spot: a short, specific chunk can sit outside the top vector-similarity
+  results whenever the pool also contains a lot of longer, topically-adjacent
+  content (e.g. a referenced arXiv page that also uses the same vocabulary).
+  The full-text pass guarantees an exact keyword hit isn't lost just because
+  the embedding model didn't rank it as "similar" — see
+  `retriever._fetch_keyword_candidates`.
+- **"Either" acceptance gate**: a candidate survives if its raw vector
+  similarity clears one bar, OR its BM25 keyword score clears a separate
+  bar — not one blended score with a single cutoff. This matters for
+  queries with zero vocabulary overlap with the source text (e.g.
+  "university" when the portfolio only ever says "Institute of
   Technology") — a blended score punishes those unfairly.
+- **Source-priority nudge**: chunks from primary content (portfolio,
+  resume, research paper, GitHub) get a small score boost over chunks from
+  referenced external pages, so a page Varun merely links to from "Beyond"
+  can't out-rank content that's actually about him on a close call.
 - **Thematic-name resilience**: F1 section names ("The Garage", "The Wind
   Tunnel") are resolved to plain labels (Projects, Research, ...) via
   `app/constants.py` before ever reaching the LLM's prompt, so the model
-  never takes the theme literally. Those same plain labels are folded into
-  each chunk's BM25 tokens (not its embedding) as keyword aliases, so a
-  literal question like "what's his tech stack" still matches the Skills
-  section by keyword even if "skills" never appears verbatim nearby.
+  never takes the theme literally. Those same plain labels back the
+  citation chips the user sees, so what the model reasons about and what's
+  shown in the UI always agree.
 - **MMR (Maximum Marginal Relevance)** re-ranking removes near-duplicate
   chunks (e.g. a project described in both the portfolio and the resume).
 - **Contextual compression** trims each retrieved chunk down to its most
   query-relevant sentences before it ever reaches the LLM.
+- **top_k = 5** (down from an earlier 10): keeps each answer backed by a
+  handful of tightly-relevant citation chips instead of flooding the chip
+  row with borderline "either gate" survivors. Citation chips are also
+  deduped by normalized URL (trailing slash/whitespace stripped) so the
+  same page never shows up twice.
 
 ## Small talk vs. off-topic
 
