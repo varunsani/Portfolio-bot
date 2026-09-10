@@ -825,6 +825,19 @@ def chunk_external_links() -> list[dict]:
             chunks += _fetch_youtube_oembed(url, link)
         elif url == RESEARCH_PAPER_URL:
             continue  # already indexed properly by chunk_research_paper()
+        elif re.match(r"https?://github\.com/[^/]+/?$", url):
+            continue  # profile link itself — repos are discovered separately
+        elif re.match(rf"https?://github\.com/{re.escape(GITHUB_USERNAME)}/[^/]+/?$", url):
+            # A link to one of Varun's own repos - chunk_github_repos()
+            # already indexes this exact repo properly (name, language,
+            # description, and the full README). Running it through the
+            # generic page fetcher too just adds a redundant, much lower
+            # quality chunk - GitHub's og:description for a repo page is
+            # a generic one-liner like "Contribute to X development by
+            # creating an account on GitHub.", which was a big part of
+            # why external_links.md looked so bare despite having real,
+            # richer content available for that exact repo elsewhere.
+            continue
         elif "drive.google.com" in url:
             # Skip if this is the same file as the resume - chunk_resume()
             # already indexes it properly with semantic section splitting;
@@ -833,8 +846,7 @@ def chunk_external_links() -> list[dict]:
             if _extract_drive_file_id(url) == _extract_drive_file_id(RESUME_DRIVE_VIEW_URL):
                 continue
             chunks += _fetch_drive_link(url, link)
-        elif re.match(r"https?://github\.com/[^/]+/?$", url):
-            continue  # profile link itself — repos are discovered separately
+      
         else:
             chunks += _fetch_generic_page(url, link)
 
