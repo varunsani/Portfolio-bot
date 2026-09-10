@@ -406,9 +406,7 @@ def chunk_research_paper() -> list[dict]:
                 "url": RESEARCH_PAPER_URL,
                 "title": "Multipacking in Hypercubes (ICTCS 2025)",
             })
-    if skipped:
-        print(f"NOTE: skipped {skipped} boilerplate paragraph(s) from the research paper "
-              f"(ORCID/copyright/footnote noise) — not indexed.")
+    
     chunks.append({
         "content": (
             "The title of Varun's research paper, published at ICTCS 2025 "
