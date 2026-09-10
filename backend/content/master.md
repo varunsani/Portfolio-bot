@@ -5246,7 +5246,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,229 ratings 28,635 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,242 ratings 28,636 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5318,7 +5318,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,229 ratings 28,635 reviews 5 stars 201,261 (34%) 4 stars 214,917 (37%) 3 stars 112,773 (19%) 2 stars 34,412 (5%) 1 star 14,866 (2%) Search review text Filters Displaying 1 - 30 of 28,581 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,242 ratings 28,636 reviews 5 stars 201,268 (34%) 4 stars 214,921 (37%) 3 stars 112,774 (19%) 2 stars 34,413 (5%) 1 star 14,866 (2%) Search review text Filters Displaying 1 - 30 of 28,581 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -5426,7 +5426,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 682 followers Follow Follow November 19, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
+(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 681 followers Follow Follow November 19, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
 
 ---
 
