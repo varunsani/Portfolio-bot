@@ -801,7 +801,7 @@ volume 15411, Springer, 2025, pp. 111–126.
 **Source:** research_paper  |  **Anchor:** #research
 **URL:** https://ceur-ws.org/Vol-4039/paper19.pdf  |  **Project ID:** none
 
-The title of Varun's research paper, published at ICTCS 2025 (International Conference on Theoretical Computer Science) in CEUR Workshop Proceedings Vol-4039, is 'Multipacking in Hypercubes'. This is Varun's academic publication / research paper.
+The title of Varun's research paper, published at ICTCS 2025 (Italian Conference on Theoretical Computer Science) in CEUR Workshop Proceedings Vol-4039, is 'Multipacking in Hypercubes'. This is Varun's academic publication / research paper.
 
 ---
 
