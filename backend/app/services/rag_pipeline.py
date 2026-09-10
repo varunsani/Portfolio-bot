@@ -25,9 +25,13 @@ def _dedupe_citations(chunks) -> List[Citation]:
     seen_urls = set()
     citations = []
     for c in chunks:
-        if c.url in seen_urls:
+        # Normalize before comparing - a trailing slash or stray whitespace
+        # shouldn't be enough to let the same page slip past the dedup as
+        # a "different" URL and show up as a second, near-identical chip.
+        url_key = (c.url or "").strip().rstrip("/")
+        if url_key in seen_urls:
             continue
-        seen_urls.add(c.url)
+        seen_urls.add(url_key)
         label = display_label_for_chunk(c.source, c.anchor, c.section, c.title)
         citations.append(Citation(text=label, url=c.url, anchor=c.anchor))
     return citations
