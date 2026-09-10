@@ -134,11 +134,11 @@ Source: https://varunsani.vercel.app
 
 ## [Contact] Got something worth racing toward? Box box box — let's talk.
 
-[Contact](#contact) varunsani625@gmail.com · open channel ↗
-[Contact](#contact) +91 99890 44369 · copy that ↗
-[Contact](#contact) LinkedIn · full throttle ↗
-[Contact](#contact) GitHub · push to pass ↗
-[Contact](#contact) Resume · pit lane ↗
-[Contact](#contact) ICTCS 2025 Paper · chequered flag ↗
-[Contact](#contact) ORCID · parc fermé ↗
-[Contact](#contact) LeetCode · practice sessions ↗
+[Contact](#contact) varunsani625@gmail.com · Email ↗
+[Contact](#contact) +91 99890 44369 · Phone ↗
+[Contact](#contact) LinkedIn ↗
+[Contact](#contact) GitHub Repo ↗
+[Contact](#contact) Resume ↗
+[Contact](#contact) ICTCS 2025 · Publication ↗
+[Contact](#contact) ORCID ↗
+[Contact](#contact) LeetCode ↗
