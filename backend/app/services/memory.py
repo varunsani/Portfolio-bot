@@ -13,6 +13,7 @@ from app.config import settings
 _redis: redis.Redis | None = None
 SESSION_TTL_SECONDS = 60 * 60 * 6  # 6 hours of inactivity clears the session
 SESSION_KEY_PREFIX = "race_engineer:session:"
+CONTENT_HASH_KEY = "race_engineer:kb_content_hash"
 
 
 def get_redis() -> redis.Redis:
@@ -71,3 +72,17 @@ async def flush_all_sessions() -> int:
     if keys:
         await r.delete(*keys)
     return len(keys)
+
+
+async def get_last_content_hash() -> str | None:
+    """The content fingerprint from the previous successful reindex, or
+    None on the very first run ever. Deliberately outside the
+    "race_engineer:session:*" prefix, so flush_all_sessions()'s scoped
+    scan-and-delete never touches this key."""
+    r = get_redis()
+    return await r.get(CONTENT_HASH_KEY)
+
+
+async def set_last_content_hash(content_hash: str) -> None:
+    r = get_redis()
+    await r.set(CONTENT_HASH_KEY, content_hash)
