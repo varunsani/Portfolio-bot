@@ -46,6 +46,12 @@ from pathlib import Path
 import requests
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
+from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api._errors import (
+    TranscriptsDisabled,
+    NoTranscriptFound,
+    VideoUnavailable,
+)
 
 sys.path.append(str(Path(__file__).parent.parent))
 
@@ -60,7 +66,17 @@ RESUME_DRIVE_VIEW_URL = "https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_
 RESEARCH_PAPER_URL = "https://ceur-ws.org/Vol-4039/paper19.pdf"
 GITHUB_USERNAME = "varunsani"
 
-REQUEST_HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; RaceEngineerBot/1.0)"}
+# NOTE: was previously "Mozilla/5.0 (compatible; RaceEngineerBot/1.0)", which
+# self-identifies as a bot. Several sites we scrape (chessgames.com, IMDb)
+# serve blocked/stripped responses to non-browser user agents, which is why
+# those domains were coming back empty while sites like Wikipedia/arXiv
+# (which don't check UA) worked fine. A standard browser UA fixes that.
+REQUEST_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+    )
+}
 
 _STOPWORDS = {
     "the", "and", "for", "with", "using", "app", "api", "system", "project",
@@ -406,7 +422,7 @@ def chunk_research_paper() -> list[dict]:
                 "url": RESEARCH_PAPER_URL,
                 "title": "Multipacking in Hypercubes (ICTCS 2025)",
             })
-    
+
     chunks.append({
         "content": (
             "The title of Varun's research paper, published at ICTCS 2025 "
@@ -588,33 +604,147 @@ def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
     }]
 
 
-def _fetch_youtube_oembed(url: str, link: dict) -> list[dict]:
+# ---------- NEW: ORCID fetcher ----------
+
+def _extract_orcid_id(url: str) -> str | None:
+    m = re.search(r"orcid\.org/(\d{4}-\d{4}-\d{4}-\d{3}[\dXx])", url)
+    return m.group(1) if m else None
+
+
+def _fetch_orcid_profile(url: str, link: dict) -> list[dict]:
+    """orcid.org's public profile page is an Angular SPA - none of the
+    record content (name/biography/keywords) is present in the
+    server-rendered HTML, so the generic scraper always came back empty
+    here regardless of the User-Agent used. pub.orcid.org serves the same
+    public record as JSON with no auth required, so we use that directly."""
+    orcid_id = _extract_orcid_id(url)
+    if not orcid_id:
+        print(f"WARNING: could not extract an ORCID iD from {url}")
+        return []
+
     try:
-        resp = requests.get("https://www.youtube.com/oembed",
-                             params={"url": url, "format": "json"},
-                             headers=REQUEST_HEADERS, timeout=15)
+        resp = requests.get(
+            f"https://pub.orcid.org/v3.0/{orcid_id}/person",
+            headers={**REQUEST_HEADERS, "Accept": "application/json"},
+            timeout=15,
+        )
         resp.raise_for_status()
         data = resp.json()
     except Exception as e:
-        print(f"WARNING: YouTube oEmbed fetch failed for {url} ({e})")
+        print(f"WARNING: ORCID public API fetch failed for {orcid_id} ({e})")
         return []
 
-    title = data.get("title", "")
-    author = data.get("author_name", "")
-    if not title:
+    parts = []
+    name = data.get("name") or {}
+    given = (name.get("given-names") or {}).get("value")
+    family = (name.get("family-name") or {}).get("value")
+    if given or family:
+        parts.append(f"Name on record: {' '.join(p for p in [given, family] if p)}")
+
+    bio = (data.get("biography") or {}).get("content")
+    if bio:
+        parts.append(f"Biography: {bio}")
+
+    keywords = [
+        kw.get("content") or ""
+        for kw in (data.get("keywords") or {}).get("keyword", [])
+        if kw.get("content")
+    ]
+    if keywords:
+        parts.append(f"Keywords: {', '.join(keywords)}")
+
+    if not parts:
+        print(f"NOTE: ORCID record {orcid_id} has no public biography/keyword data to index.")
         return []
 
-    content = f"(Referenced by Varun in '{link['section']}') YouTube video: \"{title}\""
-    if author:
-        content += f" by {author}"
+    content = f"(Referenced by Varun in '{link['section']}') ORCID record — " + " ".join(parts)
     return [{
         "content": content,
         "source": "external_link",
         "section": link["section"],
         "anchor": link.get("anchor"),
         "url": url,
-        "title": title,
+        "title": "ORCID",
     }]
+
+
+# ---------- YouTube: oEmbed metadata + transcript ----------
+
+def _extract_youtube_video_id(url: str) -> str | None:
+    m = re.search(r"[?&]v=([a-zA-Z0-9_-]{11})", url)
+    if m:
+        return m.group(1)
+    m = re.search(r"youtu\.be/([a-zA-Z0-9_-]{11})", url)
+    return m.group(1) if m else None
+
+
+def _fetch_youtube_transcript_text(video_id: str) -> str:
+    """Pulls the video's transcript/captions (auto-generated or manual) so
+    the actual spoken content is indexed, not just the title. Any of these
+    failure modes (captions off, no transcript, video unavailable) just
+    means we fall back to metadata-only for this video, not that the whole
+    run aborts."""
+    try:
+        segments = YouTubeTranscriptApi.get_transcript(video_id)
+    except (TranscriptsDisabled, NoTranscriptFound, VideoUnavailable) as e:
+        print(f"NOTE: no transcript available for YouTube video {video_id} ({e}).")
+        return ""
+    except Exception as e:
+        print(f"WARNING: transcript fetch failed for YouTube video {video_id} ({e}).")
+        return ""
+    return " ".join(seg["text"] for seg in segments if seg.get("text"))
+
+
+def _fetch_youtube_video(url: str, link: dict) -> list[dict]:
+    """Was oEmbed-only (title + channel name), which gave near-zero real
+    content for things like F1 race footage. Now also pulls the transcript
+    via youtube-transcript-api so the video's actual spoken content gets
+    indexed and is searchable/answerable, with oEmbed metadata kept as a
+    separate always-present discoverability chunk."""
+    chunks = []
+    title, author = "", ""
+    try:
+        resp = requests.get("https://www.youtube.com/oembed",
+                             params={"url": url, "format": "json"},
+                             headers=REQUEST_HEADERS, timeout=15)
+        resp.raise_for_status()
+        data = resp.json()
+        title, author = data.get("title", ""), data.get("author_name", "")
+    except Exception as e:
+        print(f"WARNING: YouTube oEmbed fetch failed for {url} ({e})")
+
+    video_id = _extract_youtube_video_id(url)
+    transcript_text = _fetch_youtube_transcript_text(video_id) if video_id else ""
+    display_title = title or link["label"]
+
+    if title:
+        content = f"(Referenced by Varun in '{link['section']}') YouTube video: \"{title}\""
+        if author:
+            content += f" by {author}"
+        chunks.append({
+            "content": content,
+            "source": "external_link",
+            "section": link["section"],
+            "anchor": link.get("anchor"),
+            "url": url,
+            "title": display_title,
+        })
+
+    if transcript_text:
+        for para in (paragraph_split(transcript_text) or [transcript_text]):
+            for piece in recursive_char_split(para, chunk_size=400, overlap=80):
+                chunks.append({
+                    "content": f"(Referenced by Varun in '{link['section']}') {display_title} — transcript: {piece}",
+                    "source": "external_link",
+                    "section": link["section"],
+                    "anchor": link.get("anchor"),
+                    "url": url,
+                    "title": display_title,
+                })
+    else:
+        print(f"NOTE: no transcript indexed for {url} — only title/author metadata available.")
+
+    return chunks
 
 
 def _fetch_drive_link(url: str, link: dict) -> list[dict]:
@@ -672,6 +802,28 @@ def _extract_meta_description(soup) -> str:
     return ""
 
 
+def _inline_wikipedia_math(soup) -> None:
+    """Wikipedia formulas are either an <img class="mwe-math-fallback-image-inline">
+    (PNG whose alt text carries the original LaTeX) or a <math> element with
+    a hidden <annotation encoding="application/x-tex"> containing the LaTeX
+    source. Plain get_text() either drops the image entirely or mangles the
+    MathML into unreadable soup. This swaps both for their LaTeX source,
+    wrapped in $...$, so the formula survives as real chunkable/answerable
+    text - and a frontend can later render it nicely with MathJax/KaTeX.
+    No-op (and safe) on pages with no such elements."""
+    for img in soup.find_all("img", class_="mwe-math-fallback-image-inline"):
+        alt = img.get("alt")
+        if alt:
+            img.replace_with(f"${alt.strip('$ ')}$")
+
+    for math_elem in soup.find_all("math"):
+        annotation = math_elem.find("annotation", attrs={"encoding": "application/x-tex"})
+        if annotation and annotation.text.strip():
+            math_elem.replace_with(f"${annotation.text.strip()}$")
+        else:
+            math_elem.decompose()
+
+
 def _fetch_generic_page(url: str, link: dict) -> list[dict]:
     """Tries JSON-LD, meta description, AND visible body text, and keeps
     whichever one actually returned the most content - not just whichever
@@ -716,8 +868,10 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
 
     # Body text extraction mutates `soup` (decompose()), so it always runs
     # last - after JSON-LD/meta description have already read what they
-    # need from the untouched soup.
+    # need from the untouched soup. Math inlining runs first within this
+    # block since it also mutates (replaces) elements in-place.
     try:
+        _inline_wikipedia_math(soup)
         for tag in soup(["script", "style", "nav", "header", "footer", "aside", "form"]):
             tag.decompose()
         body_text = soup.get_text(" ", strip=True)
@@ -802,8 +956,8 @@ def write_chunks_markdown(name: str, chunks: list[dict]) -> None:
 
 def chunk_external_links() -> list[dict]:
     """Every external link gets rendered — dispatched to a source-specific
-    fetcher where a plain HTML scrape would fail (chess.com, YouTube,
-    Drive), and the generic scraper otherwise."""
+    fetcher where a plain HTML scrape would fail (chess.com, ORCID,
+    YouTube, Drive), and the generic scraper otherwise."""
     links_path = CONTENT_DIR / "links.json"
     if not links_path.exists():
         return []
@@ -819,8 +973,14 @@ def chunk_external_links() -> list[dict]:
         if "chess.com/member/" in url:
             username = url.rstrip("/").split("/")[-1]
             chunks += _fetch_chess_com_stats(username, link)
+        elif "orcid.org/" in url:
+            # ORCID's public profile page is an Angular SPA - the generic
+            # scraper below can never see the record content there. Route
+            # to the ORCID public API instead. (new)
+            chunks += _fetch_orcid_profile(url, link)
         elif "youtube.com/watch" in url or "youtu.be/" in url:
-            chunks += _fetch_youtube_oembed(url, link)
+            # Now also pulls the transcript, not just oEmbed metadata. (updated)
+            chunks += _fetch_youtube_video(url, link)
         elif url == RESEARCH_PAPER_URL:
             continue  # already indexed properly by chunk_research_paper()
         elif re.match(r"https?://github\.com/[^/]+/?$", url):
