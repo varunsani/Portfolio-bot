@@ -305,6 +305,7 @@
     gap: 30px; 
     transition: border-color .25s ease, transform .25s ease; 
     margin-bottom: 16px;
+    min-width: 0;   /* NEW: lets the grid's 1fr column actually shrink instead of being pushed wide by an unbroken run of text */
   }
   .off-item:last-child{ margin-bottom: 0; }
   .off-item:hover{ border-color: var(--red-dim); transform: translateY(-2px); }
@@ -312,8 +313,8 @@
   .off-item .ttl{ display:flex; align-items:center; gap:10px; }
   .off-item .glyph{ font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; color:var(--red); }
   .off-item h4{ font-size:16.5px; color:var(--text); font-family:'IBM Plex Sans',sans-serif; font-weight:600; }
-  .off-item p{ color:var(--text-dim); font-size:14.5px; margin-bottom:6px; }
-  .off-item a.il{ color:var(--navy-bright); border-bottom:1px solid rgba(52,80,224,0.4); padding-bottom:1px; white-space:nowrap; }
+  .off-item p{ color:var(--text-dim); font-size:14.5px; margin-bottom:6px; overflow-wrap: break-word;  /* NEW: safety net for any long unbroken text */ }
+  .off-item a.il{ color:var(--navy-bright); border-bottom:1px solid rgba(52,80,224,0.4); padding-bottom:1px; }
   .off-item a.il:hover{ color:#7c8cff; }
 
   /* footer */
@@ -557,13 +558,20 @@
 .re-messages {
   flex: 1;
   overflow-y: auto;
+  overflow-x: hidden;         /* NEW: safety net so nothing can widen the panel */
   padding: 14px;
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
-.re-msg { max-width: 85%; display: flex; flex-direction: column; gap: 4px; }
+.re-msg {
+  max-width: 85%;
+  min-width: 0;              /* NEW: lets the flex item actually shrink to fit */
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
 .re-msg.re-bot { align-self: flex-start; }
 .re-msg.re-user { align-self: flex-end; }
 
@@ -580,6 +588,8 @@
   border-radius: 10px;
   font-size: 13.5px;
   line-height: 1.45;
+  overflow-wrap: break-word;  /* NEW: wraps long words instead of overflowing */
+  word-break: break-word;     /* NEW: fallback for older browsers */
 }
 .re-bot .re-bubble {
   background: var(--re-surface);
