@@ -35,6 +35,7 @@ Zero-downtime strategy:
      never see a partial or empty table.
 """
 import asyncio
+import hashlib
 import json
 import re
 import sys
@@ -811,6 +812,16 @@ def chunk_external_links() -> list[dict]:
     return chunks
 
 
+def _content_hash(chunks: list[dict]) -> str:
+    """Deterministic fingerprint of everything about to be indexed, so a
+    reindex run that produced byte-identical content can be told apart
+    from one that actually changed something. This is what lets index_all()
+    skip the Redis session flush on the hourly safety-net run when nothing
+    about Varun's site/resume/repos actually changed that hour."""
+    joined = "\n".join(c["content"] for c in chunks)
+    return hashlib.sha256(joined.encode("utf-8")).hexdigest()
+
+
 # ---------- main indexing flow ----------
 
 async def index_all():
@@ -845,6 +856,8 @@ async def index_all():
     if not all_chunks:
         print("ERROR: no chunks produced, aborting reindex (leaving old index in place).")
         sys.exit(1)
+
+    new_content_hash = _content_hash(all_chunks)
 
     for chunk in all_chunks:
         chunk["project_id"] = assign_project_id(chunk["content"], known_projects)
@@ -887,15 +900,21 @@ async def index_all():
 
     print(f"Reindex complete. {len(all_chunks)} chunks now active (batch {batch_id}).")
 
-    # The KB swap above just committed, so any conversation history sitting
-    # in Redis from before this moment may now be answering from facts that
-    # no longer exist. Flush every session's history here (and only here -
-    # not on a timer, not on every script invocation) so the next message
-    # in an in-flight conversation starts clean against the new content.
-    # See memory.flush_all_sessions() for why this is scoped rather than a
-    # full FLUSHDB.
-    cleared = await memory_service.flush_all_sessions()
-    print(f"Cleared {cleared} in-flight conversation session(s) from Redis after reindex.")
+    # "The script ran" and "the content actually changed" are different
+    # things — the hourly cron safety-net run re-embeds and swaps every
+    # single hour regardless of whether Varun's site/resume/repos changed
+    # at all (see reindex.yml's comment on why there's no diffing at the
+    # workflow level). Only flush sessions when this run's content
+    # genuinely differs from last run's, so an in-flight conversation
+    # isn't reset by a no-op hourly reindex.
+    previous_hash = await memory_service.get_last_content_hash()
+    if new_content_hash != previous_hash:
+        cleared = await memory_service.flush_all_sessions()
+        print(f"Content changed since last reindex — cleared {cleared} "
+              f"in-flight conversation session(s) from Redis.")
+    else:
+        print("Content unchanged since last reindex — leaving active sessions alone.")
+    await memory_service.set_last_content_hash(new_content_hash)
     await memory_service.get_redis().aclose()
 
 
