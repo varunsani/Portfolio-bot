@@ -12,7 +12,7 @@ from typing import List
 from groq import Groq
 
 from app.config import settings
-from app.constants import plain_label_for_anchor
+from app.constants import display_label_for_chunk
 from app.services.retriever import RetrievedChunk
 
 _client = Groq(api_key=settings.groq_api_key)
@@ -49,12 +49,17 @@ def _format_context(chunks: List[RetrievedChunk]) -> str:
     portfolio's flavorful F1 copy — that keeps the model from taking
     thematic phrasing like "The Garage" literally when reasoning about
     what a chunk actually contains. The flavorful text still reaches the
-    user, just via the citation chip metadata, not this prompt."""
+    user, just via the citation chip metadata, not this prompt.
+
+    Uses the same display_label_for_chunk helper as the citation chips
+    (see rag_pipeline._dedupe_citations), so a GitHub chunk reads as
+    "Projects — reponame" here too instead of a bare "Projects" that
+    can't be told apart from every other repo also in context."""
     if not chunks:
         return "(no relevant context found)"
     blocks = []
     for i, c in enumerate(chunks, 1):
-        label = plain_label_for_anchor(c.anchor, fallback_text=c.section)
+        label = display_label_for_chunk(c.source, c.anchor, c.section, c.title)
         blocks.append(f"[{i}] Section: {label} | Source: {c.source}\n{c.content}")
     return "\n\n".join(blocks)
 
