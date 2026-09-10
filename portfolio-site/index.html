@@ -1306,7 +1306,19 @@
   (function(){
     const items = document.querySelectorAll('.reveal');
     if(!('IntersectionObserver' in window)){ items.forEach(el => el.classList.add('in')); return; }
-    
+
+    // threshold: 0.27 meant an element had to have 27% of its OWN HEIGHT
+    // visible before it faded in. That's fine for small cards, but on a
+    // phone the viewport itself is short while long sections (Projects,
+    // Beyond) are tall - taller, in fact, than 100/0.27 % of the phone's
+    // screen. That combination means the intersection ratio could never
+    // reach 0.27 at any scroll position, so those sections just sat at
+    // opacity:0 forever ("not rendering"). Desktop viewports are tall
+    // enough relative to section height that this never showed up there.
+    // threshold: 0 + a bottom rootMargin fires as soon as any part of the
+    // element enters the viewport (with a little breathing room before
+    // the very bottom edge), which works the same regardless of how the
+    // element's height compares to the viewport's.
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         // Cancel any pending fade-out, prevents flicker when the ratio
@@ -1324,7 +1336,7 @@
           }, 250);
         }
       });
-    }, { threshold: 0.27 });
+    }, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
     
     items.forEach(el => io.observe(el));
   })();
