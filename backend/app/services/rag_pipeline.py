@@ -1,27 +1,34 @@
 import time
 from typing import List
 
-from app.constants import plain_label_for_anchor
+from app.constants import display_label_for_chunk
 from app.models.schemas import ChatResponse, Citation
 from app.services import memory, retriever, generator, small_talk
 
 
 def _dedupe_citations(chunks) -> List[Citation]:
-    """Citation text always uses the plain label (e.g. "Projects"), never
-    the portfolio's flavorful section copy ("The Garage") - matches what
-    the LLM itself reasons about, and keeps F1 theming out of the citation
-    chips too. Deduped on (label, url) rather than (section, anchor), since
-    several distinct chunks - portfolio, resume, a GitHub README - can
-    fairly share the same plain label while still pointing at genuinely
-    different, individually worth-clicking destinations."""
-    seen = set()
+    """One citation chip per distinct URL - full stop. Previously this
+    deduped on (label, url), which let the exact same link surface as
+    multiple chips whenever two chunks that share a URL got different
+    labels (e.g. the resume PDF chunked into "Education"/"Experience"/
+    "Skills"/"Resume" sections all sharing one Drive URL - same link,
+    shown 3-4 times). A link is either worth clicking or it isn't; it
+    doesn't need to appear once per section that happens to live at that
+    URL. Chunks arrive already sorted by retrieval relevance, so keeping
+    the first-seen label per URL keeps the most relevant framing.
+
+    Labels themselves come from display_label_for_chunk, the same helper
+    generator.py uses for the LLM's grounding context, so what the model
+    reasons about and what the user sees as a citation chip always agree
+    - and GitHub repos in particular get their real repo name folded in
+    instead of colliding on the generic "Projects" anchor label."""
+    seen_urls = set()
     citations = []
     for c in chunks:
-        label = plain_label_for_anchor(c.anchor, fallback_text=c.section)
-        key = (label, c.url)
-        if key in seen:
+        if c.url in seen_urls:
             continue
-        seen.add(key)
+        seen_urls.add(c.url)
+        label = display_label_for_chunk(c.source, c.anchor, c.section, c.title)
         citations.append(Citation(text=label, url=c.url, anchor=c.anchor))
     return citations
 
