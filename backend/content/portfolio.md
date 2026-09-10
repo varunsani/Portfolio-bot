@@ -117,7 +117,7 @@ Source: https://varunsani.vercel.app
 
 ## [Beyond] Books & Films
 
-[Beyond](#beyond) I'll start with the book. Ian McEwan's Atonement , worth it alone for the final-act rewrite, where you have to decide how much of what you just read was ever true. (Its film adaptation goes out in France under the far more dramatic title Reviens-moi , "come back to me," which honestly might be the better title.) My favourite film, full stop, is Christopher Nolan's The Prestige : "Are you watching closely?" is doing all the work in that opening line and the rest of the film is just the trick. Right behind it, Eternal Sunshine of the Spotless Mind : memory, love and the beautiful futility of trying to erase either. For evergreens I'll rewatch on any given evening, The Godfather and 12 Angry Men never miss.
+[Beyond](#beyond) I'll start with the book. Ian McEwan's Atonement , worth it alone for the final-act rewrite, where you have to decide how much of what you just read was ever true. (Its film adaptation goes out in France under the far more dramatic title Reviens-moi , "come back to me," which honestly might be the better title.) My favourite film, full stop, is Christopher Nolan's The Prestige : "Are you watching closely?" is doing all the work in that opening line and the rest of the film is just the trick. Right behind it, Eternal Sunshine of the Spotless Mind : memory, love and the beautiful futility of trying to erase either. And since we're on the subject of things I'll never shut up about, Rush : Hunt and Lauda, and the closest a film has come to making me feel what it's actually like to sit in one of those cars. For evergreens I'll rewatch on any given evening, The Godfather and 12 Angry Men never miss.
 
 ## [Beyond] Music
 
