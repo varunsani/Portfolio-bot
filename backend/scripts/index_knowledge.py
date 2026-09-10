@@ -1106,31 +1106,101 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
     return chunks
 
 
+def _extract_leetcode_username(url: str) -> str | None:
+    m = re.search(r"leetcode\.com/u/([^/]+)/?", url)
+    if m:
+        return m.group(1)
+    m = re.search(r"leetcode\.com/([^/]+)/?$", url)
+    return m.group(1) if m else None
+
+
 def _fetch_leetcode_profile(url: str, link: dict) -> list[dict]:
-    """leetcode.com/robots.txt disallows /graphql but explicitly allows
-    /u/{username}/ - scraping the profile page itself is fair game, and
-    it's confirmed to carry real profile data (rank, badges, languages,
-    skills) when fetched successfully. No proxy - just a direct fetch of
-    the profile URL via the ordinary generic-page fetcher, same as any
-    other external link.
+    """Previously scraped the /u/{username}/ profile page directly, which
+    is allowed by robots.txt but came back empty from CI/datacenter IPs
+    (same block affecting chessgames.com/IMDb) — the page is also mostly
+    JS-rendered anyway, so a successful fetch wasn't yielding much real
+    content either.
 
-    If that comes back empty (currently the case from a CI/datacenter IP -
-    the same block affecting chessgames.com and IMDb), falls back to a
-    bare link chunk rather than fabricating any content."""
-    chunks = _fetch_generic_page(url, link)
-    if chunks:
-        return chunks
+    leetcode-stats-api.herokuapp.com/{username} is a public JSON wrapper
+    around LeetCode's own GraphQL stats (problems solved by difficulty,
+    ranking, acceptance rate) - no auth, no scraping, no bot-detection
+    surface. Falls back to a bare link chunk if the API has no data for
+    this username or the request fails, same as the chess.com/ORCID
+    fetchers do."""
+    username = _extract_leetcode_username(url)
+    if not username:
+        print(f"WARNING: could not extract a LeetCode username from {url}")
+        return []
 
-    print(f"NOTE: LeetCode profile at {url} could not be scraped directly "
-          f"(likely IP-blocked) — indexing the link only.")
+    try:
+        resp = requests.get(
+            f"https://leetcode-stats-api.herokuapp.com/{username}",
+            headers=REQUEST_HEADERS, timeout=15,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"WARNING: LeetCode stats API fetch failed for {username} ({e})")
+        data = {}
 
+    if data.get("status") != "success":
+        print(f"NOTE: LeetCode stats API returned no usable data for {username} "
+              f"({data.get('message', 'unknown reason')}) — indexing the link only.")
+        return [{
+            "content": f"Varun's LeetCode profile: {url}",
+            "source": "external_link",
+            "section": link["section"],
+            "anchor": link.get("anchor"),
+            "url": url,
+            "title": "LeetCode",
+        }]
+
+    lines = []
+    if data.get("totalSolved") is not None:
+        text = f"Total solved: {data['totalSolved']}"
+        if data.get("totalQuestions"):
+            text += f" / {data['totalQuestions']}"
+        lines.append(text)
+
+    for key, total_key, label in [
+        ("easySolved", "totalEasy", "Easy"),
+        ("mediumSolved", "totalMedium", "Medium"),
+        ("hardSolved", "totalHard", "Hard"),
+    ]:
+        if data.get(key) is not None:
+            text = f"{label}: {data[key]}"
+            if data.get(total_key):
+                text += f"/{data[total_key]}"
+            lines.append(text)
+
+    if data.get("ranking") is not None:
+        lines.append(f"Global ranking: {data['ranking']}")
+    if data.get("acceptanceRate") is not None:
+        lines.append(f"Acceptance rate: {data['acceptanceRate']}%")
+    if data.get("contributionPoints") is not None:
+        lines.append(f"Contribution points: {data['contributionPoints']}")
+    if data.get("reputation") is not None:
+        lines.append(f"Reputation: {data['reputation']}")
+
+    if not lines:
+        print(f"NOTE: LeetCode stats API returned success but no fields for {username} — indexing the link only.")
+        return [{
+            "content": f"Varun's LeetCode profile: {url}",
+            "source": "external_link",
+            "section": link["section"],
+            "anchor": link.get("anchor"),
+            "url": url,
+            "title": "LeetCode",
+        }]
+
+    content = f"Varun's LeetCode profile — {'; '.join(lines)}."
     return [{
-        "content": f"Varun's LeetCode profile: {url}",
+        "content": content,
         "source": "external_link",
         "section": link["section"],
         "anchor": link.get("anchor"),
         "url": url,
-        "title": "LeetCode",
+        "title": "LeetCode stats",
     }]
 
 
