@@ -31,6 +31,13 @@ Retrieval strategy
    with a single cutoff, so a query with zero vocabulary overlap with the
    source text (e.g. "university" when the portfolio only ever says
    "Institute of Technology") isn't unfairly punished by an empty BM25 term.
+   These floors are scoped per-source (see settings.*_external) - the
+   stricter floor only applies to external_link chunks, since that's
+   where noisy/unrelated candidates actually come from; primary-source
+   chunks (portfolio/resume/research_paper/github) keep the original,
+   looser floors so short, sparse, highly-relevant chunks (e.g. the
+   paper title/authors chunk) aren't dropped by a gate meant for noise
+   that isn't coming from them.
 4. A weighted hybrid score (vector_weight/bm25_weight) is still computed
    for ranking purposes among accepted candidates.
 5. Project-diversity guarantee: every chunk is tagged (at indexing time)
@@ -206,7 +213,17 @@ def _bm25_scores(query: str, chunks: List[RetrievedChunk]) -> List[float]:
     corpus = [_tokenize(c.content) for c in chunks]
     bm25 = BM25Okapi(corpus)
     raw = bm25.get_scores(_tokenize(query))
-    max_score = max(raw) or 1.0
+
+    # Anchor the normalization scale to primary-source chunks only. A long,
+    # generic-vocabulary external_link chunk pulled in by the keyword-search
+    # fallback (1b) can score very high on raw BM25 without being about
+    # Varun at all - if it sets the denominator, it silently deflates every
+    # other candidate's normalized score below bm25_min_threshold, which is
+    # exactly what was happening to short, sparse chunks like the paper
+    # title/authors chunk once the fallback started admitting more external
+    # pages into the same pool BM25 is normalized against.
+    primary_raw = [s for s, c in zip(raw, chunks) if c.source in _PRIMARY_SOURCES]
+    max_score = (max(primary_raw) if primary_raw else max(raw)) or 1.0
     return [s / max_score for s in raw]  # normalize to [0, 1]
 
 
@@ -274,6 +291,23 @@ def _compress(query: str, content: str, max_sentences: int = 3) -> str:
     return " ".join(ordered)
 
 
+def _passes_threshold(c: RetrievedChunk) -> bool:
+    """Per-source acceptance gate. external_link chunks use the stricter
+    floors (that's where the noisy/unrelated candidates actually come
+    from); every other source keeps the original, looser floors so short,
+    sparse, highly-relevant primary-source chunks aren't caught by a gate
+    meant for a different source's noise."""
+    if c.source == "external_link":
+        return (
+            c.vector_score >= settings.vector_min_threshold_external
+            or c.bm25_score >= settings.bm25_min_threshold_external
+        )
+    return (
+        c.vector_score >= settings.vector_min_threshold
+        or c.bm25_score >= settings.bm25_min_threshold
+    )
+
+
 async def retrieve(query: str) -> List[RetrievedChunk]:
     query_embedding = embed_query(query)
     pool_size = settings.top_k * settings.candidate_pool_multiplier
@@ -307,12 +341,9 @@ async def retrieve(query: str) -> List[RetrievedChunk]:
 
     # "Either" gate: a candidate survives on vector strength alone, or BM25
     # strength alone - a weak showing on one axis never disqualifies a
-    # strong showing on the other.
-    accepted = [
-        c for c in candidates
-        if c.vector_score >= settings.vector_min_threshold
-        or c.bm25_score >= settings.bm25_min_threshold
-    ]
+    # strong showing on the other. Thresholds are scoped per-source; see
+    # _passes_threshold.
+    accepted = [c for c in candidates if _passes_threshold(c)]
     if not accepted:
         return []
 
