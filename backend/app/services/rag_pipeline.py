@@ -1,33 +1,51 @@
 import time
 from typing import List
+from urllib.parse import urlparse
 
 from app.constants import display_label_for_chunk
 from app.models.schemas import ChatResponse, Citation
 from app.services import memory, retriever, generator, small_talk
 
 
+def _normalize_citation_url(url: str) -> str:
+    """Canonical key for the citation dedup set: scheme, `www.`, trailing
+    slash, query string, and #fragment are all stripped/normalized, so
+    http vs https, www vs bare domain, a tracking query param, or a
+    same-page anchor don't let an otherwise-identical URL slip past the
+    set as "different" and produce a duplicate chip. Falls back to a
+    plain strip/rstrip if the URL doesn't parse cleanly."""
+    if not url:
+        return ""
+    try:
+        p = urlparse(url.strip())
+        netloc = p.netloc.lower()
+        if netloc.startswith("www."):
+            netloc = netloc[4:]
+        return f"{netloc}{p.path.rstrip('/')}".lower()
+    except Exception:
+        return url.strip().rstrip("/").lower()
+
+
 def _dedupe_citations(chunks) -> List[Citation]:
-    """One citation chip per distinct URL - full stop. Previously this
-    deduped on (label, url), which let the exact same link surface as
-    multiple chips whenever two chunks that share a URL got different
-    labels (e.g. the resume PDF chunked into "Education"/"Experience"/
-    "Skills"/"Resume" sections all sharing one Drive URL - same link,
-    shown 3-4 times). A link is either worth clicking or it isn't; it
-    doesn't need to appear once per section that happens to live at that
-    URL. Chunks arrive already sorted by retrieval relevance, so keeping
-    the first-seen label per URL keeps the most relevant framing.
+    """One citation chip per distinct URL - full stop. Deduped via a set
+    on a normalized URL key (see _normalize_citation_url), not the raw
+    URL string, so trivial variants of the same link (scheme, www.,
+    trailing slash, query params, #fragment) can't produce duplicate
+    chips. Chunks arrive already sorted by retrieval relevance, so
+    keeping the first-seen label per URL keeps the most relevant framing.
 
     Labels themselves come from display_label_for_chunk, the same helper
     generator.py uses for the LLM's grounding context, so what the model
     reasons about and what the user sees as a citation chip always agree
     - and GitHub repos in particular get their real repo name folded in
     instead of colliding on the generic "Projects" anchor label."""
-    seen_urls = set()
+    seen_urls: set[str] = set()
     citations = []
     for c in chunks:
-        if c.url in seen_urls:
+        url_key = _normalize_citation_url(c.url)
+        if url_key in seen_urls:
             continue
-        seen_urls.add(c.url)
+        seen_urls.add(url_key)
         label = display_label_for_chunk(c.source, c.anchor, c.section, c.title)
         citations.append(Citation(text=label, url=c.url, anchor=c.anchor))
     return citations
