@@ -38,6 +38,25 @@ def plain_label_for_anchor(anchor: str | None, fallback_text: str = "") -> str:
     return normalize_free_text_label(fallback_text)
 
 
+def display_label_for_chunk(source: str, anchor: str | None, section: str, title: str) -> str:
+    """The one place both the LLM's grounding context AND citation chips
+    resolve a chunk's label from - keeps the two perfectly consistent.
+
+    GitHub-sourced chunks (source == "github_repo"/"github_readme") are
+    given a repo-specific anchor "#projects" purely so retriever.py's
+    generic anchor-based grounding still bucket them under "Projects" -
+    but that meant every distinct repo collapsed to the identical label
+    "Projects" for citation purposes, so three repos in one answer showed
+    three identical-looking chips pointing at three different URLs. Repo
+    chunks carry their real repo name in `title`, so use that instead:
+    "Projects — reponame" stays in the same category but is distinguishable
+    and correct per-repo, and downstream dedup-by-url no longer sees
+    same-label collisions hiding genuinely different links."""
+    if source in ("github_repo", "github_readme") and title:
+        return f"Projects — {title}"
+    return plain_label_for_anchor(anchor, fallback_text=section)
+
+
 def normalize_free_text_label(text: str) -> str:
     """For chunks with no portfolio anchor (resume, research paper, GitHub
     READMEs) - classify by a handful of durable substrings instead of an
