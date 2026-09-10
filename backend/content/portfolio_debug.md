@@ -613,4 +613,4 @@ Racing: n, is exactly what makes me a better engineer. Three drives I'll rewatch
 **Source:** portfolio  |  **Anchor:** #contact
 **URL:** https://varunsani.vercel.app/#contact  |  **Project ID:** none
 
-Got something worth racing toward? Box box box — let's talk.: varunsani625@gmail.com · open channel ↗ +91 99890 44369 · copy that ↗ LinkedIn · full throttle ↗ GitHub · push to pass ↗ Resume · pit lane ↗ ICTCS 2025 Paper · chequered flag ↗ ORCID · parc fermé ↗ LeetCode · practice sessions ↗
+Got something worth racing toward? Box box box — let's talk.: varunsani625@gmail.com · Email ↗ +91 99890 44369 · Phone ↗ LinkedIn ↗ GitHub Repo ↗ Resume ↗ ICTCS 2025 · Publication ↗ ORCID ↗ LeetCode ↗
