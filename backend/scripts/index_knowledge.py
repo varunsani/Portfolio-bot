@@ -350,25 +350,31 @@ _BOILERPLATE_PATTERNS = [
 ]
 
 
-def _is_boilerplate_paragraph(paragraph: str) -> bool:
-    """Research-PDF front-matter noise: ORCID strings, 'corresponding
+def _strip_boilerplate_lines(text: str) -> tuple[str, int]:
+    """Removes only the noisy lines - ORCID strings, 'corresponding
     author'/'contributed equally' footnote markers, copyright/license
-    lines, ISSN/DOI lines, and bare email-footer lines. These paragraphs
-    carry almost no answerable content but repeat words like "author" and
-    "paper" densely enough that BM25 can rank them above the two
-    hand-curated Title/Authors chunks for exactly the questions those
-    chunks exist to answer (see chunk_research_paper's Title/Authors
-    chunks below). Filtering them out here — before they ever become
-    chunks — fixes that at the source instead of trying to out-rank noise
-    after the fact."""
-    s = paragraph.strip()
-    if not s:
-        return True
-    # A short line that's mostly digits/punctuation (bare page numbers,
-    # stray running-header numerals) carries no content either.
-    if len(s) < 25 and re.fullmatch(r"[\d\s\-–.,]+", s):
-        return True
-    return any(pat.search(s) for pat in _BOILERPLATE_PATTERNS)
+    lines, ISSN/DOI lines, bare email-footer lines - and keeps every other
+    line of the document untouched. Returns (cleaned_text, lines_removed).
+
+    Line-level, not paragraph-level: extract_pdf_text() joins pages (and
+    pypdf joins a page's own lines) with single "\\n"s, never a blank-line
+    "\\n\\n" - so paragraph_split() on the raw PDF text hands back the
+    *entire document* as one paragraph. Checking that one giant blob for
+    "does this contain a boilerplate pattern anywhere" meant a single
+    ORCID id or email buried anywhere in an 8-page paper flagged the whole
+    paper as boilerplate and dropped every real sentence in it, which is
+    exactly what happened before this fix. Stripping line-by-line removes
+    only the actual noisy lines, wherever they fall, and leaves everything
+    else - including all the real page content - to be chunked normally
+    afterward."""
+    kept, removed = [], 0
+    for line in text.splitlines():
+        s = line.strip()
+        if s and len(s) < 300 and any(pat.search(s) for pat in _BOILERPLATE_PATTERNS):
+            removed += 1
+            continue
+        kept.append(line)
+    return "\n".join(kept), removed
 
 
 def chunk_research_paper() -> list[dict]:
