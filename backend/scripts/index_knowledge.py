@@ -644,6 +644,19 @@ def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
                         text += f" — record {w}W/{l}L/{d}D"
                 lines.append(text)
 
+    # Already in this same /stats response but previously unused: puzzle
+    # (tactics) rating and best Puzzle Rush score. Both are separate
+    # skill signals from the timed game ratings above, not duplicates of them.
+    tactics = data.get("tactics") or {}
+    tactics_rating = (tactics.get("highest") or {}).get("rating")
+    if tactics_rating:
+        lines.append(f"Puzzles (tactics) rating: {tactics_rating}")
+
+    puzzle_rush = data.get("puzzle_rush") or {}
+    prush_best = (puzzle_rush.get("best") or {}).get("score")
+    if prush_best:
+        lines.append(f"Puzzle Rush best score: {prush_best}")
+
     if not lines:
         print(f"NOTE: chess.com returned no usable profile/stats data for {username}.")
         return []
@@ -664,6 +677,47 @@ def _fetch_chess_com_stats(username: str, link: dict) -> list[dict]:
 def _extract_orcid_id(url: str) -> str | None:
     m = re.search(r"orcid\.org/(\d{4}-\d{4}-\d{4}-\d{3}[\dXx])", url)
     return m.group(1) if m else None
+
+
+def _fetch_orcid_affiliations(orcid_id: str, endpoint: str, summary_key: str) -> list[str]:
+    """educations and employments are separate public, unauthenticated
+    v3.0 endpoints with the same response shape - one entry per role/
+    programme, grouped the same way /works groups duplicate registrations
+    of the same item. Shared here since /educations and /employments only
+    differ by endpoint name and which summary key wraps each entry."""
+    try:
+        resp = requests.get(
+            f"https://pub.orcid.org/v3.0/{orcid_id}/{endpoint}",
+            headers={**REQUEST_HEADERS, "Accept": "application/json"},
+            timeout=15,
+        )
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"NOTE: ORCID {endpoint} fetch failed for {orcid_id} ({e}).")
+        return []
+
+    entries = []
+    for group in data.get("affiliation-group", []):
+        for summary_wrap in group.get("summaries", []):
+            summary = summary_wrap.get(summary_key) or {}
+            org = (summary.get("organization") or {}).get("name")
+            if not org:
+                continue
+            role = summary.get("role-title")
+            dept = summary.get("department-name")
+            start_year = ((summary.get("start-date") or {}).get("year") or {}).get("value")
+            end_year = ((summary.get("end-date") or {}).get("year") or {}).get("value")
+
+            piece = org
+            if dept:
+                piece += f", {dept}"
+            if role:
+                piece += f" ({role})"
+            if start_year:
+                piece += f" [{start_year}\u2013{end_year or 'present'}]"
+            entries.append(piece)
+    return entries
 
 
 def _fetch_orcid_profile(url: str, link: dict) -> list[dict]:
@@ -708,8 +762,43 @@ def _fetch_orcid_profile(url: str, link: dict) -> list[dict]:
     if keywords:
         parts.append(f"Keywords: {', '.join(keywords)}")
 
+    # /person only ever returns name/biography/keywords - most of the time
+    # (as here) that's just a name. /works is a separate, still-public,
+    # still-unauthenticated endpoint that lists anything registered on the
+    # record (e.g. the ICTCS 2025 paper, if it's been added there), so it's
+    # worth a second call rather than accepting a near-empty chunk.
+    try:
+        works_resp = requests.get(
+            f"https://pub.orcid.org/v3.0/{orcid_id}/works",
+            headers={**REQUEST_HEADERS, "Accept": "application/json"},
+            timeout=15,
+        )
+        works_resp.raise_for_status()
+        works_data = works_resp.json()
+        titles = []
+        for group in works_data.get("group", []):
+            for summary in group.get("work-summary", []):
+                title = ((summary.get("title") or {}).get("title") or {}).get("value")
+                if title:
+                    titles.append(title)
+                    break
+        if titles:
+            parts.append(f"Registered works: {'; '.join(titles)}")
+    except Exception as e:
+        print(f"NOTE: ORCID works fetch failed for {orcid_id} ({e}) — continuing without it.")
+
+    # Same treatment for education and employment - both were previously
+    # never fetched at all, not just under-parsed.
+    education_entries = _fetch_orcid_affiliations(orcid_id, "educations", "education-summary")
+    if education_entries:
+        parts.append(f"Education: {'; '.join(education_entries)}")
+
+    employment_entries = _fetch_orcid_affiliations(orcid_id, "employments", "employment-summary")
+    if employment_entries:
+        parts.append(f"Employment: {'; '.join(employment_entries)}")
+
     if not parts:
-        print(f"NOTE: ORCID record {orcid_id} has no public biography/keyword data to index.")
+        print(f"NOTE: ORCID record {orcid_id} has no public person/works/education/employment data to index.")
         return []
 
     content = f"(Referenced by Varun in '{link['section']}') ORCID record — " + " ".join(parts)
@@ -1016,6 +1105,35 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
             })
     return chunks
 
+
+def _fetch_leetcode_profile(url: str, link: dict) -> list[dict]:
+    """leetcode.com/robots.txt disallows /graphql but explicitly allows
+    /u/{username}/ - scraping the profile page itself is fair game, and
+    it's confirmed to carry real profile data (rank, badges, languages,
+    skills) when fetched successfully. No proxy - just a direct fetch of
+    the profile URL via the ordinary generic-page fetcher, same as any
+    other external link.
+
+    If that comes back empty (currently the case from a CI/datacenter IP -
+    the same block affecting chessgames.com and IMDb), falls back to a
+    bare link chunk rather than fabricating any content."""
+    chunks = _fetch_generic_page(url, link)
+    if chunks:
+        return chunks
+
+    print(f"NOTE: LeetCode profile at {url} could not be scraped directly "
+          f"(likely IP-blocked) — indexing the link only.")
+
+    return [{
+        "content": f"Varun's LeetCode profile: {url}",
+        "source": "external_link",
+        "section": link["section"],
+        "anchor": link.get("anchor"),
+        "url": url,
+        "title": "LeetCode",
+    }]
+
+
 def write_chunks_markdown(name: str, chunks: list[dict]) -> None:
     """
     Writes scraped and chunked content to backend/content/<name>.md.
@@ -1087,6 +1205,26 @@ def chunk_external_links() -> list[dict]:
         elif "youtube.com/watch" in url or "youtu.be/" in url:
             # Now also pulls the transcript, not just oEmbed metadata. (updated)
             chunks += _fetch_youtube_video(url, link)
+        elif "linkedin.com/" in url:
+            # linkedin.com/robots.txt explicitly disallows automated access
+            # to profile pages, and it's enforced even against well-behaved
+            # fetchers - this isn't a bot-detection quirk to work around
+            # (see chessgames.com/IMDb), it's LinkedIn's stated policy, so
+            # the right thing to do is not attempt a scrape at all. Emit a
+            # static discoverability chunk instead - same pattern as the
+            # resume's explicit "here's the link" chunk in chunk_resume() -
+            # so it's still findable by the retriever without ever sending
+            # a request LinkedIn didn't consent to receiving.
+            chunks.append({
+                "content": f"Varun's LinkedIn profile: {url}",
+                "source": "external_link",
+                "section": link["section"],
+                "anchor": link.get("anchor"),
+                "url": url,
+                "title": "LinkedIn",
+            })
+        elif "leetcode.com/" in url:
+            chunks += _fetch_leetcode_profile(url, link)
         elif url == RESEARCH_PAPER_URL:
             continue  # already indexed properly by chunk_research_paper()
         elif re.match(r"https?://github\.com/[^/]+/?$", url):
