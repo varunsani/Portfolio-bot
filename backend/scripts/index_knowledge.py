@@ -51,6 +51,7 @@ sys.path.append(str(Path(__file__).parent.parent))
 from app.constants import normalize_free_text_label  # noqa: E402
 from app.db.connection import get_pool, init_db  # noqa: E402
 from app.services.embedder import embed_texts  # noqa: E402
+from app.services import memory as memory_service  # noqa: E402
 
 CONTENT_DIR = Path(__file__).parent.parent / "content"
 
@@ -258,27 +259,6 @@ def chunk_portfolio() -> list[dict]:
     text = path.read_text()
     chunks = []
     tag_re = re.compile(r"^\[(.+?)\]\((#.*?)\)\s?(.*)$")
-    # buffer_by_section: dict[tuple[str, str], list[str]] = {}
-
-    # for line in text.splitlines():
-    #     m = tag_re.match(line.strip())
-    #     if not m:
-    #         continue
-    #     section, anchor, content = m.groups()
-    #     buffer_by_section.setdefault((section, anchor), []).append(content)
-
-    # for (section, anchor), lines in buffer_by_section.items():
-    #     full_text = " ".join(lines)
-    #     for piece in recursive_char_split(full_text, chunk_size=400, overlap=80):
-    #         chunks.append({
-    #             "content": piece,
-    #             "source": "portfolio",
-    #             "section": section,
-    #             "anchor": anchor,
-    #             "url": f"https://varunsani.vercel.app/{anchor}",
-    #             "title": section,
-    #         })
-    # return chunks
 
     heading_re = re.compile(r"^##\s*\[(.+?)\]\s*(.+?)\s*$")
     buffer_by_section: dict[tuple[str, str, str], list[str]] = {}
@@ -355,6 +335,41 @@ def chunk_resume() -> list[dict]:
     return chunks
 
 
+_BOILERPLATE_PATTERNS = [
+    re.compile(r"corresponding author", re.I),
+    re.compile(r"contributed equally", re.I),
+    re.compile(r"\borcid\b", re.I),
+    re.compile(r"\d{4}-\d{4}-\d{4}-\d{3}[\dXx]"),  # an ORCID id itself, e.g. 0000-0002-1234-567X
+    re.compile(r"©|copyright", re.I),
+    re.compile(r"ceur-ws\.org", re.I),
+    re.compile(r"\bissn\b", re.I),
+    re.compile(r"\bdoi\s*:", re.I),
+    re.compile(r"[\w.+-]+@[\w-]+\.[\w.-]+"),  # a bare email/footnote line
+    re.compile(r"this work is licen", re.I),
+]
+
+
+def _is_boilerplate_paragraph(paragraph: str) -> bool:
+    """Research-PDF front-matter noise: ORCID strings, 'corresponding
+    author'/'contributed equally' footnote markers, copyright/license
+    lines, ISSN/DOI lines, and bare email-footer lines. These paragraphs
+    carry almost no answerable content but repeat words like "author" and
+    "paper" densely enough that BM25 can rank them above the two
+    hand-curated Title/Authors chunks for exactly the questions those
+    chunks exist to answer (see chunk_research_paper's Title/Authors
+    chunks below). Filtering them out here — before they ever become
+    chunks — fixes that at the source instead of trying to out-rank noise
+    after the fact."""
+    s = paragraph.strip()
+    if not s:
+        return True
+    # A short line that's mostly digits/punctuation (bare page numbers,
+    # stray running-header numerals) carries no content either.
+    if len(s) < 25 and re.fullmatch(r"[\d\s\-–.,]+", s):
+        return True
+    return any(pat.search(s) for pat in _BOILERPLATE_PATTERNS)
+
+
 def chunk_research_paper() -> list[dict]:
     try:
         resp = requests.get(RESEARCH_PAPER_URL, headers=REQUEST_HEADERS, timeout=30)
@@ -369,7 +384,11 @@ def chunk_research_paper() -> list[dict]:
         return []
 
     chunks = []
+    skipped = 0
     for para in paragraph_split(full_text):
+        if _is_boilerplate_paragraph(para):
+            skipped += 1
+            continue
         for piece in recursive_char_split(para, chunk_size=400, overlap=80):
             chunks.append({
                 "content": piece,
@@ -379,6 +398,9 @@ def chunk_research_paper() -> list[dict]:
                 "url": RESEARCH_PAPER_URL,
                 "title": "Multipacking in Hypercubes (ICTCS 2025)",
             })
+    if skipped:
+        print(f"NOTE: skipped {skipped} boilerplate paragraph(s) from the research paper "
+              f"(ORCID/copyright/footnote noise) — not indexed.")
     chunks.append({
         "content": (
             "The title of Varun's research paper, published at ICTCS 2025 "
@@ -672,20 +694,29 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
 
     if not text:
         try:
-            for tag in soup(["script", "style", "nav"]):
+            for tag in soup(["script", "style", "nav", "header", "footer", "aside", "form"]):
                 tag.decompose()
             text = soup.get_text(" ", strip=True)
         except Exception as e:
             print(f"WARNING: body text extraction also failed for {url} ({e}) — giving up on this link.")
             return []
 
-    text = text[:3000]
+    # 3000 chars was cutting off the actual useful content on long/JS-heavy
+    # pages (IMDb-style pages routinely bury the plot/bio text well past
+    # that point once nav/boilerplate text is counted). 12000 gives the
+    # body-text fallback enough room without this becoming a full page
+    # mirror; JSON-LD and meta-description (tried first, above) are already
+    # short and unaffected by this.
+    text = text[:12000]
     if not text.strip():
         print(f"NOTE: no extractable text found at all for {url} (likely a fully JS-rendered page).")
         return []
 
     chunks = []
-    for para in paragraph_split(text)[:5]:
+    # Was [:5] paragraphs, tuned for the old 3000-char cap. With more text
+    # available there are more paragraphs to consider, so this is widened
+    # to match rather than silently dropping the back half of the page.
+    for para in paragraph_split(text)[:20]:
         for piece in recursive_char_split(para, chunk_size=400, overlap=80):
             chunks.append({
                 "content": f"(Referenced by Varun in '{link['section']}') {link['label']}: {piece}",
@@ -855,6 +886,17 @@ async def index_all():
             )
 
     print(f"Reindex complete. {len(all_chunks)} chunks now active (batch {batch_id}).")
+
+    # The KB swap above just committed, so any conversation history sitting
+    # in Redis from before this moment may now be answering from facts that
+    # no longer exist. Flush every session's history here (and only here -
+    # not on a timer, not on every script invocation) so the next message
+    # in an in-flight conversation starts clean against the new content.
+    # See memory.flush_all_sessions() for why this is scoped rather than a
+    # full FLUSHDB.
+    cleared = await memory_service.flush_all_sessions()
+    print(f"Cleared {cleared} in-flight conversation session(s) from Redis after reindex.")
+    await memory_service.get_redis().aclose()
 
 
 if __name__ == "__main__":
