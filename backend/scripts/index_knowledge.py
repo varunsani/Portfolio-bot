@@ -675,10 +675,22 @@ def _extract_meta_description(soup) -> str:
 
 
 def _fetch_generic_page(url: str, link: dict) -> list[dict]:
-    """Tries JSON-LD, then meta description, then visible body text, in
-    that order of reliability for JS-rendered pages - each attempt is
-    independent, so a page that fails one extraction method still gets a
-    chance at the next rather than the whole link coming back empty."""
+    """Tries JSON-LD, meta description, AND visible body text, and keeps
+    whichever one actually returned the most content - not just whichever
+    came back non-empty first.
+
+    Previously this stopped at the first non-empty result: JSON-LD or a
+    one-line meta description ("Contribute to X development by creating
+    an account on GitHub.", "ORCID · Please enable JavaScript...") almost
+    always exists and almost always "succeeds", so the much richer body
+    text was silently never even attempted for the vast majority of
+    static pages (Wikipedia, IMDb, chessgames.com, museum sites, poetry
+    pages) where it would have returned a real paragraph or more. That's
+    why external_links.md ended up so bare. JSON-LD/meta description are
+    still needed as the fallback for genuinely JS-rendered pages where
+    body text comes back empty - but "found something" and "found the
+    best available something" aren't the same, so all three are now
+    attempted and scored by length instead of by whichever ran first."""
     try:
         resp = requests.get(url, headers=REQUEST_HEADERS, timeout=15)
         if resp.status_code != 200:
@@ -688,37 +700,47 @@ def _fetch_generic_page(url: str, link: dict) -> list[dict]:
         print(f"WARNING: could not fetch external link {url} ({e})")
         return []
 
-    text = ""
+    candidates = []
+
     try:
-        text = _extract_json_ld_text(soup)
+        jsonld_text = _extract_json_ld_text(soup)
+        if jsonld_text:
+            candidates.append(jsonld_text)
     except Exception as e:
-        print(f"NOTE: JSON-LD extraction failed for {url} ({e}) — trying meta description next.")
+        print(f"NOTE: JSON-LD extraction failed for {url} ({e}).")
 
-    if not text:
-        try:
-            text = _extract_meta_description(soup)
-        except Exception as e:
-            print(f"NOTE: meta description extraction failed for {url} ({e}) — trying body text next.")
+    try:
+        meta_text = _extract_meta_description(soup)
+        if meta_text:
+            candidates.append(meta_text)
+    except Exception as e:
+        print(f"NOTE: meta description extraction failed for {url} ({e}).")
 
-    if not text:
-        try:
-            for tag in soup(["script", "style", "nav", "header", "footer", "aside", "form"]):
-                tag.decompose()
-            text = soup.get_text(" ", strip=True)
-        except Exception as e:
-            print(f"WARNING: body text extraction also failed for {url} ({e}) — giving up on this link.")
-            return []
+    # Body text extraction mutates `soup` (decompose()), so it always runs
+    # last - after JSON-LD/meta description have already read what they
+    # need from the untouched soup.
+    try:
+        for tag in soup(["script", "style", "nav", "header", "footer", "aside", "form"]):
+            tag.decompose()
+        body_text = soup.get_text(" ", strip=True)
+        if body_text:
+            candidates.append(body_text)
+    except Exception as e:
+        print(f"WARNING: body text extraction failed for {url} ({e}).")
+
+    if not candidates:
+        print(f"NOTE: no extractable text found at all for {url} (likely a fully JS-rendered page).")
+        return []
+
+    text = max(candidates, key=len)
 
     # 3000 chars was cutting off the actual useful content on long/JS-heavy
     # pages (IMDb-style pages routinely bury the plot/bio text well past
     # that point once nav/boilerplate text is counted). 12000 gives the
     # body-text fallback enough room without this becoming a full page
-    # mirror; JSON-LD and meta-description (tried first, above) are already
-    # short and unaffected by this.
+    # mirror; JSON-LD and meta-description are already short and
+    # unaffected by this.
     text = text[:12000]
-    if not text.strip():
-        print(f"NOTE: no extractable text found at all for {url} (likely a fully JS-rendered page).")
-        return []
 
     chunks = []
     # Was [:5] paragraphs, tuned for the old 3000-char cap. With more text
