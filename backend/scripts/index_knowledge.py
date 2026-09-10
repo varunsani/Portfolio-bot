@@ -449,7 +449,7 @@ def chunk_research_paper() -> list[dict]:
     chunks.append({
         "content": (
             "The title of Varun's research paper, published at ICTCS 2025 "
-            "(International Conference on Theoretical Computer Science) in "
+            "(Italian Conference on Theoretical Computer Science) in "
             "CEUR Workshop Proceedings Vol-4039, is 'Multipacking in "
             "Hypercubes'. This is Varun's academic publication / research paper."
         ),
