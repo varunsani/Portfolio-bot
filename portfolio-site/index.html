@@ -116,7 +116,26 @@
   .navlinks a{ color:var(--text-dim); transition:color .2s ease; }
   .navlinks a:hover{ color:var(--red); }
   a:focus-visible{ outline:2px solid var(--red); outline-offset:3px; border-radius:2px; }
-  @media (max-width: 800px){ .navlinks{ display:none; } }
+  .nav-toggle{ display:none; background:none; border:1px solid var(--rule); border-radius:6px; width:38px; height:34px; cursor:pointer; align-items:center; justify-content:center; padding:0; }
+  .nav-toggle span{ position:relative; display:block; width:18px; height:2px; background:var(--text); }
+  .nav-toggle span::before, .nav-toggle span::after{ content:""; position:absolute; left:0; width:18px; height:2px; background:var(--text); transition:transform .2s ease, opacity .2s ease; }
+  .nav-toggle span::before{ top:-6px; }
+  .nav-toggle span::after{ top:6px; }
+  .nav-toggle.open span{ background:transparent; }
+  .nav-toggle.open span::before{ transform:translateY(6px) rotate(45deg); }
+  .nav-toggle.open span::after{ transform:translateY(-6px) rotate(-45deg); }
+  @media (max-width: 800px){
+    .nav-toggle{ display:flex; }
+    .navlinks{
+      display:none; position:fixed; top:64px; left:0; right:0; z-index:49;
+      flex-direction:column; align-items:flex-start; gap:0; padding:8px 24px 20px;
+      background:rgba(7,8,11,0.98); border-bottom:1px solid var(--rule);
+      max-height:calc(100svh - 64px); overflow-y:auto;
+    }
+    .navlinks.open{ display:flex; }
+    .navlinks a{ padding:12px 0; width:100%; border-bottom:1px solid var(--rule); }
+    .navlinks a:last-child{ border-bottom:none; }
+  }
 
   /* ---------- hero ---------- */
   .hero{ position:relative; min-height:100svh; display:flex; align-items:center; padding-top:96px; padding-bottom:50px; overflow:hidden; }
@@ -672,7 +691,7 @@
 <header>
   <nav class="wrap">
     <div class="brand">Varun<span class="num">VS1</span></div>
-    <div class="navlinks">
+    <div class="navlinks" id="navLinks">
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#experience">Experience</a>
@@ -682,6 +701,9 @@
       <a href="#contact">Contact</a>
       <a href="https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing" target="_blank" rel="noopener">Resume ↗</a>
     </div>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span>
+    </button>
   </nav>
 </header>
 
@@ -1617,5 +1639,34 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
   else window.addEventListener("load", deferredInit);
 })();
 </script>
+<!-- Mobile nav toggle: shows/hides the nav links as a dropdown under 800px -->
+<script>
+(function () {
+  const toggle = document.getElementById("navToggle");
+  const links = document.getElementById("navLinks");
+  if (!toggle || !links) return;
+
+  function setOpen(open) {
+    links.classList.toggle("open", open);
+    toggle.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  toggle.addEventListener("click", () => setOpen(!links.classList.contains("open")));
+
+  // Close after picking a link (in-page anchors) and on outside clicks,
+  // so the dropdown never lingers over the section the visitor just chose.
+  links.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("click", (e) => {
+    if (links.classList.contains("open") && !links.contains(e.target) && !toggle.contains(e.target)) {
+      setOpen(false);
+    }
+  });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 800) setOpen(false);
+  });
+})();
+</script>
+
 </body>
 </html>
