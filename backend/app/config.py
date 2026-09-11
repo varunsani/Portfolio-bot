@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     # 10 citation chips, several of them barely-relevant "either" gate
     # survivors. 5 is enough to back a 2-3 sentence answer without
     # flooding the chip row.
-    top_k: int = 5
+    top_k: int = 10
     candidate_pool_multiplier: int = 10
 
     # Primary-source content (portfolio/resume/research paper/GitHub) keeps
