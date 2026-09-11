@@ -15,7 +15,7 @@ class Settings(BaseSettings):
     # 10 citation chips, several of them barely-relevant "either" gate
     # survivors. 5 is enough to back a 2-3 sentence answer without
     # flooding the chip row.
-    top_k: int = 10
+    top_k: int = 15
     candidate_pool_multiplier: int = 10
 
     # Primary-source content (portfolio/resume/research paper/GitHub) keeps
@@ -33,9 +33,9 @@ class Settings(BaseSettings):
     vector_min_threshold_external: float = 0.32
     bm25_min_threshold_external: float = 0.42
 
-    vector_weight: float = 0.7
-    bm25_weight: float = 0.3
-    mmr_lambda: float = 0.7
+    vector_weight: float = 0.75
+    bm25_weight: float = 0.25
+    mmr_lambda: float = 0.65
     # How many rows the Postgres full-text-search fallback pulls in
     # alongside the vector-search candidate pool (see
     # retriever._fetch_keyword_candidates). Keeps an exact keyword hit -
@@ -43,8 +43,8 @@ class Settings(BaseSettings):
     # rank in the top vector-similarity candidates.
     keyword_candidate_limit: int = 15
 
-    llm_temperature: float = 0.15
-    llm_max_tokens: int = 300
+    llm_temperature: float = 0.20
+    llm_max_tokens: int = 500
 
     conversation_turns: int = 10
 
