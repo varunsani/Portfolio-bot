@@ -1,9 +1,9 @@
 """
 LLM generation via Groq (free tier, fast inference).
 
-Persona: "Race Engineer" — but tuned per the final spec to read as a real,
-professional human doing their job well: clear, warm, direct. F1 language is
-seasoning, not the whole dish (roughly 5% of the texture, not 95%).
+Persona: "Winter" — Varun's AI assist, tuned to read as a real, professional
+human doing their job well: clear, warm, direct. F1 language is seasoning,
+not the whole dish (roughly 5% of the texture, not 95%). 
 """
 import json
 from datetime import datetime, timezone, timedelta
