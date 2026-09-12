@@ -1410,7 +1410,7 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
     "What does he do outside engineering?",
   ];
 
-  const GREETING = "Ask anything here about Varun — projects, research, experience, whatever you need, and I'll pull it up fast.";
+  const GREETING = "Hey, I'm Winter, Varun's AI assist. Ask me anything about Varun — projects, research, experience, whatever you need — and I'll pull it up.";
 
   function getSessionId() {
     let id = sessionStorage.getItem("re_session_id");
@@ -1458,10 +1458,10 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
       // Create the label (this sits above the circle)
       const label = el("div", { class: "re-launcher-label" }, 
         el("span", { class: "flag-mini" }, "⚑"), 
-        "Ask VS1"
+        "Ask Winter"
       );
 
-      const launcher = el("button", { class: "re-launcher", "aria-label": "Ask Race Engineer", onclick: () => this.open() });
+      const launcher = el("button", { class: "re-launcher", "aria-label": "Ask Winter", onclick: () => this.open() });
       launcher.innerHTML = HEADPHONE_SVG;
       
       this.labelEl = label;
@@ -1491,8 +1491,8 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
         el(
           "div",
           {},
-          el("div", { class: "re-header-title" }, el("span", { class: "re-live-dot" }), "RACE ENGINEER · LIVE"),
-          el("div", { class: "re-header-sub" }, "VS1 · Varun Sani Telemetry")
+          el("div", { class: "re-header-title" }, el("span", { class: "re-live-dot" }), "Winter · LIVE"),
+          el("div", { class: "re-header-sub" }, "VS1 · AI Assist")
         ),
         el("button", { class: "re-close", onclick: () => this.close(), "aria-label": "Close" }, "×")
       );
@@ -1503,7 +1503,7 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
       { 
         style: "text-align: center; font-size: 11px; color: #888; padding: 8px 0 4px; border-bottom: 1px solid #222; margin: 0 14px 6px; letter-spacing: 0.06em; font-family: 'IBM Plex Mono', monospace;" 
       }, 
-      "⚡ Varun's AI Assistant · trained on his work"
+      "⚡ Winter · reads live off Varun's work"
       );
       this.messagesEl.appendChild(widgetLabel);
       this.appendBotMessage(GREETING, []);
@@ -1565,7 +1565,7 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
 
     appendBotMessage(text, citations) {
       const bubble = el("div", { class: "re-bubble" }, text);
-      const wrap = el("div", { class: "re-msg re-bot" }, el("div", { class: "re-msg-label" }, "Race Engineer"), bubble);
+      const wrap = el("div", { class: "re-msg re-bot" }, el("div", { class: "re-msg-label" }, "Winter"), bubble);
 
       if (citations && citations.length) {
         const chipRow = el("div", { class: "re-citations" });
@@ -1587,7 +1587,7 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
     }
 
     appendLoading() {
-      this.loadingEl = el("div", { class: "re-msg re-bot" }, el("div", { class: "re-loading" }, "Race Engineer is on the radio", el("span", { class: "re-dot-flash" })));
+      this.loadingEl = el("div", { class: "re-msg re-bot" }, el("div", { class: "re-loading" }, "Winter is on the radio", el("span", { class: "re-dot-flash" })));
       this.messagesEl.appendChild(this.loadingEl);
       this.scrollToBottom();
     }
