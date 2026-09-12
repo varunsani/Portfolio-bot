@@ -48,8 +48,8 @@ jobs:
 
       - name: Commit changes if content differs
         run: |
-          git config user.name "race-engineer-bot"
-          git config user.email "actions@github.com"
+          git config user.name "winter-portfolio-bot"
+          git config user.email "winter@github.com"
           # Add the new markdown dump file to the commit list
           git add backend/content/portfolio.md backend/content/links.json 
          
