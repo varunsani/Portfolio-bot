@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
     await close_db()
 
 
-app = FastAPI(title="Race Engineer API", lifespan=lifespan)
+app = FastAPI(title="Winter API", lifespan=lifespan)
 
 app.state.limiter = limiter
 
