@@ -71,7 +71,7 @@ MAX_GUARANTEED_FRACTION = 0.5
 # Varun himself on pure vector/BM25 score. A small nudge here keeps
 # primary content winning ties instead of being crowded out.
 _PRIMARY_SOURCES = {"portfolio", "resume", "research_paper", "github_repo", "github_readme"}
-_SOURCE_SCORE_BOOST = 0.04
+
 
 
 @dataclass
