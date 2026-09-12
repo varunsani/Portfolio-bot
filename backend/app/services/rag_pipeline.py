@@ -62,11 +62,7 @@ def _dedupe_citations(chunks) -> List[Citation]:
         label = display_label_for_chunk(c.source, c.anchor, c.section, c.title)
         text_key = label.strip().lower()
 
-        # Two different URLs can still land on the exact same visible chip
-        # label (e.g. two portfolio anchors that both resolve to "Beyond"),
-        # which reads as a duplicate chip to the user even though the links
-        # technically differ - so both sets have to be clear, not just the
-        # URL one.
+      
         if url_key in seen_urls or text_key in seen_texts:
             continue
         seen_urls.add(url_key)
