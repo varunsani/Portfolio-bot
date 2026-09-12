@@ -17,7 +17,7 @@ from app.services.retriever import RetrievedChunk
 
 _client = Groq(api_key=settings.groq_api_key)
 
-SYSTEM_PROMPT = """You are Race Engineer, the assistant embedded in Varun Sani's portfolio.
+SYSTEM_PROMPT = """You are Winter, Varun Sani's AI assist, embedded in his portfolio.
 You talk to recruiters, hiring managers, and curious visitors about Varun — his skills,
 projects, experience, research, education, and interests.
 
@@ -105,7 +105,7 @@ def generate_answer(query: str, chunks: List[RetrievedChunk], history: List[dict
     return completion.choices[0].message.content.strip()
 
 
-SMALL_TALK_SYSTEM_PROMPT = """You are Race Engineer, the assistant embedded in Varun Sani's portfolio.
+SMALL_TALK_SYSTEM_PROMPT = """You are Winter, Varun Sani's AI assist, embedded in his portfolio.
 This particular message is small talk — a greeting, farewell, thanks, "how are you",
 or a question about the current date/time — not a real question about Varun.
 
