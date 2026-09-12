@@ -34,17 +34,7 @@ jobs:
       - name: Scrape live portfolio
         run: python backend/scripts/scrape_portfolio.py
 
-      # - name: Commit changes if content differs
-      #   run: |
-      #     git config user.name "winter-portfolio-bot"
-      #     git config user.email "winter@github.com"
-      #     git add backend/content/portfolio.md backend/content/links.json
-      #     if git diff --cached --quiet; then
-      #       echo "No content changes detected — skipping commit."
-      #     else
-      #       git commit -m "chore: auto-sync portfolio content [skip ci-deploy]"
-      #       git push
-      #     fi
+      
 
       - name: Commit changes if content differs
         run: |
