@@ -25,7 +25,7 @@ class Settings(BaseSettings):
     # sparse content (e.g. the paper title/authors chunk) rather than noise.
     vector_min_threshold: float = 0.28
     bm25_min_threshold: float = 0.35
-
+    SOURCE_SCORE_BOOST: float = 0.03
     # Stricter floors, scoped to external_link chunks only (see
     # retriever._passes_threshold) - this is where the noisy/unrelated
     # citations were actually coming from, so tightening only this pair
