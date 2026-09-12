@@ -1,180 +1,247 @@
-# Deployment guide
+# Race Engineer — RAG assistant for varunsani.vercel.app
 
-This guide walks through deploying your own copy of this project after
-forking or cloning the repo. It assumes you're setting this up for a
-portfolio site of your own — swap in your own URLs, usernames, and repo
-name wherever an example value appears below.
+A self-updating RAG chatbot embedded in Varun Sani's portfolio. It answers
+questions about Varun from his portfolio, resume, research paper, GitHub
+projects, and the external links he references — nothing else, with
+citations that scroll to the exact section. In conversation it introduces
+itself as **Winter**, Varun's AI assist.
 
-## 1. Push the repo to your own GitHub account
+## What's in this repo
 
-```bash
-git clone <this-repo-url>
-cd Portfolio-bot
-git remote set-url origin https://github.com/<your-username>/<your-repo-name>.git
-git push -u origin main
+```
+backend/                     FastAPI RAG service (retrieval, generation, memory)
+portfolio-site/index.html    Varun's actual portfolio, widget already inlined
+.github/workflows/           CI/CD: auto-scrape, auto-reindex, auto-deploy
 ```
 
-If you're starting from a zip instead of a clone, `git init` first, then
-`git add . && git commit -m "Initial commit"` before adding your remote.
+**`index.html` is the real portfolio file**, with the widget's CSS inlined
+in `<head>` and its JS inlined right before `</body>`, deferred with
+`setTimeout(init, 1200)` after `window.onload` so it never competes with the
+page's own load/Lighthouse timing. The backend URL is set near the bottom
+of the inlined script:
 
-**Don't commit `venv/` or `.mypy_cache/`** if your zip/clone includes them —
-they're local tooling artifacts, not part of the app. Add them to
-`.gitignore` and `git rm -r --cached venv .mypy_cache` if they're already
-tracked.
+```js
+window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway.app";
+```
 
-## 2. Provision Railway services
+If you fork this for your own portfolio, replace that with your own
+deployed backend URL before uploading the file to your host. Scroll-reveal
+(`.reveal` sections) fires on `threshold: 0` plus a bottom `rootMargin`,
+not a fixed intersection-ratio threshold — a section taller than the
+viewport (common on phones for Projects/Beyond) would otherwise never
+cross a percentage-based threshold and would stay invisible.
 
-1. Create a new Railway project.
-2. Add a **PostgreSQL** plugin/service. Once it's up, open its query console
-   and run `CREATE EXTENSION IF NOT EXISTS vector;` once (the app also does
-   this automatically on startup — see `app/db/connection.py` — so this is
-   just a sanity check if something later fails).
-3. Add a **Redis** plugin/service.
-4. Add a new service from your GitHub repo, root directory `backend/`,
-   using the provided `Dockerfile`.
-5. Copy the connection strings Railway gives you for Postgres and Redis —
-   you'll need both the internal (`.railway.internal`) and public
-   ("Connect" tab → public network) versions; see step 3 for which goes
-   where.
+## How the self-updating part works
 
-## 3. Set environment variables
+There's no manual reindexing step. Four GitHub Actions workflows chain
+together to keep the bot's knowledge current:
 
-**On Railway** (backend service → Variables) — use the **internal**
-connection strings here, since the app runs inside the same Railway
-project as Postgres/Redis:
-- `DATABASE_URL` — internal Postgres URL
-- `REDIS_URL` — internal Redis URL
-- `GROQ_API_KEY` — from console.groq.com
-- `GROQ_MODEL` — a currently-available Groq model name (check
-  console.groq.com/docs/models — free-tier model names get deprecated and
-  replaced periodically, so don't assume `.env.example`'s example value or
-  `config.py`'s hardcoded default are still live by the time you deploy)
-- `FRONTEND_ORIGIN_PROD` — your deployed portfolio's URL, e.g.
-  `https://yourname.vercel.app` (must match exactly, no trailing slash —
-  this is what the backend's CORS check compares against)
-- everything else in `.env.example` has sensible defaults
+1. **`deploy-portfolio.yml`** fires the moment `portfolio-site/**` is
+   pushed to `main`. Vercel's own Git integration deploys the HTML (no
+   tokens needed for that part); this workflow just waits 45s for that
+   deploy to land, then triggers `scrape-and-reindex.yml` immediately
+   instead of waiting for its next scheduled tick.
+2. **`scrape-and-reindex.yml`** also runs on its own hourly cron (and on
+   manual trigger). It re-scrapes `https://varunsani.vercel.app` live, and
+   only commits `backend/content/portfolio.md` / `links.json` back to the
+   repo **if the text actually changed**.
+3. That commit touches `backend/content/**`, which triggers
+   **`reindex.yml`**: it re-embeds everything and does a zero-downtime
+   swap into Postgres (old vectors stay live and queryable until the new
+   batch is fully verified, then it flips atomically — see the comment
+   block at the top of `backend/scripts/index_knowledge.py`). It also runs
+   its own hourly cron independent of any git push, since a resume update
+   on Google Drive never touches git and wouldn't otherwise trigger a
+   rebuild.
+4. **`deploy.yml`** redeploys the backend to Railway whenever
+   `backend/app/**`, `backend/Dockerfile`, or `backend/requirements.txt`
+   change — code changes and content changes are deployed independently of
+   each other.
 
-**On GitHub** (your repo → Settings → Secrets and variables → Actions) —
-use the **public** connection strings here instead, since GitHub Actions
-runners are outside Railway's private network and can't reach the
-`.railway.internal` hosts:
-- `DATABASE_URL` — public Postgres URL (Postgres service → Connect tab)
-- `GROQ_API_KEY`
-- `REDIS_URL` — public Redis URL (Redis service → Connect tab)
-- `RAILWAY_TOKEN` — Railway account → Tokens → create a token scoped to
-  this project (used by `deploy.yml` to redeploy the backend on push)
+Citations always point at `#anchor` links on the live site, so once new
+content is live at those anchors, citation chips keep scrolling to the
+right place. If you'd rather not wait for a scheduled run, click **Run
+workflow** on `scrape-and-reindex.yml` in the Actions tab any time after a
+portfolio edit.
 
-`GITHUB_TOKEN` is provided automatically by GitHub Actions for
-`deploy-portfolio.yml` — you don't need to create it yourself.
+The moment a reindex actually ships *different* content (compared by
+content hash against the previous run), every in-flight session's Redis
+conversation history is wiped (`memory.flush_all_sessions`). This isn't
+about the knowledge base itself — Postgres already reindexes with zero
+downtime either way. It's about the fact that a session's history holds
+the assistant's own *previous replies*, which get replayed verbatim into
+the next LLM call. If those replies were generated against now-stale
+facts, the model can end up half-anchored to an old answer even though the
+fresh retrieval context for the new question is correct. Sessions living
+entirely between two reindexes are untouched.
 
-## 4. Point the indexer and scraper at your own content
+## Retrieval strategy (why it's not just cosine similarity)
 
-Before the first index, update `backend/scripts/index_knowledge.py`'s
-constants near the top of the file:
-- `RESUME_DRIVE_VIEW_URL` — your resume's Google Drive share link, set to
-  **"Anyone with the link can view."** The resume is fetched live from
-  this URL on every indexing run — it's never committed to the repo, so
-  updating the file on Drive is the only step needed to keep it current.
-- `RESEARCH_PAPER_URL` — if you have one; remove the research-paper
-  indexing step if not.
-- `GITHUB_USERNAME` — your GitHub username (repos are auto-discovered from
-  here, nothing to list manually).
+- **Hybrid candidate generation**: candidates come from two sources merged
+  into one pool — pgvector cosine search (HNSW index, `m=16,
+  ef_construction=64`) over a pool sized `top_k * candidate_pool_multiplier`,
+  and a Postgres full-text-search pass (`to_tsvector`/`plainto_tsquery`
+  against a GIN index) run in parallel. Vector-only candidate generation
+  has a blind spot: a short, specific chunk can sit outside the top
+  vector-similarity results whenever the pool also contains a lot of
+  longer, topically-adjacent content (e.g. a referenced arXiv page that
+  also uses the same vocabulary). The full-text pass guarantees an exact
+  keyword hit isn't lost just because the embedding model didn't rank it
+  as "similar" — see `retriever._fetch_keyword_candidates`.
+- **"Either" acceptance gate**: a candidate survives if its raw vector
+  cosine clears one bar, OR its normalized BM25 score clears a separate
+  bar — not one blended score with a single cutoff. Primary-source content
+  (portfolio, resume, research paper, GitHub) uses looser floors than
+  chunks from referenced external links, which use stricter floors —
+  external-link noise was the actual source of irrelevant citations, so
+  only that gate got tightened rather than starving primary-source recall.
+  A weighted score (vector/BM25 weighted) still ranks whatever clears the
+  gate.
+- **Project-diversity guarantee**: every chunk is tagged at indexing time
+  with a best-guess `project_id`, based on real GitHub repo names/
+  descriptions (not on matching inconsistent titles across
+  portfolio/resume/README, which don't share a naming convention). Before
+  final selection, at least one chunk per distinct `project_id` present in
+  the accepted pool is guaranteed a slot, so a heavily-documented project
+  (mentioned in portfolio + resume + README) can't silently crowd out one
+  that's only mentioned once. This only ever acts on chunks that already
+  passed the relevance gate, so an unrelated query (e.g. about skills)
+  never gets polluted with an irrelevant project chunk.
+- **Source-priority nudge**: a small score boost (`SOURCE_SCORE_BOOST`)
+  applies to primary-content chunks over external-link chunks, so a page
+  Varun merely links to from "Beyond" can't out-rank content that's
+  actually about him on a close call.
+- **Thematic-name resilience**: F1 section names ("The Garage", "The Wind
+  Tunnel") are resolved to plain labels (Projects, Research, ...) via
+  `app/constants.py` before ever reaching the LLM's prompt, derived
+  directly from each section's real HTML `id`, so the model never takes
+  the theme literally. Those same plain labels back the citation chips the
+  user sees, so what the model reasons about and what's shown in the UI
+  always agree. GitHub chunks get a repo-specific label (`Projects —
+  reponame`) instead of a generic `Projects`, so multiple repos in one
+  answer don't collapse into identical-looking citation chips.
+- **MMR (Maximum Marginal Relevance)** re-ranking fills any remaining slots
+  after the project-diversity guarantee, removing near-duplicate chunks
+  (e.g. a project described in both the portfolio and the resume).
+- **Contextual compression** trims each retrieved chunk down to its most
+  query-relevant sentences before it ever reaches the LLM.
+- Citation chips are deduped two ways — by normalized URL (scheme, `www.`,
+  trailing slash, query string, and `#fragment` all stripped) and by
+  visible label — so the same page, or two different anchors that render
+  the same label, never show up twice (see `rag_pipeline._dedupe_citations`).
 
-Then update `backend/scripts/scrape_portfolio.py`'s portfolio URL constant
-to your deployed portfolio URL, and `backend/content/links.json` to the
-external links your own portfolio references. `content/*.md` files are
-generated output, not hand-maintained — don't edit them directly, they get
-overwritten on the next scrape/reindex.
+Current tuning lives entirely in `backend/app/config.py` — `top_k`,
+`candidate_pool_multiplier`, the four `*_min_threshold*` floors,
+`vector_weight`/`bm25_weight`, `mmr_lambda`, and `keyword_candidate_limit`
+are all one-line changes there, with the reasoning for the current values
+in the comments above each field.
 
-## 5. First index
+## Small talk vs. off-topic
 
-Either let `reindex.yml` run (it triggers on any push touching
-`backend/content/**`, which your first commit already does), or run it
-locally once:
+Greetings, farewells, thanks, and date/time questions are matched by a
+deterministic regex (`app/services/small_talk.py`, capped at ~8 words so a
+longer sentence starting with "hi" isn't misclassified) and answered
+directly — with the real current date/time (IST) injected — without
+touching retrieval. Anything else that retrieval turns up nothing for
+(unrelated general knowledge, other people, current events) gets a fixed
+decline reply with no LLM call at all, so there's no path to a
+hallucinated answer.
+
+## What gets scraped and indexed
+
+- **Portfolio** — live-scraped on a schedule, anchor/section auto-detected
+  from the page's own `id="..."` structure (see "self-updating" above).
+- **Resume** — fetched live from a Google Drive share link on every
+  indexing run. It is **not** committed to the repo; the only maintenance
+  step is keeping the Drive file up to date and shared as "Anyone with the
+  link can view."
+- **Research paper** — fetched directly from its public PDF URL, extracted
+  per-page so a single image/formula-heavy page failing to extract cleanly
+  doesn't take the rest of the document down with it.
+- **GitHub** — every public, non-fork repo under the configured username is
+  auto-discovered via the GitHub API (not a hardcoded list); each repo
+  gets at least one chunk (name + language + description) even with no
+  README, so nothing goes entirely unrepresented. New repos are picked up
+  on the next scheduled run.
+- **Every external link found on the portfolio** (`content/links.json`) —
+  dispatched to a source-appropriate fetcher: chess.com ratings via their
+  public stats API (the profile page itself is JS-rendered and returns no
+  numbers to a plain scrape), YouTube via the transcript API, any other
+  Google Drive link via the same PDF path as the resume, and a generic
+  HTML text scrape for everything else (arXiv, Wikipedia, etc.). Heavily
+  JS-rendered third-party sites (LinkedIn, IMDb, etc.) are still included
+  but may yield thin text — there's no headless browser in this stack.
+
+## Persona
+
+The assistant introduces itself as **Winter**, Varun's AI assist — a
+sharp, professional colleague giving a clear briefing, not a themed
+chatbot. Roughly 95% of the voice is plain, human sentences with no
+corporate filler; F1 language shows up as an occasional word choice
+("quick", "another lap", "an off"), never a full metaphor-per-sentence bit,
+and never more than one per answer.
+
+Built into the system prompt is a hard authorship boundary: only chunks
+tagged `Source: research_paper` are Varun's own publication. Content under
+`Beyond`/`external_link` — theorems, proofs, other people's papers Varun
+merely reads about — must never be presented as his. Varun's actual paper
+("Multipacking in Hypercubes", ICTCS 2025) and its four co-authors are
+pinned as fixed facts the model anchors to, rather than something it's
+expected to reconstruct correctly from retrieval alone every time.
+
+See the full system prompt in `backend/app/services/generator.py` if you
+want to tune the ratio or the ground rules further.
+
+## Before you deploy — two things
+
+1. **Groq API key**: sign up at console.groq.com (free tier) and grab a
+   key. Check which model names are currently live on your account —
+   Groq's free-tier model lineup changes over time, and `.env.example`'s
+   suggested value may not match `config.py`'s current default
+   (`groq_model`) by the time you read this.
+2. **Railway project**: create one Postgres service (with the `vector`
+   extension available — Railway's Postgres image supports it) and one
+   Redis service.
+
+Full step-by-step in [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+## Local development
 
 ```bash
 cd backend
-python scripts/index_knowledge.py
-python scripts/verify_index.py
+cp .env.example .env   # fill in DATABASE_URL, REDIS_URL, GROQ_API_KEY
+pip install -r requirements.txt
+python scripts/scrape_portfolio.py     # refresh content/portfolio.md
+python scripts/index_knowledge.py      # build the vector index (also fetches the resume live)
+uvicorn app.main:app --reload
 ```
 
-Check `GET /health` on your Railway URL afterwards — `vectors_indexed`
-should be well above zero.
+## Evaluation
 
-## 6. Wire up the chat widget on your portfolio
-
-The widget's CSS and JS are already inlined into `portfolio-site/index.html`.
-Before deploying, set the backend URL near the bottom of the file to your
-real Railway app:
-
-```html
-window.RACE_ENGINEER_API_URL = "https://<your-railway-app>.up.railway.app";
+```bash
+python backend/scripts/evaluate.py --url https://your-app.railway.app
 ```
 
-Deploy that HTML file to Vercel (or any static host) as you normally
-would. If you're on Vercel with its Git integration connected, a push to
-`main` on the `portfolio-site/**` path deploys automatically — that's what
-`deploy-portfolio.yml` waits on before triggering a scrape (see next
-section).
+Prints each test question, the answer, citations, and latency, so you can
+eyeball faithfulness/relevance before wiring up full RAGAS metrics
+(optional — see the docstring in `evaluate.py`).
 
-## 7. Confirm the self-updating loop
+## Non-negotiables this build respects
 
-1. Change something on your live portfolio, commit under
-   `portfolio-site/**`, and push to `main`.
-2. **`deploy-portfolio.yml`** fires, waits 45s for Vercel's own deploy to
-   land, then triggers **`scrape-and-reindex.yml`** for you — no manual
-   step needed here if you're on Vercel with Git integration.
-3. `scrape-and-reindex.yml` re-scrapes your now-live portfolio and commits
-   an updated `portfolio.md`/`links.json` if the content actually changed,
-   which kicks off **`reindex.yml`** automatically (path filter on
-   `backend/content/**`).
-4. Ask the bot about the change in the widget — it should answer with the
-   new content and a citation pointing at the right anchor.
-
-If you're not using Vercel's Git integration (a different host, or a
-manual deploy step), skip step 2 and instead manually run
-**Scrape Portfolio & Trigger Reindex** from the Actions tab once your
-new content is actually live.
-
-Beyond that first push, `scrape-and-reindex.yml`'s own hourly cron and
-`reindex.yml`'s own hourly cron both run independently as safety nets —
-the former catches drift you forgot to push, the latter catches a
-resume update on Google Drive, which never touches git and wouldn't
-otherwise trigger a rebuild.
-
-## 8. Redeploying backend code changes
-
-`deploy.yml` redeploys the backend to Railway automatically whenever a
-push touches `backend/app/**`, `backend/Dockerfile`, or
-`backend/requirements.txt`. You can also trigger it manually from the
-Actions tab (`workflow_dispatch`) if you need to force a redeploy without
-a code change — e.g. after rotating `RAILWAY_TOKEN`.
-
-## Troubleshooting
-
-- **`vector` extension errors on Railway Postgres**: some Railway Postgres
-  images need the extension allow-listed; check Railway's Postgres docs
-  for "pgvector" if `CREATE EXTENSION` fails.
-- **CORS errors in the browser console**: double check
-  `FRONTEND_ORIGIN_PROD` matches your deployed domain exactly (no trailing
-  slash) — see `ALLOWED_ORIGINS` in `app/main.py`.
-- **Empty answers / "no data on that" for everything**: check `GET /health`
-  and confirm `vectors_indexed > 0`; if it's 0, the indexing job likely
-  failed — check the Action logs for a Groq/embedding error (a stale
-  `GROQ_MODEL` name is a common cause — see step 3), or a
-  `DATABASE_URL`/`REDIS_URL` pointed at an internal host from GitHub
-  Actions instead of the public one.
-- **Resume missing from answers**: check the reindex Action log for a
-  Drive fetch warning. Usually means the Drive file's sharing setting
-  isn't "Anyone with the link," or `RESUME_DRIVE_VIEW_URL` needs updating
-  after re-sharing the file.
-- **Widget not appearing on the live site**: confirm the inlined
-  `RACE_ENGINEER_API_URL` was actually updated before the last deploy, and
-  that your host's build actually shipped the updated HTML file.
-- **429 rate-limit errors during normal use**: the limit is 30
-  requests/minute/IP (`chat.py`); if that's too aggressive for your use
-  case, adjust the `@limiter.limit(...)` decorator on the `/chat` route.
-- **A reindex seems to have "forgotten" an ongoing conversation**: this is
-  expected, not a bug — see the README's "self-updating" section on why
-  session memory is deliberately wiped the moment a reindex ships
-  genuinely new content.
+- Never answers from the LLM's general knowledge about Varun — only
+  retrieved context.
+- Every substantive answer carries at least one citation chip.
+- Citation clicks scroll to the exact `#anchor`, not just the top of the page.
+- Widget loads lazily after the page is interactive — doesn't touch
+  Lighthouse's TTI.
+- Conversation history persists per session (last `conversation_turns`
+  turns, Redis, 6h TTL) — and is wiped for every session the moment a
+  reindex actually changes underlying content, so no reply can be
+  half-anchored to stale facts.
+- Reindexing is zero-downtime: pending batch → verify → atomic swap →
+  delete old.
+- Rate limited: 30 requests/minute/IP, F1-flavoured 429 message
+  ("Box box box. Too many requests. Slow down.").
+- All secrets live in environment variables / GitHub Secrets, never in code.
+- CORS locked to `FRONTEND_ORIGIN_PROD` in production (plus `localhost:3000`
+  / `localhost:5500` for local dev).
