@@ -46,8 +46,8 @@ jobs:
         run: python backend/scripts/index_knowledge.py
       - name: Commit generated markdown files if changed
         run: |
-          git config user.name "race-engineer-bot"
-          git config user.email "actions@github.com"
+          git config user.name "winter-portfolio-bot"
+          git config user.email "winter@github.com"
           git add backend/content/portfolio.md \
                   backend/content/resume.md \
                   backend/content/portfolio_debug.md \
