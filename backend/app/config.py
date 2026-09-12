@@ -11,10 +11,11 @@ class Settings(BaseSettings):
     portfolio_url: str = "https://varunsani.vercel.app"
     frontend_origin_prod: str = "https://varunsani.vercel.app"
 
-    # Lowered from 10 -> 5: at top_k=10 nearly every answer surfaced up to
-    # 10 citation chips, several of them barely-relevant "either" gate
-    # survivors. 5 is enough to back a 2-3 sentence answer without
-    # flooding the chip row.
+    # Has been tuned back to current 15, while dialing in citation relevance/coverage.
+    # If you change this, re-check candidate_pool_multiplier and
+    # MAX_GUARANTEED_FRACTION in retriever.py together with it — both scale
+    # off top_k, not off each other.
+    
     top_k: int = 15
     candidate_pool_multiplier: int = 10
 
@@ -26,13 +27,7 @@ class Settings(BaseSettings):
     vector_min_threshold: float = 0.28
     bm25_min_threshold: float = 0.35
     SOURCE_SCORE_BOOST: float = 0.03
-    # Stricter floors, scoped to external_link chunks only (see
-    # retriever._passes_threshold) - this is where the noisy/unrelated
-    # citations were actually coming from, so tightening only this pair
-    # cuts the noise without also starving primary-source retrieval.
-    vector_min_threshold_external: float = 0.32
-    bm25_min_threshold_external: float = 0.42
-
+  
     vector_weight: float = 0.75
     bm25_weight: float = 0.25
     mmr_lambda: float = 0.65
