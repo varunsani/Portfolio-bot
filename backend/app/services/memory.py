@@ -12,8 +12,8 @@ from app.config import settings
 
 _redis: redis.Redis | None = None
 SESSION_TTL_SECONDS = 60 * 60 * 6  # 6 hours of inactivity clears the session
-SESSION_KEY_PREFIX = "winter:session:"
-CONTENT_HASH_KEY = "winter:kb_content_hash"
+SESSION_KEY_PREFIX = "race_engineer:session:"
+CONTENT_HASH_KEY = "race_engineer:kb_content_hash"
 
 
 def get_redis() -> redis.Redis:
