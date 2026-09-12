@@ -12,8 +12,8 @@ from app.config import settings
 
 _redis: redis.Redis | None = None
 SESSION_TTL_SECONDS = 60 * 60 * 6  # 6 hours of inactivity clears the session
-SESSION_KEY_PREFIX = "race_engineer:session:"
-CONTENT_HASH_KEY = "race_engineer:kb_content_hash"
+SESSION_KEY_PREFIX = "winter:session:"
+CONTENT_HASH_KEY = "winter:kb_content_hash"
 
 
 def get_redis() -> redis.Redis:
@@ -62,7 +62,7 @@ async def flush_all_sessions() -> int:
     entirely between two reindexes) while guaranteeing no session ever
     carries pre-reindex answers across a content change.
 
-    Scoped to the "race_engineer:session:*" prefix (SCAN, not KEYS, so it
+    Scoped to the "winter:session:*" prefix (SCAN, not KEYS, so it
     doesn't block Redis on a large keyspace) rather than FLUSHDB — nothing
     else lives in this Redis instance today, but scoping by prefix means
     this stays correct even if that ever changes. Returns the number of
@@ -77,7 +77,7 @@ async def flush_all_sessions() -> int:
 async def get_last_content_hash() -> str | None:
     """The content fingerprint from the previous successful reindex, or
     None on the very first run ever. Deliberately outside the
-    "race_engineer:session:*" prefix, so flush_all_sessions()'s scoped
+    "winter:session:*" prefix, so flush_all_sessions()'s scoped
     scan-and-delete never touches this key."""
     r = get_redis()
     return await r.get(CONTENT_HASH_KEY)
