@@ -27,26 +27,50 @@ def _normalize_citation_url(url: str) -> str:
 
 
 def _dedupe_citations(chunks) -> List[Citation]:
-    """One citation chip per distinct URL - full stop. Deduped via a set
-    on a normalized URL key (see _normalize_citation_url), not the raw
-    URL string, so trivial variants of the same link (scheme, www.,
-    trailing slash, query params, #fragment) can't produce duplicate
-    chips. Chunks arrive already sorted by retrieval relevance, so
-    keeping the first-seen label per URL keeps the most relevant framing.
+    """One citation chip per distinct URL, and one chip per distinct
+    visible label.
 
-    Labels themselves come from display_label_for_chunk, the same helper
+    Two independent dedup rules run together because each catches a
+    different class of duplicate that the other misses:
+
+    1. URL-level (via _normalize_citation_url): the same underlying link
+       arriving as different strings - http vs https, www vs bare domain,
+       trailing slash, tracking query param, or a same-page #fragment -
+       must not produce a second chip. This is the resume-PDF case, where
+       one Drive URL gets chunked into "Education"/"Experience"/"Skills"/
+       "Resume" sections and would otherwise surface 3-4 times.
+
+    2. Label-level: two *different* URLs can still render the exact same
+       visible chip text (e.g. two portfolio anchors that both resolve to
+       "Beyond"). Even though the links technically differ, they read as
+       a duplicate chip to the user and, in practice, point at the same
+       section of the same page - so one chip is enough. Dropping the
+       second is the intended behavior here, not a loss.
+
+    Chunks arrive already sorted by retrieval relevance, so keeping the
+    first-seen entry per URL and per label keeps the most relevant
+    framing. Labels come from display_label_for_chunk, the same helper
     generator.py uses for the LLM's grounding context, so what the model
     reasons about and what the user sees as a citation chip always agree
     - and GitHub repos in particular get their real repo name folded in
     instead of colliding on the generic "Projects" anchor label."""
     seen_urls: set[str] = set()
+    seen_texts: set[str] = set()
     citations = []
     for c in chunks:
         url_key = _normalize_citation_url(c.url)
-        if url_key in seen_urls:
+        label = display_label_for_chunk(c.source, c.anchor, c.section, c.title)
+        text_key = label.strip().lower()
+
+        # Two different URLs can still land on the exact same visible chip
+        # label (e.g. two portfolio anchors that both resolve to "Beyond"),
+        # which reads as a duplicate chip to the user even though the links
+        # technically differ - so both sets have to be clear, not just the
+        # URL one.
+        if url_key in seen_urls or text_key in seen_texts:
             continue
         seen_urls.add(url_key)
-        label = display_label_for_chunk(c.source, c.anchor, c.section, c.title)
+        seen_texts.add(text_key)
         citations.append(Citation(text=label, url=c.url, anchor=c.anchor))
     return citations
 
