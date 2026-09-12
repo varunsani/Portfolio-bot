@@ -36,8 +36,8 @@ jobs:
 
       # - name: Commit changes if content differs
       #   run: |
-      #     git config user.name "race-engineer-bot"
-      #     git config user.email "actions@github.com"
+      #     git config user.name "winter-portfolio-bot"
+      #     git config user.email "winter@github.com"
       #     git add backend/content/portfolio.md backend/content/links.json
       #     if git diff --cached --quiet; then
       #       echo "No content changes detected — skipping commit."
