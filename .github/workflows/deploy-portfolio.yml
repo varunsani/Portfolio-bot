@@ -4,8 +4,8 @@
 # once in the Vercel dashboard — see DEPLOYMENT.md), not by this workflow —
 # that needs no tokens or secrets here at all. This workflow's only job is:
 # wait for Vercel's own auto-deploy to finish, then trigger the scrape so the
-# chatbot picks up the change immediately instead of waiting for the next
-# 6-hour cron tick.
+# chatbot picks up the change immediately instead of waiting for
+# scrape-and-reindex.yml's own next hourly cron tick.
 #
 # index.html push -> Vercel auto-deploys (its own integration) -> this
 # workflow waits, then triggers scrape-and-reindex.yml -> it re-scrapes the
