@@ -14,7 +14,17 @@ VARUN SANI: +919989044369 | varunsani625@gmail.com | Hyderabad, India | LinkedIn
 
 ---
 
-### Chunk 2  —  Resume — EDUCATION
+### Chunk 2  —  Resume — SUMMARY
+**Title:** Resume — SUMMARY
+**Source:** resume  |  **Anchor:** None
+**URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
+
+SUMMARY: Backend engineer and applied AI/ML developer specializing in system design, RESTful API architecture and production
+grade RAG pipelines. Seeking full-time roles, internships, or research fellowships in software engineering or AI/ML.
+
+---
+
+### Chunk 3  —  Resume — EDUCATION
 **Title:** Resume — Education
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
@@ -25,74 +35,66 @@ Narayana Junior College, Hyderabad|Class XI & XII 96% | 2019–2021
 
 ---
 
-### Chunk 3  —  Resume — TECHNICAL SKILLS
+### Chunk 4  —  Resume — TECHNICAL SKILLS
 **Title:** Resume — Skills
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
 TECHNICAL SKILLS: Languages:Python, C++, C
-Backend & APIs:FastAPI, REST APIs, JWT Authentication, WebSockets
-Databases & ORMs:PostgreSQL, Redis, MongoDB, SQLModel, Alembic
-ML & Data:Scikit-learn, PyTorch, NumPy, Pandas, Matplotlib
-Tools & Platforms:Docker, Git, GitHub, Postman, Ubuntu, Jupyter Notebook
+Core CS:Data Structures & Algorithms, Object-Oriented Programming, System Design
+Backend & APIs:FastAPI, REST APIs, Asyncio, JSON Web Tokens (JWT), WebSockets
+Databases & ORMs:PostgreSQL, pgvector, Redis, MongoDB, SQLModel, Alembic
+ML & Data:RAG/LLM Pipelines, Sentence-Transformers, Scikit-learn, PyTorch
+DevOps & Testing:Git, GitHub, CI/CD (GitHub Actions), Docker, Unit Testing, Postman
 
 ---
 
-### Chunk 4  —  Resume — EXPERIENCE
+### Chunk 5  —  Resume — RESEARCH & PUBLICATIONS
+**Title:** Resume — Research
+**Source:** resume  |  **Anchor:** None
+**URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
+
+RESEARCH & PUBLICATIONS: Multipacking in Hypercubes|Co-author·ORCID Aug 2024–Jul 2025
+•Analysed optimal resource placement in networks using graph-theoretic optimisation, a problem relevant to broadcast
+and sensor network deployment.
+•Investigated the dual of the broadcast domination problem, known as multipacking and derived recursive construction
+techniques and used combinatorial discrepancy theory to establish tight lower and upper bounds, resolving the gap
+between existing known estimates for the problem.
+
+---
+
+### Chunk 6  —  Resume — RESEARCH & PUBLICATIONS
+**Title:** Resume — Research
+**Source:** resume  |  **Anchor:** None
+**URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
+
+RESEARCH & PUBLICATIONS: ng the gap
+between existing known estimates for the problem. •Verified a long-standing conjecture open since 2019, showing hypercubes form the first infinite family of connected
+networks reaching the theoretical limit. Published at ICTCS, Pescara, Italy 2025.View paper
+
+---
+
+### Chunk 7  —  Resume — EXPERIENCE
 **Title:** Resume — Experience
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
 EXPERIENCE: Machine Learning Engineer Intern·Technocolabs Softwares Inc.Jun 2024–Jul 2024
-•Built classification pipelines across Logistic Regression, Decision Tree, Random Forest, XGBoost, and a 3-layer Neural
-Network to predict employee attrition on a 15,000-row, 40-feature HR dataset, improving accuracy from ~72% to ~85%
-and F1-score from 0.68 to ~0.82 through hyperparameter tuning and threshold optimization.
+•Improved employee attrition prediction for an HR analytics use case, collaborated with a cross-functional team to
+build and compare classification models using Python and Scikit-learn, including Logistic Regression, Random Forest,
+XGBoost and a Neural Network, raising prediction accuracy from 72% to 85%.
 
 ---
 
-### Chunk 5  —  Resume — EXPERIENCE
+### Chunk 8  —  Resume — EXPERIENCE
 **Title:** Resume — Experience
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-EXPERIENCE: 82 through hyperparameter tuning and threshold optimization. •Developed regression ensembles for loan default risk in the online P2P lending market using the same model set on
-a 10,000-row, 60-feature dataset, cutting RMSE by ~18% via feature selection, stacking, and weighted averaging,
-validated through 5-fold cross-validation across RMSE, MAE, and R2.
-•Performed end-to-end preprocessing including median/mode imputation for 12% missing values, SMOTE for a 15%
-
----
-
-### Chunk 6  —  Resume — EXPERIENCE
-**Title:** Resume — Experience
-**Source:** resume  |  **Anchor:** None
-**URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
-
-EXPERIENCE: dian/mode imputation for 12% missing values, SMOTE for a 15% minority class, and StandardScaler normalization; engineered 8 interaction features contributing a 5% lift in model
-performance.
-
----
-
-### Chunk 7  —  Resume — PROJECTS
-**Title:** Resume — Projects
-**Source:** resume  |  **Anchor:** None
-**URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
-
-PROJECTS: Real-Time Severe Weather Alerting System|FastAPI·Redis Pub/Sub·WebSockets·PostgreSQL·Docker
-•Replaced client-side polling with server-pushed alerts: a dedicated poller container queries the free Open-Meteo API
-for each subscribed location once per 5-minute cycle and publishes classified conditions over Redis Pub/Sub.
-•Scaled live delivery horizontally by giving each API replica its own WebSocket forwarder that subscribes to the shared
-
----
-
-### Chunk 8  —  Resume — PROJECTS
-**Title:** Resume — Projects
-**Source:** resume  |  **Anchor:** None
-**URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
-
-PROJECTS: ca its own WebSocket forwarder that subscribes to the shared alert stream and pushes only to its locally connected clients, designed to run behind a load balancer across N replicas.
-•Designed a configurable severity engine with hand-tunable thresholds across four condition categories at three escalating
-tiers, and rounded coordinates to ~1.1km so nearby subscriptions share a single polled point.
-URL Shortener|FastAPI·REST APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic
+EXPERIENCE: Neural Network, raising prediction accuracy from 72% to 85%. •Extended the same modeling approach to a second use case, predicting loan default risk on a peer-to-peer lending dataset,
+applying feature selection and ensemble stacking to reduce prediction error by 18%, validated through cross-validation.
+•Diagnosed data quality issues across both datasets, including missing values and class imbalance and engineered 8
+targeted features beyond the standard preprocessing steps, delivering an additional 5% performance lift.
 
 ---
 
@@ -101,10 +103,10 @@ URL Shortener|FastAPI·REST APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: ener|FastAPI·REST APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic •Structured a fully asynchronous URL shortener into router, middleware, service, and repository layers, generating
-unique 6-character base62 short codes with bcrypt-hashed credentials in an ACID-compliant PostgreSQL schema.
-•Authenticated requests with 15-minute JWT access tokens and 7-day refresh tokens, blacklisting revoked tokens in
-Redis with matched TTLs, and capping abuse at 10 creations and 60 redirects per minute per IP.
+PROJECTS: Self-Updating RAG Portfolio Assistant|Groq LLM·FastAPI·pgvector·Redis·GitHub Actions·Docker
+•Architected a RAG assistant using FastAPI and pgvector for recruiters to query portfolio content, combining dense
+search (70%) with BM25 (30%) and MMR re-ranking (λ= 0.7) to balance semantic recall against keyword precision.
+•Automated knowledge freshness with a GitHub Actions CI/CD pipeline that re-scrapes the live site every 1 hour and
 
 ---
 
@@ -113,31 +115,32 @@ Redis with matched TTLs, and capping abuse at 10 creations and 60 redirects per 
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: ng abuse at 10 creations and 60 redirects per minute per IP. •Lowered database load by caching redirect lookups in Redis for 1 hour, and tracked click analytics across daily, weekly,
-and monthly windows via non-blocking asynchronous counters.
+PROJECTS: I/CD pipeline that re-scrapes the live site every 1 hour and on deploy, re-embedding only when content changes with atomic PostgreSQL swaps for zero-downtime updates.
+•Reduced hallucinations with a 0.3 similarity cutoff, added anchor-linked citations, 10-turn Redis memory (6h TTL), 30
+req/min/IP rate limiting and automated resume ingestion from Drive, deployed via Docker for consistent environments.
+URL Shortener|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic
 
 ---
 
-### Chunk 11  —  Resume — RESEARCH & PUBLICATIONS
-**Title:** Resume — Research
+### Chunk 11  —  Resume — PROJECTS
+**Title:** Resume — Projects
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-RESEARCH & PUBLICATIONS: Multipacking in Hypercubes|Co-author·ORCID Aug 2024–Jul 2025
-•Established asymptotically tight bounds on the n-dimensional hypercube’s multipacking number, between ⌊n/2⌋and
-n/2 +O(√n), via a recursive construction and Spencer’s discrepancy theorem.
-•Showed the broadcast-domination-to-multipacking ratio approaches 2, the first infinite family attaining this bound,
-open since Beaudou, Brewster, and Foucaud (2019); accepted at ICTCS 2025, Pescara, Italy.View paper→
+PROJECTS: r|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic •Built a secure, fully asynchronous URL shortening service with RESTful APIs and a layered service architecture,
+validated with script-based unit testing, using unique 6-character Base62 codes on ACID-compliant PostgreSQL.
+•Secured URL management with 15-minute JWT access tokens, 7-day refresh tokens and Redis-backed revocation, while
+rate limiting URL creation and redirects to prevent API abuse.
 
 ---
 
-### Chunk 12  —  Resume — CERTIFICATIONS
-**Title:** Resume — Certifications
+### Chunk 12  —  Resume — PROJECTS
+**Title:** Resume — Projects
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-CERTIFICATIONS: •Introduction to Machine Learning, NPTEL
-•Machine Learning A-Z: AI, Python, Udemy
+PROJECTS: te limiting URL creation and redirects to prevent API abuse. •Reduced repeated database lookups by caching redirects in Redis for 1 hour, while tracking daily, weekly and monthly
+click analytics through asynchronous counters.
 
 ---
 
