@@ -1079,7 +1079,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 The Uffizi The so-called Vasari/Mariette album and Niccolò Gaddi’s graphic collection From 10/09/2026 to 12/09/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all The Uffizi European Heritage Days 2026
+(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all The Uffizi European Heritage Days 2026
 
 ---
 
@@ -1097,7 +1097,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 The Uffizi The so-called Vasari/Mariette album and Niccolò Gaddi’s graphic collection From 10/09/2026 to 12/09/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace Latest news Uffizi – Work in progress: € 50 million in projects to give the Galleries a new look Dozens of projects  involving the Gallery of Statues and Paintings, Pitti Palace, and the Boboli Gardens
+(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace Latest news Uffizi – Work in progress: € 50 million in projects to give the Galleries a new look Dozens of projects  involving the Gallery of Statues and Paintings, Pitti Palace, and the Boboli Gardens
 
 ---
 
@@ -1196,7 +1196,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,391 ratings 28,647 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,412 ratings 28,649 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1268,7 +1268,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,391 ratings 28,647 reviews 5 stars 201,322 (34%) 4 stars 214,980 (37%) 3 stars 112,804 (19%) 2 stars 34,418 (5%) 1 star 14,867 (2%) Search review text Filters Displaying 1 - 30 of 28,593 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,412 ratings 28,649 reviews 5 stars 201,333 (34%) 4 stars 214,986 (37%) 3 stars 112,807 (19%) 2 stars 34,418 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,595 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 

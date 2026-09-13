@@ -1583,567 +1583,7 @@ Authors of Varun's ICTCS 2025 publication paper 'Multipacking in Hypercubes': De
 
 ---
 
-### Chunk 134  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_repo  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform (written in Python)
-
----
-
-### Chunk 135  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Weather Alert Platform: A real-time weather alerting platform: WebSocket-based live push delivery,
-Redis Pub/Sub fan-out across independently polled location feeds, a
-configurable severity-classification engine, JWT-authenticated location
-subscriptions (access + refresh tokens, with Redis-backed blacklisting),
-on-demand cached location queries, and PostgreSQL-backed time-series
-persistence. Fully async throughout (FastAPI, SQLModel + asyncpg,
-redis.asyncio).
-
----
-
-### Chunk 136  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Weather Alert Platform: ersistence. Fully async throughout (FastAPI, SQLModel + asyncpg,
-redis.asyncio). ---
-
----
-
-### Chunk 137  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 1. Architecture: ```
-                                   ┌─────────────────────┐
-                                   │   Open-Meteo API     │  (free, no key)
-                                   └───────────▲──────────┘
-                                               │ HTTP (polled)
-                                   ┌───────────┴──────────┐
-                                   │       poller          │  <- single process
-                                   │ (app/services/poller) │     polls each UNIQUE
-                                   └──────┬───────┬────────┘     subscribed location
-                                          │       │               once per cycle
-                          persists        │       │ publishes alert
-                       WeatherReading,    │       │ (Redis Pub/Sub)
-                          Alert rows      │       │
-                                   ┌──────▼──┐ ┌──▼─────────────────┐
-                                   │ Postgres│ │       Redis         │
-                                   └────▲────┘ │ (blacklist / cache  │
-                                        │      │  / pub-sub channel) │
-                                        │      └──┬───────────┬──────┘
-                              CRUD via  │         │ psubscribe│
-                              SQLModel  │   ┌─────▼───┐  ┌────▼────┐
-                                        │   │ api #1   │  │ api #2  │   <- horizontally
-                                        └───┤ FastAPI  │  │ FastAPI │      scalable
-                                            │ +WS      │  │ +WS     │
-                                            └────┬─────┘  └────┬────┘
-                                                 │ ws push       │ ws push
-                                            ┌────▼────┐    ┌────▼────┐
-                                            │ Client A │    │ Client B│
-                                            └──────────┘    └─────────┘
-```
-
----
-
-### Chunk 138  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 1. Architecture: t B│
-                                            └──────────┘    └─────────┘
-``` **Why a separate poller service?** If polling lived inside every API
-replica, N replicas would mean N redundant calls to Open-Meteo for the
-same location, and duplicate DB rows. Instead, exactly one poller
-process asks Postgres for the distinct set of locations that currently
-have an active subscriber, polls each one exactly once, classifies
-severity, persists the reading + any alerts, and **publishes** the
-alert to a Redis Pub/Sub channel named `alerts.location.{id}`. Every API
-replica subscribes to the wildcard pattern `alerts.location.*` once at
-startup and forwards incoming messages only to the WebSocket clients
-that are connected *to that replica* and *subscribed to that location*.
-That's the fan-out.
-
----
-
-### Chunk 139  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 2. Repository layout: ```
-weather-alert-platform/
-├── app/
-│   ├── main.py                  # FastAPI app, lifespan, router registration
-│   ├── config.py                # pydantic-settings, reads .env
-│   ├── database.py              # async SQLAlchemy engine + session dependency
-│   ├── redis_client.py          # shared async Redis connection pool
-│   ├── models/                  # SQLModel table definitions
-
----
-
-### Chunk 140  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 2. Repository layout: is connection pool
-│   ├── models/                  # SQLModel table definitions │   │   ├── user.py, refresh_token.py, location.py,
-│   │   └── subscription.py, weather_reading.py, alert.py
-│   ├── schemas/                 # Pydantic request/response contracts
-│   ├── auth/
-│   │   ├── password.py          # bcrypt hashing
-│   │   ├── jwt_handler.py        # access + refresh token create/decode
-│   │   ├── blacklist.py          # Redis-backed token revocation
-
----
-
-### Chunk 141  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 2. Repository layout:  create/decode
-│   │   ├── blacklist.py          # Redis-backed token revocation │   │   └── dependencies.py       # get_current_user (HTTP) / get_current_user_ws
-│   ├── routers/
-│   │   ├── auth.py               # register / login / refresh / logout
-│   │   ├── locations.py          # create/list polled locations
-│   │   ├── subscriptions.py      # subscribe / unsubscribe / list
-│   │   ├── weather.py            # cached current query + history
-
----
-
-### Chunk 142  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 2. Repository layout: scribe / list
-│   │   ├── weather.py            # cached current query + history │   │   └── ws.py                 # /ws/alerts live push endpoint
-│   ├── services/
-│   │   ├── weather_client.py     # Open-Meteo async HTTP client
-│   │   ├── severity_engine.py    # ALL tunable thresholds live here
-│   │   ├── poller.py              # the standalone polling loop
-│   │   ├── pubsub.py              # publish (poller) + forward (api) via Redis
-
----
-
-### Chunk 143  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 2. Repository layout: 
-│   │   ├── pubsub.py              # publish (poller) + forward (api) via Redis │   │   └── connection_manager.py  # per-instance in-memory WS registry
-│   ├── core/exceptions.py        # global exception handlers
-│   └── static/test_client.html   # zero-dependency browser test client
-├── alembic/                      # migrations (hand-written initial schema)
-├── scripts/run_poller.py         # poller process entrypoint
-
----
-
-### Chunk 144  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 2. Repository layout: en initial schema)
-├── scripts/run_poller.py         # poller process entrypoint ├── docker/                       # entrypoint shell scripts for containers
-├── Dockerfile
-├── docker-compose.yml            # postgres + redis + api + poller
-├── requirements.txt
-├── .env.example
-└── README.md
-```
-
----
-
-### Chunk 145  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 3. Prerequisites: - Docker + Docker Compose (recommended path — everything below assumes this)
-- OR: Python 3.12+, a local PostgreSQL 16 and Redis 7, if you'd rather run
-  it without Docker
-- Git
-- A free GitHub account (to push the repo, since we're using your own new repo)
-
----
-
-### Chunk 146  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 1 — Get the code onto your machine: You already have the generated project folder. Open a terminal inside it:
-```bash
-cd weather-alert-platform
-```
-
----
-
-### Chunk 147  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 2 — Create your local environment file: ```bash
-cp .env.example .env
-```
-Open `.env` and replace `JWT_SECRET_KEY` with a real random secret:
-```bash
-python3 -c "import secrets; print(secrets.token_urlsafe(64))"
-```
-Paste the output as the value of `JWT_SECRET_KEY` in `.env`.
-Everything else in `.env.example` already matches the Docker Compose
-service names (`postgres`, `redis`) and works out of the box.
-
----
-
-### Chunk 148  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 3 — Build and start everything: ```bash
-docker compose up --build
-```
-This starts, in order:
-1. `postgres` (with a healthcheck so nothing else starts before it's ready)
-2. `redis` (same)
-3. `api` — waits for both, runs `alembic upgrade head` to create every
-   table, then starts `uvicorn` on port 8000
-4. `poller` — waits for Postgres, Redis, *and* for the `alerts` table to
-   exist (i.e. api's migration has run), then starts its polling loop
-
----
-
-### Chunk 149  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 3 — Build and start everything: ` table to
-   exist (i.e. api's migration has run), then starts its polling loop You should see logs like:
-```
-weather_api      | INFO:     Uvicorn running on http://0.0.0.0:8000
-weather_poller   | INFO:poller:Poller starting. Interval=300s
-```
-
----
-
-### Chunk 150  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 4 — Open the test client: Go to **http://localhost:8000/static/test_client.html** in a browser.
-Also available: interactive API docs at **http://localhost:8000/docs**.
-
----
-
-### Chunk 151  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 5 — Walk through the flow: In the test client (or via `curl`/Postman using `/docs`):
-1. **Register** a user, then **Login** — this stores an access + refresh
-   token in the page.
-2. **Create/Get Location** — e.g. name "Hyderabad", lat `17.385`, lon
-   `78.4867`. Coordinates are rounded to 2 decimals (~1.1km) so nearby
-   requests reuse the same polled location instead of creating duplicates.
-
----
-
-### Chunk 152  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 5 — Walk through the flow: earby
-   requests reuse the same polled location instead of creating duplicates. 3. **Subscribe** to that location.
-4. **Connect WebSocket** — opens `/ws/alerts?token=<access_token>`. You'll
-   get a `"connected"` confirmation listing which location_ids you're
-   registered for.
-5. Wait for the poller's next cycle (default every 300s, configurable via
-   `POLL_INTERVAL_SECONDS` in `.env` — set it to something like `30` while
-
----
-
-### Chunk 153  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 5 — Walk through the flow: e via
-   `POLL_INTERVAL_SECONDS` in `.env` — set it to something like `30` while testing so you don't have to wait 5 minutes). If the classified
-   severity for that location crosses any threshold, you'll see an
-   `ALERT PUSH` message appear live in the log, with no page refresh.
-6. Try **Query Current Weather** any time — this hits the cached
-   on-demand endpoint (`/weather/{id}/current`), which only calls
-   Open-Meteo directly if the 5-minute Redis cache has expired.
-
----
-
-### Chunk 154  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 6 — See real fan-out across multiple instances (optional): ```bash
-docker compose up --build --scale api=1   # already the default
-```
-To actually witness cross-instance fan-out: run a second api container by
-hand on a different port (`docker run` with the same image/env pointing
-at the same Postgres/Redis, mapped to e.g. `8001:8000`), connect one
-browser tab's WebSocket to `:8000` and another to `:8001` with the same
-
----
-
-### Chunk 155  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — Step 6 — See real fan-out across multiple instances (optional): nect one
-browser tab's WebSocket to `:8000` and another to `:8001` with the same subscribed location — both will receive the same poller-published alert,
-proving delivery goes through Redis, not direct process memory.
-
----
-
-### Chunk 156  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 5. Running without Docker (local Python): ```bash
-python3 -m venv venv
-source venv/bin/activate           # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env                # then edit DATABASE_URL(_SYNC) and REDIS_URL
-
----
-
-### Chunk 157  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — and set a real JWT_SECRET_KEY: alembic upgrade head                 # create all tables
-
----
-
-### Chunk 158  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — terminal 1: python -m uvicorn app.main:app --reload
-
----
-
-### Chunk 159  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — terminal 2: python -m scripts.run_poller
-```
-
----
-
-### Chunk 160  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 6. Database migrations (Alembic): The initial migration (`alembic/versions/0001_initial.py`) is
-hand-written to precisely match every SQLModel table. If you add or
-change a model afterwards:
-```bash
-alembic revision --autogenerate -m "describe your change"
-alembic upgrade head
-```
-Always review autogenerated migrations before applying them — autogenerate
-is a helpful diff, not a guarantee.
-
----
-
-### Chunk 161  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 7. API reference (summary): All endpoints except `/auth/*` and `/health` require
-`Authorization: Bearer <access_token>`.
-
----
-
-### Chunk 162  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 7. API reference (summary): s except `/auth/*` and `/health` require
-`Authorization: Bearer <access_token>`. | Method | Path                          | Purpose                                   |
-|--------|-------------------------------|--------------------------------------------|
-| POST   | `/auth/register`              | Create a user                              |
-| POST   | `/auth/login`                 | Get access + refresh token pair            |
-| POST   | `/auth/refresh`                | Exchange a valid refresh token for a new access token |
-| POST   | `/auth/logout`                 | Blacklist current access + refresh tokens  |
-| POST   | `/locations`                   | Create or fetch an existing polled location|
-| GET    | `/locations`                   | List all known locations                   |
-| GET    | `/locations/{id}`              | Get one location                           |
-| POST   | `/subscriptions`               | Subscribe to a location                    |
-| GET    | `/subscriptions`                | List your active subscriptions            |
-| DELETE | `/subscriptions/{location_id}` | Unsubscribe                                |
-| GET    | `/weather/{id}/current`         | Cached on-demand current weather           |
-| GET    | `/weather/{id}/history?limit=` | Persisted time-series readings             |
-| WS     | `/ws/alerts?token=`             | Live alert push for your subscriptions     |
-
----
-
-### Chunk 163  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 7. API reference (summary): | `/ws/alerts?token=`             | Live alert push for your subscriptions     | Full interactive schema: `/docs` (Swagger UI) or `/redoc`.
-
----
-
-### Chunk 164  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 8. Severity engine — how it decides what's "severe": Every threshold lives in **`app/services/severity_engine.py`** in two
-plain dicts (`SEVERITY_RULES`, `WEATHER_CODE_SEVERITY`) — nothing else in
-the codebase needs to change to retune sensitivity:
-
----
-
-### Chunk 165  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 8. Severity engine — how it decides what's "severe": SEVERITY`) — nothing else in
-the codebase needs to change to retune sensitivity: - **Extreme heat / cold** — three tiers each (`WATCH` → `WARNING` →
-  `SEVERE`) based on °C thresholds.
-- **High wind** — three tiers based on km/h.
-- **Heavy precipitation** — three tiers based on mm/hour.
-- **Severe weather codes** — Open-Meteo returns a WMO weather code (fog,
-  drizzle, rain, snow, thunderstorm, hail, etc.); each code is mapped
-  directly to a severity tier (e.g. plain fog is a `WATCH`, hail-bearing
-  thunderstorms are `SEVERE`).
-
----
-
-### Chunk 166  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 8. Severity engine — how it decides what's "severe": y tier (e.g. plain fog is a `WATCH`, hail-bearing
-  thunderstorms are `SEVERE`). For one weather reading, each of the four categories independently
-produces **at most one** alert, at the highest tier it crosses — so a
-single violent thunderstorm reading won't spam five overlapping alerts
-for the same underlying event.
-
----
-
-### Chunk 167  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 9. JWT auth design: - **Access token**: 15 minutes, used for all HTTP + WebSocket auth.
-- **Refresh token**: 7 days, tracked in Postgres (`refresh_tokens` table)
-  so a specific session can be identified/revoked, not just blacklisted.
-- **Blacklisting**: both token types carry a unique `jti`. On logout,
-  the presented tokens' `jti`s are written to Redis with a TTL equal to
-
----
-
-### Chunk 168  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 9. JWT auth design:  logout,
-  the presented tokens' `jti`s are written to Redis with a TTL equal to their remaining lifetime — so the blacklist entry expires exactly when
-  the token would have anyway, with no manual cleanup needed.
-- **WebSocket auth**: the access token is passed as `?token=` on the
-  connect URL (browsers can't set custom headers during the WS
-  handshake). Same validation + blacklist check as HTTP.
-
----
-
-### Chunk 169  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 10. Git & GitHub — from zero: Inside the project folder:
-```bash
-git init
-git add .
-git commit -m "Initial commit: real-time weather alert platform"
-```
-
-Create a **new, empty** repository on GitHub (no README/license/gitignore —
-those already exist locally), then:
-```bash
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo-name>.git
-git push -u origin main
-```
-
----
-
-### Chunk 170  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 10. Git & GitHub — from zero: ps://github.com/<your-username>/<your-repo-name>.git
-git push -u origin main
-``` If you use SSH instead of HTTPS:
-```bash
-git remote add origin git@github.com:<your-username>/<your-repo-name>.git
-git push -u origin main
-```
-
-`.env` is already gitignored — never commit real secrets. Anyone cloning
-the repo starts from `.env.example` as documented in Step 2 above.
-
----
-
-### Chunk 171  —  The Garage (Projects) — weather-alert-platform
-**Title:** weather-alert-platform
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
-
-weather-alert-platform — 11. A note on the free weather API: Open-Meteo's free tier requires no API key and has a generous rate limit
-for non-commercial use, which is exactly why the poller design polls each
-unique location once per cycle rather than once per subscriber — it's
-respectful of the upstream free tier by construction, not just by luck.
-
----
-
-### Chunk 172  —  The Garage (Projects) — Portfolio-bot
+### Chunk 134  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_repo  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2152,7 +1592,7 @@ Portfolio-bot (written in Python)
 
 ---
 
-### Chunk 173  —  The Garage (Projects) — Portfolio-bot
+### Chunk 135  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2165,7 +1605,7 @@ itself as **Winter**, Varun's AI assist.
 
 ---
 
-### Chunk 174  —  The Garage (Projects) — Portfolio-bot
+### Chunk 136  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2178,7 +1618,7 @@ portfolio-site/index.html    Varun's actual portfolio, widget already inlined
 
 ---
 
-### Chunk 175  —  The Garage (Projects) — Portfolio-bot
+### Chunk 137  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2193,7 +1633,7 @@ of the inlined script:
 
 ---
 
-### Chunk 176  —  The Garage (Projects) — Portfolio-bot
+### Chunk 138  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2205,7 +1645,7 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
 
 ---
 
-### Chunk 177  —  The Garage (Projects) — Portfolio-bot
+### Chunk 139  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2220,7 +1660,7 @@ cross a percentage-based threshold and would stay invisible.
 
 ---
 
-### Chunk 178  —  The Garage (Projects) — Portfolio-bot
+### Chunk 140  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2230,7 +1670,7 @@ together to keep the bot's knowledge current:
 
 ---
 
-### Chunk 179  —  The Garage (Projects) — Portfolio-bot
+### Chunk 141  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2260,7 +1700,7 @@ together to keep the bot's knowledge current: 1. **`deploy-portfolio.yml`** fire
 
 ---
 
-### Chunk 180  —  The Garage (Projects) — Portfolio-bot
+### Chunk 142  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2274,7 +1714,7 @@ portfolio edit.
 
 ---
 
-### Chunk 181  —  The Garage (Projects) — Portfolio-bot
+### Chunk 143  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2293,7 +1733,7 @@ entirely between two reindexes are untouched.
 
 ---
 
-### Chunk 182  —  The Garage (Projects) — Portfolio-bot
+### Chunk 144  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2353,7 +1793,7 @@ Portfolio-bot — Retrieval strategy (why it's not just cosine similarity): - **
 
 ---
 
-### Chunk 183  —  The Garage (Projects) — Portfolio-bot
+### Chunk 145  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2367,7 +1807,7 @@ in the comments above each field.
 
 ---
 
-### Chunk 184  —  The Garage (Projects) — Portfolio-bot
+### Chunk 146  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2380,7 +1820,7 @@ touching retrieval. Anything else that retrieval turns up nothing for
 
 ---
 
-### Chunk 185  —  The Garage (Projects) — Portfolio-bot
+### Chunk 147  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2392,7 +1832,7 @@ hallucinated answer.
 
 ---
 
-### Chunk 186  —  The Garage (Projects) — Portfolio-bot
+### Chunk 148  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2406,7 +1846,7 @@ Portfolio-bot — What gets scraped and indexed: - **Portfolio** — live-scrape
 
 ---
 
-### Chunk 187  —  The Garage (Projects) — Portfolio-bot
+### Chunk 149  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2420,7 +1860,7 @@ Portfolio-bot — What gets scraped and indexed: eping the Drive file up to date
 
 ---
 
-### Chunk 188  —  The Garage (Projects) — Portfolio-bot
+### Chunk 150  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2435,7 +1875,7 @@ Portfolio-bot — What gets scraped and indexed: ername is
 
 ---
 
-### Chunk 189  —  The Garage (Projects) — Portfolio-bot
+### Chunk 151  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2449,7 +1889,7 @@ Portfolio-bot — What gets scraped and indexed:  their
 
 ---
 
-### Chunk 190  —  The Garage (Projects) — Portfolio-bot
+### Chunk 152  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2463,7 +1903,7 @@ and never more than one per answer.
 
 ---
 
-### Chunk 191  —  The Garage (Projects) — Portfolio-bot
+### Chunk 153  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2479,7 +1919,7 @@ expected to reconstruct correctly from retrieval alone every time.
 
 ---
 
-### Chunk 192  —  The Garage (Projects) — Portfolio-bot
+### Chunk 154  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2490,7 +1930,7 @@ want to tune the ratio or the ground rules further.
 
 ---
 
-### Chunk 193  —  The Garage (Projects) — Portfolio-bot
+### Chunk 155  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2506,7 +1946,7 @@ Portfolio-bot — Before you deploy — two things: 1. **Groq API key**: sign up
 
 ---
 
-### Chunk 194  —  The Garage (Projects) — Portfolio-bot
+### Chunk 156  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2516,7 +1956,7 @@ Portfolio-bot — Before you deploy — two things: sion available — Railway's
 
 ---
 
-### Chunk 195  —  The Garage (Projects) — Portfolio-bot
+### Chunk 157  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2532,7 +1972,7 @@ uvicorn app.main:app --reload
 
 ---
 
-### Chunk 196  —  The Garage (Projects) — Portfolio-bot
+### Chunk 158  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2547,7 +1987,7 @@ eyeball faithfulness/relevance before wiring up full RAGAS metrics
 
 ---
 
-### Chunk 197  —  The Garage (Projects) — Portfolio-bot
+### Chunk 159  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2562,7 +2002,7 @@ Portfolio-bot — Non-negotiables this build respects: - Never answers from the 
 
 ---
 
-### Chunk 198  —  The Garage (Projects) — Portfolio-bot
+### Chunk 160  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2578,7 +2018,7 @@ Portfolio-bot — Non-negotiables this build respects: se's TTI.
 
 ---
 
-### Chunk 199  —  The Garage (Projects) — Portfolio-bot
+### Chunk 161  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2587,6 +2027,566 @@ Portfolio-bot — Non-negotiables this build respects: e/IP, F1-flavoured 429 me
   ("Box box box. Too many requests. Slow down."). - All secrets live in environment variables / GitHub Secrets, never in code.
 - CORS locked to `FRONTEND_ORIGIN_PROD` in production (plus `localhost:3000`
   / `localhost:5500` for local dev).
+
+---
+
+### Chunk 162  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_repo  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform (written in Python)
+
+---
+
+### Chunk 163  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Weather Alert Platform: A real-time weather alerting platform: WebSocket-based live push delivery,
+Redis Pub/Sub fan-out across independently polled location feeds, a
+configurable severity-classification engine, JWT-authenticated location
+subscriptions (access + refresh tokens, with Redis-backed blacklisting),
+on-demand cached location queries, and PostgreSQL-backed time-series
+persistence. Fully async throughout (FastAPI, SQLModel + asyncpg,
+redis.asyncio).
+
+---
+
+### Chunk 164  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Weather Alert Platform: ersistence. Fully async throughout (FastAPI, SQLModel + asyncpg,
+redis.asyncio). ---
+
+---
+
+### Chunk 165  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 1. Architecture: ```
+                                   ┌─────────────────────┐
+                                   │   Open-Meteo API     │  (free, no key)
+                                   └───────────▲──────────┘
+                                               │ HTTP (polled)
+                                   ┌───────────┴──────────┐
+                                   │       poller          │  <- single process
+                                   │ (app/services/poller) │     polls each UNIQUE
+                                   └──────┬───────┬────────┘     subscribed location
+                                          │       │               once per cycle
+                          persists        │       │ publishes alert
+                       WeatherReading,    │       │ (Redis Pub/Sub)
+                          Alert rows      │       │
+                                   ┌──────▼──┐ ┌──▼─────────────────┐
+                                   │ Postgres│ │       Redis         │
+                                   └────▲────┘ │ (blacklist / cache  │
+                                        │      │  / pub-sub channel) │
+                                        │      └──┬───────────┬──────┘
+                              CRUD via  │         │ psubscribe│
+                              SQLModel  │   ┌─────▼───┐  ┌────▼────┐
+                                        │   │ api #1   │  │ api #2  │   <- horizontally
+                                        └───┤ FastAPI  │  │ FastAPI │      scalable
+                                            │ +WS      │  │ +WS     │
+                                            └────┬─────┘  └────┬────┘
+                                                 │ ws push       │ ws push
+                                            ┌────▼────┐    ┌────▼────┐
+                                            │ Client A │    │ Client B│
+                                            └──────────┘    └─────────┘
+```
+
+---
+
+### Chunk 166  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 1. Architecture: t B│
+                                            └──────────┘    └─────────┘
+``` **Why a separate poller service?** If polling lived inside every API
+replica, N replicas would mean N redundant calls to Open-Meteo for the
+same location, and duplicate DB rows. Instead, exactly one poller
+process asks Postgres for the distinct set of locations that currently
+have an active subscriber, polls each one exactly once, classifies
+severity, persists the reading + any alerts, and **publishes** the
+alert to a Redis Pub/Sub channel named `alerts.location.{id}`. Every API
+replica subscribes to the wildcard pattern `alerts.location.*` once at
+startup and forwards incoming messages only to the WebSocket clients
+that are connected *to that replica* and *subscribed to that location*.
+That's the fan-out.
+
+---
+
+### Chunk 167  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 2. Repository layout: ```
+weather-alert-platform/
+├── app/
+│   ├── main.py                  # FastAPI app, lifespan, router registration
+│   ├── config.py                # pydantic-settings, reads .env
+│   ├── database.py              # async SQLAlchemy engine + session dependency
+│   ├── redis_client.py          # shared async Redis connection pool
+│   ├── models/                  # SQLModel table definitions
+
+---
+
+### Chunk 168  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 2. Repository layout: is connection pool
+│   ├── models/                  # SQLModel table definitions │   │   ├── user.py, refresh_token.py, location.py,
+│   │   └── subscription.py, weather_reading.py, alert.py
+│   ├── schemas/                 # Pydantic request/response contracts
+│   ├── auth/
+│   │   ├── password.py          # bcrypt hashing
+│   │   ├── jwt_handler.py        # access + refresh token create/decode
+│   │   ├── blacklist.py          # Redis-backed token revocation
+
+---
+
+### Chunk 169  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 2. Repository layout:  create/decode
+│   │   ├── blacklist.py          # Redis-backed token revocation │   │   └── dependencies.py       # get_current_user (HTTP) / get_current_user_ws
+│   ├── routers/
+│   │   ├── auth.py               # register / login / refresh / logout
+│   │   ├── locations.py          # create/list polled locations
+│   │   ├── subscriptions.py      # subscribe / unsubscribe / list
+│   │   ├── weather.py            # cached current query + history
+
+---
+
+### Chunk 170  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 2. Repository layout: scribe / list
+│   │   ├── weather.py            # cached current query + history │   │   └── ws.py                 # /ws/alerts live push endpoint
+│   ├── services/
+│   │   ├── weather_client.py     # Open-Meteo async HTTP client
+│   │   ├── severity_engine.py    # ALL tunable thresholds live here
+│   │   ├── poller.py              # the standalone polling loop
+│   │   ├── pubsub.py              # publish (poller) + forward (api) via Redis
+
+---
+
+### Chunk 171  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 2. Repository layout: 
+│   │   ├── pubsub.py              # publish (poller) + forward (api) via Redis │   │   └── connection_manager.py  # per-instance in-memory WS registry
+│   ├── core/exceptions.py        # global exception handlers
+│   └── static/test_client.html   # zero-dependency browser test client
+├── alembic/                      # migrations (hand-written initial schema)
+├── scripts/run_poller.py         # poller process entrypoint
+
+---
+
+### Chunk 172  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 2. Repository layout: en initial schema)
+├── scripts/run_poller.py         # poller process entrypoint ├── docker/                       # entrypoint shell scripts for containers
+├── Dockerfile
+├── docker-compose.yml            # postgres + redis + api + poller
+├── requirements.txt
+├── .env.example
+└── README.md
+```
+
+---
+
+### Chunk 173  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 3. Prerequisites: - Docker + Docker Compose (recommended path — everything below assumes this)
+- OR: Python 3.12+, a local PostgreSQL 16 and Redis 7, if you'd rather run
+  it without Docker
+- Git
+- A free GitHub account (to push the repo, since we're using your own new repo)
+
+---
+
+### Chunk 174  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 1 — Get the code onto your machine: You already have the generated project folder. Open a terminal inside it:
+```bash
+cd weather-alert-platform
+```
+
+---
+
+### Chunk 175  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 2 — Create your local environment file: ```bash
+cp .env.example .env
+```
+Open `.env` and replace `JWT_SECRET_KEY` with a real random secret:
+```bash
+python3 -c "import secrets; print(secrets.token_urlsafe(64))"
+```
+Paste the output as the value of `JWT_SECRET_KEY` in `.env`.
+Everything else in `.env.example` already matches the Docker Compose
+service names (`postgres`, `redis`) and works out of the box.
+
+---
+
+### Chunk 176  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 3 — Build and start everything: ```bash
+docker compose up --build
+```
+This starts, in order:
+1. `postgres` (with a healthcheck so nothing else starts before it's ready)
+2. `redis` (same)
+3. `api` — waits for both, runs `alembic upgrade head` to create every
+   table, then starts `uvicorn` on port 8000
+4. `poller` — waits for Postgres, Redis, *and* for the `alerts` table to
+   exist (i.e. api's migration has run), then starts its polling loop
+
+---
+
+### Chunk 177  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 3 — Build and start everything: ` table to
+   exist (i.e. api's migration has run), then starts its polling loop You should see logs like:
+```
+weather_api      | INFO:     Uvicorn running on http://0.0.0.0:8000
+weather_poller   | INFO:poller:Poller starting. Interval=300s
+```
+
+---
+
+### Chunk 178  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 4 — Open the test client: Go to **http://localhost:8000/static/test_client.html** in a browser.
+Also available: interactive API docs at **http://localhost:8000/docs**.
+
+---
+
+### Chunk 179  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 5 — Walk through the flow: In the test client (or via `curl`/Postman using `/docs`):
+1. **Register** a user, then **Login** — this stores an access + refresh
+   token in the page.
+2. **Create/Get Location** — e.g. name "Hyderabad", lat `17.385`, lon
+   `78.4867`. Coordinates are rounded to 2 decimals (~1.1km) so nearby
+   requests reuse the same polled location instead of creating duplicates.
+
+---
+
+### Chunk 180  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 5 — Walk through the flow: earby
+   requests reuse the same polled location instead of creating duplicates. 3. **Subscribe** to that location.
+4. **Connect WebSocket** — opens `/ws/alerts?token=<access_token>`. You'll
+   get a `"connected"` confirmation listing which location_ids you're
+   registered for.
+5. Wait for the poller's next cycle (default every 300s, configurable via
+   `POLL_INTERVAL_SECONDS` in `.env` — set it to something like `30` while
+
+---
+
+### Chunk 181  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 5 — Walk through the flow: e via
+   `POLL_INTERVAL_SECONDS` in `.env` — set it to something like `30` while testing so you don't have to wait 5 minutes). If the classified
+   severity for that location crosses any threshold, you'll see an
+   `ALERT PUSH` message appear live in the log, with no page refresh.
+6. Try **Query Current Weather** any time — this hits the cached
+   on-demand endpoint (`/weather/{id}/current`), which only calls
+   Open-Meteo directly if the 5-minute Redis cache has expired.
+
+---
+
+### Chunk 182  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 6 — See real fan-out across multiple instances (optional): ```bash
+docker compose up --build --scale api=1   # already the default
+```
+To actually witness cross-instance fan-out: run a second api container by
+hand on a different port (`docker run` with the same image/env pointing
+at the same Postgres/Redis, mapped to e.g. `8001:8000`), connect one
+browser tab's WebSocket to `:8000` and another to `:8001` with the same
+
+---
+
+### Chunk 183  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — Step 6 — See real fan-out across multiple instances (optional): nect one
+browser tab's WebSocket to `:8000` and another to `:8001` with the same subscribed location — both will receive the same poller-published alert,
+proving delivery goes through Redis, not direct process memory.
+
+---
+
+### Chunk 184  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 5. Running without Docker (local Python): ```bash
+python3 -m venv venv
+source venv/bin/activate           # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env                # then edit DATABASE_URL(_SYNC) and REDIS_URL
+
+---
+
+### Chunk 185  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — and set a real JWT_SECRET_KEY: alembic upgrade head                 # create all tables
+
+---
+
+### Chunk 186  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — terminal 1: python -m uvicorn app.main:app --reload
+
+---
+
+### Chunk 187  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — terminal 2: python -m scripts.run_poller
+```
+
+---
+
+### Chunk 188  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 6. Database migrations (Alembic): The initial migration (`alembic/versions/0001_initial.py`) is
+hand-written to precisely match every SQLModel table. If you add or
+change a model afterwards:
+```bash
+alembic revision --autogenerate -m "describe your change"
+alembic upgrade head
+```
+Always review autogenerated migrations before applying them — autogenerate
+is a helpful diff, not a guarantee.
+
+---
+
+### Chunk 189  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 7. API reference (summary): All endpoints except `/auth/*` and `/health` require
+`Authorization: Bearer <access_token>`.
+
+---
+
+### Chunk 190  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 7. API reference (summary): s except `/auth/*` and `/health` require
+`Authorization: Bearer <access_token>`. | Method | Path                          | Purpose                                   |
+|--------|-------------------------------|--------------------------------------------|
+| POST   | `/auth/register`              | Create a user                              |
+| POST   | `/auth/login`                 | Get access + refresh token pair            |
+| POST   | `/auth/refresh`                | Exchange a valid refresh token for a new access token |
+| POST   | `/auth/logout`                 | Blacklist current access + refresh tokens  |
+| POST   | `/locations`                   | Create or fetch an existing polled location|
+| GET    | `/locations`                   | List all known locations                   |
+| GET    | `/locations/{id}`              | Get one location                           |
+| POST   | `/subscriptions`               | Subscribe to a location                    |
+| GET    | `/subscriptions`                | List your active subscriptions            |
+| DELETE | `/subscriptions/{location_id}` | Unsubscribe                                |
+| GET    | `/weather/{id}/current`         | Cached on-demand current weather           |
+| GET    | `/weather/{id}/history?limit=` | Persisted time-series readings             |
+| WS     | `/ws/alerts?token=`             | Live alert push for your subscriptions     |
+
+---
+
+### Chunk 191  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 7. API reference (summary): | `/ws/alerts?token=`             | Live alert push for your subscriptions     | Full interactive schema: `/docs` (Swagger UI) or `/redoc`.
+
+---
+
+### Chunk 192  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 8. Severity engine — how it decides what's "severe": Every threshold lives in **`app/services/severity_engine.py`** in two
+plain dicts (`SEVERITY_RULES`, `WEATHER_CODE_SEVERITY`) — nothing else in
+the codebase needs to change to retune sensitivity:
+
+---
+
+### Chunk 193  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 8. Severity engine — how it decides what's "severe": SEVERITY`) — nothing else in
+the codebase needs to change to retune sensitivity: - **Extreme heat / cold** — three tiers each (`WATCH` → `WARNING` →
+  `SEVERE`) based on °C thresholds.
+- **High wind** — three tiers based on km/h.
+- **Heavy precipitation** — three tiers based on mm/hour.
+- **Severe weather codes** — Open-Meteo returns a WMO weather code (fog,
+  drizzle, rain, snow, thunderstorm, hail, etc.); each code is mapped
+  directly to a severity tier (e.g. plain fog is a `WATCH`, hail-bearing
+  thunderstorms are `SEVERE`).
+
+---
+
+### Chunk 194  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 8. Severity engine — how it decides what's "severe": y tier (e.g. plain fog is a `WATCH`, hail-bearing
+  thunderstorms are `SEVERE`). For one weather reading, each of the four categories independently
+produces **at most one** alert, at the highest tier it crosses — so a
+single violent thunderstorm reading won't spam five overlapping alerts
+for the same underlying event.
+
+---
+
+### Chunk 195  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 9. JWT auth design: - **Access token**: 15 minutes, used for all HTTP + WebSocket auth.
+- **Refresh token**: 7 days, tracked in Postgres (`refresh_tokens` table)
+  so a specific session can be identified/revoked, not just blacklisted.
+- **Blacklisting**: both token types carry a unique `jti`. On logout,
+  the presented tokens' `jti`s are written to Redis with a TTL equal to
+
+---
+
+### Chunk 196  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 9. JWT auth design:  logout,
+  the presented tokens' `jti`s are written to Redis with a TTL equal to their remaining lifetime — so the blacklist entry expires exactly when
+  the token would have anyway, with no manual cleanup needed.
+- **WebSocket auth**: the access token is passed as `?token=` on the
+  connect URL (browsers can't set custom headers during the WS
+  handshake). Same validation + blacklist check as HTTP.
+
+---
+
+### Chunk 197  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 10. Git & GitHub — from zero: Inside the project folder:
+```bash
+git init
+git add .
+git commit -m "Initial commit: real-time weather alert platform"
+```
+
+Create a **new, empty** repository on GitHub (no README/license/gitignore —
+those already exist locally), then:
+```bash
+git branch -M main
+git remote add origin https://github.com/<your-username>/<your-repo-name>.git
+git push -u origin main
+```
+
+---
+
+### Chunk 198  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 10. Git & GitHub — from zero: ps://github.com/<your-username>/<your-repo-name>.git
+git push -u origin main
+``` If you use SSH instead of HTTPS:
+```bash
+git remote add origin git@github.com:<your-username>/<your-repo-name>.git
+git push -u origin main
+```
+
+`.env` is already gitignored — never commit real secrets. Anyone cloning
+the repo starts from `.env.example` as documented in Step 2 above.
+
+---
+
+### Chunk 199  —  The Garage (Projects) — weather-alert-platform
+**Title:** weather-alert-platform
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/weather-alert-platform  |  **Project ID:** none
+
+weather-alert-platform — 11. A note on the free weather API: Open-Meteo's free tier requires no API key and has a generous rate limit
+for non-commercial use, which is exactly why the poller design polls each
+unique location once per cycle rather than once per subscriber — it's
+respectful of the upstream free tier by construction, not just by luck.
 
 ---
 
@@ -5272,7 +5272,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 The Uffizi The so-called Vasari/Mariette album and Niccolò Gaddi’s graphic collection From 10/09/2026 to 12/09/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all The Uffizi European Heritage Days 2026
+(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all The Uffizi European Heritage Days 2026
 
 ---
 
@@ -5290,7 +5290,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 The Uffizi The so-called Vasari/Mariette album and Niccolò Gaddi’s graphic collection From 10/09/2026 to 12/09/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace Latest news Uffizi – Work in progress: € 50 million in projects to give the Galleries a new look Dozens of projects  involving the Gallery of Statues and Paintings, Pitti Palace, and the Boboli Gardens
+(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace Latest news Uffizi – Work in progress: € 50 million in projects to give the Galleries a new look Dozens of projects  involving the Gallery of Statues and Paintings, Pitti Palace, and the Boboli Gardens
 
 ---
 
@@ -5389,7 +5389,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,391 ratings 28,647 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,412 ratings 28,649 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5461,7 +5461,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,391 ratings 28,647 reviews 5 stars 201,322 (34%) 4 stars 214,980 (37%) 3 stars 112,804 (19%) 2 stars 34,418 (5%) 1 star 14,867 (2%) Search review text Filters Displaying 1 - 30 of 28,593 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,412 ratings 28,649 reviews 5 stars 201,333 (34%) 4 stars 214,986 (37%) 3 stars 112,807 (19%) 2 stars 34,418 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,595 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
