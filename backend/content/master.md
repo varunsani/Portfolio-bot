@@ -5398,7 +5398,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,488 ratings 28,655 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,498 ratings 28,660 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5470,7 +5470,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,488 ratings 28,655 reviews 5 stars 201,366 (34%) 4 stars 215,019 (37%) 3 stars 112,815 (19%) 2 stars 34,419 (5%) 1 star 14,869 (2%) Search review text Filters Displaying 1 - 30 of 28,600 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,498 ratings 28,660 reviews 5 stars 201,369 (34%) 4 stars 215,025 (37%) 3 stars 112,816 (19%) 2 stars 34,420 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,603 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -6073,7 +6073,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: Eternal Sunshine of the Spotless Mind - Wikipedia Jump to content From Wikipedia, the free encyclopedia 2004 film by Michel Gondry Eternal Sunshine of the Spotless Mind Theatrical release poster Directed by Michel Gondry Screenplay by Charlie Kaufman Story by Charlie Kaufman Michel Gondry Pierre Bismuth Produced by Steve Golin Anthony Bregman Starring Jim Carrey Kate Winslet Kirsten Dunst Mark Ruffalo Elijah Wood Tom Wilkinson Cinematography Ellen Kuras Edited by Valdís Óskarsdóttir Music by Jon Brion Production companies Anonymous Content This is that Distributed by Focus Features Release dates March 9, 2004 ( 2004-03-09 ) (Los Angeles) [ 1 ] March 19, 2004 ( 2004-03-19 ) (United States) Running time 108 minutes Country United States Language English Budget $20 million Box office $72.9 million Eternal Sunshine of the Spotless Mind is a 2004 American science fiction romantic comedy-drama film directed by Michel Gondry and written by Charlie Kaufman from a story by Gondry, Kaufman, and Pierre Bismuth
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: Eternal Sunshine of the Spotless Mind - Wikipedia Jump to content From Wikipedia, the free encyclopedia 2004 film by Michel Gondry Eternal Sunshine of the Spotless Mind Theatrical release poster Directed by Michel Gondry Screenplay by Charlie Kaufman Story by Charlie Kaufman Michel Gondry Pierre Bismuth Produced by Steve Golin Anthony Bregman Starring Jim Carrey Kate Winslet Kirsten Dunst Mark Ruffalo Elijah Wood Tom Wilkinson Cinematography Ellen Kuras Edited by Valdís Óskarsdóttir Music by Jon Brion Production companies Anonymous Content This is that Distributed by Focus Features Release dates March 9, 2004 ( 2004-03-09 ) (Los Angeles) [ 1 ] March 19, 2004 ( 2004-03-19 ) (United States) Running time 108 minutes Country United States Language English Budget $20 million Box office $72.9 million Eternal Sunshine of the Spotless Mind is a 2004 American science fiction romantic drama film directed by Michel Gondry and written by Charlie Kaufman from a story by Gondry, Kaufman, and Pierre Bismuth
 
 ---
 
@@ -6379,7 +6379,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [ 8 ] Dur
 
 ---
 
