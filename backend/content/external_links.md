@@ -566,7 +566,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: ore broadly, it is among the most notable theorems in the history of mathematics Overview [ edit ] Pythagorean origins [ edit ] The Pythagorean equation , ${\displaystyle x^{2}+y^{2}=z^{2}}$ ${\displaystyle x^{2}+y^{2}=z^{2}}$ , has an infinite number of positive integer solutions for ${\displaystyle x}$ ${\displaystyle x}$ , ${\displaystyle y}$ ${\displaystyle y}$ , and ${\displaystyle z}$ ${\displaystyle z}$ ; these solutions are known as Pythagorean triples (with the simplest example being 3, 4, 5)
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: ore broadly, it is among the most notable theorems in the history of mathematics Overview Pythagorean origins The Pythagorean equation , ${\displaystyle x^{2}+y^{2}=z^{2}}$ ${\displaystyle x^{2}+y^{2}=z^{2}}$ , has an infinite number of positive integer solutions for ${\displaystyle x}$ ${\displaystyle x}$ , ${\displaystyle y}$ ${\displaystyle y}$ , and ${\displaystyle z}$ ${\displaystyle z}$ ; these solutions are known as Pythagorean triples (with the simplest example being 3, 4, 5)
 
 ---
 
@@ -602,7 +602,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: me Fermat's Last Theorem gained prominence as an unsolved problem in mathematics Subsequent developments and solution [ edit ] The special case ${\displaystyle n=4}$ ${\displaystyle n=4}$ , proved by Fermat himself, is sufficient to establish that if the theorem is false for some exponent ${\displaystyle n}$ ${\displaystyle n}$ that is not a prime number , it must also be false for some smaller ${\displaystyle n}$ ${\displaystyle n}$ , so only prime values of ${\displaystyle n}$ ${\displaystyle n}$ need further investigation
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: me Fermat's Last Theorem gained prominence as an unsolved problem in mathematics Subsequent developments and solution The special case ${\displaystyle n=4}$ ${\displaystyle n=4}$ , proved by Fermat himself, is sufficient to establish that if the theorem is false for some exponent ${\displaystyle n}$ ${\displaystyle n}$ that is not a prime number , it must also be false for some smaller ${\displaystyle n}$ ${\displaystyle n}$ , so only prime values of ${\displaystyle n}$ ${\displaystyle n}$ need further investigation
 
 ---
 
@@ -746,7 +746,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: , Wiles was honoured and received numerous awards, including the 2016 Abel Prize [ 24 ] [ 25 ] [ 26 ] Equivalent statements of the theorem [ edit ] There are several alternative ways to state Fermat's Last Theorem that are mathematically equivalent to the original statement of the problem
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: , Wiles was honoured and received numerous awards, including the 2016 Abel Prize [ 24 ] [ 25 ] [ 26 ] Equivalent statements of the theorem There are several alternative ways to state Fermat's Last Theorem that are mathematically equivalent to the original statement of the problem
 
 ---
 
@@ -818,7 +818,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: would also mean a solution exists in N , the original formulation of the problem Equivalent statement 2: x n + y n = z n , where integer n ≥ 3 , has no non-trivial solutions x , y , z ∈ Q . This is because the exponents of x , y , and z are equal (to n ), so if there is a solution in Q ,
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: would also mean a solution exists in N , the original formulation of the problem Equivalent statement 2: x n + y n = z n , where integer n ≥ 3 , has no non-trivial solutions x , y , z ∈ Q . This is because the exponents of x , y , and z are equal (to n ), so if there is a solution in Q , then it can be multiplied through by
 
 ---
 
@@ -863,7 +863,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Olivia_Dodd  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Olivia Dodd:  articles link to it . Please introduce links to this page from related articles ( May 2026 ) ( Learn how and when to remove this message ) Olivia Dodd is an American poet , actor, writer, playwright, and performance artist. She gained popularity on social media platforms due to the poetry she writes for strangers on a typewriter. Early life and education [ edit ] Dodd first began writing poetry at a very early age
+(Referenced by Varun in 'Beyond') Olivia Dodd:  articles link to it . Please introduce links to this page from related articles ( May 2026 ) ( Learn how and when to remove this message ) Olivia Dodd is an American poet , actress, writer, playwright, and performance artist. She gained popularity on social media platforms due to the poetry she writes for strangers on a typewriter. Early life and education [ edit ] Dodd first began writing poetry at a very early age
 
 ---
 
@@ -1034,7 +1034,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Olivia_Dodd  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Olivia Dodd: Archived from the original on September 12, 2025 . Retrieved December 12, 2025 Retrieved from " https://en.wikipedia.org/w/index.php?title=Olivia_Dodd&oldid=1374721624 " Categories : Living people Alumni of the Royal Central School of Speech and Drama Hidden categories: Articles with short description Short description is different from Wikidata Noindexed articles Articles for deletion Articles with topics of unclear notability from May 2026 All articles with topics of unclear notability Biography articles with topics of unclear notability Orphaned articles from May 2026 All orphaned articles Articles with multiple maintenance issues Use mdy dates from May 2026 Use American English from May 2026 All Wikipedia articles written in American English All pages needing factual verification Wikipedia articles needing factual verification from May 2026 All articles with dead external links Articles with dead external links from May 2026 Wikipedia articles with style issues from May 2026 All articles with style issues Wikipedia Student Program Year of birth missing (living people) Search Olivia Dodd Add languages Add topic
+(Referenced by Varun in 'Beyond') Olivia Dodd: Archived from the original on September 12, 2025 . Retrieved December 12, 2025 Retrieved from " https://en.wikipedia.org/w/index.php?title=Olivia_Dodd&oldid=1374922790 " Categories : Living people Alumni of the Royal Central School of Speech and Drama Hidden categories: Articles with short description Short description is different from Wikidata Noindexed articles Articles for deletion Articles with topics of unclear notability from May 2026 All articles with topics of unclear notability Biography articles with topics of unclear notability Orphaned articles from May 2026 All orphaned articles Articles with multiple maintenance issues Use mdy dates from May 2026 Use American English from May 2026 All Wikipedia articles written in American English All pages needing factual verification Wikipedia articles needing factual verification from May 2026 All articles with dead external links Articles with dead external links from May 2026 Wikipedia articles with style issues from May 2026 All articles with style issues Wikipedia Student Program Year of birth missing (living people) Search Olivia Dodd Add languages Add topic
 
 ---
 
@@ -1133,7 +1133,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 AM à 6:00 PM Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is closed all day Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
 
 ---
 
@@ -1178,7 +1178,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: fine arts Family Louvre + La Chaire du Louvre: 'I want a museum. I need a museum I imagine a museum.' By Glenn Lowry, Director Emeritus, Museum of Modern Art, New York Michel Laclotte Auditorium, 7 November–1 December 2025 The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min Contenu Louvre plus précédent 1 sur 4 Contenu Louvre plus suivant More content on Louvre+ The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min More content on Louvre+ Delve into the Louvre Explore Prepare your visit The museum is open today 9:00 AM à 6:00 PM Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: fine arts Family Louvre + La Chaire du Louvre: 'I want a museum. I need a museum I imagine a museum.' By Glenn Lowry, Director Emeritus, Museum of Modern Art, New York Michel Laclotte Auditorium, 7 November–1 December 2025 The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min Contenu Louvre plus précédent 1 sur 4 Contenu Louvre plus suivant More content on Louvre+ The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min More content on Louvre+ Delve into the Louvre Explore Prepare your visit The museum is closed all day Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -1205,7 +1205,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,498 ratings 28,660 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,514 ratings 28,660 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1277,7 +1277,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,498 ratings 28,660 reviews 5 stars 201,369 (34%) 4 stars 215,025 (37%) 3 stars 112,816 (19%) 2 stars 34,420 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,603 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,514 ratings 28,660 reviews 5 stars 201,376 (34%) 4 stars 215,029 (37%) 3 stars 112,820 (19%) 2 stars 34,421 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,606 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
