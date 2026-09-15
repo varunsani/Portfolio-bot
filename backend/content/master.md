@@ -5398,7 +5398,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,514 ratings 28,660 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,528 ratings 28,661 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5470,7 +5470,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,514 ratings 28,660 reviews 5 stars 201,376 (34%) 4 stars 215,029 (37%) 3 stars 112,820 (19%) 2 stars 34,421 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,606 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,528 ratings 28,661 reviews 5 stars 201,381 (34%) 4 stars 215,033 (37%) 3 stars 112,824 (19%) 2 stars 34,422 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,606 reviews Manny Author 57 books 16.5k followers Follow Follow September 24, 2014 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -5767,7 +5767,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: y Buena Vista Pictures Distribution (United States and Canada) [ a ] Warner Bros Pictures (International) Release dates October 17, 2006 ( 2006-10-17 ) ( El Capitan Theatre ) October 20, 2006 ( 2006-10-20 ) (United States) November 10, 2006 ( 2006-11-10 ) (United Kingdom) Running time 130 minutes [ 1 ] Countries United Kingdom [ 2 ] United States [ 2 ] Language English Budget $40 million [ 3 ] Box office $109 million [ 3 ] The Prestige is a 2006 science fiction psychological thriller film directed by Christopher Nolan , who co-wrote the screenplay with his brother Jonathan Nolan , based on the 1995 novel by Christopher Priest
+(Referenced by Varun in 'Beyond') The Prestige: y Buena Vista Pictures Distribution (United States and Canada) [ a ] Warner Bros Pictures (International) Release dates October 17, 2006 ( 2006-10-17 ) ( El Capitan Theatre ) October 20, 2006 ( 2006-10-20 ) (United States) November 10, 2006 ( 2006-11-10 ) (United Kingdom) Running time 130 minutes [ 1 ] Countries United Kingdom [ 2 ] United States [ 2 ] Language English Budget $40 million [ 3 ] Box office $109 million [ 3 ] The Prestige is a 2006 science fiction film directed by Christopher Nolan , who co-wrote the screenplay with his brother Jonathan Nolan , based on the 1995 novel by Christopher Priest
 
 ---
 
@@ -6064,7 +6064,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Christopher Nol
+(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Christopher Nolan told Variety : "The
 
 ---
 
