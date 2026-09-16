@@ -112,7 +112,7 @@ together to keep the bot's knowledge current: 1. **`deploy-portfolio.yml`** fire
    swap into Postgres (old vectors stay live and queryable until the new
    batch is fully verified, then it flips atomically — see the comment
    block at the top of `backend/scripts/index_knowledge.py`). It also runs
-   its own hourly cron independent of any git push, since a resume update
+   its own 6 hourly cron independent of any git push, since a resume update
    on Google Drive never touches git and wouldn't otherwise trigger a
    rebuild.
 4. **`deploy.yml`** redeploys the backend to Railway whenever
