@@ -1062,20 +1062,21 @@
       </div>
         <div class="proj">
           <div class="proj-top">
-            <h3>Real-Time Severe Weather Alerting System</h3>
+            <h3>Stormline — Real-Time Severe Weather Alerting Platform</h3>
             <div class="stack">
-              <span class="chip">FastAPI</span><span class="chip">Redis Pub/Sub</span><span class="chip">WebSockets</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+              <span class="chip">FastAPI</span><span class="chip">Redis Pub/Sub</span><span class="chip">WebSockets</span><span class="chip">PostgreSQL</span><span class="chip">JWT Auth</span><span class="chip">Docker</span><span class="chip">pytest</span>
             </div>
           </div>
           <p class="lead">I built this to get rid of client-side polling entirely. The server should tell you when the weather turns, not the other way around. It's also where most of the async concepts I'd learned in isolation finally had to work together at once.</p>
-          <p style="color:var(--text-dim); font-size:14.5px; margin:0 0 16px; max-width:760px;">Most weather apps make the client do all the work. The phone keeps asking the server "anything new?" every few minutes, which is slow, wasteful and doesn't scale once thousands of clients are polling independently. The brief I set myself was to invert that so the server knows the moment conditions turn severe and pushes that update to every subscribed client instantly, with nobody having to ask.</p>
+          <p style="color:var(--text-dim); font-size:14.5px; margin:0 0 16px; max-width:760px;">Most weather apps make the client do all the work. The phone keeps asking the server "anything new?" every few minutes, which is slow, wasteful and doesn't scale once thousands of clients are polling independently. The brief I set myself was to invert that so the server knows the moment conditions turn severe and pushes that update to every subscribed client instantly, with nobody having to ask — and to keep that guarantee even if the client was offline when it happened.</p>
           <ul>
-            <li>Replaced client-side polling with server-pushed alerts: a dedicated poller container queries the free Open-Meteo API for each subscribed location once per 5-minute cycle and publishes classified conditions over Redis Pub/Sub.</li>
-            <li>Scaled live delivery horizontally by giving each API replica its own WebSocket forwarder that subscribes to the shared alert stream and pushes only to its locally connected clients, built to run behind a load balancer across N replicas.</li>
-            <li>Designed a configurable severity engine with hand-tunable thresholds across four condition categories at three escalating tiers and rounded coordinates to ~1.1 km so nearby subscriptions share a single polled point.</li>
-            <li>Verified the system end to end in Postman before trusting it. Exercised the REST subscription endpoints for correct status codes and validation errors and used Postman's WebSocket support to open a live connection, subscribe to a location and confirm pushed alert payloads arrived in the right shape within the expected 5-minute cycle.</li>
+            <li>Replaced client-side polling with server-pushed alerts: a dedicated poller container queries the free Open-Meteo API for each subscribed location once per cycle and publishes classified conditions over Redis Pub/Sub, rounding coordinates to ~1.1km so nearby subscriptions share a single polled point.</li>
+            <li>Scaled live delivery horizontally across a three-channel Redis Pub/Sub design: each API replica forwards alerts only to its own locally-connected clients, while a second channel propagates subscription changes to an already-open socket on a *different* replica with no reconnect needed, and a third delivers per-user personalized alerts for subscribers running custom thresholds.</li>
+            <li>Designed a severity engine with hand-tunable thresholds across four condition categories at three escalating tiers, with per-subscription overrides — so two people watching the same city can have genuinely different alert sensitivity for the same reading.</li>
+            <li>Added JWT-based auth (short-lived access tokens, Postgres-tracked refresh tokens, Redis-backed revocation blacklist) and server-side missed-alert catch-up, so a client that reconnects — or opens the UI fresh — recovers everything it missed while offline, plus per-user alert dismissal that persists across devices.</li>
+            <li>Wrote a 69-test pytest suite covering severity classification, connection-manager filtering, geocoding, the two-replica pub/sub fan-out, auth flows and an end-to-end WebSocket test — running entirely against SQLite and fakeredis, no live Postgres/Redis needed.</li>
           </ul>
-          <a class="proj-cta" href="https://github.com/varunsani/weather-alert-platform" target="_blank" rel="noopener">View on GitHub · overtake →</a>
+          <a class="proj-cta" href="https://github.com/varunsani/Stormline-Weather-Alerting-Service" target="_blank" rel="noopener">View on GitHub · overtake →</a>
         </div>
 
         <div class="proj">
