@@ -1601,7 +1601,791 @@ Authors of Varun's ICTCS 2025 publication paper 'Multipacking in Hypercubes': De
 
 ---
 
-### Chunk 136  —  The Garage (Projects) — Portfolio-bot
+### Chunk 136  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_repo  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service (written in Python)
+
+---
+
+### Chunk 137  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Stormline: Stormline is a real-time weather alerting platform. It watches the
+locations you care about, classifies incoming weather readings against
+configurable severity thresholds, and pushes alerts to your browser the
+moment they fire — over a live WebSocket connection while you're
+online, and as a catch-up feed the next time you reconnect if you
+weren't.
+
+---
+
+### Chunk 138  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Stormline: ou're
+online, and as a catch-up feed the next time you reconnect if you
+weren't. It's built fully async in Python (FastAPI, SQLModel over asyncpg, and
+`redis.asyncio`), with Redis Pub/Sub used to fan alerts out across
+horizontally-scaled API replicas, JWT-based authentication, and
+PostgreSQL for durable, time-series-friendly storage of every reading
+and every alert.
+
+---
+
+### Chunk 139  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — What it does: **Location tracking by name.** Subscribing to a location is a matter
+of typing a city name — `POST /subscriptions` resolves it through the
+free Open-Meteo Geocoding API, and `GET /locations/search?q=` powers
+autocomplete-style disambiguation beforehand, since place names aren't
+unique (there's a Hyderabad in India and one in Pakistan's Sindh
+province).
+
+---
+
+### Chunk 140  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — What it does: en't
+unique (there's a Hyderabad in India and one in Pakistan's Sindh
+province). **Configurable severity, per subscription.** Each subscription carries
+its own `min_severity` (`WATCH` / `WARNING` / `SEVERE`), chosen at
+subscribe time or changed later. An account also has a
+`default_min_severity` applied to new subscriptions that don't specify
+one. Filtering happens at push time, in
+`ConnectionManager.broadcast_to_location` — a `WATCH`-level alert
+simply never reaches a socket whose threshold is `SEVERE`.
+
+---
+
+### Chunk 141  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — What it does: a `WATCH`-level alert
+simply never reaches a socket whose threshold is `SEVERE`. **Per-subscription custom thresholds.** Beyond the three severity
+tiers, a subscription can override the underlying numeric threshold
+for any alert category — extreme heat or cold, high wind, heavy
+precipitation. A subscription with custom thresholds is classified
+independently, so two people subscribed to the same city can
+legitimately see different alerts for the same reading. Because that
+result may not apply to anyone else watching the same location, it's
+never delivered through the location-wide broadcast — it's published
+to a Redis channel addressed to that one user (`alerts.user.{id}`)
+and pushed straight to their socket(s), bypassing severity filtering
+entirely since the filtering already happened at classification time.
+
+---
+
+### Chunk 142  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — What it does:  filtering
+entirely since the filtering already happened at classification time. **Catch-up on reconnect.** Every alert is persisted to Postgres the
+moment it's generated, independent of whether Redis Pub/Sub happens to
+be up. That means "what did I miss while I was disconnected" is just a
+query against data that already exists. The moment a WebSocket
+reconnects, it receives a one-off backlog of everything that fired
+across your subscriptions since your last disconnect. The same
+catch-up is also available as a plain, read-only REST call
+(`GET /alerts/missed`), which is what the UI's "Check missed" button
+uses — calling it doesn't consume or advance anything server-side, so
+it's safe to call as often as you like.
+
+---
+
+### Chunk 143  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — What it does: sume or advance anything server-side, so
+it's safe to call as often as you like. **Cross-replica subscription updates.** If you run more than one API
+replica, a subscription change made against one replica reaches a
+WebSocket connection already open on a *different* replica immediately,
+via a second Redis channel dedicated to subscription events — not just
+the one carrying alerts. An open socket never has to reconnect to pick
+up a change made somewhere else.
+
+---
+
+### Chunk 144  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — What it does: . An open socket never has to reconnect to pick
+up a change made somewhere else. **Server-side alert dismissal.** Dismissing an alert (`POST
+/alerts/{id}/dismiss`, or in bulk via `POST /alerts/dismiss`) is
+recorded against your account, not just cleared from local storage in
+one browser tab — so it stays cleared everywhere, including any future
+missed-alert catch-up.
+
+---
+
+### Chunk 145  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Architecture: Three independent Redis fan-outs, same shape (publish once, every API
+replica forwards to its own locally-connected sockets):
+
+---
+
+### Chunk 146  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Architecture: (publish once, every API
+replica forwards to its own locally-connected sockets): - **Alerts** (location-wide, default-threshold broadcast): poller →
+  Redis (`alerts.location.{id}`) → every API replica's
+  `PubSubForwarder` → that replica's `ConnectionManager` → the
+  locally-connected sockets subscribed to that location, *except* any
+  socket whose owner has custom thresholds for it (those are handled
+  by "Personal alerts" below instead, so they're never double-sent).
+- **Subscription events**: whichever replica's HTTP handler processed a
+  subscribe / severity-change / unsubscribe → Redis
+  (`sub-events.user.{id}`) → every replica's `PubSubForwarder` → that
+  replica updates its local `ConnectionManager` if (and only if) it's
+  holding a socket for that `user_id`.
+- **Personal alerts** (custom-threshold subscriptions): poller → Redis
+  (`alerts.user.{id}`) → every API replica's `PubSubForwarder` → that
+  replica's `ConnectionManager.send_to_user` → every locally-connected
+  socket owned by that user, unfiltered (the classification against
+  that user's own custom thresholds already happened before publish).
+  Addressed to a user rather than a location because the result of a
+  subscription's own thresholds may not apply to anyone else watching
+  the same location, so it can never ride the location-wide broadcast.
+
+---
+
+### Chunk 147  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Architecture:  watching
+  the same location, so it can never ride the location-wide broadcast. Polling lives in a single, separate process rather than inside every
+API replica, specifically so that N replicas don't turn into N
+redundant calls to Open-Meteo for the same location. The poller asks
+Postgres for the distinct set of actively-subscribed locations, polls
+each exactly once per cycle, classifies severity (once against the
+platform defaults, and again per subscriber with custom thresholds),
+persists every reading and alert, and publishes.
+
+---
+
+### Chunk 148  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Architecture: criber with custom thresholds),
+persists every reading and alert, and publishes. ```
+ Open-Meteo (weather)          Open-Meteo (geocoding)
+        ▲                              ▲
+        │ HTTP (polled)                │ HTTP (on search/subscribe)
+        │                              │
+ ┌──────┴───────┐                      │
+ │    poller     │  <- single process  │
+ │ (services/    │     polls each      │
+ │  poller.py)   │  UNIQUE subscribed  │
+ └───┬───────┬───┘  location per cycle │
+     │       │                         │
+     │       │ publish                 │
+     │       │ alerts.location.{id} /   │
+     │       │ alerts.user.{id}         │
+ ┌───▼───┐ ┌─▼───────────────────────────▼─┐
+ │Postgres│ │              Redis             │
+ └───▲────┘ │ blacklist / weather+geocode    │
+     │      │ cache / alerts.location.* /    │
+     │CRUD  │ alerts.user.* / sub-events.*   │
+     │      └──┬────────────────────────┬────┘
+     │         │ psubscribe (all three) │ psubscribe (all three)
+ ┌───┴─────┐ ┌─▼────────┐          ┌────▼─────┐
+ │ SQLModel│ │  api #1   │          │  api #2  │  <- horizontally
+ └─────────┘ │ FastAPI+WS│          │FastAPI+WS│     scalable
+             └─────┬─────┘          └────┬─────┘
+                   │ ws push             │ ws push
+              ┌────▼───┐             ┌───▼────┐
+              │Client A│             │Client B│
+              └────────┘             └────────┘
+```
+
+---
+
+### Chunk 149  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout: ```
+weather-alert-platform/
+├── app/
+│   ├── main.py                    # FastAPI app, lifespan, router registration, CORS
+│   ├── config.py                  # pydantic-settings; explicit vars or a single
+│   │                               # combined DATABASE_URL/REDIS_URL, whichever you set
+│   ├── database.py                # async SQLAlchemy engine + session dependency
+
+---
+
+### Chunk 150  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout:    ├── database.py                # async SQLAlchemy engine + session dependency │   ├── redis_client.py            # shared async Redis connection pool
+│   ├── models/                    # SQLModel table definitions
+│   │   ├── user.py                # + default_min_severity, last_seen_at
+│   │   ├── location.py            # + country, admin1 (display metadata)
+│   │   ├── subscription.py        # + min_severity, custom_thresholds
+
+---
+
+### Chunk 151  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout: metadata)
+│   │   ├── subscription.py        # + min_severity, custom_thresholds │   │   ├── alert_dismissal.py     # per-user "cleared" record for an Alert
+│   │   └── refresh_token.py, weather_reading.py, alert.py
+│   ├── schemas/                   # Pydantic request/response contracts
+│   ├── auth/                      # password hashing, JWT, blacklist, dependencies
+│   ├── routers/
+│   │   ├── auth.py                  # register / login / refresh / logout
+
+---
+
+### Chunk 152  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout: ters/
+│   │   ├── auth.py                  # register / login / refresh / logout │   │   ├── users.py                 # GET/PATCH default severity preference
+│   │   ├── locations.py             # /locations/search (geocode candidates)
+│   │   ├── subscriptions.py         # subscribe by id OR by name; severity PATCH
+│   │   ├── alerts.py                 # GET /alerts/missed (REST catch-up) + dismiss endpoints
+
+---
+
+### Chunk 153  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout: erts.py                 # GET /alerts/missed (REST catch-up) + dismiss endpoints │   │   ├── weather.py                # cached current query + history
+│   │   └── ws.py                     # /ws/alerts live push endpoint
+│   ├── services/
+│   │   ├── weather_client.py       # Open-Meteo current-weather HTTP client
+│   │   ├── geocoding.py             # Open-Meteo Geocoding HTTP client + cache
+│   │   ├── severity_engine.py       # ALL tunable thresholds live here
+
+---
+
+### Chunk 154  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout:  + cache
+│   │   ├── severity_engine.py       # ALL tunable thresholds live here │   │   ├── missed_alerts.py          # shared "what did I miss" query (WS backlog + REST)
+│   │   ├── poller.py                 # the standalone polling loop
+│   │   ├── pubsub.py                  # publish + forward alerts, personal alerts, and sub-events
+│   │   └── connection_manager.py      # per-instance WS registry, keyed by user_id
+
+---
+
+### Chunk 155  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout:  │   └── connection_manager.py      # per-instance WS registry, keyed by user_id │   ├── core/                        # time_utils.py, exceptions.py (global exception handlers)
+│   └── static/                      # UI: index.html, app.js, style.css
+├── alembic/versions/
+│   ├── 0001_initial.py
+│   ├── 0002_severity_and_geocoding.py
+│   ├── 0003_add_last_seen_at.py       # missed-alert catch-up cursor
+│   ├── 0004_custom_thresholds.py      # subscriptions.custom_thresholds
+
+---
+
+### Chunk 156  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout:  cursor
+│   ├── 0004_custom_thresholds.py      # subscriptions.custom_thresholds │   ├── 0006_reset_and_dismissals.py   # alert_dismissals table (chains off 0004 directly)
+│   └── 0007_instance_epoch.py         # instance_meta table, seeded with a random epoch
+├── tests/                             # pytest suite (SQLite + fakeredis, no infra needed)
+├── scripts/run_poller.py, smoke_test.py
+
+---
+
+### Chunk 157  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Repository layout: e (SQLite + fakeredis, no infra needed)
+├── scripts/run_poller.py, smoke_test.py ├── docker/                            # entrypoint shell scripts for the containers below
+├── Dockerfile, docker-compose.yml     # local Postgres + Redis + app, containerized
+├── requirements.txt, requirements-dev.txt
+├── .env.example
+└── README.md
+```
+
+---
+
+### Chunk 158  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Getting started: You'll need Python 3.11+, and either Docker or a local Postgres and
+Redis. Either way, start with:
+
+```bash
+cd weather-alert-platform
+cp .env.example .env
+```
+
+Then replace `JWT_SECRET_KEY` in `.env` with a real secret:
+
+```bash
+python3 -c "import secrets; print(secrets.token_urlsafe(64))"
+```
+
+---
+
+### Chunk 159  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — With Docker: ```bash
+docker compose up --build
+```
+
+This starts `postgres`, `redis`, `api` (which runs `alembic upgrade
+head` and then `uvicorn`), and `poller`, in dependency order.
+
+---
+
+### Chunk 160  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Without Docker: The checked-in `.env` is written for the *whole stack in Docker*:
+`DATABASE_URL` / `REDIS_URL` point at `postgres` / `redis`, which are
+docker-compose **service names** — Docker's internal DNS resolves
+those to the right container, but nothing on your host machine (or
+inside a plain `venv`) knows what they mean. Running the app process
+itself outside Docker means editing `.env` so those hostnames resolve
+somewhere real. Two ways to do that:
+
+---
+
+### Chunk 161  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Without Docker: s editing `.env` so those hostnames resolve
+somewhere real. Two ways to do that: **Postgres/Redis still in Docker, app on the host.** This is the
+common case — keep `docker compose up postgres redis` running so you
+get persistence and the healthchecks for free, but iterate on the app
+with `--reload` instead of rebuilding an image. `docker-compose.yml`
+publishes them on non-default host ports specifically so they don't
+collide with anything you might already have running locally:
+`postgres` → host `5434`, `redis` → host `6380`. Point `.env` at those:
+
+---
+
+### Chunk 162  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Without Docker: locally:
+`postgres` → host `5434`, `redis` → host `6380`. Point `.env` at those: ```bash
+DATABASE_URL=postgresql+asyncpg://weather_user:weather_pass@localhost:5434/weather_db
+DATABASE_URL_SYNC=postgresql+psycopg2://weather_user:weather_pass@localhost:5434/weather_db
+REDIS_URL=redis://localhost:6380/0
+```
+
+---
+
+### Chunk 163  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Without Docker: er:weather_pass@localhost:5434/weather_db
+REDIS_URL=redis://localhost:6380/0
+``` **Fully local, no Docker at all.** If you've installed Postgres and
+Redis yourself and they're running on their normal default ports, use
+those instead, along with whatever role/database you created:
+
+```bash
+DATABASE_URL=postgresql+asyncpg://<user>:<password>@localhost:5432/<db>
+DATABASE_URL_SYNC=postgresql+psycopg2://<user>:<password>@localhost:5432/<db>
+REDIS_URL=redis://localhost:6379/0
+```
+
+---
+
+### Chunk 164  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Without Docker: 2://<user>:<password>@localhost:5432/<db>
+REDIS_URL=redis://localhost:6379/0
+``` Either way, also replace `JWT_SECRET_KEY` (see above) — the value
+committed in `.env` is fine for the Docker path but there's no reason
+to reuse it once you're editing the file regardless. Everything else
+in `.env` (`OPEN_METEO_BASE_URL`, `POLL_INTERVAL_SECONDS`, etc.) isn't
+Docker-specific and can stay as-is.
+
+---
+
+### Chunk 165  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Without Docker: E_URL`, `POLL_INTERVAL_SECONDS`, etc.) isn't
+Docker-specific and can stay as-is. ```bash
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+alembic upgrade head
+
+---
+
+### Chunk 166  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — terminal 1: python -m uvicorn app.main:app --reload
+
+---
+
+### Chunk 167  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — terminal 2: python -m scripts.run_poller
+```
+
+Both processes read the same `.env` (via `pydantic-settings`), so
+there's nothing further to change between the two terminals.
+
+---
+
+### Chunk 168  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Trying it out: Open **http://localhost:8000/static/index.html** for the UI, or
+**http://localhost:8000/docs** for interactive API docs.
+
+---
+
+### Chunk 169  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Trying it out: x.html** for the UI, or
+**http://localhost:8000/docs** for interactive API docs. Register an account, sign in, type a city name (e.g. "Hyderabad")
+under "Add a location," pick a severity threshold, and subscribe. The
+live alert feed shows anything the poller detects from there. While
+testing, it's worth lowering `POLL_INTERVAL_SECONDS` in `.env` to
+something like `30`, so you're not waiting a full cycle to see
+something happen.
+
+---
+
+### Chunk 170  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Trying it out: something like `30`, so you're not waiting a full cycle to see
+something happen. If you want to see the cross-replica behavior for yourself: run a
+second `api` container by hand (the same image and `.env`, pointed at
+the same Postgres and Redis, mapped to `8001:8000`). Sign in as the
+same user in one browser tab against `:8000`, then from a second tab
+(or `curl`) hit `:8001`'s `/subscriptions` endpoint to add a new
+location. The `:8000` tab's socket starts receiving alerts for it
+immediately, with no page refresh — because the update reached it
+through `sub-events.user.*`, not through anything held in
+replica-local memory. `scripts/smoke_test.py` (step 9) automates
+essentially this same check within a single replica, opening the
+socket before subscribing.
+
+---
+
+### Chunk 171  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Running the tests: ```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+---
+
+### Chunk 172  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Running the tests: ```bash
+pip install -r requirements-dev.txt
+pytest
+``` No Postgres or Redis needed — the suite runs against a temp-file
+SQLite database and `fakeredis`. Coverage includes severity
+classification, connection-manager severity filtering, a direct
+simulation of the two-replica subscribe/alert fan-out
+(`test_pubsub_fanout.py`), auth flows, geocode-based subscribing, and
+a WebSocket end-to-end test. One test in `test_websocket_alerts.py`
+hits the real Open-Meteo geocoding API and skips itself if there's no
+network access.
+
+---
+
+### Chunk 173  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Database migrations: ```bash
+alembic revision --autogenerate -m "describe your change"
+alembic upgrade head
+```
+
+---
+
+### Chunk 174  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Database migrations: embic revision --autogenerate -m "describe your change"
+alembic upgrade head
+``` Always review an autogenerated migration before applying it — it's a
+helpful starting point, not a guarantee. `0002_severity_and_geocoding.py`
+is hand-checked against `0001_initial.py`'s existing `alertseverity`
+enum type, which it reuses rather than recreating. The migration chain
+runs `0001 → 0002 → 0003 → 0004 → 0006 → 0007`; `0006_reset_and_dismissals`
+adds only the `alert_dismissals` table and chains directly off `0004`
+(an earlier `0005` migration existed at one point but isn't part of
+this chain).
+
+---
+
+### Chunk 175  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Resetting the database (`docker volume rm`): Wiping `postgres_data` (e.g. `docker compose down -v`, or `docker
+compose down && docker volume rm weather-alert-platform_postgres_data`)
+and starting over re-runs every migration from scratch, including
+`0007_instance_epoch.py`, which mints a fresh random `epoch` value into
+the new `instance_meta` table. `GET /health` reports it as
+`instance_epoch`, and the frontend compares it against what it saw last
+time on every page load (`ensureInstanceEpoch()` in `app.js`). A
+mismatch means "this is a different database than whatever my cached
+data came from," so it clears every `wap.*` localStorage key — including
+the access/refresh tokens — before doing anything else.
+
+---
+
+### Chunk 176  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Resetting the database (`docker volume rm`): lStorage key — including
+the access/refresh tokens — before doing anything else. That matters because a fresh database also restarts user ids from `1`.
+Without this check, an old cached feed (or an old JWT, since
+`JWT_SECRET_KEY` doesn't change on reset) would silently get re-attached
+to whoever now holds those recycled ids. This is handled automatically
+now — you don't need to run anything by hand in the browser console
+after a reset, this time or any future one.
+
+---
+
+### Chunk 177  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — API reference: All endpoints except `/auth/*` and `/health` require
+`Authorization: Bearer <access_token>`.
+
+---
+
+### Chunk 178  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — API reference: s except `/auth/*` and `/health` require
+`Authorization: Bearer <access_token>`. | Method | Path                             | Purpose                                          |
+|--------|----------------------------------|---------------------------------------------------|
+| POST   | `/auth/register`                 | Create a user                                     |
+| POST   | `/auth/login`                    | Get access + refresh token pair                   |
+| POST   | `/auth/refresh`                  | Exchange a refresh token for a new access token   |
+| POST   | `/auth/logout`                   | Blacklist current access + refresh tokens         |
+| GET    | `/users/me`                      | Current account, including `default_min_severity` |
+| PATCH  | `/users/me/preferences`          | Set default severity for new subscriptions        |
+| GET    | `/locations/search?q=`           | Geocode a place name into candidates (no side effects) |
+| POST   | `/locations`                     | Create/fetch a location from known coordinates    |
+| GET    | `/locations`                     | List all known locations                          |
+| GET    | `/locations/{id}`                | Get one location                                  |
+| GET    | `/subscriptions/threshold-defaults` | Platform-wide default thresholds (placeholders for the custom-thresholds UI) |
+| POST   | `/subscriptions`                 | Subscribe by `location_id` OR `location_query`    |
+| GET    | `/subscriptions`                 | List your active subscriptions                    |
+| PATCH  | `/subscriptions/{location_id}`   | Change that subscription's `min_severity` (and/or `custom_thresholds`) |
+| DELETE | `/subscriptions/{location_id}`   | Unsubscribe                                       |
+| GET    | `/alerts/missed`                 | Read-only "what did I miss" catch-up (backs "Check missed") |
+| POST   | `/alerts/{alert_id}/dismiss`     | Mark one alert dismissed for the caller           |
+| POST   | `/alerts/dismiss`                | Bulk-dismiss (`{"alert_ids": [...]}`)             |
+| GET    | `/weather/{id}/current`          | Cached on-demand current weather                  |
+| GET    | `/weather/{id}/history?limit=`   | Persisted time-series readings                    |
+| WS     | `/ws/alerts?token=`              | Live alert push for your subscriptions            |
+| GET    | `/health`                        | Liveness check; also returns `instance_epoch` (see below) |
+
+---
+
+### Chunk 179  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — API reference:                    | Liveness check; also returns `instance_epoch` (see below) | Full interactive schema: `/docs` (Swagger UI) or `/redoc`.
+
+`/ws/alerts` sends three message `type`s: `connected` (once, on open),
+`backlog` (once, right after — alerts missed since your last
+disconnect), and `alert` (zero or more, live, for as long as the
+socket stays open).
+
+---
+
+### Chunk 180  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Severity engine: Every threshold lives in `app/services/severity_engine.py`, in two
+plain dictionaries, and can be overridden per subscription via
+`custom_thresholds` (see `effective_thresholds`). Message wording is
+tier-specific: "Extreme heat" / "Extreme cold" phrasing is reserved
+for the `SEVERE` tier only (`Heat watch` / `Heat warning` / `Extreme
+
+---
+
+### Chunk 181  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Severity engine: is reserved
+for the `SEVERE` tier only (`Heat watch` / `Heat warning` / `Extreme heat warning`, and likewise for cold), so a mild `WATCH`-level reading
+never reads as though it were the most dangerous tier. Classification
+itself is independent of who's subscribed — every reading is
+classified the same way regardless of audience. It's
+`ConnectionManager.broadcast_to_location` that decides, per connected
+socket, whether that socket's `min_severity` is actually met before
+
+---
+
+### Chunk 182  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Severity engine: er connected
+socket, whether that socket's `min_severity` is actually met before sending — except sockets whose owner has `custom_thresholds` for that
+location, which are classified separately by the poller and delivered
+via `send_to_user` instead (see Architecture above). Both sides agree
+on which subscriptions count as "customized" through the single
+`has_effective_overrides` check in this module — an earlier mismatch
+
+---
+
+### Chunk 183  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Severity engine:  the single
+`has_effective_overrides` check in this module — an earlier mismatch between a Python truthiness check and a SQL `IS NOT NULL` check here
+was the source of a duplicate-alert bug (a subscription with an empty
+or all-default `custom_thresholds` value could get both the broadcast
+alert and an identical personal one); it's fixed by having every
+caller go through this one function rather than re-deriving the
+answer independently.
+
+---
+
+### Chunk 184  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — Authentication: 15-minute access tokens, 7-day refresh tokens tracked in Postgres, a
+Redis-backed blacklist keyed by `jti` with a TTL matching the token's
+remaining lifetime, and WebSocket authentication via a `?token=` query
+parameter.
+
+---
+
+### Chunk 185  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
+**Title:** Stormline-Weather-Alerting-Service
+**Source:** github_readme  |  **Anchor:** #projects
+**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
+
+Stormline-Weather-Alerting-Service — A note on the upstream weather API: Both Open-Meteo's weather API and its geocoding API are free and
+require no API key. The poller's design — polling each unique
+location once per cycle rather than once per subscriber — and the
+geocoding cache (`GEOCODING_CACHE_TTL_SECONDS`, defaulting to 24
+hours, since coordinates for a given place don't change) both exist
+specifically to stay comfortably within the free tier by construction.
+
+---
+
+### Chunk 186  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_repo  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1610,7 +2394,7 @@ Portfolio-bot (written in Python)
 
 ---
 
-### Chunk 137  —  The Garage (Projects) — Portfolio-bot
+### Chunk 187  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1623,7 +2407,7 @@ itself as **Winter**, Varun's AI assist.
 
 ---
 
-### Chunk 138  —  The Garage (Projects) — Portfolio-bot
+### Chunk 188  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1636,7 +2420,7 @@ portfolio-site/index.html    Varun's actual portfolio, widget already inlined
 
 ---
 
-### Chunk 139  —  The Garage (Projects) — Portfolio-bot
+### Chunk 189  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1651,7 +2435,7 @@ of the inlined script:
 
 ---
 
-### Chunk 140  —  The Garage (Projects) — Portfolio-bot
+### Chunk 190  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1663,7 +2447,7 @@ window.RACE_ENGINEER_API_URL = "https://portfolio-bot-production-0413.up.railway
 
 ---
 
-### Chunk 141  —  The Garage (Projects) — Portfolio-bot
+### Chunk 191  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1678,7 +2462,7 @@ cross a percentage-based threshold and would stay invisible.
 
 ---
 
-### Chunk 142  —  The Garage (Projects) — Portfolio-bot
+### Chunk 192  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1688,7 +2472,7 @@ together to keep the bot's knowledge current:
 
 ---
 
-### Chunk 143  —  The Garage (Projects) — Portfolio-bot
+### Chunk 193  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1718,7 +2502,7 @@ together to keep the bot's knowledge current: 1. **`deploy-portfolio.yml`** fire
 
 ---
 
-### Chunk 144  —  The Garage (Projects) — Portfolio-bot
+### Chunk 194  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1732,7 +2516,7 @@ portfolio edit.
 
 ---
 
-### Chunk 145  —  The Garage (Projects) — Portfolio-bot
+### Chunk 195  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1751,7 +2535,7 @@ entirely between two reindexes are untouched.
 
 ---
 
-### Chunk 146  —  The Garage (Projects) — Portfolio-bot
+### Chunk 196  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1811,7 +2595,7 @@ Portfolio-bot — Retrieval strategy (why it's not just cosine similarity): - **
 
 ---
 
-### Chunk 147  —  The Garage (Projects) — Portfolio-bot
+### Chunk 197  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1825,7 +2609,7 @@ in the comments above each field.
 
 ---
 
-### Chunk 148  —  The Garage (Projects) — Portfolio-bot
+### Chunk 198  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1838,7 +2622,7 @@ touching retrieval. Anything else that retrieval turns up nothing for
 
 ---
 
-### Chunk 149  —  The Garage (Projects) — Portfolio-bot
+### Chunk 199  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1850,7 +2634,7 @@ hallucinated answer.
 
 ---
 
-### Chunk 150  —  The Garage (Projects) — Portfolio-bot
+### Chunk 200  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1864,7 +2648,7 @@ Portfolio-bot — What gets scraped and indexed: - **Portfolio** — live-scrape
 
 ---
 
-### Chunk 151  —  The Garage (Projects) — Portfolio-bot
+### Chunk 201  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1878,7 +2662,7 @@ Portfolio-bot — What gets scraped and indexed: eping the Drive file up to date
 
 ---
 
-### Chunk 152  —  The Garage (Projects) — Portfolio-bot
+### Chunk 202  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1893,7 +2677,7 @@ Portfolio-bot — What gets scraped and indexed: ername is
 
 ---
 
-### Chunk 153  —  The Garage (Projects) — Portfolio-bot
+### Chunk 203  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1907,7 +2691,7 @@ Portfolio-bot — What gets scraped and indexed:  their
 
 ---
 
-### Chunk 154  —  The Garage (Projects) — Portfolio-bot
+### Chunk 204  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1921,7 +2705,7 @@ and never more than one per answer.
 
 ---
 
-### Chunk 155  —  The Garage (Projects) — Portfolio-bot
+### Chunk 205  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1937,7 +2721,7 @@ expected to reconstruct correctly from retrieval alone every time.
 
 ---
 
-### Chunk 156  —  The Garage (Projects) — Portfolio-bot
+### Chunk 206  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1948,7 +2732,7 @@ want to tune the ratio or the ground rules further.
 
 ---
 
-### Chunk 157  —  The Garage (Projects) — Portfolio-bot
+### Chunk 207  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1964,7 +2748,7 @@ Portfolio-bot — Before you deploy — two things: 1. **Groq API key**: sign up
 
 ---
 
-### Chunk 158  —  The Garage (Projects) — Portfolio-bot
+### Chunk 208  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1974,7 +2758,7 @@ Portfolio-bot — Before you deploy — two things: sion available — Railway's
 
 ---
 
-### Chunk 159  —  The Garage (Projects) — Portfolio-bot
+### Chunk 209  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -1990,7 +2774,7 @@ uvicorn app.main:app --reload
 
 ---
 
-### Chunk 160  —  The Garage (Projects) — Portfolio-bot
+### Chunk 210  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2005,7 +2789,7 @@ eyeball faithfulness/relevance before wiring up full RAGAS metrics
 
 ---
 
-### Chunk 161  —  The Garage (Projects) — Portfolio-bot
+### Chunk 211  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2020,7 +2804,7 @@ Portfolio-bot — Non-negotiables this build respects: - Never answers from the 
 
 ---
 
-### Chunk 162  —  The Garage (Projects) — Portfolio-bot
+### Chunk 212  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2036,7 +2820,7 @@ Portfolio-bot — Non-negotiables this build respects: se's TTI.
 
 ---
 
-### Chunk 163  —  The Garage (Projects) — Portfolio-bot
+### Chunk 213  —  The Garage (Projects) — Portfolio-bot
 **Title:** Portfolio-bot
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/Portfolio-bot  |  **Project ID:** none
@@ -2048,7 +2832,7 @@ Portfolio-bot — Non-negotiables this build respects: e/IP, F1-flavoured 429 me
 
 ---
 
-### Chunk 164  —  The Garage (Projects) — UrlShortener
+### Chunk 214  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_repo  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2057,7 +2841,7 @@ UrlShortener (written in Python)
 
 ---
 
-### Chunk 165  —  The Garage (Projects) — UrlShortener
+### Chunk 215  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2068,7 +2852,7 @@ UrlShortener — 🔗 URL Shortener: A fully asynchronous, production-ready URL 
 
 ---
 
-### Chunk 166  —  The Garage (Projects) — UrlShortener
+### Chunk 216  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2102,7 +2886,7 @@ UrlShortener — 📋 Table of Contents: - [Overview](#overview)
 
 ---
 
-### Chunk 167  —  The Garage (Projects) — UrlShortener
+### Chunk 217  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2113,7 +2897,7 @@ UrlShortener — 📋 Table of Contents: limitations)
 
 ---
 
-### Chunk 168  —  The Garage (Projects) — UrlShortener
+### Chunk 218  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2124,7 +2908,7 @@ UrlShortener — 🔍 Overview: This service transforms long, cumbersome URLs in
 
 ---
 
-### Chunk 169  —  The Garage (Projects) — UrlShortener
+### Chunk 219  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2142,7 +2926,7 @@ UrlShortener — ✨ Features: - **URL Shortening** — generates unique 6-chara
 
 ---
 
-### Chunk 170  —  The Garage (Projects) — UrlShortener
+### Chunk 220  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2152,7 +2936,7 @@ UrlShortener — ✨ Features: mbic for safe schema evolution
 
 ---
 
-### Chunk 171  —  The Garage (Projects) — UrlShortener
+### Chunk 221  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2173,7 +2957,7 @@ UrlShortener — 🛠 Tech Stack: | Layer | Technology | Version |
 
 ---
 
-### Chunk 172  —  The Garage (Projects) — UrlShortener
+### Chunk 222  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2184,7 +2968,7 @@ UrlShortener — 🛠 Tech Stack: 1.2 |
 
 ---
 
-### Chunk 173  —  The Garage (Projects) — UrlShortener
+### Chunk 223  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2219,7 +3003,7 @@ UrlShortener/
 
 ---
 
-### Chunk 174  —  The Garage (Projects) — UrlShortener
+### Chunk 224  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2231,7 +3015,7 @@ UrlShortener — 📁 Project Structure: guration
 
 ---
 
-### Chunk 175  —  The Garage (Projects) — UrlShortener
+### Chunk 225  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2245,7 +3029,7 @@ UrlShortener — ✅ Prerequisites: - **Python 3.10+** — https://www.python.or
 
 ---
 
-### Chunk 176  —  The Garage (Projects) — UrlShortener
+### Chunk 226  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2264,7 +3048,7 @@ python -m venv venv
 
 ---
 
-### Chunk 177  —  The Garage (Projects) — UrlShortener
+### Chunk 227  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2273,7 +3057,7 @@ UrlShortener — On Linux/macOS:: source venv/bin/activate
 
 ---
 
-### Chunk 178  —  The Garage (Projects) — UrlShortener
+### Chunk 228  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2291,7 +3075,7 @@ pip install -r requirements.txt
 
 ---
 
-### Chunk 179  —  The Garage (Projects) — UrlShortener
+### Chunk 229  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2311,7 +3095,7 @@ BASE_URL=http://localhost:8000
 
 ---
 
-### Chunk 180  —  The Garage (Projects) — UrlShortener
+### Chunk 230  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2323,7 +3107,7 @@ REFRESH_TOKEN_EXPIRE_DAYS=7
 
 ---
 
-### Chunk 181  —  The Garage (Projects) — UrlShortener
+### Chunk 231  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2332,7 +3116,7 @@ UrlShortener — Database: DATABASE_URL=postgresql+asyncpg://postgres:postgres@l
 
 ---
 
-### Chunk 182  —  The Garage (Projects) — UrlShortener
+### Chunk 232  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2341,7 +3125,7 @@ UrlShortener — Redis: REDIS_URL=redis://localhost:6379/0
 
 ---
 
-### Chunk 183  —  The Garage (Projects) — UrlShortener
+### Chunk 233  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2352,7 +3136,7 @@ RATE_LIMIT_WINDOW_SECONDS=60
 
 ---
 
-### Chunk 184  —  The Garage (Projects) — UrlShortener
+### Chunk 234  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2361,7 +3145,7 @@ UrlShortener — URL Settings: SHORT_CODE_LENGTH=6
 
 ---
 
-### Chunk 185  —  The Garage (Projects) — UrlShortener
+### Chunk 235  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2370,7 +3154,7 @@ UrlShortener — CORS: ALLOWED_ORIGINS=http://localhost:3000,http://localhost:80
 
 ---
 
-### Chunk 186  —  The Garage (Projects) — UrlShortener
+### Chunk 236  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2386,7 +3170,7 @@ ADMIN_USERNAME=admin
 
 ---
 
-### Chunk 187  —  The Garage (Projects) — UrlShortener
+### Chunk 237  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2397,7 +3181,7 @@ UrlShortener — 🚀 Running the Application: **1. Make sure PostgreSQL and Red
 
 ---
 
-### Chunk 188  —  The Garage (Projects) — UrlShortener
+### Chunk 238  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2406,7 +3190,7 @@ UrlShortener — PostgreSQL (Linux/macOS): sudo service postgresql start
 
 ---
 
-### Chunk 189  —  The Garage (Projects) — UrlShortener
+### Chunk 239  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2436,7 +3220,7 @@ The API will be available at `http://localhost:8000`.
 
 ---
 
-### Chunk 190  —  The Garage (Projects) — UrlShortener
+### Chunk 240  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2447,7 +3231,7 @@ UrlShortener — 🗄️ Database Migrations: This project uses **Alembic** to m
 
 ---
 
-### Chunk 191  —  The Garage (Projects) — UrlShortener
+### Chunk 241  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2456,7 +3240,7 @@ UrlShortener — Apply all pending migrations: alembic upgrade head
 
 ---
 
-### Chunk 192  —  The Garage (Projects) — UrlShortener
+### Chunk 242  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2465,7 +3249,7 @@ UrlShortener — Roll back the last migration: alembic downgrade -1
 
 ---
 
-### Chunk 193  —  The Garage (Projects) — UrlShortener
+### Chunk 243  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2474,7 +3258,7 @@ UrlShortener — Create a new migration after model changes: alembic revision --
 
 ---
 
-### Chunk 194  —  The Garage (Projects) — UrlShortener
+### Chunk 244  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2486,7 +3270,7 @@ UrlShortener — View migration history: alembic history
 
 ---
 
-### Chunk 195  —  The Garage (Projects) — UrlShortener
+### Chunk 245  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2501,7 +3285,7 @@ UrlShortener — Authentication Flow: **Registration**
 
 ---
 
-### Chunk 196  —  The Garage (Projects) — UrlShortener
+### Chunk 246  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2518,7 +3302,7 @@ UrlShortener — Authentication Flow:  admin account is seeded on first startup 
 
 ---
 
-### Chunk 197  —  The Garage (Projects) — UrlShortener
+### Chunk 247  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2538,7 +3322,7 @@ UrlShortener — Authentication Flow: s persisted in PostgreSQL to support rotat
 
 ---
 
-### Chunk 198  —  The Garage (Projects) — UrlShortener
+### Chunk 248  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2550,7 +3334,7 @@ UrlShortener — URL Shortening Flow: 1. Authenticated user submits a long URL v
 
 ---
 
-### Chunk 199  —  The Garage (Projects) — UrlShortener
+### Chunk 249  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2562,7 +3346,7 @@ UrlShortener — URL Shortening Flow: greSQL.
 
 ---
 
-### Chunk 200  —  The Garage (Projects) — UrlShortener
+### Chunk 250  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2571,7 +3355,7 @@ UrlShortener — Redirect & Caching Flow: When a user visits a short URL (e.g., 
 
 ---
 
-### Chunk 201  —  The Garage (Projects) — UrlShortener
+### Chunk 251  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2596,7 +3380,7 @@ Check Redis Cache
 
 ---
 
-### Chunk 202  —  The Garage (Projects) — UrlShortener
+### Chunk 252  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2609,7 +3393,7 @@ UrlShortener — Redirect & Caching Flow:     Return original URL
 
 ---
 
-### Chunk 203  —  The Garage (Projects) — UrlShortener
+### Chunk 253  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2628,7 +3412,7 @@ Tracked metrics per short URL:
 
 ---
 
-### Chunk 204  —  The Garage (Projects) — UrlShortener
+### Chunk 254  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2640,7 +3424,7 @@ UrlShortener — Analytics Tracking:  Clicks in the current month |
 
 ---
 
-### Chunk 205  —  The Garage (Projects) — UrlShortener
+### Chunk 255  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2656,7 +3440,7 @@ UrlShortener — Security Architecture: | Layer | Mechanism |
 
 ---
 
-### Chunk 206  —  The Garage (Projects) — UrlShortener
+### Chunk 256  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2666,7 +3450,7 @@ UrlShortener — Security Architecture: a Redis counters |
 
 ---
 
-### Chunk 207  —  The Garage (Projects) — UrlShortener
+### Chunk 257  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2681,7 +3465,7 @@ UrlShortener — Auth Endpoints: | Method | Endpoint | Description | Auth Requir
 
 ---
 
-### Chunk 208  —  The Garage (Projects) — UrlShortener
+### Chunk 258  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2717,7 +3501,7 @@ UrlShortener — Auth Endpoints: ns and log out | Yes |
 
 ---
 
-### Chunk 209  —  The Garage (Projects) — UrlShortener
+### Chunk 259  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2732,7 +3516,7 @@ UrlShortener — URL Endpoints: | Method | Endpoint | Description | Auth Require
 
 ---
 
-### Chunk 210  —  The Garage (Projects) — UrlShortener
+### Chunk 260  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2759,7 +3543,7 @@ UrlShortener — URL Endpoints: es |
 
 ---
 
-### Chunk 211  —  The Garage (Projects) — UrlShortener
+### Chunk 261  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2771,7 +3555,7 @@ UrlShortener — Analytics Endpoints: | Method | Endpoint | Description | Auth R
 
 ---
 
-### Chunk 212  —  The Garage (Projects) — UrlShortener
+### Chunk 262  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2791,7 +3575,7 @@ UrlShortener — Analytics Endpoints:  | `/users/me/analytics` | Get aggregated 
 
 ---
 
-### Chunk 213  —  The Garage (Projects) — UrlShortener
+### Chunk 263  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2808,7 +3592,7 @@ UrlShortener — Admin Endpoints: > Requires admin role. Set via `ADMIN_EMAIL`, 
 
 ---
 
-### Chunk 214  —  The Garage (Projects) — UrlShortener
+### Chunk 264  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2830,7 +3614,7 @@ When the limit is exceeded, the API returns:
 
 ---
 
-### Chunk 215  —  The Garage (Projects) — UrlShortener
+### Chunk 265  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2854,7 +3638,7 @@ RATE_LIMIT_WINDOW_SECONDS=60
 
 ---
 
-### Chunk 216  —  The Garage (Projects) — UrlShortener
+### Chunk 266  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2881,7 +3665,7 @@ UrlShortener — 🔑 Environment Variables: | Variable | Default | Description 
 
 ---
 
-### Chunk 217  —  The Garage (Projects) — UrlShortener
+### Chunk 267  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2891,7 +3675,7 @@ UrlShortener — 🔑 Environment Variables: | — | Default admin password |
 
 ---
 
-### Chunk 218  —  The Garage (Projects) — UrlShortener
+### Chunk 268  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2909,7 +3693,7 @@ UrlShortener — 🛡️ Error Handling: | HTTP Status | Scenario |
 
 ---
 
-### Chunk 219  —  The Garage (Projects) — UrlShortener
+### Chunk 269  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2919,7 +3703,7 @@ UrlShortener — 🛡️ Error Handling:  limit exceeded |
 
 ---
 
-### Chunk 220  —  The Garage (Projects) — UrlShortener
+### Chunk 270  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2933,7 +3717,7 @@ UrlShortener — ⚠️ Limitations: - **No custom aliases** — short codes are
 
 ---
 
-### Chunk 221  —  The Garage (Projects) — UrlShortener
+### Chunk 271  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2942,7 +3726,7 @@ UrlShortener — ⚠️ Limitations: No email verification** — user registrati
 
 ---
 
-### Chunk 222  —  The Garage (Projects) — UrlShortener
+### Chunk 272  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2961,7 +3745,7 @@ UrlShortener — 🚧 Future Improvements: - [ ] Custom short code aliases (vani
 
 ---
 
-### Chunk 223  —  The Garage (Projects) — UrlShortener
+### Chunk 273  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2971,7 +3755,7 @@ UrlShortener — 🚧 Future Improvements: URL import via CSV
 
 ---
 
-### Chunk 224  —  The Garage (Projects) — UrlShortener
+### Chunk 274  —  The Garage (Projects) — UrlShortener
 **Title:** UrlShortener
 **Source:** github_readme  |  **Anchor:** #projects
 **URL:** https://github.com/varunsani/UrlShortener  |  **Project ID:** none
@@ -2979,790 +3763,6 @@ UrlShortener — 🚧 Future Improvements: URL import via CSV
 UrlShortener — 📄 License: This project is open source and available under the [MIT License](LICENSE).
 
 ---
-
----
-
-### Chunk 225  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_repo  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service (written in Python)
-
----
-
-### Chunk 226  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Stormline: Stormline is a real-time weather alerting platform. It watches the
-locations you care about, classifies incoming weather readings against
-configurable severity thresholds, and pushes alerts to your browser the
-moment they fire — over a live WebSocket connection while you're
-online, and as a catch-up feed the next time you reconnect if you
-weren't.
-
----
-
-### Chunk 227  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Stormline: ou're
-online, and as a catch-up feed the next time you reconnect if you
-weren't. It's built fully async in Python (FastAPI, SQLModel over asyncpg, and
-`redis.asyncio`), with Redis Pub/Sub used to fan alerts out across
-horizontally-scaled API replicas, JWT-based authentication, and
-PostgreSQL for durable, time-series-friendly storage of every reading
-and every alert.
-
----
-
-### Chunk 228  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — What it does: **Location tracking by name.** Subscribing to a location is a matter
-of typing a city name — `POST /subscriptions` resolves it through the
-free Open-Meteo Geocoding API, and `GET /locations/search?q=` powers
-autocomplete-style disambiguation beforehand, since place names aren't
-unique (there's a Hyderabad in India and one in Pakistan's Sindh
-province).
-
----
-
-### Chunk 229  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — What it does: en't
-unique (there's a Hyderabad in India and one in Pakistan's Sindh
-province). **Configurable severity, per subscription.** Each subscription carries
-its own `min_severity` (`WATCH` / `WARNING` / `SEVERE`), chosen at
-subscribe time or changed later. An account also has a
-`default_min_severity` applied to new subscriptions that don't specify
-one. Filtering happens at push time, in
-`ConnectionManager.broadcast_to_location` — a `WATCH`-level alert
-simply never reaches a socket whose threshold is `SEVERE`.
-
----
-
-### Chunk 230  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — What it does: a `WATCH`-level alert
-simply never reaches a socket whose threshold is `SEVERE`. **Per-subscription custom thresholds.** Beyond the three severity
-tiers, a subscription can override the underlying numeric threshold
-for any alert category — extreme heat or cold, high wind, heavy
-precipitation. A subscription with custom thresholds is classified
-independently, so two people subscribed to the same city can
-legitimately see different alerts for the same reading. Because that
-result may not apply to anyone else watching the same location, it's
-never delivered through the location-wide broadcast — it's published
-to a Redis channel addressed to that one user (`alerts.user.{id}`)
-and pushed straight to their socket(s), bypassing severity filtering
-entirely since the filtering already happened at classification time.
-
----
-
-### Chunk 231  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — What it does:  filtering
-entirely since the filtering already happened at classification time. **Catch-up on reconnect.** Every alert is persisted to Postgres the
-moment it's generated, independent of whether Redis Pub/Sub happens to
-be up. That means "what did I miss while I was disconnected" is just a
-query against data that already exists. The moment a WebSocket
-reconnects, it receives a one-off backlog of everything that fired
-across your subscriptions since your last disconnect. The same
-catch-up is also available as a plain, read-only REST call
-(`GET /alerts/missed`), which is what the UI's "Check missed" button
-uses — calling it doesn't consume or advance anything server-side, so
-it's safe to call as often as you like.
-
----
-
-### Chunk 232  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — What it does: sume or advance anything server-side, so
-it's safe to call as often as you like. **Cross-replica subscription updates.** If you run more than one API
-replica, a subscription change made against one replica reaches a
-WebSocket connection already open on a *different* replica immediately,
-via a second Redis channel dedicated to subscription events — not just
-the one carrying alerts. An open socket never has to reconnect to pick
-up a change made somewhere else.
-
----
-
-### Chunk 233  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — What it does: . An open socket never has to reconnect to pick
-up a change made somewhere else. **Server-side alert dismissal.** Dismissing an alert (`POST
-/alerts/{id}/dismiss`, or in bulk via `POST /alerts/dismiss`) is
-recorded against your account, not just cleared from local storage in
-one browser tab — so it stays cleared everywhere, including any future
-missed-alert catch-up.
-
----
-
-### Chunk 234  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Architecture: Three independent Redis fan-outs, same shape (publish once, every API
-replica forwards to its own locally-connected sockets):
-
----
-
-### Chunk 235  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Architecture: (publish once, every API
-replica forwards to its own locally-connected sockets): - **Alerts** (location-wide, default-threshold broadcast): poller →
-  Redis (`alerts.location.{id}`) → every API replica's
-  `PubSubForwarder` → that replica's `ConnectionManager` → the
-  locally-connected sockets subscribed to that location, *except* any
-  socket whose owner has custom thresholds for it (those are handled
-  by "Personal alerts" below instead, so they're never double-sent).
-- **Subscription events**: whichever replica's HTTP handler processed a
-  subscribe / severity-change / unsubscribe → Redis
-  (`sub-events.user.{id}`) → every replica's `PubSubForwarder` → that
-  replica updates its local `ConnectionManager` if (and only if) it's
-  holding a socket for that `user_id`.
-- **Personal alerts** (custom-threshold subscriptions): poller → Redis
-  (`alerts.user.{id}`) → every API replica's `PubSubForwarder` → that
-  replica's `ConnectionManager.send_to_user` → every locally-connected
-  socket owned by that user, unfiltered (the classification against
-  that user's own custom thresholds already happened before publish).
-  Addressed to a user rather than a location because the result of a
-  subscription's own thresholds may not apply to anyone else watching
-  the same location, so it can never ride the location-wide broadcast.
-
----
-
-### Chunk 236  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Architecture:  watching
-  the same location, so it can never ride the location-wide broadcast. Polling lives in a single, separate process rather than inside every
-API replica, specifically so that N replicas don't turn into N
-redundant calls to Open-Meteo for the same location. The poller asks
-Postgres for the distinct set of actively-subscribed locations, polls
-each exactly once per cycle, classifies severity (once against the
-platform defaults, and again per subscriber with custom thresholds),
-persists every reading and alert, and publishes.
-
----
-
-### Chunk 237  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Architecture: criber with custom thresholds),
-persists every reading and alert, and publishes. ```
- Open-Meteo (weather)          Open-Meteo (geocoding)
-        ▲                              ▲
-        │ HTTP (polled)                │ HTTP (on search/subscribe)
-        │                              │
- ┌──────┴───────┐                      │
- │    poller     │  <- single process  │
- │ (services/    │     polls each      │
- │  poller.py)   │  UNIQUE subscribed  │
- └───┬───────┬───┘  location per cycle │
-     │       │                         │
-     │       │ publish                 │
-     │       │ alerts.location.{id} /   │
-     │       │ alerts.user.{id}         │
- ┌───▼───┐ ┌─▼───────────────────────────▼─┐
- │Postgres│ │              Redis             │
- └───▲────┘ │ blacklist / weather+geocode    │
-     │      │ cache / alerts.location.* /    │
-     │CRUD  │ alerts.user.* / sub-events.*   │
-     │      └──┬────────────────────────┬────┘
-     │         │ psubscribe (all three) │ psubscribe (all three)
- ┌───┴─────┐ ┌─▼────────┐          ┌────▼─────┐
- │ SQLModel│ │  api #1   │          │  api #2  │  <- horizontally
- └─────────┘ │ FastAPI+WS│          │FastAPI+WS│     scalable
-             └─────┬─────┘          └────┬─────┘
-                   │ ws push             │ ws push
-              ┌────▼───┐             ┌───▼────┐
-              │Client A│             │Client B│
-              └────────┘             └────────┘
-```
-
----
-
-### Chunk 238  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout: ```
-weather-alert-platform/
-├── app/
-│   ├── main.py                    # FastAPI app, lifespan, router registration, CORS
-│   ├── config.py                  # pydantic-settings; explicit vars or a single
-│   │                               # combined DATABASE_URL/REDIS_URL, whichever you set
-│   ├── database.py                # async SQLAlchemy engine + session dependency
-
----
-
-### Chunk 239  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout:    ├── database.py                # async SQLAlchemy engine + session dependency │   ├── redis_client.py            # shared async Redis connection pool
-│   ├── models/                    # SQLModel table definitions
-│   │   ├── user.py                # + default_min_severity, last_seen_at
-│   │   ├── location.py            # + country, admin1 (display metadata)
-│   │   ├── subscription.py        # + min_severity, custom_thresholds
-
----
-
-### Chunk 240  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout: metadata)
-│   │   ├── subscription.py        # + min_severity, custom_thresholds │   │   ├── alert_dismissal.py     # per-user "cleared" record for an Alert
-│   │   └── refresh_token.py, weather_reading.py, alert.py
-│   ├── schemas/                   # Pydantic request/response contracts
-│   ├── auth/                      # password hashing, JWT, blacklist, dependencies
-│   ├── routers/
-│   │   ├── auth.py                  # register / login / refresh / logout
-
----
-
-### Chunk 241  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout: ters/
-│   │   ├── auth.py                  # register / login / refresh / logout │   │   ├── users.py                 # GET/PATCH default severity preference
-│   │   ├── locations.py             # /locations/search (geocode candidates)
-│   │   ├── subscriptions.py         # subscribe by id OR by name; severity PATCH
-│   │   ├── alerts.py                 # GET /alerts/missed (REST catch-up) + dismiss endpoints
-
----
-
-### Chunk 242  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout: erts.py                 # GET /alerts/missed (REST catch-up) + dismiss endpoints │   │   ├── weather.py                # cached current query + history
-│   │   └── ws.py                     # /ws/alerts live push endpoint
-│   ├── services/
-│   │   ├── weather_client.py       # Open-Meteo current-weather HTTP client
-│   │   ├── geocoding.py             # Open-Meteo Geocoding HTTP client + cache
-│   │   ├── severity_engine.py       # ALL tunable thresholds live here
-
----
-
-### Chunk 243  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout:  + cache
-│   │   ├── severity_engine.py       # ALL tunable thresholds live here │   │   ├── missed_alerts.py          # shared "what did I miss" query (WS backlog + REST)
-│   │   ├── poller.py                 # the standalone polling loop
-│   │   ├── pubsub.py                  # publish + forward alerts, personal alerts, and sub-events
-│   │   └── connection_manager.py      # per-instance WS registry, keyed by user_id
-
----
-
-### Chunk 244  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout:  │   └── connection_manager.py      # per-instance WS registry, keyed by user_id │   ├── core/                        # time_utils.py, exceptions.py (global exception handlers)
-│   └── static/                      # UI: index.html, app.js, style.css
-├── alembic/versions/
-│   ├── 0001_initial.py
-│   ├── 0002_severity_and_geocoding.py
-│   ├── 0003_add_last_seen_at.py       # missed-alert catch-up cursor
-│   ├── 0004_custom_thresholds.py      # subscriptions.custom_thresholds
-
----
-
-### Chunk 245  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout:  cursor
-│   ├── 0004_custom_thresholds.py      # subscriptions.custom_thresholds │   ├── 0006_reset_and_dismissals.py   # alert_dismissals table (chains off 0004 directly)
-│   └── 0007_instance_epoch.py         # instance_meta table, seeded with a random epoch
-├── tests/                             # pytest suite (SQLite + fakeredis, no infra needed)
-├── scripts/run_poller.py, smoke_test.py
-
----
-
-### Chunk 246  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Repository layout: e (SQLite + fakeredis, no infra needed)
-├── scripts/run_poller.py, smoke_test.py ├── docker/                            # entrypoint shell scripts for the containers below
-├── Dockerfile, docker-compose.yml     # local Postgres + Redis + app, containerized
-├── requirements.txt, requirements-dev.txt
-├── .env.example
-└── README.md
-```
-
----
-
-### Chunk 247  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Getting started: You'll need Python 3.11+, and either Docker or a local Postgres and
-Redis. Either way, start with:
-
-```bash
-cd weather-alert-platform
-cp .env.example .env
-```
-
-Then replace `JWT_SECRET_KEY` in `.env` with a real secret:
-
-```bash
-python3 -c "import secrets; print(secrets.token_urlsafe(64))"
-```
-
----
-
-### Chunk 248  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — With Docker: ```bash
-docker compose up --build
-```
-
-This starts `postgres`, `redis`, `api` (which runs `alembic upgrade
-head` and then `uvicorn`), and `poller`, in dependency order.
-
----
-
-### Chunk 249  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Without Docker: The checked-in `.env` is written for the *whole stack in Docker*:
-`DATABASE_URL` / `REDIS_URL` point at `postgres` / `redis`, which are
-docker-compose **service names** — Docker's internal DNS resolves
-those to the right container, but nothing on your host machine (or
-inside a plain `venv`) knows what they mean. Running the app process
-itself outside Docker means editing `.env` so those hostnames resolve
-somewhere real. Two ways to do that:
-
----
-
-### Chunk 250  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Without Docker: s editing `.env` so those hostnames resolve
-somewhere real. Two ways to do that: **Postgres/Redis still in Docker, app on the host.** This is the
-common case — keep `docker compose up postgres redis` running so you
-get persistence and the healthchecks for free, but iterate on the app
-with `--reload` instead of rebuilding an image. `docker-compose.yml`
-publishes them on non-default host ports specifically so they don't
-collide with anything you might already have running locally:
-`postgres` → host `5434`, `redis` → host `6380`. Point `.env` at those:
-
----
-
-### Chunk 251  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Without Docker: locally:
-`postgres` → host `5434`, `redis` → host `6380`. Point `.env` at those: ```bash
-DATABASE_URL=postgresql+asyncpg://weather_user:weather_pass@localhost:5434/weather_db
-DATABASE_URL_SYNC=postgresql+psycopg2://weather_user:weather_pass@localhost:5434/weather_db
-REDIS_URL=redis://localhost:6380/0
-```
-
----
-
-### Chunk 252  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Without Docker: er:weather_pass@localhost:5434/weather_db
-REDIS_URL=redis://localhost:6380/0
-``` **Fully local, no Docker at all.** If you've installed Postgres and
-Redis yourself and they're running on their normal default ports, use
-those instead, along with whatever role/database you created:
-
-```bash
-DATABASE_URL=postgresql+asyncpg://<user>:<password>@localhost:5432/<db>
-DATABASE_URL_SYNC=postgresql+psycopg2://<user>:<password>@localhost:5432/<db>
-REDIS_URL=redis://localhost:6379/0
-```
-
----
-
-### Chunk 253  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Without Docker: 2://<user>:<password>@localhost:5432/<db>
-REDIS_URL=redis://localhost:6379/0
-``` Either way, also replace `JWT_SECRET_KEY` (see above) — the value
-committed in `.env` is fine for the Docker path but there's no reason
-to reuse it once you're editing the file regardless. Everything else
-in `.env` (`OPEN_METEO_BASE_URL`, `POLL_INTERVAL_SECONDS`, etc.) isn't
-Docker-specific and can stay as-is.
-
----
-
-### Chunk 254  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Without Docker: E_URL`, `POLL_INTERVAL_SECONDS`, etc.) isn't
-Docker-specific and can stay as-is. ```bash
-python3 -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-alembic upgrade head
-
----
-
-### Chunk 255  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — terminal 1: python -m uvicorn app.main:app --reload
-
----
-
-### Chunk 256  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — terminal 2: python -m scripts.run_poller
-```
-
-Both processes read the same `.env` (via `pydantic-settings`), so
-there's nothing further to change between the two terminals.
-
----
-
-### Chunk 257  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Trying it out: Open **http://localhost:8000/static/index.html** for the UI, or
-**http://localhost:8000/docs** for interactive API docs.
-
----
-
-### Chunk 258  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Trying it out: x.html** for the UI, or
-**http://localhost:8000/docs** for interactive API docs. Register an account, sign in, type a city name (e.g. "Hyderabad")
-under "Add a location," pick a severity threshold, and subscribe. The
-live alert feed shows anything the poller detects from there. While
-testing, it's worth lowering `POLL_INTERVAL_SECONDS` in `.env` to
-something like `30`, so you're not waiting a full cycle to see
-something happen.
-
----
-
-### Chunk 259  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Trying it out: something like `30`, so you're not waiting a full cycle to see
-something happen. If you want to see the cross-replica behavior for yourself: run a
-second `api` container by hand (the same image and `.env`, pointed at
-the same Postgres and Redis, mapped to `8001:8000`). Sign in as the
-same user in one browser tab against `:8000`, then from a second tab
-(or `curl`) hit `:8001`'s `/subscriptions` endpoint to add a new
-location. The `:8000` tab's socket starts receiving alerts for it
-immediately, with no page refresh — because the update reached it
-through `sub-events.user.*`, not through anything held in
-replica-local memory. `scripts/smoke_test.py` (step 9) automates
-essentially this same check within a single replica, opening the
-socket before subscribing.
-
----
-
-### Chunk 260  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Running the tests: ```bash
-pip install -r requirements-dev.txt
-pytest
-```
-
----
-
-### Chunk 261  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Running the tests: ```bash
-pip install -r requirements-dev.txt
-pytest
-``` No Postgres or Redis needed — the suite runs against a temp-file
-SQLite database and `fakeredis`. Coverage includes severity
-classification, connection-manager severity filtering, a direct
-simulation of the two-replica subscribe/alert fan-out
-(`test_pubsub_fanout.py`), auth flows, geocode-based subscribing, and
-a WebSocket end-to-end test. One test in `test_websocket_alerts.py`
-hits the real Open-Meteo geocoding API and skips itself if there's no
-network access.
-
----
-
-### Chunk 262  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Database migrations: ```bash
-alembic revision --autogenerate -m "describe your change"
-alembic upgrade head
-```
-
----
-
-### Chunk 263  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Database migrations: embic revision --autogenerate -m "describe your change"
-alembic upgrade head
-``` Always review an autogenerated migration before applying it — it's a
-helpful starting point, not a guarantee. `0002_severity_and_geocoding.py`
-is hand-checked against `0001_initial.py`'s existing `alertseverity`
-enum type, which it reuses rather than recreating. The migration chain
-runs `0001 → 0002 → 0003 → 0004 → 0006 → 0007`; `0006_reset_and_dismissals`
-adds only the `alert_dismissals` table and chains directly off `0004`
-(an earlier `0005` migration existed at one point but isn't part of
-this chain).
-
----
-
-### Chunk 264  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Resetting the database (`docker volume rm`): Wiping `postgres_data` (e.g. `docker compose down -v`, or `docker
-compose down && docker volume rm weather-alert-platform_postgres_data`)
-and starting over re-runs every migration from scratch, including
-`0007_instance_epoch.py`, which mints a fresh random `epoch` value into
-the new `instance_meta` table. `GET /health` reports it as
-`instance_epoch`, and the frontend compares it against what it saw last
-time on every page load (`ensureInstanceEpoch()` in `app.js`). A
-mismatch means "this is a different database than whatever my cached
-data came from," so it clears every `wap.*` localStorage key — including
-the access/refresh tokens — before doing anything else.
-
----
-
-### Chunk 265  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Resetting the database (`docker volume rm`): lStorage key — including
-the access/refresh tokens — before doing anything else. That matters because a fresh database also restarts user ids from `1`.
-Without this check, an old cached feed (or an old JWT, since
-`JWT_SECRET_KEY` doesn't change on reset) would silently get re-attached
-to whoever now holds those recycled ids. This is handled automatically
-now — you don't need to run anything by hand in the browser console
-after a reset, this time or any future one.
-
----
-
-### Chunk 266  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — API reference: All endpoints except `/auth/*` and `/health` require
-`Authorization: Bearer <access_token>`.
-
----
-
-### Chunk 267  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — API reference: s except `/auth/*` and `/health` require
-`Authorization: Bearer <access_token>`. | Method | Path                             | Purpose                                          |
-|--------|----------------------------------|---------------------------------------------------|
-| POST   | `/auth/register`                 | Create a user                                     |
-| POST   | `/auth/login`                    | Get access + refresh token pair                   |
-| POST   | `/auth/refresh`                  | Exchange a refresh token for a new access token   |
-| POST   | `/auth/logout`                   | Blacklist current access + refresh tokens         |
-| GET    | `/users/me`                      | Current account, including `default_min_severity` |
-| PATCH  | `/users/me/preferences`          | Set default severity for new subscriptions        |
-| GET    | `/locations/search?q=`           | Geocode a place name into candidates (no side effects) |
-| POST   | `/locations`                     | Create/fetch a location from known coordinates    |
-| GET    | `/locations`                     | List all known locations                          |
-| GET    | `/locations/{id}`                | Get one location                                  |
-| GET    | `/subscriptions/threshold-defaults` | Platform-wide default thresholds (placeholders for the custom-thresholds UI) |
-| POST   | `/subscriptions`                 | Subscribe by `location_id` OR `location_query`    |
-| GET    | `/subscriptions`                 | List your active subscriptions                    |
-| PATCH  | `/subscriptions/{location_id}`   | Change that subscription's `min_severity` (and/or `custom_thresholds`) |
-| DELETE | `/subscriptions/{location_id}`   | Unsubscribe                                       |
-| GET    | `/alerts/missed`                 | Read-only "what did I miss" catch-up (backs "Check missed") |
-| POST   | `/alerts/{alert_id}/dismiss`     | Mark one alert dismissed for the caller           |
-| POST   | `/alerts/dismiss`                | Bulk-dismiss (`{"alert_ids": [...]}`)             |
-| GET    | `/weather/{id}/current`          | Cached on-demand current weather                  |
-| GET    | `/weather/{id}/history?limit=`   | Persisted time-series readings                    |
-| WS     | `/ws/alerts?token=`              | Live alert push for your subscriptions            |
-| GET    | `/health`                        | Liveness check; also returns `instance_epoch` (see below) |
-
----
-
-### Chunk 268  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — API reference:                    | Liveness check; also returns `instance_epoch` (see below) | Full interactive schema: `/docs` (Swagger UI) or `/redoc`.
-
-`/ws/alerts` sends three message `type`s: `connected` (once, on open),
-`backlog` (once, right after — alerts missed since your last
-disconnect), and `alert` (zero or more, live, for as long as the
-socket stays open).
-
----
-
-### Chunk 269  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Severity engine: Every threshold lives in `app/services/severity_engine.py`, in two
-plain dictionaries, and can be overridden per subscription via
-`custom_thresholds` (see `effective_thresholds`). Message wording is
-tier-specific: "Extreme heat" / "Extreme cold" phrasing is reserved
-for the `SEVERE` tier only (`Heat watch` / `Heat warning` / `Extreme
-
----
-
-### Chunk 270  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Severity engine: is reserved
-for the `SEVERE` tier only (`Heat watch` / `Heat warning` / `Extreme heat warning`, and likewise for cold), so a mild `WATCH`-level reading
-never reads as though it were the most dangerous tier. Classification
-itself is independent of who's subscribed — every reading is
-classified the same way regardless of audience. It's
-`ConnectionManager.broadcast_to_location` that decides, per connected
-socket, whether that socket's `min_severity` is actually met before
-
----
-
-### Chunk 271  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Severity engine: er connected
-socket, whether that socket's `min_severity` is actually met before sending — except sockets whose owner has `custom_thresholds` for that
-location, which are classified separately by the poller and delivered
-via `send_to_user` instead (see Architecture above). Both sides agree
-on which subscriptions count as "customized" through the single
-`has_effective_overrides` check in this module — an earlier mismatch
-
----
-
-### Chunk 272  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Severity engine:  the single
-`has_effective_overrides` check in this module — an earlier mismatch between a Python truthiness check and a SQL `IS NOT NULL` check here
-was the source of a duplicate-alert bug (a subscription with an empty
-or all-default `custom_thresholds` value could get both the broadcast
-alert and an identical personal one); it's fixed by having every
-caller go through this one function rather than re-deriving the
-answer independently.
-
----
-
-### Chunk 273  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — Authentication: 15-minute access tokens, 7-day refresh tokens tracked in Postgres, a
-Redis-backed blacklist keyed by `jti` with a TTL matching the token's
-remaining lifetime, and WebSocket authentication via a `?token=` query
-parameter.
-
----
-
-### Chunk 274  —  The Garage (Projects) — Stormline-Weather-Alerting-Service
-**Title:** Stormline-Weather-Alerting-Service
-**Source:** github_readme  |  **Anchor:** #projects
-**URL:** https://github.com/varunsani/Stormline-Weather-Alerting-Service  |  **Project ID:** none
-
-Stormline-Weather-Alerting-Service — A note on the upstream weather API: Both Open-Meteo's weather API and its geocoding API are free and
-require no API key. The poller's design — polling each unique
-location once per cycle rather than once per subscriber — and the
-geocoding cache (`GEOCODING_CACHE_TTL_SECONDS`, defaulting to 24
-hours, since coordinates for a given place don't change) both exist
-specifically to stay comfortably within the free tier by construction.
 
 ---
 
@@ -5613,7 +5613,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,644 ratings 28,676 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,660 ratings 28,677 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5685,7 +5685,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,644 ratings 28,676 reviews 5 stars 201,422 (34%) 4 stars 215,087 (37%) 3 stars 112,839 (19%) 2 stars 34,428 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,621 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,660 ratings 28,677 reviews 5 stars 201,429 (34%) 4 stars 215,092 (37%) 3 stars 112,841 (19%) 2 stars 34,430 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,623 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -6333,7 +6333,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit source ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
 
 ---
 
@@ -6396,7 +6396,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit source ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
 
 ---
 
@@ -6549,7 +6549,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit ] Development [ edit ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998. [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit source ] Development [ edit source ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998
 
 ---
 
@@ -6558,7 +6558,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  the early 1980s during Gondry's drumming career in the French pop group Oui Oui [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: onversations between director Michel Gondry and co-writer Pierre Bismuth in 1998 [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui . [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
 
 ---
 
@@ -6594,7 +6594,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Go
 
 ---
 
