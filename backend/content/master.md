@@ -745,7 +745,7 @@ targeted features beyond the standard preprocessing steps, delivering an additio
 PROJECTS: Self-Updating RAG Portfolio Assistant|Groq LLM·FastAPI·pgvector·Redis·GitHub Actions·Docker
 •Architected a RAG assistant using FastAPI and pgvector for recruiters to query portfolio content, combining dense
 search (70%) with BM25 (30%) and MMR re-ranking (λ= 0.7) to balance semantic recall against keyword precision.
-•Automated knowledge freshness with a GitHub Actions CI/CD pipeline that re-scrapes the live site every 1 hour and
+•Automated knowledge freshness with a GitHub Actions CI/CD pipeline that re-scrapes the live site every 6 hours and
 
 ---
 
@@ -754,10 +754,10 @@ search (70%) with BM25 (30%) and MMR re-ranking (λ= 0.7) to balance semantic re
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: I/CD pipeline that re-scrapes the live site every 1 hour and on deploy, re-embedding only when content changes with atomic PostgreSQL swaps for zero-downtime updates.
+PROJECTS: /CD pipeline that re-scrapes the live site every 6 hours and on deploy, re-embedding only when content changes with atomic PostgreSQL swaps for zero-downtime updates.
 •Reduced hallucinations with a 0.3 similarity cutoff, added anchor-linked citations, 10-turn Redis memory (6h TTL), 30
 req/min/IP rate limiting and automated resume ingestion from Drive, deployed via Docker for consistent environments.
-URL Shortener|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic
+Real-Time Weather Alerting Platform|FastAPI·Redis Pub/Sub·WebSockets·PostgreSQL·JWT·Docker
 
 ---
 
@@ -766,10 +766,10 @@ URL Shortener|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: r|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic •Built a secure, fully asynchronous URL shortening service with RESTful APIs and a layered service architecture,
-validated with script-based unit testing, using unique 6-character Base62 codes on ACID-compliant PostgreSQL.
-•Secured URL management with 15-minute JWT access tokens, 7-day refresh tokens and Redis-backed revocation, while
-rate limiting URL creation and redirects to prevent API abuse.
+PROJECTS: tform|FastAPI·Redis Pub/Sub·WebSockets·PostgreSQL·JWT·Docker •Built a fully async alerting platform using Open-Meteo’s free weather and geocoding APIs, polling each unique
+subscribed location every 5 minutes and classifying readings into 3 severity tiers pushed live over WebSockets.
+•Scaled alert delivery horizontally with independent Redis Pub/Sub channels, propagating alerts and cross-replica
+subscription updates instantly across API replicas, while caching results to decrease redundant database lookups.
 
 ---
 
@@ -778,8 +778,8 @@ rate limiting URL creation and redirects to prevent API abuse.
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: te limiting URL creation and redirects to prevent API abuse. •Reduced repeated database lookups by caching redirects in Redis for 1 hour, while tracking daily, weekly and monthly
-click analytics through asynchronous counters.
+PROJECTS: hile caching results to decrease redundant database lookups. •Persisted every reading and alert to PostgreSQL, delivering a 48-hour missed-alert catch-up on reconnect, secured
+endpoints with 15-minute JWT access and 7-day refresh tokens and validated core logic with unit testing.
 
 ---
 
@@ -5613,7 +5613,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,628 ratings 28,676 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,639 ratings 28,675 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5685,7 +5685,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,628 ratings 28,676 reviews 5 stars 201,417 (34%) 4 stars 215,076 (37%) 3 stars 112,839 (19%) 2 stars 34,428 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,621 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,639 ratings 28,675 reviews 5 stars 201,420 (34%) 4 stars 215,084 (37%) 3 stars 112,839 (19%) 2 stars 34,428 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,622 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -6333,7 +6333,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit source ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
 
 ---
 
@@ -6396,7 +6396,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit source ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
 
 ---
 
@@ -6549,7 +6549,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit ] Development [ edit ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998. [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit source ] Development [ edit source ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998
 
 ---
 
@@ -6558,7 +6558,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  the early 1980s during Gondry's drumming career in the French pop group Oui Oui [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: onversations between director Michel Gondry and co-writer Pierre Bismuth in 1998 [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui . [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
 
 ---
 
@@ -6594,7 +6594,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Go
 
 ---
 

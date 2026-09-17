@@ -106,7 +106,7 @@ targeted features beyond the standard preprocessing steps, delivering an additio
 PROJECTS: Self-Updating RAG Portfolio Assistant|Groq LLM·FastAPI·pgvector·Redis·GitHub Actions·Docker
 •Architected a RAG assistant using FastAPI and pgvector for recruiters to query portfolio content, combining dense
 search (70%) with BM25 (30%) and MMR re-ranking (λ= 0.7) to balance semantic recall against keyword precision.
-•Automated knowledge freshness with a GitHub Actions CI/CD pipeline that re-scrapes the live site every 1 hour and
+•Automated knowledge freshness with a GitHub Actions CI/CD pipeline that re-scrapes the live site every 6 hours and
 
 ---
 
@@ -115,10 +115,10 @@ search (70%) with BM25 (30%) and MMR re-ranking (λ= 0.7) to balance semantic re
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: I/CD pipeline that re-scrapes the live site every 1 hour and on deploy, re-embedding only when content changes with atomic PostgreSQL swaps for zero-downtime updates.
+PROJECTS: /CD pipeline that re-scrapes the live site every 6 hours and on deploy, re-embedding only when content changes with atomic PostgreSQL swaps for zero-downtime updates.
 •Reduced hallucinations with a 0.3 similarity cutoff, added anchor-linked citations, 10-turn Redis memory (6h TTL), 30
 req/min/IP rate limiting and automated resume ingestion from Drive, deployed via Docker for consistent environments.
-URL Shortener|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic
+Real-Time Weather Alerting Platform|FastAPI·Redis Pub/Sub·WebSockets·PostgreSQL·JWT·Docker
 
 ---
 
@@ -127,10 +127,10 @@ URL Shortener|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: r|FastAPI·RESTful APIs·PostgreSQL·Redis·JWT·SQLModel·Alembic •Built a secure, fully asynchronous URL shortening service with RESTful APIs and a layered service architecture,
-validated with script-based unit testing, using unique 6-character Base62 codes on ACID-compliant PostgreSQL.
-•Secured URL management with 15-minute JWT access tokens, 7-day refresh tokens and Redis-backed revocation, while
-rate limiting URL creation and redirects to prevent API abuse.
+PROJECTS: tform|FastAPI·Redis Pub/Sub·WebSockets·PostgreSQL·JWT·Docker •Built a fully async alerting platform using Open-Meteo’s free weather and geocoding APIs, polling each unique
+subscribed location every 5 minutes and classifying readings into 3 severity tiers pushed live over WebSockets.
+•Scaled alert delivery horizontally with independent Redis Pub/Sub channels, propagating alerts and cross-replica
+subscription updates instantly across API replicas, while caching results to decrease redundant database lookups.
 
 ---
 
@@ -139,8 +139,8 @@ rate limiting URL creation and redirects to prevent API abuse.
 **Source:** resume  |  **Anchor:** None
 **URL:** https://drive.google.com/file/d/1JjJZtAeLVnRYEXLAK_Xa-_nOhYypzAFn/view?usp=sharing  |  **Project ID:** none
 
-PROJECTS: te limiting URL creation and redirects to prevent API abuse. •Reduced repeated database lookups by caching redirects in Redis for 1 hour, while tracking daily, weekly and monthly
-click analytics through asynchronous counters.
+PROJECTS: hile caching results to decrease redundant database lookups. •Persisted every reading and alert to PostgreSQL, delivering a 48-hour missed-alert catch-up on reconnect, secured
+endpoints with 15-minute JWT access and 7-day refresh tokens and validated core logic with unit testing.
 
 ---
 
