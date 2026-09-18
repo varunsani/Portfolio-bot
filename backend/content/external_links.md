@@ -935,7 +935,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 AM à 6:00 PM Book a ticket Prepare your visit Friday, 18 September 2026 Additional closures may be necessary during evening openings. We apologise for the inconvenience
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 AM à 9:00 PM Book a ticket Prepare your visit Friday, 18 September 2026 Additional closures may be necessary during evening openings. We apologise for the inconvenience
 
 ---
 
@@ -989,7 +989,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: fine arts Family Louvre + La Chaire du Louvre: 'I want a museum. I need a museum I imagine a museum.' By Glenn Lowry, Director Emeritus, Museum of Modern Art, New York Michel Laclotte Auditorium, 7 November–1 December 2025 The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min Contenu Louvre plus précédent 1 sur 4 Contenu Louvre plus suivant More content on Louvre+ The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min More content on Louvre+ Delve into the Louvre Explore Prepare your visit The museum is open today 9:00 AM à 6:00 PM Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: fine arts Family Louvre + La Chaire du Louvre: 'I want a museum. I need a museum I imagine a museum.' By Glenn Lowry, Director Emeritus, Museum of Modern Art, New York Michel Laclotte Auditorium, 7 November–1 December 2025 The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min Contenu Louvre plus précédent 1 sur 4 Contenu Louvre plus suivant More content on Louvre+ The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min More content on Louvre+ Delve into the Louvre Explore Prepare your visit The museum is open today 9:00 AM à 9:00 PM Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -1016,7 +1016,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,678 ratings 28,679 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 578,697 ratings 28,682 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1088,7 +1088,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,678 ratings 28,679 reviews 5 stars 201,431 (34%) 4 stars 215,102 (37%) 3 stars 112,845 (19%) 2 stars 34,432 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,624 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,697 ratings 28,682 reviews 5 stars 201,437 (34%) 4 stars 215,116 (37%) 3 stars 112,844 (19%) 2 stars 34,432 (5%) 1 star 14,868 (2%) Search review text Filters Displaying 1 - 30 of 28,627 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1736,7 +1736,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit source ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
 
 ---
 
@@ -1799,7 +1799,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit source ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
 
 ---
 
@@ -1952,7 +1952,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit ] Development [ edit ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998. [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit source ] Development [ edit source ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998
 
 ---
 
@@ -1961,7 +1961,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  the early 1980s during Gondry's drumming career in the French pop group Oui Oui [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: onversations between director Michel Gondry and co-writer Pierre Bismuth in 1998 [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui . [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
 
 ---
 
@@ -1997,7 +1997,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Go
 
 ---
 
