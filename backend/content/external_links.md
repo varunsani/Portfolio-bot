@@ -1007,7 +1007,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 578,772 ratings 28,693 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 578,786 ratings 28,694 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1079,7 +1079,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,772 ratings 28,693 reviews 5 stars 201,475 (34%) 4 stars 215,146 (37%) 3 stars 112,849 (19%) 2 stars 34,435 (5%) 1 star 14,867 (2%) Search review text Filters Displaying 1 - 30 of 28,639 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,786 ratings 28,694 reviews 5 stars 201,476 (34%) 4 stars 215,155 (37%) 3 stars 112,853 (19%) 2 stars 34,435 (5%) 1 star 14,867 (2%) Search review text Filters Displaying 1 - 30 of 28,639 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -3914,7 +3914,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/World_Chess_Championship_1985  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Kasparov vs. Karpov: meant that he took the white pieces in Game 1, which started on 3 September 1985 [ 4 ] The games [ edit ] Kasparov–Karpov , Game 1 a b c d e f g h 8 8 7 7 6 6 5 5 4 4 3 3 2 2 1 1 a b c d e f g h This position, after Kasparov had played 5. g3, had not been faced by Karpov before
+(Referenced by Varun in 'Beyond') Kasparov vs. Karpov: meant that he took the white pieces in Game 1, which started on 3 September 1985 [ 4 ] The games [ edit ] This section uses algebraic notation to describe chess moves. Game 1 and 2 – Karpov "stunned" [ edit ] Kasparov–Karpov , Game 1 a b c d e f g h 8 8 7 7 6 6 5 5 4 4 3 3 2 2 1 1 a b c d e f g h This position, after Kasparov had played 5. g3, had not been faced by Karpov before
 
 ---
 
@@ -3923,7 +3923,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/World_Chess_Championship_1985  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Kasparov vs. Karpov: s position, after Kasparov had played 5. g3, had not been faced by Karpov before Game 1 and 2 – Karpov "stunned" [ edit ] In Kasparov's own words, his choice of opening for game 1 "stunned" Karpov, [ 9 ] as the position after only 4 moves was one that had not appeared in any of their previous games.  Indeed, the position after move 5 had never previously appeared in any game that Karpov had played, and Karpov's first five moves took him 50 minutes to play
+(Referenced by Varun in 'Beyond') Kasparov vs. Karpov: s position, after Kasparov had played 5. g3, had not been faced by Karpov before In Kasparov's own words, his choice of opening for game 1 "stunned" Karpov, [ 9 ] as the position after only 4 moves was one that had not appeared in any of their previous games.  Indeed, the position after move 5 had never previously appeared in any game that Karpov had played, and Karpov's first five moves took him 50 minutes to play. [ 9 ] Kasparov won the game in 42 moves
 
 ---
 
@@ -3932,7 +3932,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/World_Chess_Championship_1985  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Kasparov vs. Karpov: hat Karpov had played, and Karpov's first five moves took him 50 minutes to play [ 9 ] Kasparov won the game in 42 moves. Karpov took White in game 2, which was drawn in 65 moves.  Kasparov's analysis suggests that he could have won the game. [ 10 ] Games 3 to 5 – Karpov turns the tables [ edit ] Game 3 was again drawn, this time in only 20 moves with few chances for either side. [ 11 ] Game 4 was won by Karpov as White in 63 moves
+(Referenced by Varun in 'Beyond') Kasparov vs. Karpov:  five moves took him 50 minutes to play. [ 9 ] Kasparov won the game in 42 moves Karpov took White in game 2, which was drawn in 65 moves.  Kasparov's analysis suggests that he could have won the game. [ 10 ] Games 3 to 5 – Karpov turns the tables [ edit ] Game 3 was again drawn, this time in only 20 moves with few chances for either side. [ 11 ] Game 4 was won by Karpov as White in 63 moves
 
 ---
 
@@ -4130,7 +4130,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/World_Chess_Championship_1985  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Kasparov vs. Karpov: he best of 24 games. If it had ended 12–12, Karpov would have retained his title World Chess Championship Match 1985 Rating 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 Points Garry Kasparov ( Soviet Union ) 2700 1 ½ ½ 0 0 ½ ½ ½ ½ ½ 1 ½ ½ ½ ½ 1 ½ ½ 1 ½ ½ 0 ½ 1 13 Anatoly Karpov ( Soviet Union ) 2720 0 ½ ½ 1 1 ½ ½ ½ ½ ½ 0 ½ ½ ½ ½ 0 ½ ½ 0 ½ ½ 1 ½ 0 11 See also [ edit ] List of chess games References [ edit ] ↑ "Garry Kasp
+(Referenced by Varun in 'Beyond') Kasparov vs. Karpov: he best of 24 games. If it had ended 12–12, Karpov would have retained his title World Chess Championship Match 1985 Rating 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 Points Garry Kasparov ( Soviet Union ) 2700 1 ½ ½ 0 0 ½ ½ ½ ½ ½ 1 ½ ½ ½ ½ 1 ½ ½ 1 ½ ½ 0 ½ 1 13 Anatoly Karpov ( Soviet Union ) 2720 0 ½ ½ 1 1 ½ ½ ½ ½ ½ 0 ½ ½ ½ ½ 0 ½ ½ 0 ½ ½ 1 ½ 0 11 See also
 
 ---
 
