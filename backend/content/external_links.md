@@ -1007,7 +1007,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 578,851 ratings 28,703 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 578,868 ratings 28,704 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1079,7 +1079,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,851 ratings 28,703 reviews 5 stars 201,501 (34%) 4 stars 215,183 (37%) 3 stars 112,863 (19%) 2 stars 34,437 (5%) 1 star 14,867 (2%) Search review text Filters Displaying 1 - 30 of 28,648 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 578,868 ratings 28,704 reviews 5 stars 201,505 (34%) 4 stars 215,188 (37%) 3 stars 112,869 (19%) 2 stars 34,439 (5%) 1 star 14,867 (2%) Search review text Filters Displaying 1 - 30 of 28,649 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1727,7 +1727,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: o 's 2014 track "Spotless Mind" and Ariana Grande 's 2024 album Eternal Sunshine Plot [ edit source ] Joel Barish discovers that his estranged girlfriend, Clementine Kruczynski, has undergone a procedure to have her memories of him erased by the suburban Long Island firm Lacuna. Heartbroken, he decides to undergo the same procedure. In preparation, he records a tape recounting his memories of their volatile relationship
 
 ---
 
@@ -1790,7 +1790,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit source ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
 
 ---
 
@@ -1943,7 +1943,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit ] Development [ edit ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998. [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit source ] Development [ edit source ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998
 
 ---
 
@@ -1952,7 +1952,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  the early 1980s during Gondry's drumming career in the French pop group Oui Oui [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: onversations between director Michel Gondry and co-writer Pierre Bismuth in 1998 [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui . [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
 
 ---
 
@@ -1988,7 +1988,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Go
 
 ---
 
