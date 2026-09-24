@@ -5451,7 +5451,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,032 ratings 28,732 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,046 ratings 28,734 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5523,7 +5523,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,032 ratings 28,732 reviews 5 stars 201,576 (34%) 4 stars 215,246 (37%) 3 stars 112,896 (19%) 2 stars 34,444 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,677 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,046 ratings 28,734 reviews 5 stars 201,584 (34%) 4 stars 215,251 (37%) 3 stars 112,897 (19%) 2 stars 34,444 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,679 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
