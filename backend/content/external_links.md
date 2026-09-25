@@ -521,7 +521,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: uch that ${\displaystyle a^{n}+b^{n}=c^{n}}$ ${\displaystyle a^{n}+b^{n}=c^{n}}$ [ 1 ] The cases ${\displaystyle n=1}$ ${\displaystyle n=1}$ and ${\displaystyle n=2}$ ${\displaystyle n=2}$ have been known since antiquity to have infinitely many solutions. [ 2 ] The proposition was first stated as a theorem by Pierre de Fermat around 1637 in the margin of a copy of Arithmetica . Fermat added that he had a proof that was too large to fit in the margin
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: uch that ${\displaystyle a^{n}+b^{n}=c^{n}}$ ${\displaystyle a^{n}+b^{n}=c^{n}}$ [ 1 ] The cases ${\displaystyle n=1}$ ${\displaystyle n=1}$ and ${\displaystyle n=2}$ ${\displaystyle n=2}$ have been known since antiquity to have infinitely many solutions. [ 2 ] The proposition was first stated as a theorem by Pierre de Fermat around 1637 in the margin of a copy of Arithmetica
 
 ---
 
@@ -530,7 +530,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: etica . Fermat added that he had a proof that was too large to fit in the margin Although other statements claimed by Fermat without proof were subsequently proven by others and credited as theorems of Fermat (for example, Fermat's theorem on sums of two squares ), Fermat's Last Theorem resisted proof, leading to doubt that Fermat ever had a correct proof. Consequently, the proposition became known as a conjecture rather than a theorem
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: a theorem by Pierre de Fermat around 1637 in the margin of a copy of Arithmetica Fermat wrote that "I have discovered a truly marvelous proof of this, which this margin is too narrow to contain." Although other statements claimed by Fermat without proof were subsequently proven by others and credited as theorems of Fermat (for example, Fermat's theorem on sums of two squares ), Fermat's Last Theorem resisted proof, leading to doubt that Fermat ever had a correct proof
 
 ---
 
@@ -539,7 +539,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: Consequently, the proposition became known as a conjecture rather than a theorem After 358 years of effort by mathematicians, the first successful proof was released in 1994 by Andrew Wiles and formally published in 1995. It was described as a "stunning advance" in the citation for Wiles's Abel Prize award in 2016
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: st Theorem resisted proof, leading to doubt that Fermat ever had a correct proof Consequently, the proposition became known as a conjecture rather than a theorem. After 358 years of effort by mathematicians, the first successful proof was released in 1994 by Andrew Wiles and formally published in 1995. It was described as a "stunning advance" in the citation for Wiles's Abel Prize award in 2016
 
 ---
 
@@ -818,7 +818,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Fermat%27s_Last_Theorem  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fermat's Last Theorem: would also mean a solution exists in N , the original formulation of the problem Equivalent statement 2: x n + y n = z n , where integer n ≥ 3 , has no non-trivial solutions x , y , z ∈ Q . This is because the exponents of x , y , and z are equal (to n ), so if there is a solution in Q , then it can be multiplied through by
+(Referenced by Varun in 'Beyond') Fermat's Last Theorem: would also mean a solution exists in N , the original formulation of the problem Equivalent statement 2: x n + y n = z n , where integer n ≥ 3 , has no non-trivial solutions x , y , z ∈ Q . This is because the exponents of x , y , and z are equal (to n ), so if there is a solution in
 
 ---
 
@@ -1016,7 +1016,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,077 ratings 28,738 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,091 ratings 28,738 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1052,7 +1052,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 155 books 19.9k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
+(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 156 books 19.9k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
 
 ---
 
@@ -1088,7 +1088,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,077 ratings 28,738 reviews 5 stars 201,594 (34%) 4 stars 215,262 (37%) 3 stars 112,905 (19%) 2 stars 34,446 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,683 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,091 ratings 28,738 reviews 5 stars 201,598 (34%) 4 stars 215,269 (37%) 3 stars 112,907 (19%) 2 stars 34,447 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,683 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
