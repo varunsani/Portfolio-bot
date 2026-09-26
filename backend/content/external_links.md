@@ -1016,7 +1016,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,111 ratings 28,740 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,118 ratings 28,743 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1088,7 +1088,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,111 ratings 28,740 reviews 5 stars 201,602 (34%) 4 stars 215,283 (37%) 3 stars 112,906 (19%) 2 stars 34,450 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,686 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,118 ratings 28,743 reviews 5 stars 201,605 (34%) 4 stars 215,287 (37%) 3 stars 112,906 (19%) 2 stars 34,450 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,688 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -3428,7 +3428,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Sicilian_Defence  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Sicilian: s in the form of a pawn exchange, which leads to the opening of the position. .. So the thought behind 1...c5 is this: "OK, I'll let you open the position, and develop your pieces aggressively, but at a price – you have to give me one of your center pawns." — Jonathan Rowson, Chess for Zebras: Thinking Differently About Black and White [ 28 ] GM Magnus Carlsen , World Champion for over ten years, is a regular practitioner of the Sicilian
+(Referenced by Varun in 'Beyond') Sicilian: s in the form of a pawn exchange, which leads to the opening of the position. .. So the thought behind 1...c5 is this: "OK, I'll let you open the position, and develop your pieces aggressively, but at a price – you have to give me one of your center pawns." — ‹See TfM› Jonathan Rowson, Chess for Zebras: Thinking Differently About Black and White [ 28 ] GM Magnus Carlsen , World Champion for over ten years, is a regular practitioner of the Sicilian
 
 ---
 
@@ -3464,7 +3464,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Sicilian_Defence  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Sicilian: lopment and extra kingside space, which White can use to begin a kingside attack This is counterbalanced by Black's central pawn majority, created by the trade of White's d-pawn for Black's c-pawn, and the open c-file, which Black uses to generate queenside counterplay and even a queenside
+(Referenced by Varun in 'Beyond') Sicilian: lopment and extra kingside space, which White can use to begin a kingside attack This is counterbalanced by Black's central pawn majority, created by the trade of White's d-pawn for Black's c-pawn, and the open c-file, which Black uses to generate queenside counterplay and even a
 
 ---
 
