@@ -872,7 +872,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: Homepage Official Website | Uffizi Galleries Uffizi Galleries An encounter with great Western art: an everlasting wonder Over the heart of the city Between public and private court life: a Palace for three dynasties Where Nature, Art, Science and Alchemy meet A territory to explore, an artistic heritage to rediscover Featured events The Uffizi European Heritage Days 2026
+(Referenced by Varun in 'Beyond') Uffizi: Homepage Official Website | Uffizi Galleries Uffizi Galleries An encounter with great Western art: an everlasting wonder Over the heart of the city Between public and private court life: a Palace for three dynasties Where Nature, Art, Science and Alchemy meet A territory to explore, an artistic heritage to rediscover Featured events Pitti Palace Sarmi’s Genius
 
 ---
 
@@ -881,7 +881,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: ic heritage to rediscover Featured events The Uffizi European Heritage Days 2026 Evening special opening to the Uffizi for €1 26/09/2026 Pitti Palace Sarmi’s Genius. A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor
+(Referenced by Varun in 'Beyond') Uffizi: , an artistic heritage to rediscover Featured events Pitti Palace Sarmi’s Genius A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor
 
 ---
 
@@ -890,7 +890,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all The Uffizi European Heritage Days 2026
+(Referenced by Varun in 'Beyond') Uffizi: me and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor Friday evening opening From 03/07/2026 to 20/11/2026 Pitti Palace Special visits to the Apartments of the Duchess of Aosta at Pitti Palace Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all Pitti Palace Sarmi’s Genius
 
 ---
 
@@ -899,7 +899,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: al Apartments of the Pitti Palace See all The Uffizi European Heritage Days 2026 Evening special opening to the Uffizi for €1 26/09/2026 Pitti Palace Sarmi’s Genius. A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor
+(Referenced by Varun in 'Beyond') Uffizi:  to the Royal Apartments of the Pitti Palace See all Pitti Palace Sarmi’s Genius A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Corridoio Vasariano Vasari Corridor
 
 ---
 
@@ -1016,7 +1016,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,155 ratings 28,745 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,173 ratings 28,745 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1088,7 +1088,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,155 ratings 28,745 reviews 5 stars 201,617 (34%) 4 stars 215,304 (37%) 3 stars 112,913 (19%) 2 stars 34,451 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,690 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,173 ratings 28,745 reviews 5 stars 201,622 (34%) 4 stars 215,312 (37%) 3 stars 112,917 (19%) 2 stars 34,452 (5%) 1 star 14,870 (2%) Search review text Filters Displaying 1 - 30 of 28,690 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
