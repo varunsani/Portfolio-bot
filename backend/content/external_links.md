@@ -935,7 +935,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 AM à 6:00 PM Book a ticket Prepare your visit Monday, 5 October 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 AM à 9:00 PM Book a ticket Prepare your visit Monday, 5 October 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
 
 ---
 
@@ -989,7 +989,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: fine arts Family Louvre + La Chaire du Louvre: 'I want a museum. I need a museum I imagine a museum.' By Glenn Lowry, Director Emeritus, Museum of Modern Art, New York Michel Laclotte Auditorium, 7 November–1 December 2025 The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min Contenu Louvre plus précédent 1 sur 4 Contenu Louvre plus suivant More content on Louvre+ The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min More content on Louvre+ Delve into the Louvre Explore Prepare your visit The museum is open today 9:00 AM à 6:00 PM Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: fine arts Family Louvre + La Chaire du Louvre: 'I want a museum. I need a museum I imagine a museum.' By Glenn Lowry, Director Emeritus, Museum of Modern Art, New York Michel Laclotte Auditorium, 7 November–1 December 2025 The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min Contenu Louvre plus précédent 1 sur 4 Contenu Louvre plus suivant More content on Louvre+ The restoration of the Arc du Carrousel [EN subtitles] Video 7 min The conservation treatment of the Napoleon III Apartments Video 10 min The Salle des États Video 4 min 'Forêt' by Anne Teresa De Keersmaeker and Némo Flouret [EN subtitles] Video 7 min More content on Louvre+ Delve into the Louvre Explore Prepare your visit The museum is open today 9:00 AM à 9:00 PM Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -1016,7 +1016,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,420 ratings 28,772 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Atonement Ian McEwan 3.96 579,442 ratings 28,776 reviews Want to Read Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1088,7 +1088,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,420 ratings 28,772 reviews 5 stars 201,720 (34%) 4 stars 215,408 (37%) 3 stars 112,950 (19%) 2 stars 34,465 (5%) 1 star 14,877 (2%) Search review text Filters Displaying 1 - 30 of 28,717 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 579,442 ratings 28,776 reviews 5 stars 201,727 (34%) 4 stars 215,420 (37%) 3 stars 112,952 (19%) 2 stars 34,466 (5%) 1 star 14,877 (2%) Search review text Filters Displaying 1 - 30 of 28,721 reviews Manny Author 57 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1196,7 +1196,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 681 followers Follow Follow November 15, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
+(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 682 followers Follow Follow November 15, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
 
 ---
 
@@ -2393,7 +2393,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: ed by the sequels The Godfather Part II (1974) and The Godfather Part III (1990) Plot [ edit ] In the mid-1940s, Michael Corleone is a World War II veteran and the youngest son of Don Vito Corleone . Vito is head of the Corleone mafia family and runs it with his eldest son Santino a.k.a. Sonny and adopted son Tom Hagen , a lawyer who is the family's consigliere . At his sister Connie's wedding to Carlo Rizzi , Michael introduces his family to his girlfriend, Kay Adams
+(Referenced by Varun in 'Beyond') The Godfather: ed by the sequels The Godfather Part II (1974) and The Godfather Part III (1990) Plot [ edit source ] In the mid-1940s, Michael Corleone is a World War II veteran and the youngest son of Don Vito Corleone . Vito is head of the Corleone mafia family and runs it with his eldest son Santino a.k.a. Sonny and adopted son Tom Hagen , a lawyer who is the family's consigliere . At his sister Connie's wedding to Carlo Rizzi , Michael introduces his family to his girlfriend, Kay Adams
 
 ---
 
@@ -2537,7 +2537,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: hael's hand and address him as "Don Corleone" before Neri closes the door on her Cast [ edit ] See also: List of The Godfather characters Brando (right) and Pacino as Don Vito and Michael Corleone, respectively Marlon Brando as Vito Corleone : crime boss and patriarch of the Corleone family Al Pacino as Michael Corleone : Vito's youngest son James Caan as Sonny Corleone : Vito's eldest son Richard Castellano as Peter Clemenza : a caporegime in the Corleone crime family, Sonny's godfather Robert Duvall as Tom Hagen : Corleone consigliere , lawyer, and unofficial adopted member of the Corleone family Sterling Hayden as Captain McCluskey : a corrupt police captain on Sollozzo's payroll John Marley as Jack Woltz: A Hollywood film producer Richard Conte as Emilio Barzini : a crime boss of a rival family Al Lettieri as Virgil Sollozzo : a drug boss Diane Keaton as Kay Adams Corleone : Michael's girlfriend and, later, second wife Abe Vigoda as Salvatore Tessio : a caporegime in the Corleone crime family Talia Shire as Connie Corleone : Vito's only daughter Gianni Russo as Carlo Rizzi : Connie's abusive husband John Cazale as Fredo Corleone : Vito's middle son Rudy Bond as Carmine Cuneo: a crime boss of a rival family Don Costello  as Victor Stracci: a crime boss of a rival family Al Martino as Johnny Fontane : a singer and Vito's godson Morgana King as Carmela Corleone : Vito's wife Lenny Montana as Luca Brasi : Vito's enforcer Johnny Martino as Paulie Gatto: a soldier in the Corleone crime family Salvatore Corsitto as Amerigo Bonasera : an undertaker Richard Bright as Al Neri : Michael's enforcer in the Corleone crime family Alex Rocco as Moe Greene : a Jewish mobster and Las Vegas casino proprietor Tony Giorgio as Bruno Tattaglia: a rival mobster and Philip Tattaglia's youngest son Vito Scotti as Nazorine: a baker and associate of Don Corleone Tere Livrano as Theresa Hagen : Tom's wife Victor Rendina as Philip Tattaglia: head of the Tattaglia crime family and prostitution crime boss Jeannie Linero as Lucy Mancini : Connie's friend and Sonny's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs
+(Referenced by Varun in 'Beyond') The Godfather: hael's hand and address him as "Don Corleone" before Neri closes the door on her Cast [ edit source ] See also: List of The Godfather characters Brando (right) and Pacino as Don Vito and Michael Corleone, respectively Marlon Brando as Vito Corleone : crime boss and patriarch of the Corleone family Al Pacino as Michael Corleone : Vito's youngest son James Caan as Sonny Corleone : Vito's eldest son Richard Castellano as Peter Clemenza : a caporegime in the Corleone crime family, Sonny's godfather Robert Duvall as Tom Hagen : Corleone consigliere , lawyer, and unofficial adopted member of the Corleone family Sterling Hayden as Captain McCluskey : a corrupt police captain on Sollozzo's payroll John Marley as Jack Woltz: A Hollywood film producer Richard Conte as Emilio Barzini : a crime boss of a rival family Al Lettieri as Virgil Sollozzo : a drug boss Diane Keaton as Kay Adams Corleone : Michael's girlfriend and, later, second wife Abe Vigoda as Salvatore Tessio : a caporegime in the Corleone crime family Talia Shire as Connie Corleone : Vito's only daughter Gianni Russo as Carlo Rizzi : Connie's abusive husband John Cazale as Fredo Corleone : Vito's middle son Rudy Bond as Carmine Cuneo: a crime boss of a rival family Don Costello  as Victor Stracci: a crime boss of a rival family Al Martino as Johnny Fontane : a singer and Vito's godson Morgana King as Carmela Corleone : Vito's wife Lenny Montana as Luca Brasi : Vito's enforcer Johnny Martino as Paulie Gatto: a soldier in the Corleone crime family Salvatore Corsitto as Amerigo Bonasera : an undertaker Richard Bright as Al Neri : Michael's enforcer in the Corleone crime family Alex Rocco as Moe Greene : a Jewish mobster and Las Vegas casino proprietor Tony Giorgio as Bruno Tattaglia: a rival mobster and Philip Tattaglia's youngest son Vito Scotti as Nazorine: a baker and associate of Don Corleone Tere Livrano as Theresa Hagen : Tom's wife Victor Rendina as Philip Tattaglia: head of the Tattaglia crime family and prostitution crime boss Jeannie Linero as Lucy Mancini : Connie's friend and Sonny's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs
 
 ---
 
@@ -2555,7 +2555,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: ers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone Francis Ford Coppola's daughter Sofia , who was still an infant at the time, appears uncredited as Michael Rizzi in the baptism sequence. [ 10 ] Production [ edit ] Development [ ed
+(Referenced by Varun in 'Beyond') The Godfather: ers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone Francis Ford Coppola's daughter Sofia , who was still an infant at the time, appears uncredited as Michael Rizzi in the baptism sequence. [ 10 ] Production [ edit sour
 
 ---
 
