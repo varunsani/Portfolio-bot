@@ -4542,7 +4542,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/1706.03762  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Attention Is All You Need: sfully to English constituency parsing both with large and limited training data Comments: 15 pages, 5 figures Subjects: Computation and Language (cs.CL) ; Machine Learning (cs.LG) Cite as: arXiv:1706.03762 [cs.CL] (or arXiv:1706.03762v7 [cs.CL] for this version) https://doi.org/10.48550/arXiv.1706.03762 Focus to learn more arXiv-issued DOI via DataCite Submission history From: Llion Jones [ view email ] [v1] Mon, 12 Jun 2017 17:57:34 UTC (1,102 KB) [v2] Mon, 19 Jun 2017 16:49:45 UTC (1,125 KB) [v3] Tue, 20 Jun 2017 05:20:02 UTC (1,125 KB) [v4] Fri, 30 Jun 2017 17:29:30 UTC (1,124 KB) [v5] Wed, 6 Dec 2017 03:30:32 UTC (1,124 KB) [v6] Mon, 24 Jul 2023 00:48:54 UTC (1,124 KB) [v7] Wed, 2 Aug 2023 00:41:18 UTC (1,124 KB) Full-text links: Access Paper: View a PDF of the paper titled Attention Is All You Need, by Ashish Vaswani and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2017-06 Change to browse by: cs cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 123 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Ashish Vaswani Noam Shazeer Niki Parmar Jakob Uszkoreit Llion Jones … export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') Attention Is All You Need: sfully to English constituency parsing both with large and limited training data Comments: 15 pages, 5 figures Subjects: Computation and Language (cs.CL) ; Machine Learning (cs.LG) Cite as: arXiv:1706.03762 [cs.CL] (or arXiv:1706.03762v7 [cs.CL] for this version) https://doi.org/10.48550/arXiv.1706.03762 Focus to learn more arXiv-issued DOI via DataCite Submission history From: Llion Jones [ view email ] [v1] Mon, 12 Jun 2017 17:57:34 UTC (1,102 KB) [v2] Mon, 19 Jun 2017 16:49:45 UTC (1,125 KB) [v3] Tue, 20 Jun 2017 05:20:02 UTC (1,125 KB) [v4] Fri, 30 Jun 2017 17:29:30 UTC (1,124 KB) [v5] Wed, 6 Dec 2017 03:30:32 UTC (1,124 KB) [v6] Mon, 24 Jul 2023 00:48:54 UTC (1,124 KB) [v7] Wed, 2 Aug 2023 00:41:18 UTC (1,124 KB) Full-text links: Access Paper: View a PDF of the paper titled Attention Is All You Need, by Ashish Vaswani and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2017-06 Change to browse by: cs cs.LG References & Citations SciX Google Scholar Semantic Scholar 123 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Ashish Vaswani Noam Shazeer Niki Parmar Jakob Uszkoreit Llion Jones … export BibTeX citation Loading..
 
 ---
 
@@ -4659,7 +4659,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/2106.09685  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations SciX Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
 
 ---
 
@@ -5343,7 +5343,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: ings of Francisco de Zurbarán with this chronological and thematic retrospective From 7 October 2026 to 25 January 2027 Exhibition Centuries of Gold and Shadow Concerts in conjunction with the exhibitions ‘Zurbarán’ and ‘Sculpting Colour’ Concerts The Louvre’s Masterpieces What exactly is a masterpiece? Follow this trail to find out! Visitor trail The Galerie d'Apollon: an artwork in itself Discover the history of the Galerie d'Apollon upon its grand reopening Museum On the Roads of Medieval Karakum (Turkmenistan) The relation between the Silk Road and the cities of Merv, Bukhara and Samarkand – major stops along the network – has long been described as symbiotic, but what of the smaller towns and outposts dotted throughout the desert? Lecture, 12 November, 12:30 pm Lectures Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
+(Referenced by Varun in 'Beyond') Louvre: ings of Francisco de Zurbarán with this chronological and thematic retrospective From 7 October 2026 to 25 January 2027 Exhibition The Louvre’s Masterpieces What exactly is a masterpiece? Follow this trail to find out! Visitor trail The Galerie d'Apollon: an artwork in itself Discover the history of the Galerie d'Apollon upon its grand reopening Museum On the Roads of Medieval Karakum (Turkmenistan) The relation between the Silk Road and the cities of Merv, Bukhara and Samarkand – major stops along the network – has long been described as symbiotic, but what of the smaller towns and outposts dotted throughout the desert? Lecture, 12 November, 12:30 pm Lectures Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
 
 ---
 
@@ -5352,7 +5352,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: ings of Francisco de Zurbarán with this chronological and thematic retrospective From 7 October 2026 to 25 January 2027 Exhibition The Louvre’s Masterpieces What exactly is a masterpiece? Follow this trail to find out! Visitor trail The Galerie d'Apollon: an artwork in itself Discover the history of the Galerie d'Apollon upon its grand reopening Museum Centuries of Gold and Shadow Concerts in conjunction with the exhibitions ‘Zurbarán’ and ‘Sculpting Colour’ Concerts On the Roads of Medieval Karakum (Turkmenistan) The relation between the Silk Road and the cities of Merv, Bukhara and Samarkand – major stops along the network – has long been described as symbiotic, but what of the smaller towns and outposts dotted throughout the desert? Lecture, 12 November, 12:30 pm Lectures Louvre + La Chaire du Louvre: 'I want a museum
+(Referenced by Varun in 'Beyond') Louvre: ings of Francisco de Zurbarán with this chronological and thematic retrospective From 7 October 2026 to 25 January 2027 Exhibition The Galerie d'Apollon: an artwork in itself Discover the history of the Galerie d'Apollon upon its grand reopening Museum On the Roads of Medieval Karakum (Turkmenistan) The relation between the Silk Road and the cities of Merv, Bukhara and Samarkand – major stops along the network – has long been described as symbiotic, but what of the smaller towns and outposts dotted throughout the desert? Lecture, 12 November, 12:30 pm Lectures The Louvre’s Masterpieces What exactly is a masterpiece? Follow this trail to find out! Visitor trail Louvre + La Chaire du Louvre: 'I want a museum
 
 ---
 
@@ -5361,7 +5361,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: e, 12 November, 12:30 pm Lectures Louvre + La Chaire du Louvre: 'I want a museum I need a museum
+(Referenced by Varun in 'Beyond') Louvre:  trail to find out! Visitor trail Louvre + La Chaire du Louvre: 'I want a museum I need a museum
 
 ---
 
@@ -5397,7 +5397,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 580,614 ratings 28,892 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 580,632 ratings 28,892 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5469,7 +5469,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 580,614 ratings 28,892 reviews 5 stars 202,099 (34%) 4 stars 215,915 (37%) 3 stars 113,181 (19%) 2 stars 34,522 (5%) 1 star 14,897 (2%) Search review text Filters Displaying 1 - 30 of 28,832 reviews Manny Author 58 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 580,632 ratings 28,892 reviews 5 stars 202,105 (34%) 4 stars 215,923 (37%) 3 stars 113,185 (19%) 2 stars 34,522 (5%) 1 star 14,897 (2%) Search review text Filters Displaying 1 - 30 of 28,832 reviews Manny Author 58 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
