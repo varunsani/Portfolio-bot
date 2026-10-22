@@ -107,7 +107,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/1706.03762  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Attention Is All You Need: sfully to English constituency parsing both with large and limited training data Comments: 15 pages, 5 figures Subjects: Computation and Language (cs.CL) ; Machine Learning (cs.LG) Cite as: arXiv:1706.03762 [cs.CL] (or arXiv:1706.03762v7 [cs.CL] for this version) https://doi.org/10.48550/arXiv.1706.03762 Focus to learn more arXiv-issued DOI via DataCite Submission history From: Llion Jones [ view email ] [v1] Mon, 12 Jun 2017 17:57:34 UTC (1,102 KB) [v2] Mon, 19 Jun 2017 16:49:45 UTC (1,125 KB) [v3] Tue, 20 Jun 2017 05:20:02 UTC (1,125 KB) [v4] Fri, 30 Jun 2017 17:29:30 UTC (1,124 KB) [v5] Wed, 6 Dec 2017 03:30:32 UTC (1,124 KB) [v6] Mon, 24 Jul 2023 00:48:54 UTC (1,124 KB) [v7] Wed, 2 Aug 2023 00:41:18 UTC (1,124 KB) Full-text links: Access Paper: View a PDF of the paper titled Attention Is All You Need, by Ashish Vaswani and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2017-06 Change to browse by: cs cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 123 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Ashish Vaswani Noam Shazeer Niki Parmar Jakob Uszkoreit Llion Jones … export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') Attention Is All You Need: sfully to English constituency parsing both with large and limited training data Comments: 15 pages, 5 figures Subjects: Computation and Language (cs.CL) ; Machine Learning (cs.LG) Cite as: arXiv:1706.03762 [cs.CL] (or arXiv:1706.03762v7 [cs.CL] for this version) https://doi.org/10.48550/arXiv.1706.03762 Focus to learn more arXiv-issued DOI via DataCite Submission history From: Llion Jones [ view email ] [v1] Mon, 12 Jun 2017 17:57:34 UTC (1,102 KB) [v2] Mon, 19 Jun 2017 16:49:45 UTC (1,125 KB) [v3] Tue, 20 Jun 2017 05:20:02 UTC (1,125 KB) [v4] Fri, 30 Jun 2017 17:29:30 UTC (1,124 KB) [v5] Wed, 6 Dec 2017 03:30:32 UTC (1,124 KB) [v6] Mon, 24 Jul 2023 00:48:54 UTC (1,124 KB) [v7] Wed, 2 Aug 2023 00:41:18 UTC (1,124 KB) Full-text links: Access Paper: View a PDF of the paper titled Attention Is All You Need, by Ashish Vaswani and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2017-06 Change to browse by: cs cs.LG References & Citations SciX Google Scholar Semantic Scholar 123 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Ashish Vaswani Noam Shazeer Niki Parmar Jakob Uszkoreit Llion Jones … export BibTeX citation Loading..
 
 ---
 
@@ -989,7 +989,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 580,727 ratings 28,905 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 580,736 ratings 28,907 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1025,7 +1025,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 158 books 20k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
+(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 156 books 20k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
 
 ---
 
@@ -1061,7 +1061,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 580,727 ratings 28,905 reviews 5 stars 202,143 (34%) 4 stars 215,962 (37%) 3 stars 113,198 (19%) 2 stars 34,525 (5%) 1 star 14,899 (2%) Search review text Filters Displaying 1 - 30 of 28,845 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 580,736 ratings 28,907 reviews 5 stars 202,144 (34%) 4 stars 215,970 (37%) 3 stars 113,198 (19%) 2 stars 34,525 (5%) 1 star 14,899 (2%) Search review text Filters Displaying 1 - 30 of 28,848 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
