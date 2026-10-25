@@ -917,7 +917,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: visit for everyone, reservations are required from 17 October to 1 November 2026 See list of cardholders exempt from reservations Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
+(Referenced by Varun in 'Beyond') Louvre: visit for everyone, reservations are required from 17 October to 1 November 2026 Monday, 26 October 2026: the museum may open later and some exhibition rooms may remain closed. See list of cardholders exempt from reservations Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
 
 ---
 
@@ -989,7 +989,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 580,874 ratings 28,919 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 580,905 ratings 28,921 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1061,7 +1061,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 580,874 ratings 28,919 reviews 5 stars 202,184 (34%) 4 stars 216,038 (37%) 3 stars 113,221 (19%) 2 stars 34,528 (5%) 1 star 14,903 (2%) Search review text Filters Displaying 1 - 30 of 28,859 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 580,905 ratings 28,921 reviews 5 stars 202,198 (34%) 4 stars 216,052 (37%) 3 stars 113,224 (19%) 2 stars 34,528 (5%) 1 star 14,903 (2%) Search review text Filters Displaying 1 - 30 of 28,861 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1403,7 +1403,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: rwards and flash-backs throughout, the story is told here in chronological order In 1890s London, Robert Angier, Alfred Borden, and Angier's wife, Julia, work as magician's assistants under the mentorship of John Cutter. During a water tank trick, Julia drowns after Borden incorrectly ties her wrists. Angier blames Borden, and the two men become bitter rivals. Both men pursue separate careers in magic
+(Referenced by Varun in 'Beyond') The Prestige: rwards and flash-backs throughout, the story is told here in chronological order In 1890s London, Robert Angier, Alfred Borden, and Angier's wife, Julia, work as magician's assistants under the mentorship of John Cutter. During a water tank trick, Julia drowns after Borden seemingly incorrectly ties her wrists. Angier blames Borden, and the two men become bitter rivals. Both men pursue separate careers in magic
 
 ---
 
@@ -1655,7 +1655,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Christop
+(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story,
 
 ---
 
