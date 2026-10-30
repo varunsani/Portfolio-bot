@@ -224,7 +224,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/2106.09685  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations SciX Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
 
 ---
 
@@ -1052,7 +1052,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Buy on Amazon Rate this book Atonement Ian McEwan 3.96 581,191 ratings 28,948 reviews Want to Read Buy on Amazon Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,216 ratings 28,951 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1088,7 +1088,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 160 books 20k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
+(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 162 books 20k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
 
 ---
 
@@ -1124,7 +1124,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,191 ratings 28,948 reviews 5 stars 202,287 (34%) 4 stars 216,173 (37%) 3 stars 113,282 (19%) 2 stars 34,537 (5%) 1 star 14,912 (2%) Search review text Filters Displaying 1 - 30 of 28,888 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,216 ratings 28,951 reviews 5 stars 202,294 (34%) 4 stars 216,181 (37%) 3 stars 113,292 (19%) 2 stars 34,537 (5%) 1 star 14,912 (2%) Search review text Filters Displaying 1 - 30 of 28,891 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1394,7 +1394,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: ct of Saturday , this ending is consistent and at once surprising and inevitable After a person has read a few hundred novels, he grasps the art form well enough to know when an author is writing - usually it's when the author's employing some top-heavy descriptive technique that makes the water droplets gathered on a rose petal somehow more importan
+(Referenced by Varun in 'Beyond') Atonement: ct of Saturday , this ending is consistent and at once surprising and inevitable After a person has read a few hundred novels, he grasps the art form well enough to know when an author is writing - usually it's when the author's employing some top-heavy descriptive technique that makes the water droplets gathered on a rose petal somehow more important than the protagonist's mot
 
 ---
 
