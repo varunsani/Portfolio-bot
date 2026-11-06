@@ -5280,7 +5280,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 6:00 p.m. Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 9:00 p.m. Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
 
 ---
 
@@ -5361,7 +5361,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 6:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 9:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -5388,7 +5388,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,479 ratings 28,980 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,498 ratings 28,982 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5424,7 +5424,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 167 books 20k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
+(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 168 books 20k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
 
 ---
 
@@ -5460,7 +5460,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,479 ratings 28,980 reviews 5 stars 202,376 (34%) 4 stars 216,303 (37%) 3 stars 113,340 (19%) 2 stars 34,545 (5%) 1 star 14,915 (2%) Search review text Filters Displaying 1 - 30 of 28,917 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,498 ratings 28,982 reviews 5 stars 202,379 (34%) 4 stars 216,315 (37%) 3 stars 113,344 (19%) 2 stars 34,544 (5%) 1 star 14,916 (2%) Search review text Filters Displaying 1 - 30 of 28,919 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -8846,7 +8846,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 0:59 Driver Arrivals: Drivers arrive at Interlagos in Brazil Play 2:18 Hulkenberg happy to be back at 'truly iconic' Interlagos circuit Play 3:01 Gasly with 'a lot to be excited for' ahead of Sao Paulo GP Play 1:17 Track View: Onboard with Lando Norris around Interlagos Play 14:45 Jolyon Palmer's Analysis: Piastri's weekend to forget in Sao Paulo Play 7:53 2025 Sao Paulo Grand Prix: Every Max Verstappen overtake Play 0:13 2025 Sao Paulo Grand Prix: Tsunoda picks up penalty for tipping Stroll into a spin Related Articles View all Camara explains approach as he prepares for F1 debut Betting Can Hamilton celebrate 400th GP with Brazil win? Betting Best value early bets for the Sao Paulo Grand Prix Live LIVE COVERAGE: Build-up to the Sao Paulo GP weekend Facts, stats and trivia ahead of the Sao Paulo Grand Prix Everything you need to know about the Autodromo Jose Carlos Pace
+(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 30:56 Weekend Warm-Up - 2026 Sao Paulo Grand Prix Play 2:38 McLaren's Piastri looking for 'more consistency and ease in the car' Play 3:25 'We want to be hopeful' - Norris looking to 'take a step forward' in Sao Paulo Play 4:10 'It's just been relentless' - Russell reflects on 'tough' 2026 season Play 3:10 'It still feels surreal' - Antonelli reflects on 'amazing few days' since becoming F1 World Champion Play 2:06 'I'm just waiting for something to click' - Hadjar hoping to maximize at Interlagos Play 4:20 'We've scored more points than anybody' - Hamilton praises Ferrari team after strong run of form Related Articles View all Unlocked All the stories that got the Sao Paulo paddock talking Norris wary of new McLaren upgrades in Sao Paulo Antonelli reveals 'incredible' messages after becoming champion Why Russell had ‘to get out’ after Antonelli’s title win Hamilton wants Ferrari talks in Brazil after Mexico battle A 'big surprise to be second' in the standings – Verstappen
 
 ---
 
