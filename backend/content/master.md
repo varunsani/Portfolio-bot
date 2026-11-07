@@ -5280,7 +5280,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 9:00 p.m. Book a ticket Prepare your visit Monday, 9 November 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 6:00 p.m. Book a ticket Prepare your visit Monday, 9 November 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
 
 ---
 
@@ -5370,7 +5370,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 9:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 6:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -5397,7 +5397,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,519 ratings 28,984 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,539 ratings 28,984 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5469,7 +5469,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,519 ratings 28,984 reviews 5 stars 202,386 (34%) 4 stars 216,327 (37%) 3 stars 113,347 (19%) 2 stars 34,543 (5%) 1 star 14,916 (2%) Search review text Filters Displaying 1 - 30 of 28,920 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,539 ratings 28,984 reviews 5 stars 202,388 (34%) 4 stars 216,337 (37%) 3 stars 113,355 (19%) 2 stars 34,544 (5%) 1 star 14,915 (2%) Search review text Filters Displaying 1 - 30 of 28,920 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -8855,7 +8855,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 0:29 2026 Sao Paulo GP FP1: Stroll and Verstappen fight for a practice start grid slot Play 0:45 2026 Sao Paulo GP FP1: Slater stops on track to trigger red flag in first practice Play 30:56 Weekend Warm-Up - 2026 Sao Paulo Grand Prix Play 2:38 McLaren's Piastri looking for 'more consistency and ease in the car' Play 3:25 'We want to be hopeful' - Norris looking to 'take a step forward' in Sao Paulo Play 4:10 'It's just been relentless' - Russell reflects on 'tough' 2026 season Play 3:10 'It still feels surreal' - Antonelli reflects on 'amazing few days' since becoming F1 World Champion Related Articles View all Camara looking to learn from Bearman on surprise F1 debut Norris leads Antonelli and Verstappen in Sao Paulo FP1 AS IT HAPPENED: First practice for the Sao Paulo GP Russell takes grid penalty at Sao Paulo Grand Prix Bearman doesn’t see Camara’s debut ‘as a shoot-out’ Which rookies are getting FP1 outings in Brazil?
+(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 1:19 2026 Sao Paulo GP FP2: Onboard with Antonelli for the fastest lap of Friday practice Play 0:41 ‘We’ll see what happens’ – Stroll braced for rain this weekend at Interlagos Play 1:36 ‘His confidence grows every time he jumps in’ – Hynes on Herta’s latest FP1 run Play 1:58 ‘It’s a very special moment’ – Leclerc reacts to becoming a father Play 0:55 Lawson predicts it will be ‘very, very close between us and Alpine’ in Brazil Play 1:31 Schmitz: ‘We’re looking into quite a few changes on Max’s side’ Play 18:47 Fan Forum: The drivers hit the stage to meet fans and answer questions in Brazil Related Articles View all Camara reflects on 'very special' F1 weekend debut Red Bull ‘looking into quite a few changes’ for Verstappen What the teams said – Friday in Brazil Ferrari have 'plenty to work on' in Brazil – Leclerc Antonelli explains Sao Paulo mindset as new World Champion McLaren 'seemed to gain performance' with upgrades – Norris
 
 ---
 
