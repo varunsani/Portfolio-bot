@@ -4659,7 +4659,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/2106.09685  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations SciX Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
 
 ---
 
@@ -5208,7 +5208,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: Homepage Official Website | Uffizi Galleries Uffizi Galleries An encounter with great Western art: an everlasting wonder Over the heart of the city Between public and private court life: a Palace for three dynasties Where Nature, Art, Science and Alchemy meet A territory to explore, an artistic heritage to rediscover Featured events ‘Magnifico 1492’: major exhibition on Lorenzo de’ Medici’s art collection at Palazzo Pitti From 03/12/2026 to 01/03/2027 International Workshop "The Patronage, Networks, and Legacies of Ottaviano de’ Medici (1482-1546)" From 05/11/2026 to 06/11/2026 Pitti Palace Sarmi’s Genius
+(Referenced by Varun in 'Beyond') Uffizi: Homepage Official Website | Uffizi Galleries Uffizi Galleries An encounter with great Western art: an everlasting wonder Over the heart of the city Between public and private court life: a Palace for three dynasties Where Nature, Art, Science and Alchemy meet A territory to explore, an artistic heritage to rediscover Featured events ‘Magnifico 1492’: major exhibition on Lorenzo de’ Medici’s art collection at Palazzo Pitti From 03/12/2026 to 01/03/2027 Pitti Palace Sarmi’s Genius
 
 ---
 
@@ -5217,7 +5217,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: e’ Medici (1482-1546)" From 05/11/2026 to 06/11/2026 Pitti Palace Sarmi’s Genius A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all ‘Magnifico 1492’: major exhibition on Lorenzo de’ Medici’s art collection at Palazzo Pitti From 03/12/2026 to 01/03/2027 International Workshop "The Patronage, Networks, and Legacies of Ottaviano de’ Medici (1482-1546)" From 05/11/2026 to 06/11/2026 Pitti Palace Sarmi’s Genius
+(Referenced by Varun in 'Beyond') Uffizi: ction at Palazzo Pitti From 03/12/2026 to 01/03/2027 Pitti Palace Sarmi’s Genius A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace See all ‘Magnifico 1492’: major exhibition on Lorenzo de’ Medici’s art collection at Palazzo Pitti From 03/12/2026 to 01/03/2027 Pitti Palace Sarmi’s Genius
 
 ---
 
@@ -5226,7 +5226,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.uffizi.it/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Uffizi: e’ Medici (1482-1546)" From 05/11/2026 to 06/11/2026 Pitti Palace Sarmi’s Genius A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace Latest news Tickets now online for ‘Magnifico 1492’, the major exhibition dedicated to the collection of Lorenzo the Magnificent Among the numerous masterpieces on display is the extraordinary triptych of the Battle of San Romano by Paolo Uccello, reunited for the first time in centuries
+(Referenced by Varun in 'Beyond') Uffizi: ction at Palazzo Pitti From 03/12/2026 to 01/03/2027 Pitti Palace Sarmi’s Genius A new exhibition at the Museum of Costume and Fashion From 18/06/2026 to 31/12/2026 Pitti Palace At the Pitti Palace, the “very best” of the king’s furniture Pitti Palace Tours to the Royal Apartments of the Pitti Palace Latest news Tickets now online for ‘Magnifico 1492’, the major exhibition dedicated to the collection of Lorenzo the Magnificent Among the numerous masterpieces on display is the extraordinary triptych of the Battle of San Romano by Paolo Uccello, reunited for the first time in centuries
 
 ---
 
@@ -5397,7 +5397,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,539 ratings 28,984 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,547 ratings 28,986 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5433,7 +5433,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 174 books 20k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
+(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 174 books 20.1k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
 
 ---
 
@@ -5469,7 +5469,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,539 ratings 28,984 reviews 5 stars 202,388 (34%) 4 stars 216,337 (37%) 3 stars 113,355 (19%) 2 stars 34,544 (5%) 1 star 14,915 (2%) Search review text Filters Displaying 1 - 30 of 28,920 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,547 ratings 28,986 reviews 5 stars 202,391 (34%) 4 stars 216,342 (37%) 3 stars 113,355 (19%) 2 stars 34,545 (5%) 1 star 14,914 (2%) Search review text Filters Displaying 1 - 30 of 28,922 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -5739,7 +5739,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: ct of Saturday , this ending is consistent and at once surprising and inevitable After a person has read a few hundred novels, he grasps the art form well enough to know when an author is writing - usually it's when the author's employing some top-heavy descriptive technique that makes the water droplets gathered on a rose petal somehow more important than the protagonist's mot
+(Referenced by Varun in 'Beyond') Atonement: ct of Saturday , this ending is consistent and at once surprising and inevitable After a person has read a few hundred novels, he grasps the art form well enough to know when an author is writing - usually it's when the author's employing some top-heavy descriptive technique that makes the water droplets gathered on a rose petal somehow more important than the protagonist's m
 
 ---
 
@@ -8855,7 +8855,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 1:19 2026 Sao Paulo GP FP2: Onboard with Antonelli for the fastest lap of Friday practice Play 0:41 ‘We’ll see what happens’ – Stroll braced for rain this weekend at Interlagos Play 1:36 ‘His confidence grows every time he jumps in’ – Hynes on Herta’s latest FP1 run Play 1:58 ‘It’s a very special moment’ – Leclerc reacts to becoming a father Play 0:55 Lawson predicts it will be ‘very, very close between us and Alpine’ in Brazil Play 1:31 Schmitz: ‘We’re looking into quite a few changes on Max’s side’ Play 18:47 Fan Forum: The drivers hit the stage to meet fans and answer questions in Brazil Related Articles View all Camara reflects on 'very special' F1 weekend debut Red Bull ‘looking into quite a few changes’ for Verstappen What the teams said – Friday in Brazil Ferrari have 'plenty to work on' in Brazil – Leclerc Antonelli explains Sao Paulo mindset as new World Champion McLaren 'seemed to gain performance' with upgrades – Norris
+(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 1:19 2026 Sao Paulo GP FP2: Onboard with Antonelli for the fastest lap of Friday practice Play 0:41 ‘We’ll see what happens’ – Stroll braced for rain this weekend at Interlagos Play 1:36 ‘His confidence grows every time he jumps in’ – Hynes on Herta’s latest FP1 run Play 1:58 ‘It’s a very special moment’ – Leclerc reacts to becoming a father Play 0:55 Lawson predicts it will be ‘very, very close between us and Alpine’ in Brazil Play 1:31 Schmitz: ‘We’re looking into quite a few changes on Max’s side’ Play 18:47 Fan Forum: The drivers hit the stage to meet fans and answer questions in Brazil Related Articles View all Betting What could shake-up the Interlagos betting markets? Permane gives update on Racing Bulls driver decision process Unlocked Can Mercedes keep their rivals at bay in Sao Paulo? Camara reflects on 'very special' F1 weekend debut Red Bull ‘looking into quite a few changes’ for Verstappen What the teams said – Friday in Brazil
 
 ---
 
