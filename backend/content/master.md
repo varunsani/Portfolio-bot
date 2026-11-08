@@ -4659,7 +4659,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/2106.09685  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations SciX Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
 
 ---
 
@@ -5370,7 +5370,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,552 ratings 28,988 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,569 ratings 28,991 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5442,7 +5442,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,552 ratings 28,988 reviews 5 stars 202,392 (34%) 4 stars 216,348 (37%) 3 stars 113,355 (19%) 2 stars 34,544 (5%) 1 star 14,913 (2%) Search review text Filters Displaying 1 - 30 of 28,924 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,569 ratings 28,991 reviews 5 stars 202,398 (34%) 4 stars 216,356 (37%) 3 stars 113,357 (19%) 2 stars 34,545 (5%) 1 star 14,913 (2%) Search review text Filters Displaying 1 - 30 of 28,927 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -6837,7 +6837,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: g . He returns to the US, slowly taking over the family business from his father He marries Kay and promises to legitimize the family's operations within five years. Michael visits Las Vegas to negotiate a deal with Jewish mobster and casino mogul Moe Greene , under whose protection Fredo has been living. Michael offers to buy out Greene's stake in the family casinos, but Greene refuses and flaunts his support from Barzini
+(Referenced by Varun in 'Beyond') The Godfather: g . He returns to the US, slowly taking over the family business from his father He marries Kay and promises to legitimize the family's operations within five years. Michael visits Las Vegas to negotiate a deal with Jewish mobster and casino mogul Moe Greene , under whose protection Fredo, Michael’s other brother, has been living. Michael offers to buy out Greene's stake in the family casinos, but Greene refuses and flaunts his support from Barzini, a rival don
 
 ---
 
@@ -6846,7 +6846,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: e in the family casinos, but Greene refuses and flaunts his support from Barzini After Moe leaves, Michael reprimands Fredo for defending Greene and warns him never to side against the Family ever again. After the peace meeting, Vito realizes that Barzini is the mastermind behind Sonny's death, not Tattaglia
+(Referenced by Varun in 'Beyond') The Godfather: ly casinos, but Greene refuses and flaunts his support from Barzini, a rival don After Moe leaves, Michael reprimands Fredo for defending Greene and warns him never to side against the Family ever again. After the peace meeting, Vito realizes that Barzini is the mastermind behind Sonny's death, not Tattaglia
 
 ---
 
@@ -6909,7 +6909,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: ers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone Francis Ford Coppola's daughter Sofia , who was still an infant at the time, appears uncredited as Michael Rizzi in the baptism sequence. [ 10 ] Production [ edit ] Development [ edit ] The film
+(Referenced by Varun in 'Beyond') The Godfather: ers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone Francis Ford Coppola's daughter Sofia , who was still an infant at the time, appears uncredited as Michael Rizzi in the baptism sequence. [ 10 ] Production
 
 ---
 
@@ -8828,7 +8828,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 0:56 Hulkenberg hoping to ‘race clean’ after claiming lofty grid slot in Brazil Play 1:04 ‘The first Q3 of the season feels good’ – Alonso smiling after P9 in Qualifying Play 0:58 Bearman reacts to ‘crazy session’ after he claims P8 in Qualifying at Interlagos Play 0:49 Albon hoping ‘it stays wet for tomorrow’ after claiming P10 in Qualifying Play 7:52 Qualifying Highlights: 2026 Sao Paulo Grand Prix Play 1:12 Camara explains his Q2 crash on his F1 Qualifying debut Play 0:44 Lindblad explains why he was forced to stop on track in Q2 Related Articles View all 'First Q3 of the season feels good' in Brazil – Alonso Verstappen sets out goal from back of the grid in Sao Paulo Norris clinches pole in rain-affected Sao Paolo Qualifying AS IT HAPPENED: Norris takes pole in wet Sao Paulo Qualifying Hamilton set for further grid penalty in Sao Paulo Verstappen beats Antonelli and Norris in Sao Paulo FP3
+(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 1:31 GHOST CAR: See how Norris beat Russell in the fight for pole in the Interlagos rain Play 1:47 ONBOARD: Norris’ 2026 Pirelli Pole Position Award lap at the Sao Paulo Grand Prix Play 1:45 2026 Sao Paulo GP Qualifying: See how wet the track was with a Norris visor cam lap Play 0:19 2026 Sao Paulo GP Qualifying: Camara crashes out of Q2 at Interlagos Play 0:42 2026 Sao Paulo GP Qualifying: Camara through to Q2 on debut despite hitting the barriers Play 0:20 2026 Sao Paulo GP Qualifying: Norris seals pole position in wet session at Interlagos Play 2:07 Polesitter Norris: ‘If I want to win tomorrow we need rain’ Related Articles View all Camara disappointed after crash in debut Qualifying Russell rues ‘misjudgement’ that cost him Sao Paulo pole Unlocked What To Watch For in the Sao Paulo Grand Prix at Interlagos Hamilton reflects on grid penalties and PU changes in Brazil 'All to play for' in Sao Paulo after Qualifying – Hulkenberg What the teams said – Qualifying in Brazil
 
 ---
 
