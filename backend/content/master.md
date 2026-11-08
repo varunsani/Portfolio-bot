@@ -5370,7 +5370,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,575 ratings 28,993 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,606 ratings 28,997 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5442,7 +5442,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,575 ratings 28,993 reviews 5 stars 202,399 (34%) 4 stars 216,361 (37%) 3 stars 113,357 (19%) 2 stars 34,545 (5%) 1 star 14,913 (2%) Search review text Filters Displaying 1 - 30 of 28,929 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,606 ratings 28,997 reviews 5 stars 202,404 (34%) 4 stars 216,377 (37%) 3 stars 113,366 (19%) 2 stars 34,546 (5%) 1 star 14,913 (2%) Search review text Filters Displaying 1 - 30 of 28,933 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -6153,7 +6153,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Jim Carrey as Joel Barish: A bookish introvert who enters a two-year relationship with Clementine Kruczynski
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: entine receive their Lacuna records from Mary and listen to their tapes together They are shocked by the bitter memories they had of each other and almost separate for good, but finally agree to try again. Cast [ edit ] Jim Carrey as Joel Barish Kate Winslet as Clementine Kruczynski Kirsten Dunst as Mary Svevo Mark Ruffalo as Stan Fink Tom Wilkinson as Dr
 
 ---
 
@@ -6162,7 +6162,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  bookish introvert who enters a two-year relationship with Clementine Kruczynski After their relationship ends, Clementine erases Joel from her memory, and he erases her from his mind in response. Charlie Kaufman depicted Joel with some of his own personality traits. [ 8 ] Producers cast Carrey against type for his role as Joel, [ 8 ] selecting him for his everyday appearance, as well as his comedic ability. According to Gondry, this was because "It's hard to be funny
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: zynski Kirsten Dunst as Mary Svevo Mark Ruffalo as Stan Fink Tom Wilkinson as Dr Howard Mierzwiak Elijah Wood as Patrick Wertz Jane Adams as Carrie Eakin David Cross as Rob Eakin Thomas Jay Ryan as Frank Deirdre O'Connell as Hollis Mierzwiak Debbon Ayer as Mrs. Barish Ellen Pompeo as Naomi (deleted scene) Characters and casting [ edit ] Jim Carrey (top) in 2008, and Kate Winslet in 2007 Charlie Kaufman depicted Joel with some of his own personality traits
 
 ---
 
@@ -6171,7 +6171,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: is comedic ability. According to Gondry, this was because "It's hard to be funny It's far easier to take someone really funny and bring them down than do the opposite." [ 9 ] To induce Carrey, an actor who typically portrayed high-energy roles, to portray a restrained character, Gondry would not allow him to improvise, a restriction he did not place on the other cast members (Carrey objected)
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: et in 2007 Charlie Kaufman depicted Joel with some of his own personality traits [ 8 ] Producers cast Carrey against type for his role as Joel, [ 8 ] selecting him for his everyday appearance, as well as his comedic ability. According to Gondry, this was because "It's hard to be funny
 
 ---
 
@@ -6180,7 +6180,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: vise, a restriction he did not place on the other cast members (Carrey objected) [ 10 ] Gondry also put Carrey off balance by giving misleading orders or by rolling the camera at the wrong time. Gondry believed this would make Carrey forget what he should do to be Joel, allowing him to go in character
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: is comedic ability. According to Gondry, this was because "It's hard to be funny It's far easier to take someone really funny and bring them down than do the opposite." [ 9 ] To induce Carrey, an actor who typically portrayed high-energy roles, to portray a restrained character, Gondry would not allow him to improvise, a restriction he did not place on the other cast members (Carrey objected)
 
 ---
 
@@ -6189,7 +6189,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: make Carrey forget what he should do to be Joel, allowing him to go in character [ 8 ] In the 2017 Netflix documentary Jim & Andy , Carrey mentions a conversation with Gondry one year before shooting began for Eternal Sunshine of the Spotless Mind , shortly after Carrey had a breakup with an unspecified woman. [ 11 ] Gondry saw that Carrey's emotional state at the time was "so beautiful, so broken" that he asked him to stay that way for one year to fit the character
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: vise, a restriction he did not place on the other cast members (Carrey objected) [ 10 ] Gondry also put Carrey off balance by giving misleading orders or by rolling the camera at the wrong time. Gondry believed this would make Carrey forget what he should do to be Joel, allowing him to go in character
 
 ---
 
@@ -6198,7 +6198,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  so broken" that he asked him to stay that way for one year to fit the character In the documentary, Carrey commented, "That's how fucked up this business is." [ 12 ] [ 13 ] Nicolas Cage was Gondry's original choice to play Joel, [ 10 ] but Cage was unavailable as he was in high demand from independent directors after his performance in Leaving Las Vegas
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: make Carrey forget what he should do to be Joel, allowing him to go in character [ 8 ] In the 2017 Netflix documentary Jim & Andy , Carrey mentions a conversation with Gondry one year before shooting began for Eternal Sunshine of the Spotless Mind , shortly after Carrey had a breakup with an unspecified woman. [ 11 ] Gondry saw that Carrey's emotional state at the time was "so beautiful, so broken" that he asked him to stay that way for one year to fit the character
 
 ---
 
@@ -6207,7 +6207,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: igh demand from independent directors after his performance in Leaving Las Vegas [ 9 ] Kate Winslet as Clementine Kruczynski: A spontaneous extrovert who, after breaking up with him after a two-year relationship, erases Joel Barish from her mind. Producers cast Winslet against type for her part as Clementine, [ 8 ] as Winslet had previously featured heavily in period pieces
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  so broken" that he asked him to stay that way for one year to fit the character In the documentary, Carrey commented, "That's how fucked up this business is." [ 12 ] [ 13 ] Nicolas Cage was Gondry's original choice to play Joel, [ 10 ] but Cage was unavailable as he was in high demand from independent directors after his performance in Leaving Las Vegas
 
 ---
 
@@ -6216,7 +6216,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: as Clementine, [ 8 ] as Winslet had previously featured heavily in period pieces [ 14 ] She received the role after she was the only actress to offer criticism on the script instead of pandering to the writers. [ 9 ] After another actress won an Oscar , the studio attempted to make Gondry use her instead of Winslet for the role of Clementine, but Gondry threatened to walk from the project if that occurred
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: igh demand from independent directors after his performance in Leaving Las Vegas [ 9 ] Producers cast Winslet against type for her part as Clementine, [ 8 ] as Winslet had previously featured heavily in period pieces. [ 14 ] She received the role after she was the only actress to offer criticism on the script instead of pandering to the writers
 
 ---
 
@@ -6225,7 +6225,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: e of Clementine, but Gondry threatened to walk from the project if that occurred [ 9 ] During filming, Gondry took Winslet to a separate room to coach her, [ 9 ] and she wore wigs instead of dyeing her hair. [ 14 ] Some commentators note how Clementine's character criticizes the Manic Pixie Dream Girl stock character several years before film critic Nathan Rabin coined the phrase
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: nly actress to offer criticism on the script instead of pandering to the writers [ 9 ] After another actress won an Oscar , the studio attempted to make Gondry use her instead of Winslet for the role of Clementine, but Gondry threatened to walk from the project if that occurred. [ 9 ] During filming, Gondry took Winslet to a separate room to coach her, [ 9 ] and she wore wigs instead of dyeing her hair
 
 ---
 
@@ -6234,7 +6234,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  stock character several years before film critic Nathan Rabin coined the phrase [ 15 ] Most commentators discuss one particular example to demonstrate this criticism, wherein Clementine warns Joel she is flawed: "Too many guys think I'm a concept, or I complete them, or I'm gonna make them alive. But I'm just a fucked-up girl who's looking for my own peace of mind
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: a separate room to coach her, [ 9 ] and she wore wigs instead of dyeing her hair [ 14 ] Some commentators note how Clementine's character criticizes the Manic Pixie Dream Girl stock character several years before film critic Nathan Rabin coined the phrase. [ 15 ] Most commentators discuss one particular example to demonstrate this criticism, wherein Clementine warns Joel she is flawed: "Too many guys think I'm a concept, or I complete them, or I'm gonna make them alive
 
 ---
 
@@ -6243,7 +6243,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: them alive. But I'm just a fucked-up girl who's looking for my own peace of mind Don't assign me yours." [ 16 ] [ 17 ] With her impulsiveness, emotional intensity (extreme mood changes), alcohol consumption, turbulent relationships, reckless behavior, and hasty idealization or devaluation of Joel, Clementine seems to exhibit traits of borderline personality disorder , although it is not clear whether Kaufman wrote her character with this specific diagnosis in mind
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  many guys think I'm a concept, or I complete them, or I'm gonna make them alive But I'm just a fucked-up girl who's looking for my own peace of mind
 
 ---
 
@@ -6252,7 +6252,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: t clear whether Kaufman wrote her character with this specific diagnosis in mind [ 18 ] Gondry had earlier thought of casting Björk for the role of Clementine. She feared she would be emotionally affected and rejected the invitation after reading the script. [ 19 ] Winona Ryder also met with Gondry for the role. [ 20 ] Kirsten Dunst as Mary Svevo: The receptionist for Lacuna who, while dating Stan Fink, has a crush on Howard Mierzwiak
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: But I'm just a fucked-up girl who's looking for my own peace of mind Don't assign me yours." [ 16 ] [ 17 ] With her impulsiveness, emotional intensity (extreme mood changes), alcohol consumption, turbulent relationships, reckless behavior, and hasty idealization or devaluation of Joel, Clementine seems to exhibit traits of borderline personality disorder , although it is not clear whether Kaufman wrote her character with this specific diagnosis in mind
 
 ---
 
@@ -6261,7 +6261,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ptionist for Lacuna who, while dating Stan Fink, has a crush on Howard Mierzwiak While erasing Joel's memory, Howard's wife catches her kissing Howard. Howard's wife reveals Mary previously had a relationship with Howard, which Howard erased from her mind. She reacts to this information by quitting her job and mailing Lacuna's company records to its customers
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: t clear whether Kaufman wrote her character with this specific diagnosis in mind [ 18 ] Gondry had earlier thought of casting Björk for the role of Clementine. She feared she would be emotionally affected and rejected the invitation after reading the script. [ 19 ] Winona Ryder also met with Gondry for the role
 
 ---
 
@@ -6270,7 +6270,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: mation by quitting her job and mailing Lacuna's company records to its customers In the script, Mary and Howard's relationship resulted in an unplanned pregnancy, leading to Howard pressuring Mary into an abortion, which Howard also erased from her memory. [ 21 ] Mark Ruffalo as Stan Fink: A technician for Lacuna who is in a relationship with Mary Svevo until the revelation of her previous relationship with Howard Mierzwiak
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  after reading the script. [ 19 ] Winona Ryder also met with Gondry for the role [ 20 ] In the script, Mary and Howard's relationship resulted in an unplanned pregnancy, leading to Howard pressuring Mary into an abortion, which Howard also erased from her memory. [ 21 ] Ruffalo received the role of Stan after providing an "unexpected take on the role" to Gondry when he suggested Stan be a fan of the Clash and resemble Joe Strummer
 
 ---
 
@@ -6279,7 +6279,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ry Svevo until the revelation of her previous relationship with Howard Mierzwiak Ruffalo received the role of Stan after providing an "unexpected take on the role" to Gondry when he suggested Stan be a fan of the Clash and resemble Joe Strummer . [ 9 ] Tom Wilkinson as Dr. Howard Mierzwiak: Howard runs Lacuna. Before the film's events, he had an affair with Mary, which ended with the relationship's erasure from her mind
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: to Gondry when he suggested Stan be a fan of the Clash and resemble Joe Strummer [ 9 ] Wilkinson reportedly did not enjoy the shooting of the film and clashed with Gondry. [ 9 ] [ 22 ] Seth Rogen had auditioned for the role of Patrick Wertz. [ 23 ] Production [ edit ] Development [ edit ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998
 
 ---
 
@@ -6288,7 +6288,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: d an affair with Mary, which ended with the relationship's erasure from her mind Wilkinson reportedly did not enjoy the shooting of the film and clashed with Gondry. [ 9 ] [ 22 ] Elijah Wood as Patrick Wertz: Patrick is a technician for Lacuna who enters a relationship with Clementine by imitating Joel. They break up when Joel and Clementine begin dating for the second time. Seth Rogen auditioned for the role. [ 23 ] Jane Adams as Carrie Eakin: Joel's friend
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: onversations between director Michel Gondry and co-writer Pierre Bismuth in 1998 [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui . [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
 
 ---
 
@@ -6297,7 +6297,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  Rogen auditioned for the role. [ 23 ] Jane Adams as Carrie Eakin: Joel's friend She is in a troubled relationship with Rob Eakin. David Cross as Rob Eakin: Joel's friend. He is in a troubled relationship with Carrie Eakin. Thomas Jay Ryan as Frank: Joel's neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: hen he asked her if she would erase that boyfriend from her memory, she said yes [ 25 ] [ 26 ] Bismuth originally planned to conduct an art experiment involving sending cards to people saying someone they knew had erased the card's recipient from their memory. [ 27 ] When he mentioned this to Gondry, they developed it into a story based on the situations that would arise if it were scientifically possible. [ 25 ] [ 27 ] Bismuth never carried out his experiment
 
 ---
 
@@ -6306,7 +6306,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: neighbor Deirdre O'Connell as Hollis Mierzwiak: Howard's wife Debbon Ayer as Mrs Barish: Joel's mother Ellen Pompeo as Naomi, Joel's girlfriend (deleted scene) Production [ edit ] Development [ edit ] The concept of Eternal Sunshine of the Spotless Mind came from conversations between director Michel Gondry and co-writer Pierre Bismuth in 1998. [ 24 ] The pair had met and become friends in the early 1980s during Gondry's drumming career in the French pop group Oui Oui
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  scientifically possible. [ 25 ] [ 27 ] Bismuth never carried out his experiment [ 27 ] Gondry approached writer Charlie Kaufman with this concept, [ 26 ] [ 27 ] and they developed it into a short pitch. [ 28 ] While the writers did not believe the concept was marketable, a small bidding war began over the idea. [ 24 ] [ 28 ] [ 29 ] Steve Golin of Propaganda Films purchased it on June 12, 1998, for a low seven-figure sum
 
 ---
 
@@ -6315,7 +6315,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  the early 1980s during Gondry's drumming career in the French pop group Oui Oui [ 25 ] Bismuth had conceived of the idea of erasing certain people from people's minds in response to a friend complaining about her boyfriend; when he asked her if she would erase that boyfriend from her memory, she said yes
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: in of Propaganda Films purchased it on June 12, 1998, for a low seven-figure sum [ 8 ] [ 30 ] Kaufman, who was responsible for writing the screenplay, did not begin immediately, instead opting to suspend writing while he was working on Adaptation , Confessions of a Dangerous Mind , and Human Nature , the last of which Gondry directed as his directorial debut . [ 24 ] During this time, filmmaker Christopher Nolan released Memento (2000), which similarly deals with memory
 
 ---
 
@@ -6324,7 +6324,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: hen he asked her if she would erase that boyfriend from her memory, she said yes [ 25 ] [ 26 ] Bismuth originally planned to conduct an art experiment involving sending cards to people saying someone they knew had erased the card's recipient from their memory. [ 27 ] When he mentioned this to Gondry, they developed it into a story based on the situations that would arise if it were scientifically possible. [ 25 ] [ 27 ] Bismuth never carried out his experiment
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [ 8 ] During writing, the pitch's ownership changed several times resulting in Kaufman not having to deal with the studios until the end of the scriptwriting process. [ 24 ] The final script made the studios nervous
 
 ---
 
@@ -6333,7 +6333,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  scientifically possible. [ 25 ] [ 27 ] Bismuth never carried out his experiment [ 27 ] Gondry approached writer Charlie Kaufman with this concept, [ 26 ] [ 27 ] and they developed it into a short pitch. [ 28 ] While the writers did not believe the concept was marketable, a small bidding war began over the idea. [ 24 ] [ 28 ] [ 29 ] Steve Golin of Propaganda Films purchased it on June 12, 1998, for a low seven-figure sum
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: d of the scriptwriting process. [ 24 ] The final script made the studios nervous [ 24 ] How happy is the blameless vestal 's lot! The world forgetting, by the world forgot: Eternal sunshine of the spotless mind ! Each prayer accepted, and each wish resigned; — Alexander Pope , Eloisa to Abelard , lines 207–210 Kaufman did not want to make the film a thriller and wanted to downplay the science fiction aspects of memory erasure, focusing on the relationship
 
 ---
 
@@ -6342,7 +6342,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: in of Propaganda Films purchased it on June 12, 1998, for a low seven-figure sum [ 8 ] [ 30 ] Kaufman, who was responsible for writing the screenplay, did not begin immediately, instead opting to suspend writing while he was working on Adaptation , Confessions of a Dangerous Mind , and Human Nature , the last of which Gondry directed as his directorial debut . [ 24 ] During this time, filmmaker Christopher Nolan released Memento (2000), which similarly deals with memory
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: play the science fiction aspects of memory erasure, focusing on the relationship [ 24 ] [ 27 ] [ 29 ] He had an "enormous struggle" while writing the script, particularly encountering two problems: showing "the memories, Joel's reactions to the memories, and Joel interacting with Clementine outside of the memories in the memories," and the fact that characters could refer in later scenes to already erased memories
 
 ---
 
@@ -6351,7 +6351,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind: ker Christopher Nolan released Memento (2000), which similarly deals with memory Due to the similarities, Kaufman became worried and tried to pull out of the project, but Golin made him complete it. [ 8 ]
+(Referenced by Varun in 'Beyond') Eternal Sunshine of the Spotless Mind:  the fact that characters could refer in later scenes to already erased memories [ 24 ] Kaufman resolved the first problem by making Joel lucid and able to comment on his memories and solved the second by making the memories degrade instead of immediately erasing, with complete erasure occurring at awakening. [ 24 ] Kaufman's original name for the screenplay was 18 words long, as he had wanted a title that "you couldn't possibly fit
 
 ---
 
@@ -8828,7 +8828,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 1:31 GHOST CAR: See how Norris beat Russell in the fight for pole in the Interlagos rain Play 1:47 ONBOARD: Norris’ 2026 Pirelli Pole Position Award lap at the Sao Paulo Grand Prix Play 1:45 2026 Sao Paulo GP Qualifying: See how wet the track was with a Norris visor cam lap Play 0:19 2026 Sao Paulo GP Qualifying: Camara crashes out of Q2 at Interlagos Play 0:42 2026 Sao Paulo GP Qualifying: Camara through to Q2 on debut despite hitting the barriers Play 0:20 2026 Sao Paulo GP Qualifying: Norris seals pole position in wet session at Interlagos Play 2:07 Polesitter Norris: ‘If I want to win tomorrow we need rain’ Related Articles View all Betting Our final Sao Paulo Grand Prix betting predictions Betting Our Sao Paulo GP Bet Builder selections made Betting How F1 fans can avoid emotional betting in Brazil Rivals pay tribute as Hamilton reaches 400 F1 starts Unlocked What are the tyre strategy options for the Sao Paulo GP? Camara disappointed after crash in debut Qualifying
+(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 0:40 2026 Sao Paulo Grand Prix: Verstappen snatches P8 after battle with Piastri Play 0:50 2026 Sao Paulo Grand Prix: Hamilton and Leclerc fight over P12 Play 0:12 2026 Sao Paulo Grand Prix: Alonso passes Hamilton on the outside of Ferradura Play 0:34 2026 Sao Paulo Grand Prix: Mercedes claim the Constructors’ title at Interlagos Play 2:29 Sao Paulo victory ‘probably one of the best wins I’ve had’ – Norris Play 0:55 Verstappen reflects on ‘crazy race’ after claiming a podium from P21 on the grid Play 1:09 ‘It was extremely difficult but it was a lot of fun’ – Hadjar on his run to P3 in Brazil Related Articles View all Breaking Leclerc hit with post-race penalty for Sao Paulo collision 'No idea what happened on that pit exit' spin – Russell Verstappen reflects on 'challenging' P21 to podium charge Norris delighted to ‘give back’ to McLaren in Sao Paulo win Max Verstappen is your Sao Paulo GP Driver of the Day Norris wins wet Sao Paulo GP thriller as Mercedes claim title
 
 ---
 
