@@ -5370,7 +5370,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,569 ratings 28,991 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,575 ratings 28,993 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5442,7 +5442,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,569 ratings 28,991 reviews 5 stars 202,398 (34%) 4 stars 216,356 (37%) 3 stars 113,357 (19%) 2 stars 34,545 (5%) 1 star 14,913 (2%) Search review text Filters Displaying 1 - 30 of 28,927 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,575 ratings 28,993 reviews 5 stars 202,399 (34%) 4 stars 216,361 (37%) 3 stars 113,357 (19%) 2 stars 34,545 (5%) 1 star 14,913 (2%) Search review text Filters Displaying 1 - 30 of 28,929 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -8828,7 +8828,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 1:31 GHOST CAR: See how Norris beat Russell in the fight for pole in the Interlagos rain Play 1:47 ONBOARD: Norris’ 2026 Pirelli Pole Position Award lap at the Sao Paulo Grand Prix Play 1:45 2026 Sao Paulo GP Qualifying: See how wet the track was with a Norris visor cam lap Play 0:19 2026 Sao Paulo GP Qualifying: Camara crashes out of Q2 at Interlagos Play 0:42 2026 Sao Paulo GP Qualifying: Camara through to Q2 on debut despite hitting the barriers Play 0:20 2026 Sao Paulo GP Qualifying: Norris seals pole position in wet session at Interlagos Play 2:07 Polesitter Norris: ‘If I want to win tomorrow we need rain’ Related Articles View all Camara disappointed after crash in debut Qualifying Russell rues ‘misjudgement’ that cost him Sao Paulo pole Unlocked What To Watch For in the Sao Paulo Grand Prix at Interlagos Hamilton reflects on grid penalties and PU changes in Brazil 'All to play for' in Sao Paulo after Qualifying – Hulkenberg What the teams said – Qualifying in Brazil
+(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 1:31 GHOST CAR: See how Norris beat Russell in the fight for pole in the Interlagos rain Play 1:47 ONBOARD: Norris’ 2026 Pirelli Pole Position Award lap at the Sao Paulo Grand Prix Play 1:45 2026 Sao Paulo GP Qualifying: See how wet the track was with a Norris visor cam lap Play 0:19 2026 Sao Paulo GP Qualifying: Camara crashes out of Q2 at Interlagos Play 0:42 2026 Sao Paulo GP Qualifying: Camara through to Q2 on debut despite hitting the barriers Play 0:20 2026 Sao Paulo GP Qualifying: Norris seals pole position in wet session at Interlagos Play 2:07 Polesitter Norris: ‘If I want to win tomorrow we need rain’ Related Articles View all Betting Our final Sao Paulo Grand Prix betting predictions Betting Our Sao Paulo GP Bet Builder selections made Betting How F1 fans can avoid emotional betting in Brazil Rivals pay tribute as Hamilton reaches 400 F1 starts Unlocked What are the tyre strategy options for the Sao Paulo GP? Camara disappointed after crash in debut Qualifying
 
 ---
 
