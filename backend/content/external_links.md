@@ -818,7 +818,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 6:00 p.m. Book a ticket Prepare your visit Monday, 9 November 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 6:00 p.m. Book a ticket Prepare your visit Thursday, 12 November 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
 
 ---
 
@@ -935,7 +935,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,606 ratings 28,997 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,656 ratings 29,003 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -1007,7 +1007,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,606 ratings 28,997 reviews 5 stars 202,404 (34%) 4 stars 216,377 (37%) 3 stars 113,366 (19%) 2 stars 34,546 (5%) 1 star 14,913 (2%) Search review text Filters Displaying 1 - 30 of 28,933 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,656 ratings 29,003 reviews 5 stars 202,418 (34%) 4 stars 216,401 (37%) 3 stars 113,373 (19%) 2 stars 34,549 (5%) 1 star 14,915 (2%) Search review text Filters Displaying 1 - 30 of 28,939 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -4393,7 +4393,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 0:40 2026 Sao Paulo Grand Prix: Verstappen snatches P8 after battle with Piastri Play 0:50 2026 Sao Paulo Grand Prix: Hamilton and Leclerc fight over P12 Play 0:12 2026 Sao Paulo Grand Prix: Alonso passes Hamilton on the outside of Ferradura Play 0:34 2026 Sao Paulo Grand Prix: Mercedes claim the Constructors’ title at Interlagos Play 2:29 Sao Paulo victory ‘probably one of the best wins I’ve had’ – Norris Play 0:55 Verstappen reflects on ‘crazy race’ after claiming a podium from P21 on the grid Play 1:09 ‘It was extremely difficult but it was a lot of fun’ – Hadjar on his run to P3 in Brazil Related Articles View all Breaking Leclerc hit with post-race penalty for Sao Paulo collision 'No idea what happened on that pit exit' spin – Russell Verstappen reflects on 'challenging' P21 to podium charge Norris delighted to ‘give back’ to McLaren in Sao Paulo win Max Verstappen is your Sao Paulo GP Driver of the Day Norris wins wet Sao Paulo GP thriller as Mercedes claim title
+(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 18:09 Radio Rewind: 2026 Sao Paulo Grand Prix Play 1:01 2026 Sao Paulo Grand Prix: Best onboard race starts Play 0:48 DHL Fastest Pit Stop Award - 2026 Sao Paulo Grand Prix Play 10:09 2026 Sao Paulo Grand Prix: Every driver's over the line team radio Play 1:43 DHL Fastest Lap Award – 2026 Sao Paulo Grand Prix Play 0:40 2026 Sao Paulo Grand Prix: Verstappen snatches P8 after battle with Piastri Play 0:50 2026 Sao Paulo Grand Prix: Hamilton and Leclerc fight over P12 Related Articles View all The best images from Mercedes' title celebrations Gallery Unlocked 5 Winners and 5 Losers from Sao Paulo Rivals congratulate Mercedes on Constructors' Championship How Verstappen outperformed Red Bull’s simulations in Brazil Stella reveals how McLaren triumphed at Interlagos Vasseur explains Ferrari’s tyre struggles in Brazil
 
 ---
 
