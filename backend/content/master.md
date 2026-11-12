@@ -5253,7 +5253,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 6:00 p.m. Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 9:00 p.m. Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
 
 ---
 
@@ -5334,7 +5334,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 6:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 9:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -5361,7 +5361,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,782 ratings 29,012 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,799 ratings 29,013 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5433,7 +5433,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,782 ratings 29,012 reviews 5 stars 202,454 (34%) 4 stars 216,461 (37%) 3 stars 113,394 (19%) 2 stars 34,556 (5%) 1 star 14,917 (2%) Search review text Filters Displaying 1 - 30 of 28,948 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,799 ratings 29,013 reviews 5 stars 202,456 (34%) 4 stars 216,470 (37%) 3 stars 113,397 (19%) 2 stars 34,557 (5%) 1 star 14,919 (2%) Search review text Filters Displaying 1 - 30 of 28,948 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -7170,7 +7170,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/12_Angry_Men  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') 12 Angry Men: eliberate atmosphere of the trial and the finality of his and the jury's verdict Rose began writing Twelve Angry Men upon realizing that very few people knew what occurred during jury deliberations and that they could serve as an exciting setting for a drama. [ 20 ] [ 21 ] While writing the screenplay, Rose cut planned passages of dialogue to account for a fifty-minute time slot on television, leading to the characters to be less nuanced
+(Referenced by Varun in 'Beyond') 12 Angry Men: eliberate atmosphere of the trial and the finality of his and the jury's verdict Rose began writing Twelve Angry Men upon realizing that very few people knew what occurred during jury deliberations and that they could serve as an exciting setting for a drama. [ 20 ] [ 21 ] While writing the screenplay, Rose cut planned passages of dialogue to account for a fifty-minute time slot on television, leading the characters to be less nuanced
 
 ---
 
@@ -7179,7 +7179,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/12_Angry_Men  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') 12 Angry Men: fty-minute time slot on television, leading to the characters to be less nuanced [ 22 ] A live production of " Twelve Angry Men ", directed by Franklin Schaffner and starring Robert Cummings as Juror 8 and Franchot Tone as Juror 3, was broadcast on the CBS program Westinghouse Studio One on September 20, 1954, to positive reviews
+(Referenced by Varun in 'Beyond') 12 Angry Men:  fifty-minute time slot on television, leading the characters to be less nuanced [ 22 ] A live production of " Twelve Angry Men ", directed by Franklin Schaffner and starring Robert Cummings as Juror 8 and Franchot Tone as Juror 3, was broadcast on the CBS program Westinghouse Studio One on September 20, 1954, to positive reviews
 
 ---
 
@@ -7233,7 +7233,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/12_Angry_Men  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') 12 Angry Men: 954), [ 36 ] [ 37 ] and Lumet believed Kaufman's "realist style" suited the film [ 38 ] Filming [ edit ] The film was shot in New York and completed after a short but rigorous rehearsal schedule, in less than three weeks, on a budget of $337,000 ( equivalent to $3,863,000 in 2025 ). Fonda said in 1957, "We shot this picture in 21 days, for $40,000 less than our modest $380,000 budget....we rehearsed for two weeks before even a thought of shooting. Everybody had
+(Referenced by Varun in 'Beyond') 12 Angry Men: 954), [ 36 ] [ 37 ] and Lumet believed Kaufman's "realist style" suited the film [ 38 ] Filming [ edit ] The film was shot in New York and completed after a short but rigorous rehearsal schedule, in less than three weeks, on a budget of $337,000 ( equivalent to $3,863,000 in 2025 ). Fonda said in 1957, "We shot this picture in 21 days, for $40,000 less than our modest $380,000 budget....we rehearsed for two weeks before even a thought of shooting. Everybody had a f
 
 ---
 
