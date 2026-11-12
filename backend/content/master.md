@@ -5253,7 +5253,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 9:00 p.m. Book a ticket Prepare your visit Thursday, 12 November 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 6:00 p.m. Book a ticket Prepare your visit Thursday, 12 November 2026 The museum may open later and some exhibition rooms may remain closed. We apologise for the inconvenience
 
 ---
 
@@ -5343,7 +5343,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 9:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 6:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -5370,7 +5370,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,727 ratings 29,010 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,769 ratings 29,012 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5442,7 +5442,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,727 ratings 29,010 reviews 5 stars 202,444 (34%) 4 stars 216,436 (37%) 3 stars 113,379 (19%) 2 stars 34,552 (5%) 1 star 14,916 (2%) Search review text Filters Displaying 1 - 30 of 28,946 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,769 ratings 29,012 reviews 5 stars 202,453 (34%) 4 stars 216,455 (37%) 3 stars 113,390 (19%) 2 stars 34,554 (5%) 1 star 14,917 (2%) Search review text Filters Displaying 1 - 30 of 28,948 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -8819,7 +8819,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024: see the cars winding through the infield section and then passing underneath you On the other end of the straight, Grandstand M will put you on top of the first corner and the Senna S, the best spot to watch overtakes on the track
+(Referenced by Varun in 'Beyond') São Paulo 2024: see the cars winding through the infield section and then passing underneath you On the other end of the straight, Grandstand M will put you on top of the first corner and the Senna S, the best spot to watch overtakes on the track. Related Videos Play 3:27 The Cooldown Room - Emerson Fittipali Jr
 
 ---
 
@@ -8828,7 +8828,7 @@ Varun's Chess.com profile — League: Champion; Followers: 5; Member since: 2023
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.formula1.com/en/racing/2024/brazil  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') São Paulo 2024:  the first corner and the Senna S, the best spot to watch overtakes on the track Related Videos Play 0:52 2026 Sao Paulo Grand Prix: Onboard for Verstappen’s rocket start from 21st on the grid Play 0:24 2026 Sao Paulo Grand Prix: Hamilton avoids disaster after high speed spin Play 8:49 2026 Sao Paulo Grand Prix: Verstappen's epic drive from 21st to 2nd Play 9:17 Top 10 Onboard Moments: 2026 Sao Paulo Grand Prix Play 18:09 Radio Rewind: 2026 Sao Paulo Grand Prix Play 1:01 2026 Sao Paulo Grand Prix: Best onboard race starts Play 0:48 DHL Fastest Pit Stop Award - 2026 Sao Paulo Grand Prix Related Articles View all Bearman relieved ‘horrible three weeks’ for Haas are over Betting 3 drivers to watch in the early Las Vegas GP markets Unlocked PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins Who impressed our Power Rankings judges in Sao Paulo? Camara experiences every condition in ‘tricky’ Haas debut Unlocked Why McLaren went the opposite way to Mercedes' front wing
+(Referenced by Varun in 'Beyond') São Paulo 2024:  on the track. Related Videos Play 3:27 The Cooldown Room - Emerson Fittipali Jr on his racing heritage Play 0:52 2026 Sao Paulo Grand Prix: Onboard for Verstappen’s rocket start from 21st on the grid Play 0:24 2026 Sao Paulo Grand Prix: Hamilton avoids disaster after high speed spin Play 8:49 2026 Sao Paulo Grand Prix: Verstappen's epic drive from 21st to 2nd Play 9:17 Top 10 Onboard Moments: 2026 Sao Paulo Grand Prix Play 18:09 Radio Rewind: 2026 Sao Paulo Grand Prix Play 1:01 2026 Sao Paulo Grand Prix: Best onboard race starts Related Articles View all Bearman relieved ‘horrible three weeks’ for Haas are over Betting 3 drivers to watch in the early Las Vegas GP markets Unlocked PALMER: Why Norris’ Sao Paulo victory was one of his best ever wins Who impressed our Power Rankings judges in Sao Paulo? Camara experiences every condition in ‘tricky’ Haas debut Unlocked Why McLaren went the opposite way to Mercedes' front wing
 
 ---
 
