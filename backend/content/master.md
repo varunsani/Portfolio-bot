@@ -5343,7 +5343,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.rijksmuseum.nl/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Rijksmuseum: Rijksmuseum Amsterdam, home of Dutch master pieces Skip to main content FOUNDER MAIN PARTNERS Rijksmuseum Visit the highlights. Book your ticket today. Home of The Night Watch, Home of The Milkmaid, Home of Dutch Masterpieces OPEN TODAY Families and children Explore the museum together Free entrance up to 18 years Willem de Kooning at work till 17 January 2027 Now on view Willem de Kooning
+(Referenced by Varun in 'Beyond') Rijksmuseum: Rijksmuseum Amsterdam, home of Dutch master pieces Skip to main content FOUNDER MAIN PARTNERS Rijksmuseum Visit the highlights. Book your ticket today
 
 ---
 
@@ -5352,7 +5352,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.rijksmuseum.nl/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Rijksmuseum: ars Willem de Kooning at work till 17 January 2027 Now on view Willem de Kooning Something of a glimpse Available now in the Rijksmuseum Shop Document Nederland: New Energy till 17 January 2027 Now on view
+(Referenced by Varun in 'Beyond') Rijksmuseum: t FOUNDER MAIN PARTNERS Rijksmuseum Visit the highlights. Book your ticket today Home of The Night Watch, Home of The Milkmaid, Home of Dutch Masterpieces OPEN TODAY Families and children Explore the museum together Free entrance up to 18 years Willem de Kooning at work till 17 January 2027 Now on view Festive gift ideas Available now in the Rijksmuseum Shop Document Nederland: New Energy till 17 January 2027 Now on view
 
 ---
 
@@ -5361,7 +5361,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,809 ratings 29,013 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,841 ratings 29,016 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5433,7 +5433,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,809 ratings 29,013 reviews 5 stars 202,461 (34%) 4 stars 216,473 (37%) 3 stars 113,398 (19%) 2 stars 34,558 (5%) 1 star 14,919 (2%) Search review text Filters Displaying 1 - 30 of 28,948 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,841 ratings 29,016 reviews 5 stars 202,476 (34%) 4 stars 216,482 (37%) 3 stars 113,405 (19%) 2 stars 34,559 (5%) 1 star 14,919 (2%) Search review text Filters Displaying 1 - 30 of 28,950 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -5541,7 +5541,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 683 followers Follow Follow November 15, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
+(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 682 followers Follow Follow November 15, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
 
 ---
 
