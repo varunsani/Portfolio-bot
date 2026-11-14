@@ -224,7 +224,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/2106.09685  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations SciX Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
 
 ---
 
@@ -926,7 +926,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,880 ratings 29,019 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,885 ratings 29,020 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -998,7 +998,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,880 ratings 29,019 reviews 5 stars 202,479 (34%) 4 stars 216,503 (37%) 3 stars 113,417 (19%) 2 stars 34,562 (5%) 1 star 14,919 (2%) Search review text Filters Displaying 1 - 30 of 28,953 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,885 ratings 29,020 reviews 5 stars 202,478 (34%) 4 stars 216,507 (37%) 3 stars 113,419 (19%) 2 stars 34,563 (5%) 1 star 14,918 (2%) Search review text Filters Displaying 1 - 30 of 28,953 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1331,7 +1331,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: e Pictures label, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
+(Referenced by Varun in 'Beyond') The Prestige: e Pictures label, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit source ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
 
 ---
 
@@ -1439,7 +1439,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: nal act of any magic trick—the "prestige"—is the return of what was thought lost Angier's death knocks over a kerosene lamp that sends his theater up in flames, revealing rows of water tanks holding the corpses of his many duplicates. Cast [ edit ] Hugh Jackman as Lord Caldlow, an aristocratic English magician, whose public persona is the American magician Robert "The Great Danton" Angier
+(Referenced by Varun in 'Beyond') The Prestige: nal act of any magic trick—the "prestige"—is the return of what was thought lost Angier's death knocks over a kerosene lamp that sends his theater up in flames, revealing rows of water tanks holding the corpses of his many duplicates. Cast [ edit source ] Hugh Jackman as Lord Caldlow, an aristocratic English magician, whose public persona is the American magician Robert "The Great Danton" Angier
 
 ---
 
@@ -1538,7 +1538,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: ter of Borden and Sarah. Daniel Davis as the judge presiding over Borden's trial Chao-Li Chi as Chung Ling Soo , a Chinese magician who disguises his great physical strength by pretending to be elderly and frail in all public appearances. Production [ edit ] Julian Jarrold 's and Sam Mendes ' producer approached Christopher Priest for an adaptation of his novel The Prestige
+(Referenced by Varun in 'Beyond') The Prestige: ter of Borden and Sarah. Daniel Davis as the judge presiding over Borden's trial Chao-Li Chi as Chung Ling Soo , a Chinese magician who disguises his great physical strength by pretending to be elderly and frail in all public appearances. Production [ edit source ] Julian Jarrold 's and Sam Mendes ' producer approached Christopher Priest for an adaptation of his novel The Prestige
 
 ---
 
@@ -1592,7 +1592,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Chri
+(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigu
 
 ---
 
