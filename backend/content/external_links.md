@@ -926,7 +926,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,885 ratings 29,020 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,894 ratings 29,021 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -962,7 +962,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 181 books 20.1k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
+(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 182 books 20.1k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
 
 ---
 
@@ -998,7 +998,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,885 ratings 29,020 reviews 5 stars 202,478 (34%) 4 stars 216,507 (37%) 3 stars 113,419 (19%) 2 stars 34,563 (5%) 1 star 14,918 (2%) Search review text Filters Displaying 1 - 30 of 28,953 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,894 ratings 29,021 reviews 5 stars 202,479 (34%) 4 stars 216,511 (37%) 3 stars 113,423 (19%) 2 stars 34,563 (5%) 1 star 14,918 (2%) Search review text Filters Displaying 1 - 30 of 28,953 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1331,7 +1331,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: e Pictures label, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit source ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
+(Referenced by Varun in 'Beyond') The Prestige: e Pictures label, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
 
 ---
 
@@ -1439,7 +1439,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: nal act of any magic trick—the "prestige"—is the return of what was thought lost Angier's death knocks over a kerosene lamp that sends his theater up in flames, revealing rows of water tanks holding the corpses of his many duplicates. Cast [ edit source ] Hugh Jackman as Lord Caldlow, an aristocratic English magician, whose public persona is the American magician Robert "The Great Danton" Angier
+(Referenced by Varun in 'Beyond') The Prestige: nal act of any magic trick—the "prestige"—is the return of what was thought lost Angier's death knocks over a kerosene lamp that sends his theater up in flames, revealing rows of water tanks holding the corpses of his many duplicates. Cast [ edit ] Hugh Jackman as Lord Caldlow, an aristocratic English magician, whose public persona is the American magician Robert "The Great Danton" Angier
 
 ---
 
@@ -1538,7 +1538,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: ter of Borden and Sarah. Daniel Davis as the judge presiding over Borden's trial Chao-Li Chi as Chung Ling Soo , a Chinese magician who disguises his great physical strength by pretending to be elderly and frail in all public appearances. Production [ edit source ] Julian Jarrold 's and Sam Mendes ' producer approached Christopher Priest for an adaptation of his novel The Prestige
+(Referenced by Varun in 'Beyond') The Prestige: ter of Borden and Sarah. Daniel Davis as the judge presiding over Borden's trial Chao-Li Chi as Chung Ling Soo , a Chinese magician who disguises his great physical strength by pretending to be elderly and frail in all public appearances. Production [ edit ] Julian Jarrold 's and Sam Mendes ' producer approached Christopher Priest for an adaptation of his novel The Prestige
 
 ---
 
@@ -1592,7 +1592,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigu
+(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Chri
 
 ---
 
@@ -2447,7 +2447,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: hael's hand and address him as "Don Corleone" before Neri closes the door on her Cast [ edit ] See also: List of The Godfather characters Brando (right) and Pacino as Don Vito and Michael Corleone, respectively Marlon Brando as Vito Corleone : crime boss and patriarch of the Corleone family Al Pacino as Michael Corleone : Vito's youngest son James Caan as Sonny Corleone : Vito's eldest son Richard Castellano as Peter Clemenza : a caporegime in the Corleone crime family, Sonny's godfather Robert Duvall as Tom Hagen : Corleone consigliere , lawyer, and unofficial adopted member of the Corleone family Sterling Hayden as Captain McCluskey : a corrupt police captain on Sollozzo's payroll John Marley as Jack Woltz: A Hollywood film producer Richard Conte as Emilio Barzini : a crime boss of a rival family Al Lettieri as Virgil Sollozzo : a drug boss Diane Keaton as Kay Adams Corleone : Michael's girlfriend and, later, second wife Abe Vigoda as Salvatore Tessio : a caporegime in the Corleone crime family Talia Shire as Connie Corleone : Vito's only daughter Gianni Russo as Carlo Rizzi : Connie's abusive husband John Cazale as Fredo Corleone : Vito's middle son Rudy Bond as Carmine Cuneo: a crime boss of a rival family Don Costello  as Victor Stracci: a crime boss of a rival family Al Martino as Johnny Fontane : a singer and Vito's godson Morgana King as Carmela Corleone : Vito's wife Lenny Montana as Luca Brasi : Vito's enforcer Johnny Martino as Paulie Gatto: a soldier in the Corleone crime family Salvatore Corsitto as Amerigo Bonasera : an undertaker Richard Bright as Al Neri : Michael's enforcer in the Corleone crime family Alex Rocco as Moe Greene : a Jewish mobster and Las Vegas casino proprietor Tony Giorgio as Bruno Tattaglia: a rival mobster and Philip Tattaglia's youngest son Vito Scotti as Nazorine: a baker and associate of Don Corleone Tere Livrano as Theresa Hagen : Tom's wife Victor Rendina as Philip Tattaglia: head of the Tattaglia crime family and prostitution crime boss Jeannie Linero as Lucy Mancini : Connie's friend and Sonny's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs
+(Referenced by Varun in 'Beyond') The Godfather: hael's hand and address him as "Don Corleone" before Neri closes the door on her Cast [ edit ] See also: List of The Godfather characters Marlon Brando as Vito Corleone : crime boss and patriarch of the Corleone family Al Pacino as Michael Corleone : Vito's youngest son James Caan as Sonny Corleone : Vito's eldest son Richard Castellano as Peter Clemenza : a caporegime in the Corleone crime family, Sonny's godfather Robert Duvall as Tom Hagen : Corleone consigliere , lawyer, and unofficial adopted member of the Corleone family Sterling Hayden as Captain McCluskey : a corrupt police captain on Sollozzo's payroll John Marley as Jack Woltz: A Hollywood film producer Richard Conte as Emilio Barzini : a crime boss of a rival family Al Lettieri as Virgil Sollozzo : a drug boss Diane Keaton as Kay Adams Corleone : Michael's girlfriend and, later, second wife Abe Vigoda as Salvatore Tessio : a caporegime in the Corleone crime family Talia Shire as Connie Corleone : Vito's only daughter Gianni Russo as Carlo Rizzi : Connie's abusive husband John Cazale as Fredo Corleone : Vito's middle son Rudy Bond as Carmine Cuneo: a crime boss of a rival family Don Costello  as Victor Stracci: a crime boss of a rival family Al Martino as Johnny Fontane : a singer and Vito's godson Morgana King as Carmela Corleone : Vito's wife Lenny Montana as Luca Brasi : Vito's enforcer Johnny Martino as Paulie Gatto: a soldier in the Corleone crime family Salvatore Corsitto as Amerigo Bonasera : an undertaker Richard Bright as Al Neri : Michael's enforcer in the Corleone crime family Alex Rocco as Moe Greene : a Jewish mobster and Las Vegas casino proprietor Tony Giorgio as Bruno Tattaglia: a rival mobster and Philip Tattaglia's youngest son Vito Scotti as Nazorine: a baker and associate of Don Corleone Tere Livrano as Theresa Hagen : Tom's wife Victor Rendina as Philip Tattaglia: head of the Tattaglia crime family and prostitution crime boss Jeannie Linero as Lucy Mancini : Connie's friend and Sonny's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs
 
 ---
 
@@ -2456,7 +2456,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: 's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs Clemenza, Peter Clemenza's wife Simonetta Stefanelli as Apollonia Vitelli-Corleone : Michael's Sicilian wife [ 3 ] [ 8 ] Angelo Infanti as Fabrizio, Michael's Sicilian bodyguard [ 3 ] [ 8 ] Franco Citti as Calò, Michael's other Sicilian bodyguard [ 3 ] [ 8 ] Corrado Gaipa as Don Tommasino: a Palermo crime boss and Michael's guardian in Sicily [ 3 ] [ 8 ] Saro Urzì as Signor Vitelli: Apollonia's father [ 3 ] [ 8 ] Uncredited members of the cast include Tom Rosqui as Rocco Lampone , one of Michael's enforcers; Joe Spinell [ 9 ] as Willi Cicci, one of Clemenza's enforcers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone
+(Referenced by Varun in 'Beyond') The Godfather: 's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs Clemenza, Peter Clemenza's wife Simonetta Stefanelli as Apollonia Vitelli-Corleone : Michael's Sicilian wife [ 3 ] [ 8 ] Angelo Infanti as Fabrizio, Michael's Sicilian bodyguard [ 3 ] [ 8 ] Franco Citti as Calò, Michael's other Sicilian bodyguard [ 3 ] [ 8 ] Corrado Gaipa as Don Tommasino: a Palermo crime boss and Michael's guardian in Sicily [ 3 ] [ 8 ] Saro Urzì as Signor Vitelli: Apollonia's father [ 3 ] [ 8 ] Brando (right) and Pacino as Don Vito and Michael Corleone, respectively Uncredited members of the cast include Tom Rosqui as Rocco Lampone , one of Michael's enforcers; Joe Spinell [ 9 ] as Willi Cicci, one of Clemenza's enforcers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone
 
 ---
 
