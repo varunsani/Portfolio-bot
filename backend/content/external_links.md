@@ -926,7 +926,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,926 ratings 29,023 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 581,949 ratings 29,026 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -998,7 +998,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,926 ratings 29,023 reviews 5 stars 202,486 (34%) 4 stars 216,528 (37%) 3 stars 113,427 (19%) 2 stars 34,567 (5%) 1 star 14,918 (2%) Search review text Filters Displaying 1 - 30 of 28,955 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 581,949 ratings 29,026 reviews 5 stars 202,493 (34%) 4 stars 216,536 (37%) 3 stars 113,434 (19%) 2 stars 34,568 (5%) 1 star 14,918 (2%) Search review text Filters Displaying 1 - 30 of 28,957 reviews Manny Author 59 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1322,7 +1322,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: aphy took place in early 2006, with locations including Los Angeles and Colorado The Prestige premiered at the El Capitan Theatre on October 17, 2006, and was released in the United States on October 20, 2006, by Buena Vista Pictures Distribution through its Touchstone Pictures label, with Warner Bros. Pictures handling international distribution
+(Referenced by Varun in 'Beyond') The Prestige: aphy took place in early 2006, with locations including Los Angeles and Colorado The Prestige premiered at the El Capitan Theatre on October 17, 2006, and was released in the United States on October 20, 2006, by Buena Vista Pictures Distribution through the Touchstone Pictures banner, with Warner Bros. Pictures handling international distribution
 
 ---
 
@@ -1331,7 +1331,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: e Pictures label, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
+(Referenced by Varun in 'Beyond') The Prestige:  Pictures banner, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
 
 ---
 
@@ -1592,7 +1592,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Chri
+(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Chr
 
 ---
 
@@ -2447,7 +2447,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: hael's hand and address him as "Don Corleone" before Neri closes the door on her Cast [ edit ] See also: List of The Godfather characters Marlon Brando as Vito Corleone : crime boss and patriarch of the Corleone family Al Pacino as Michael Corleone : Vito's youngest son James Caan as Sonny Corleone : Vito's eldest son Richard Castellano as Peter Clemenza : a caporegime in the Corleone crime family, Sonny's godfather Robert Duvall as Tom Hagen : Corleone consigliere , lawyer, and unofficial adopted member of the Corleone family Sterling Hayden as Captain McCluskey : a corrupt police captain on Sollozzo's payroll John Marley as Jack Woltz: A Hollywood film producer Richard Conte as Emilio Barzini : a crime boss of a rival family Al Lettieri as Virgil Sollozzo : a drug boss Diane Keaton as Kay Adams Corleone : Michael's girlfriend and, later, second wife Abe Vigoda as Salvatore Tessio : a caporegime in the Corleone crime family Talia Shire as Connie Corleone : Vito's only daughter Gianni Russo as Carlo Rizzi : Connie's abusive husband John Cazale as Fredo Corleone : Vito's middle son Rudy Bond as Carmine Cuneo: a crime boss of a rival family Don Costello  as Victor Stracci: a crime boss of a rival family Al Martino as Johnny Fontane : a singer and Vito's godson Morgana King as Carmela Corleone : Vito's wife Lenny Montana as Luca Brasi : Vito's enforcer Johnny Martino as Paulie Gatto: a soldier in the Corleone crime family Salvatore Corsitto as Amerigo Bonasera : an undertaker Richard Bright as Al Neri : Michael's enforcer in the Corleone crime family Alex Rocco as Moe Greene : a Jewish mobster and Las Vegas casino proprietor Tony Giorgio as Bruno Tattaglia: a rival mobster and Philip Tattaglia's youngest son Vito Scotti as Nazorine: a baker and associate of Don Corleone Tere Livrano as Theresa Hagen : Tom's wife Victor Rendina as Philip Tattaglia: head of the Tattaglia crime family and prostitution crime boss Jeannie Linero as Lucy Mancini : Connie's friend and Sonny's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs
+(Referenced by Varun in 'Beyond') The Godfather: hael's hand and address him as "Don Corleone" before Neri closes the door on her Cast [ edit ] See also: List of The Godfather characters Brando (right) and Pacino as Don Vito and Michael Corleone, respectively Marlon Brando as Vito Corleone : crime boss and patriarch of the Corleone family Al Pacino as Michael Corleone : Vito's youngest son James Caan as Sonny Corleone : Vito's eldest son Richard Castellano as Peter Clemenza : a caporegime in the Corleone crime family, Sonny's godfather Robert Duvall as Tom Hagen : Corleone consigliere , lawyer, and unofficial adopted member of the Corleone family Sterling Hayden as Captain McCluskey : a corrupt police captain on Sollozzo's payroll John Marley as Jack Woltz: A Hollywood film producer Richard Conte as Emilio Barzini : a crime boss of a rival family Al Lettieri as Virgil Sollozzo : a drug boss Diane Keaton as Kay Adams Corleone : Michael's girlfriend and, later, second wife Abe Vigoda as Salvatore Tessio : a caporegime in the Corleone crime family Talia Shire as Connie Corleone : Vito's only daughter Gianni Russo as Carlo Rizzi : Connie's abusive husband John Cazale as Fredo Corleone : Vito's middle son Rudy Bond as Carmine Cuneo: a crime boss of a rival family Don Costello  as Victor Stracci: a crime boss of a rival family Al Martino as Johnny Fontane : a singer and Vito's godson Morgana King as Carmela Corleone : Vito's wife Lenny Montana as Luca Brasi : Vito's enforcer Johnny Martino as Paulie Gatto: a soldier in the Corleone crime family Salvatore Corsitto as Amerigo Bonasera : an undertaker Richard Bright as Al Neri : Michael's enforcer in the Corleone crime family Alex Rocco as Moe Greene : a Jewish mobster and Las Vegas casino proprietor Tony Giorgio as Bruno Tattaglia: a rival mobster and Philip Tattaglia's youngest son Vito Scotti as Nazorine: a baker and associate of Don Corleone Tere Livrano as Theresa Hagen : Tom's wife Victor Rendina as Philip Tattaglia: head of the Tattaglia crime family and prostitution crime boss Jeannie Linero as Lucy Mancini : Connie's friend and Sonny's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs
 
 ---
 
@@ -2456,7 +2456,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: 's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs Clemenza, Peter Clemenza's wife Simonetta Stefanelli as Apollonia Vitelli-Corleone : Michael's Sicilian wife [ 3 ] [ 8 ] Angelo Infanti as Fabrizio, Michael's Sicilian bodyguard [ 3 ] [ 8 ] Franco Citti as Calò, Michael's other Sicilian bodyguard [ 3 ] [ 8 ] Corrado Gaipa as Don Tommasino: a Palermo crime boss and Michael's guardian in Sicily [ 3 ] [ 8 ] Saro Urzì as Signor Vitelli: Apollonia's father [ 3 ] [ 8 ] Brando (right) and Pacino as Don Vito and Michael Corleone, respectively Uncredited members of the cast include Tom Rosqui as Rocco Lampone , one of Michael's enforcers; Joe Spinell [ 9 ] as Willi Cicci, one of Clemenza's enforcers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone
+(Referenced by Varun in 'Beyond') The Godfather: 's mistress Julie Gregg as Sandra Corleone : Sonny's wife Ardell Sheridan as Mrs Clemenza, Peter Clemenza's wife Simonetta Stefanelli as Apollonia Vitelli-Corleone : Michael's Sicilian wife [ 3 ] [ 8 ] Angelo Infanti as Fabrizio, Michael's Sicilian bodyguard [ 3 ] [ 8 ] Franco Citti as Calò, Michael's other Sicilian bodyguard [ 3 ] [ 8 ] Corrado Gaipa as Don Tommasino: a Palermo crime boss and Michael's guardian in Sicily [ 3 ] [ 8 ] Saro Urzì as Signor Vitelli: Apollonia's father [ 3 ] [ 8 ] Uncredited members of the cast include Tom Rosqui as Rocco Lampone , one of Michael's enforcers; Joe Spinell [ 9 ] as Willi Cicci, one of Clemenza's enforcers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone
 
 ---
 
