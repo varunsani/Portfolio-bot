@@ -5343,7 +5343,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,231 ratings 29,062 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,259 ratings 29,065 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5415,7 +5415,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,231 ratings 29,062 reviews 5 stars 202,578 (34%) 4 stars 216,670 (37%) 3 stars 113,493 (19%) 2 stars 34,568 (5%) 1 star 14,922 (2%) Search review text Filters Displaying 1 - 30 of 28,989 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,259 ratings 29,065 reviews 5 stars 202,587 (34%) 4 stars 216,685 (37%) 3 stars 113,495 (19%) 2 stars 34,569 (5%) 1 star 14,923 (2%) Search review text Filters Displaying 1 - 30 of 28,992 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -5739,7 +5739,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: aphy took place in early 2006, with locations including Los Angeles and Colorado The Prestige premiered at the El Capitan Theatre on October 17, 2006, and was released in the United States on October 20, 2006, by Buena Vista Pictures Distribution through the Touchstone Pictures banner, with Warner Bros. Pictures handling international distribution
+(Referenced by Varun in 'Beyond') The Prestige: aphy took place in early 2006, with locations including Los Angeles and Colorado The Prestige premiered at the El Capitan Theatre on October 17, 2006, and was released in the United States on October 20, 2006, by Buena Vista Pictures Distribution through its Touchstone Pictures label, with Warner Bros. Pictures handling international distribution
 
 ---
 
@@ -5748,7 +5748,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige:  Pictures banner, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
+(Referenced by Varun in 'Beyond') The Prestige: e Pictures label, with Warner Bros. Pictures handling international distribution The film received generally positive reviews from critics, with particular praise for its performances, production design, and narrative structure. It was a box office success, earning $109 million worldwide on the budget of $40 million. Plot [ edit ] Note: Though the movie contains multiple flash-forwards and flash-backs throughout, the story is told here in chronological order
 
 ---
 
@@ -6009,7 +6009,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Prestige  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Chr
+(Referenced by Varun in 'Beyond') The Prestige: he three elements of the film's illusion: the pledge, the turn, and the prestige "It took a long time to figure out how to achieve cinematic versions of the very literary devices that drive the intrigue of the story," Chri
 
 ---
 
