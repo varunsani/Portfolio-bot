@@ -224,7 +224,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://arxiv.org/abs/2106.09685  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations NASA ADS Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
+(Referenced by Varun in 'Beyond') LoRA: Low-Rank Adaptation of Large Language Models: the paper titled LoRA: Low-Rank Adaptation of Large Language Models, by Edward J Hu and 7 other authors View PDF HTML (experimental) TeX Source view license Additional Features Audio Summary Current browse context: cs.CL < prev | next > new | recent | 2021-06 Change to browse by: cs cs.AI cs.LG References & Citations SciX Google Scholar Semantic Scholar 12 blog links ( what is this? ) DBLP - CS Bibliography listing | bibtex Yelong Shen Phillip Wallis Zeyuan Allen-Zhu Yuanzhi Li Weizhu Chen export BibTeX citation Loading..
 
 ---
 
@@ -899,7 +899,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,291 ratings 29,067 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,325 ratings 29,069 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -971,7 +971,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,291 ratings 29,067 reviews 5 stars 202,598 (34%) 4 stars 216,701 (37%) 3 stars 113,501 (19%) 2 stars 34,569 (5%) 1 star 14,922 (2%) Search review text Filters Displaying 1 - 30 of 28,993 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,325 ratings 29,069 reviews 5 stars 202,609 (34%) 4 stars 216,717 (37%) 3 stars 113,506 (19%) 2 stars 34,571 (5%) 1 star 14,922 (2%) Search review text Filters Displaying 1 - 30 of 28,995 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1898,7 +1898,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Rush_(2013_film)  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Rush: 2013 biographical sports film directed by Ron Howard and written by Peter Morgan It is centred on the rivalry between two Formula One drivers, James Hunt and Niki Lauda , during the 1976 Formula One season . The film stars Chris Hemsworth as Hunt and Daniel Brühl as Lauda. [ 12 ] The film premiered in London on 2 September 2013 and was shown at the 2013 Toronto International Film Festival [ 13 ] [ 14 ] before its United Kingdom release on 13 September 2013
+(Referenced by Varun in 'Beyond') Rush: 2013 biographical sports film directed by Ron Howard and written by Peter Morgan It is centred on the rivalry between two Formula One drivers, James Hunt and Niki Lauda , culminating in the 1976 Formula One season . The film stars Chris Hemsworth as Hunt and Daniel Brühl as Lauda. [ 12 ] The film premiered in London on 2 September 2013 and was shown at the 2013 Toronto International Film Festival [ 13 ] [ 14 ] before its United Kingdom release on 13 September 2013
 
 ---
 
@@ -2168,7 +2168,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/Rush_(2013_film)  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Rush: being "the graveyard"; in fact Jackie Stewart had nicknamed it "the Green Hell") [ 35 ] [ 36 ] [ 37 ] Other inaccuracies include the British F3 battle at Crystal Palace , which in reality was between Hunt and Dave Morgan , and Hunt's overtake on Regazzoni for 3rd place in the Japanese Grand Prix when in the actual race he passed Alan Jones . The starting grid for the
+(Referenced by Varun in 'Beyond') Rush: being "the graveyard"; in fact Jackie Stewart had nicknamed it "the Green Hell") [ 35 ] [ 36 ] [ 37 ] Other inaccuracies include the British F3 battle at Crystal Palace , which in reality was between Hunt and Dave Morgan , and Hunt's overtake on Regazzoni for 3rd place in the Japanese Grand Prix when in the actual race he passed Alan Jones . The starting grid
 
 ---
 
