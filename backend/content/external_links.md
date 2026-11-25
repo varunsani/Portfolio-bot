@@ -899,7 +899,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,447 ratings 29,076 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,471 ratings 29,076 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -971,7 +971,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,447 ratings 29,076 reviews 5 stars 202,638 (34%) 4 stars 216,778 (37%) 3 stars 113,528 (19%) 2 stars 34,579 (5%) 1 star 14,924 (2%) Search review text Filters Displaying 1 - 30 of 29,002 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,471 ratings 29,076 reviews 5 stars 202,644 (34%) 4 stars 216,791 (37%) 3 stars 113,534 (19%) 2 stars 34,578 (5%) 1 star 14,924 (2%) Search review text Filters Displaying 1 - 30 of 29,002 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -1079,7 +1079,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 683 followers Follow Follow November 15, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
+(Referenced by Varun in 'Beyond') Atonement:  imply that all post-modernism is trickery. This is a great and heart-felt novel This entire review has been hidden because of spoilers. Show full review if-research-were-romance too-sexy-for-maiden-aunts Sarah Author 5 books 684 followers Follow Follow November 15, 2007 In World War II England, 13-year-old Briony Tallis misinterprets her older sister’s love affair with their family’s gardener to be something much worse than what it is
 
 ---
 
@@ -4049,7 +4049,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.chess.com/blog/ThummimS/world-chess-championship-1972-game-6  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Fischer vs. Spassky: m/vi/d2WlFD2rbRk/hqdefault.jpg World Chess Championship 1972: Game 6 (Fischer vs Spassky) ThummimS Updated: Aug 14, 2021, 8:19 AM | 8 July 23, 1972: Before the match began, the Soviet team that had been training Spassky debated about whether Fischer might play an opening move different from his usual 1.e4. "But when the question was raised as to whether 1.d4 or 1.c4 could be expected of Fischer, Spassky replied: 'Let's not bother with such nonsense – I'll play the [Tartakower] Defence
+(Referenced by Varun in 'Beyond') Fischer vs. Spassky: m/vi/d2WlFD2rbRk/hqdefault.jpg World Chess Championship 1972: Game 6 (Fischer vs Spassky) ThummimS Updated: Aug 14, 2021, 8:19 AM 8 July 23, 1972: Before the match began, the Soviet team that had been training Spassky debated about whether Fischer might play an opening move different from his usual 1.e4. "But when the question was raised as to whether 1.d4 or 1.c4 could be expected of Fischer, Spassky replied: 'Let's not bother with such nonsense – I'll play the [Tartakower] Defence
 
 ---
 
