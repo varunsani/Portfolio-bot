@@ -5253,7 +5253,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 9:00 p.m. Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
+(Referenced by Varun in 'Beyond') Louvre: Musée du Louvre Official Website Musée du Louvre Official Website Aller au contenu Welcome to the Louvre The museum is open today 9:00 a.m. à 6:00 p.m. Book a ticket Prepare your visit Highlights Zurbarán 1598–1664 Revisit the paintings of Francisco de Zurbarán with this chronological and thematic retrospective
 
 ---
 
@@ -5307,7 +5307,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.louvre.fr/en  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 9:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
+(Referenced by Varun in 'Beyond') Louvre: lve into the Louvre Explore Prepare your visit The museum is open today 9:00 a.m à 6:00 p.m. Book a ticket Prepare your visit Book a ticket Prepare your visit
 
 ---
 
@@ -5334,7 +5334,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,471 ratings 29,076 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,493 ratings 29,078 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -5406,7 +5406,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,471 ratings 29,076 reviews 5 stars 202,644 (34%) 4 stars 216,791 (37%) 3 stars 113,534 (19%) 2 stars 34,578 (5%) 1 star 14,924 (2%) Search review text Filters Displaying 1 - 30 of 29,002 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,493 ratings 29,078 reviews 5 stars 202,648 (34%) 4 stars 216,801 (37%) 3 stars 113,539 (19%) 2 stars 34,581 (5%) 1 star 14,924 (2%) Search review text Filters Displaying 1 - 30 of 29,004 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
