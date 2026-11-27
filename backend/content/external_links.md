@@ -908,7 +908,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,539 ratings 29,081 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
+(Referenced by Varun in 'Beyond') Atonement: Atonement by Ian McEwan | Goodreads Jump to ratings and reviews Want to Read Rate this book Atonement Ian McEwan 3.96 582,566 ratings 29,084 reviews Want to Read Rate this book Alternate cover edition of ISBN 9780385721790 Ian McEwan's symphonic novel of love and war, childhood and class, guilt and forgiveness provides all the satisfaction of a brilliant narrative and the provocation we have come to expect from this master of English prose
 
 ---
 
@@ -944,7 +944,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 170 books 20.1k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
+(Referenced by Varun in 'Beyond') Atonement:  First published September 20, 2001 Book details & editions Loading... Loading.. About the author Ian McEwan 171 books 20.1k followers Follow Follow 10 highlights in this book Ian McEwan studied at the University of Sussex, where he received a BA degree in English Literature in 1970 and later received his MA degree in English Literature at the University of East Anglia. McEwan's works have earned him worldwide critical acclaim
 
 ---
 
@@ -980,7 +980,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://www.goodreads.com/book/show/6867.Atonement  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,539 ratings 29,081 reviews 5 stars 202,667 (34%) 4 stars 216,818 (37%) 3 stars 113,547 (19%) 2 stars 34,582 (5%) 1 star 14,925 (2%) Search review text Filters Displaying 1 - 30 of 29,006 reviews Manny Author 60 books 16.5k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
+(Referenced by Varun in 'Beyond') Atonement: McEwan was also named Reader's Digest Author of the Year. McEwan lives in London Ratings & Reviews What do you think? Rate this book Write a Review Friends & Following Create a free account to discover what your friends think of this book! Community Reviews 3.96 582,566 ratings 29,084 reviews 5 stars 202,673 (34%) 4 stars 216,833 (37%) 3 stars 113,552 (19%) 2 stars 34,583 (5%) 1 star 14,925 (2%) Search review text Filters Displaying 1 - 30 of 29,009 reviews Manny Author 60 books 16.6k followers Follow Follow December 6, 2008 There are many reviews already of this book, and I did wonder whether the world needed any more
 
 ---
 
@@ -2285,7 +2285,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: ed by the sequels The Godfather Part II (1974) and The Godfather Part III (1990) Plot [ edit ] In the mid-1940s, Michael Corleone is a World War II veteran and the youngest son of Don Vito Corleone . Vito is head of the Corleone mafia family and runs it with his eldest son Santino a.k.a. Sonny and adopted son Tom Hagen , a lawyer who is the family's consigliere . At his sister Connie's wedding to Carlo Rizzi , Michael introduces his family to his girlfriend, Kay Adams
+(Referenced by Varun in 'Beyond') The Godfather: ed by the sequels The Godfather Part II (1974) and The Godfather Part III (1990) Plot [ edit ] In the mid-1940s, Michael Corleone is a World War II veteran and the youngest son of Don Vito Corleone . Vito is head of the Corleone mafia family and runs it with his eldest son Santino "Sonny" and adopted son Tom Hagen , a lawyer who is the family's consigliere . At his sister Connie's wedding to Carlo Rizzi , Michael introduces his family to his girlfriend, Kay Adams
 
 ---
 
@@ -2447,7 +2447,7 @@ TECHNOCOLOABS SOFTWARES PVT.LTD    CIN: U72900MP2020PTC052601
 **Source:** external_link  |  **Anchor:** #beyond
 **URL:** https://en.wikipedia.org/wiki/The_Godfather  |  **Project ID:** none
 
-(Referenced by Varun in 'Beyond') The Godfather: ers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone Francis Ford Coppola's daughter Sofia , who was still an infant at the time, appears uncredited as Michael Rizzi in the baptism sequence. [ 10 ] Production
+(Referenced by Varun in 'Beyond') The Godfather: ers; Gabriele Torrei as Enzo the baker, and Anthony Gounaris as Anthony Corleone Francis Ford Coppola's daughter Sofia , who was still an infant at the time, appears uncredited as Michael Rizzi in the baptism sequence. [ 10 ] Production [ edi
 
 ---
 
